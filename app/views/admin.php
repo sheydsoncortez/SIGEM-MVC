@@ -19,7 +19,7 @@
 
       <?php if (isset($view)){
 
-          $this->load($view, $this->viewData);
+          $this->load($view, $viewData);
 
       }
       
