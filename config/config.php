@@ -11,7 +11,7 @@ define('CONTROLLE_PADRAO', 'index');
 define('METODO_PADRAO', 'index');
 define('NAMESPACE_CONTROLLE', 'app\\controllers\\');
 
-define('URL_BASE', 'http://sigem.dev');
+define('URL_BASE', 'http://localhost/SIGEM-MVC/');
 define('ROOT_PATH', dirname(__FILE__));
 
 //Configurações  de LOGIN

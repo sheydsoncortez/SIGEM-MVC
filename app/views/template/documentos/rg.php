@@ -13,7 +13,7 @@
                     oninput="setCustomValidity('')"/>                              
             </div>
             <div class="col-sm-4">
-            <select name="orgaoExpRg" class="form-control select_selecionado"
+            <select id="orgaoExpRg" name="orgaoExpRg" class="form-control select_selecionado"
                 data-toggle="tooltip" data-placement="bottom" title="SSP, ITEP"
                 required oninvalid="this.setCustomValidity('Selecione o orgão de expedição')"
                 oninput="setCustomValidity('')">
@@ -100,7 +100,7 @@
         </div>
         </div>
         <div class="col-sm-4">
-            <select name="ufExpRg" class="form-control select_selecionado"
+            <select id="ufExpRg" name="ufExpRg" class="form-control select_selecionado"
             required oninvalid="this.setCustomValidity('Selecione o extado expedidor')"
             oninput="setCustomValidity('')">
             <option value=""  disabled selected hidden>Estado</option>

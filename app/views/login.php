@@ -16,7 +16,7 @@
           <div class="form-inner">
             <div class="logo text-uppercase"><span>SIGEM | </span><strong class="text-primary"> LOGIN</strong></div>
             <p style="color:red"> <?php echo isset($msn) ? $msn : ""; ?> </p>
-            <form method="POST" action="/login" class="text-left form-validate " id="form-login">
+            <form method="POST" action="<?php echo URL_BASE . "login"; ?>" class="text-left form-validate " id="form-login">
               <div class="form-group-material">
                 <input id="login-username" type="text" name="loginUsername" required data-msg="Entre com seu nome de usuário" class="input-material">
                 <label for="login-username" class="label-material">Usuário</label>
@@ -33,7 +33,7 @@
           </div>
 
           <div class="copyrights text-center">
-              <<p>Design by <a href="https://bootstrapious.com" class="external">Bootstrapious</a></p>
+              <p>Design by <a href="https://bootstrapious.com" class="external">Bootstrapious</a></p>
               <!-- Please do not remove the backlink to us unless you support further theme's
               development at https://bootstrapious.com/donate. It is part of the license conditions
               and it helps me to run Bootstrapious. Thank you for understanding :)-->
@@ -42,15 +42,15 @@
     </div>
   </div>
   <!-- JavaScript files-->
-  <script src="/assets/vendor/jquery/jquery.min.js"></script>
-  <script src="/assets/vendor/popper.js/umd/popper.min.js"> </script>
-  <script src="/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
-  <script src="/assets/js/grasp_mobile_progress_circle-1.0.0.min.js"></script>
-  <script src="/assets/vendor/jquery.cookie/jquery.cookie.js"> </script>
-  <script src="/assets/vendor/chart.js/Chart.min.js"></script>
-  <script src="/assets/vendor/jquery-validation/jquery.validate.min.js"></script>
-  <script src="/assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="<?php echo URL_BASE . "assets/vendor/jquery/jquery.min.js"; ?>"></script>
+  <script src="<?php echo URL_BASE . "assets/vendor/popper.js/umd/popper.min.js"; ?>"> </script>
+  <script src="<?php echo URL_BASE . "assets/vendor/bootstrap/js/bootstrap.min.js"; ?>"></script>
+  <script src="<?php echo URL_BASE . "assets/js/grasp_mobile_progress_circle-1.0.0.min.js"; ?>"></script>
+  <script src="<?php echo URL_BASE . "assets/vendor/jquery.cookie/jquery.cookie.js"; ?>"> </script>
+  <script src="<?php echo URL_BASE . "assets/vendor/chart.js/Chart.min.js"; ?>"></script>
+  <script src="<?php echo URL_BASE . "assets/vendor/jquery-validation/jquery.validate.min.js"; ?>"></script>
+  <script src="<?php echo URL_BASE . "assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"; ?>"></script>
   <!-- Main File-->
-  <script src="/assets/js/front.js"></script>
+  <script src="<?php echo URL_BASE . "assets/js/front.js"; ?>"></script>
   </body>
 </html>

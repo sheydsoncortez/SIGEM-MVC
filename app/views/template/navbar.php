@@ -62,7 +62,7 @@
                   </ul>
                 </li> -->
                 <!-- Log out-->
-                <li class="nav-item"><a href="/login/logout" class="nav-link logout"> <span class="d-none d-sm-inline-block">Sair do Sistema</span><i class="fas fa-sign-out-alt"></i></a></li>
+                <li class="nav-item"><a href="<?php echo URL_BASE . "login/logout"; ?>" class="nav-link logout"> <span class="d-none d-sm-inline-block">Sair do Sistema</span><i class="fas fa-sign-out-alt"></i></a></li>
               </ul>
             </div>
           </div>

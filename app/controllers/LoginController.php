@@ -33,8 +33,7 @@ class LoginController extends Controller{
             unset($_POST["loginPassword"]);
 
             if($dados["sucess"]){
-
-                header("location:/");
+                header('location:'.URL_BASE);
 
             }else{
                 //echo $dados["msn"];
@@ -51,8 +50,8 @@ class LoginController extends Controller{
         session_destroy();
 
         $dados = array();
-
-        header("location:/");
+        
+        header('location:'.URL_BASE);
 
     }
 

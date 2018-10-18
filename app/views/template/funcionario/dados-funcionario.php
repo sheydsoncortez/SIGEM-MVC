@@ -1,13 +1,11 @@
-
-
 <div class="form-group row">
   <div class="col-sm-12">
     <div class="row">
       <label class="col-sm-2 form-control-label"></label>
       <div class="col-sm-8">
-        <input type="text" placeholder="Nome" id="nomeFun" name="nome" 
-                required oninvalid="this.setCustomValidity('Preencha o campo nome')"
-                oninput="setCustomValidity('')" class="form-control"/>
+      <input type="text" placeholder="Nome" id="nomeFun" name="nome" 
+                  value="" required oninvalid="this.setCustomValidity("Preencha o campo nome")"
+                  oninput="setCustomValidity("")" class="form-control"/>
       </div>
     </div>
   </div>
@@ -18,7 +16,8 @@
       <label class="col-sm-2 form-control-label"></label>
       <div class="col-sm-3">
         <div class="input-group date">
-          <input type="text" class="form-control datetimepicker-input" id="data" 
+          <input type="text" class="form-control datetimepicker-input" id="data"
+                  value=""
                   data-toggle="datetimepicker" data-target="#data"
                   placeholder="Data de Nascimeto"               
                   name="dataNasc" required

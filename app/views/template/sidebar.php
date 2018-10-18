@@ -5,7 +5,7 @@
         <!-- Sidebar Header    -->
         <div class="sidenav-header d-flex align-items-center justify-content-center">
           <!-- User Info-->
-          <div class="sidenav-header-inner text-center"><img src="/assets/img/admin.jpg" alt="person" class="img-fluid rounded-circle">
+          <div class="sidenav-header-inner text-center"><img src="<?php echo URL_BASE . "assets/img/admin.jpg"; ?>" alt="person" class="img-fluid rounded-circle">
               <!-- EXIBE O NOME DO USUÁRIO LOGADO NO SISTEMA -->
               <h2 class="h5"><?php echo $_SESSION[NOME_SESSION_LOGIN]["name"]; ?></h2><span><?php echo $_SESSION[NOME_SESSION_LOGIN]["function"]; ?></span>
           </div>
@@ -26,7 +26,7 @@
             </li>
             <li><a href="#funcionario" aria-expanded="false" data-toggle="collapse"> <i class="fas fa-user-tie"></i>Funcionário</a>
               <ul id="funcionario" class="collapse list-unstyled ">
-                <li><a href="/funcionario/cadastrar/1">Cadastro</a></li>
+                <li><a href="<?php echo URL_BASE . "funcionario/cadastrar/1";?>">Cadastro</a></li>
                 <li><a href="#">Consulta</a></li>
                 <li><a href="#">Ponto Mensal</a></li>
                 <li><a href="#">Documetos</a></li>

@@ -31,7 +31,9 @@ $(document).ready(function(){
 $(document).ready(function(){
     $('#cep').mask('00000-000');
 });
-
+$(document).ready(function(){
+    $('#numerocpf').mask('000.000.000-00');
+});
       // ===========================================================
       
       // ===================== Tooltips INPUTS.=====================
@@ -226,6 +228,12 @@ $(document).ready(function(){
   $('#estadoNasc').change(function(){
     $('#estadoNasc').css('font-weight', 'bold');
   });
+  $('#ufExpRg').change(function(){
+    $('#ufExpRg').css('font-weight', 'bold');
+  });
+  $('#orgaoExpRg').change(function(){
+    $('#orgaoExpRg').css('font-weight', 'bold');
+  });  
   $('#legenda-cor').change(function(){
     $('#legenda-cor').css('font-weight', 'bold');
   });

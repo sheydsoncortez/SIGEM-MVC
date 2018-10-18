@@ -24,7 +24,7 @@ class FuncionarioController extends Controller{
     public function cadastrar($page){
 
         $dados["view"] = "template/form-funcionario";
-        $dados["modal"] = "app/views/template/professor/modal-professor.php";
+        $dados["modal"] = "template/professor/modal-professor.php";
         $dados["page"] = $page;
         $dados["voltar"] = "";
         $dados["proximo"] = "";
@@ -41,7 +41,7 @@ class FuncionarioController extends Controller{
             break;
             case '2';
                 $dados["titulo"] = "ENDEREÇO";
-                $dados["paginator"] = "app/views/template/endereco/dados-endereco.php";
+                $dados["paginator"] = "endereco/dados-endereco.php";
                 $dados["active"] = array("", "active", "", "", "");
                 $dados["disabled"] = array("","", "", "disabled", "disabled", "disabled","");               
                 $dados["voltar"] = "1";
@@ -69,7 +69,7 @@ class FuncionarioController extends Controller{
             case '5';
                 $dados["titulo"] = "DADOS FUNCIONAIS";
                 $dados["paginator"] = "funcionario/revisadados-funcionario.php";
-                $dados["modal"] = "app/views/template/funcionario/atualiza-funcionario.php";
+                $dados["modal"] = "template/funcionario/atualiza-funcionario.php";
                 $dados["active"] = array("", "", "", "", "", "active");
                 $dados["disabled"] = array("","", "", "", "", "","disabled");  
                 $dados["voltar"] = "4";
@@ -81,17 +81,9 @@ class FuncionarioController extends Controller{
 
         $this->load("admin", $dados);
         $dados = "";
-    }
+    }       
 
-    public function listar(){
-
-         $funcionario = new FuncionarioModel();
-
-         $dados["funcionario"] = $funcionario->listar();
-    }    
-
-    public function salvar($page){      
-        session_start();  
+    public function salvar($page){        
         switch ($page){
             case 1:
                 $funcionario = new Funcionario();
@@ -108,7 +100,7 @@ class FuncionarioController extends Controller{
                 $_SESSION['funcionario'] = $funcionario;
 
                 //echo nl2br( $_SESSION['funcionario']);
-                header('location:/funcionario/cadastrar/2');
+                header('location:' . URL_BASE . 'funcionario/cadastrar/2');
             break;
             case 2:
                 $enderecof = new Endereco();
@@ -120,7 +112,7 @@ class FuncionarioController extends Controller{
                 $enderecof->setUfEndereco($_POST['ufEndereco']);
                 $_SESSION['funcionario']->setEndereco($enderecof);
 
-                header('location:/funcionario/cadastrar/3');
+                header('location:' . URL_BASE . 'funcionario/cadastrar/3');
             break;
             case 3:
                 $documentosf = new DocumentosFuncionario();
@@ -140,7 +132,7 @@ class FuncionarioController extends Controller{
                 $documentosf->getReservista()->setSerieRes($_POST['serieRes']);
                 $_SESSION['funcionario']->setDocumentos($documentosf); 
 
-                header('location:/funcionario/cadastrar/4');
+                header('location:' . URL_BASE . 'funcionario/cadastrar/4');
             break;
             case 4:
                 $dadosFuncionaisF = new DadosFuncionais();
@@ -166,12 +158,24 @@ class FuncionarioController extends Controller{
                             $_SESSION['funcionario']->getDocumentos()->getTituloEleitoral()->__toString().''.
                             $_SESSION['funcionario']->getDocumentos()->getReservista()->__toString().''.
                             $_SESSION['funcionario']->getDadosFuncionais()->__toString());*/
-                header('location:/funcionario/cadastrar/5');
+                header('location:' . URL_BASE . 'funcionario/cadastrar/5');
             break;
             case 5:
                 $funcionario = new FuncionarioModel();
-                $funcionario->inserir();
+                $dados["msn"] = $funcionario->inserir();
+                $this->load("admin", $dados);
             break;
         } 
     }
+    
+    public function listar(){
+
+        $funcionario = new FuncionarioModel();
+
+        $dados["funcionario"] = $funcionario->listarUm();
+
+        //echo"<pre>";
+
+        //print_r($dados);
+   }
 }

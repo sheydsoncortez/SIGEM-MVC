@@ -1,5 +1,3 @@
-<?php 
-?>
 <!-- ================================================================================================= -->
 
 <!-- FORMULARIO DE CADASTRO DE FUNCIONÁRIOS -->
@@ -46,7 +44,7 @@
           <!-- INÍCIO DO FORM -->
 
             <form class='form-horizontal' id='formfuncionario' method='POST' 
-            action=<?php echo "'/funcionario/salvar/".$page."'";?> >
+            action="<?php echo URL_BASE . "funcionario/salvar/".$page;?>" >
 
             <?php include($paginator); //echo URL_BASE . $paginator;?>           
 

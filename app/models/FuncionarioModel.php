@@ -110,15 +110,22 @@ class FuncionarioModel extends Model{
 
             unset($_SESSION['funcionario']);
 
+            return "Funcionário inserido com Sucesso.";
+
         }
         catch(\PDOException $e){
-            echo $sql . "<br>" . $e->getMessage();
+            return "Erro ao inserir funcionário" . $e->getMessage();
         }
-
+        return "";
     }
     
-    public function listar(){
-        
+    public function listarUm(){
+        $sql_entidades = "SELECT endereco_fun, carteiraprof_fun, rg_fun, tituloeleitor_fun,reservista_fun
+                            FROM public.funcionario WHERE cpf_fun='987.654.321-33'";
+        $query = $this->db->query($sql_entidades);
+        $entidades = $query->fetch(\PDO::FETCH_OBJ);
+        echo "<pre>";
+        print_r($entidades);
         
     }
 

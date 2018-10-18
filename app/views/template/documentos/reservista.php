@@ -22,7 +22,7 @@
                     <input type="text" data-placement="bottom" title="Digite apenas números"                                       
                         placeholder="Série" id="serieRes" name="serieRes" class="form-control"
                         required oninvalid="this.setCustomValidity('Insira a série da reservista')"
-                        oninput="setCustomValidity('')"/>                              
+                        oninput="setCustomValidity('')" maxlength="2"/>                              
                 </div>                            
             </div>
             </div>
