@@ -167,8 +167,8 @@ class FuncionarioController extends Controller{
 
         $dados["funcionario"] = $funcionario->listarUm($cpf);
 
-        echo "<pre>";
-        print_r($dados);
+        //echo "<pre>";
+        //print_r($dados);
    }
    
    public function listar(){

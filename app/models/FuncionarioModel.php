@@ -155,56 +155,6 @@ class FuncionarioModel extends Model{
             $query = $this->db->query($sql_tit);
             $f->titulo = $query->fetch(\PDO::FETCH_OBJ);
             
-            /*$funcionario = new Funcionario();
-            $funcionario->setNome($f->nome_fun);
-            $funcionario->setDataNasc($f->datanasc_fun);
-            $funcionario->setcidadeNasc($f->cidadenasc_fun);
-            $funcionario->setEstadoNasc($f->ufnasc_fun);
-            $funcionario->setNomePai($f->nomepai_fun);
-            $funcionario->setNomeMae($f->nomemae_fun);
-            $funcionario->setSexo($f->sexo_fun);
-            $funcionario->setEstadoCivil($f->estadocivil_fun);
-            $funcionario->setTelefone($f->telefone_fun);
-            $funcionario->setEmail($f->email_fun);
-            
-            $enderecof = new Endereco();
-            $enderecof->setCep($e->cep_end);
-            $enderecof->setCidade($e->cidade_end);
-            $enderecof->setLogradouro($e->logradouro_end);
-            $enderecof->setNumero($e->numero_end);
-            $enderecof->setBairro($e->bairro_end);
-            $enderecof->setUfEndereco($e->estado_end);
-
-            
-            $documentosf = new DocumentosFuncionario();
-            $documentosf->setCpf($f->cpf_fun);
-            $documentosf->setPisPasep($f->pispasep_fun);
-            $documentosf->getCtps()->setNumeroCtps($cp->numero_car);
-            $documentosf->getCtps()->setSerieCtps($cp->serie_car);
-            $documentosf->getRg()->setNumeroRg($rg->numero_rg);
-            $documentosf->getRg()->setOrgaoExpRg($rg->orgaoexp_rg);
-            $documentosf->getRg()->setDataExpRg($rg->dataexp_rg);
-            $documentosf->getRg()->setUfExpRg($rg->ufexp_rg);
-            $documentosf->getTituloEleitoral()->setNumeroTit($tit->numero_tit);
-            $documentosf->getTituloEleitoral()->setSecaoTit($tit->secao_tit);
-            $documentosf->getTituloEleitoral()->setZonaTit($tit->zona_tit);
-            $documentosf->getReservista()->setNumeroRes($r->numero_res);
-            $documentosf->getReservista()->setCategoriaRes($r->categoria_res);
-            $documentosf->getReservista()->setSerieRes($r->serie_res);
-                    
-            $dadosFuncionaisf = new DadosFuncionais();
-            $dadosFuncionaisf->setFormacaoAcademicaFun($f->formacaoacademica_fun);
-            $dadosFuncionaisf->setMatriculaFun($f->matricula_fun);
-            $dadosFuncionaisf->setDataAdmissaoFun($f->dataadmissao_fun);
-            $dadosFuncionaisf->setEscolaridadeFun($f->escolaridade_fun);        
-            $dadosFuncionaisf->setAnoConclusaoFun($f->anoconclusao_fun);
-            $dadosFuncionaisf->setCargoFun($f->cargo_fun);
-            $dadosFuncionaisf->setFuncaoFun($f->funcao_fun);
-            
-            $funcionario->setEndereco($enderecof);
-            $funcionario->setDocumentos($documentosf);
-            $funcionario->setDadosFuncionais($dadosFuncionaisf);*/
-
             return $f;
         }
         
