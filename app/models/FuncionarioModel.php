@@ -124,35 +124,38 @@ class FuncionarioModel extends Model{
     }
     
     public function listarUm($cpf){
-        
-        $sql_funcionario = "SELECT * FROM public.funcionario WHERE cpf_fun='{$cpf}'";                            
+
+
+        $sql_funcionario = "SELECT * FROM public.funcionario WHERE cpf_fun='{$cpf}'";
+
         $query = $this->db->query($sql_funcionario);
         
         if($query->rowCount() == 1){
-            
-            $f = $query->fetch(\PDO::FETCH_OBJ);            
-            
-            $sql_end = "SELECT * FROM public.endereco WHERE codigo_end='{$f->endereco_fun}'";
+
+            $f = $query->fetch(\PDO::FETCH_OBJ);
+
+            $sql_end = "SELECT cep_end, cidade_end, logradouro_end, numero_end, bairro_end, estado_end
+                         FROM public.endereco WHERE codigo_end='{$f->endereco_fun}'";
             $query = $this->db->query($sql_end);
-            $e = $query->fetch(\PDO::FETCH_OBJ);
-            
+            $f->endereco = $query->fetch(\PDO::FETCH_OBJ);
+
             $sql_cart_pro = "SELECT * FROM public.carteira_profissional WHERE numero_car='{$f->carteiraprof_fun}'";
             $query = $this->db->query($sql_cart_pro);
-            $cp = $query->fetch(\PDO::FETCH_OBJ);
+            $f->ctps = $query->fetch(\PDO::FETCH_OBJ);
             
             $sql_res = "SELECT * FROM public.reservista WHERE numero_res='{$f->reservista_fun}'";
             $query = $this->db->query($sql_res);
-            $r = $query->fetch(\PDO::FETCH_OBJ);
+            $f->reservista = $query->fetch(\PDO::FETCH_OBJ);
             
             $sql_rg = "SELECT * FROM public.rg WHERE numero_rg='{$f->rg_fun}'";
             $query = $this->db->query($sql_rg);
-            $rg = $query->fetch(\PDO::FETCH_OBJ);
+            $f->rg = $query->fetch(\PDO::FETCH_OBJ);
             
             $sql_tit = "SELECT * FROM public.titulo_eleitoral WHERE numero_tit='{$f->tituloeleitor_fun}'";
             $query = $this->db->query($sql_tit);
-            $tit = $query->fetch(\PDO::FETCH_OBJ);
+            $f->titulo = $query->fetch(\PDO::FETCH_OBJ);
             
-            $funcionario = new Funcionario();
+            /*$funcionario = new Funcionario();
             $funcionario->setNome($f->nome_fun);
             $funcionario->setDataNasc($f->datanasc_fun);
             $funcionario->setcidadeNasc($f->cidadenasc_fun);
@@ -170,7 +173,8 @@ class FuncionarioModel extends Model{
             $enderecof->setLogradouro($e->logradouro_end);
             $enderecof->setNumero($e->numero_end);
             $enderecof->setBairro($e->bairro_end);
-            $enderecof->setUfEndereco($e->estado_end);       
+            $enderecof->setUfEndereco($e->estado_end);
+
             
             $documentosf = new DocumentosFuncionario();
             $documentosf->setCpf($f->cpf_fun);
@@ -199,9 +203,9 @@ class FuncionarioModel extends Model{
             
             $funcionario->setEndereco($enderecof);
             $funcionario->setDocumentos($documentosf);
-            $funcionario->setDadosFuncionais($dadosFuncionaisf);
-            
-            return $funcionario;
+            $funcionario->setDadosFuncionais($dadosFuncionaisf);*/
+
+            return $f;
         }
         
         return null;

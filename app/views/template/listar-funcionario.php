@@ -12,14 +12,10 @@
         </div>
           <div class="card-body">
             
-            <div class="table-responsive col-lg-11 mx-auto">
-              <div class="row justify-content-end">
-                <div class="col-lg-4">           
-                  <input class="form-control" id="buscarFunc" type="text" placeholder="Busque: Matrícula, Nome, Cargo, Função...">
-                </div>
-              </div>
+            <div class="table-responsive col-lg-12 mx-auto">
+
               </br>
-              <table id="tbfuncionarios" class="table table-hover table-striped">
+              <table id="tbfuncionarios" class="table table-striped table-sm" style="width:100%">
                 <caption><span style="color:green"><?php echo count($funcionarios);?></span> funcionário(s) encontrado(s)</caption>
                 <thead class="thead-dark">
                   <tr>

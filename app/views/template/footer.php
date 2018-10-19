@@ -34,3 +34,7 @@
     <script type="text/javascript" src="<?php echo URL_BASE . "assets/js/tempusdominus-bootstrap-4.js"; ?>"></script>
     <script src="<?php echo URL_BASE . "assets/js/custom-forms.js"; ?>"></script>
     <script src="<?php echo URL_BASE . "assets/js/jquery.mask.js"; ?>"></script>
+
+    <script src="<?php echo URL_BASE . "assets/js/datatables.js"; ?>"></script>
+    <script src="<?php echo URL_BASE . "assets/js/dataTables.bootstrap4.js"; ?>"></script>
+
