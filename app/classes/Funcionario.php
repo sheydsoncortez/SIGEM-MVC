@@ -1,6 +1,8 @@
 <?php 
 namespace app\classes;
-
+use app\classes\Endereco;
+use app\classes\DocumentosFuncionario;
+use app\classes\DadosFuncionais;
 
 class Funcionario{
     private $nome;

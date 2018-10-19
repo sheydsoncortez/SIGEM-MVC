@@ -20,7 +20,7 @@
       <?php if (isset($view)){
 
           $this->load($view, $viewData);
-          isset($msn) ? print("<p>" . $msn . "</p>") : "";
+          //isset($msn) ? print("<p>" . $msn . "</p>") : "";
       }
       
       //echo substr($_SERVER['HTTP_ACCEPT_LANGUAGE'],0,2); 

@@ -150,14 +150,7 @@ class FuncionarioController extends Controller{
                 $dadosFuncionaisF->setCargoFun($_POST['cargoFun']);
                 $dadosFuncionaisF->setFuncaoFun($_POST['funcaoFun']); 
                 $_SESSION['funcionario']->setDadosFuncionais($dadosFuncionaisF);
-                /*echo nl2br( $_SESSION['funcionario'].''.
-                            $_SESSION['funcionario']->getEndereco()->__toString().''.
-                            $_SESSION['funcionario']->getDocumentos()->__toString().''.
-                            $_SESSION['funcionario']->getDocumentos()->getCtps()->__toString().''.
-                            $_SESSION['funcionario']->getDocumentos()->getRg()->__toString().''.
-                            $_SESSION['funcionario']->getDocumentos()->getTituloEleitoral()->__toString().''.
-                            $_SESSION['funcionario']->getDocumentos()->getReservista()->__toString().''.
-                            $_SESSION['funcionario']->getDadosFuncionais()->__toString());*/
+                
                 header('location:' . URL_BASE . 'funcionario/cadastrar/5');
             break;
             case 5:
@@ -168,14 +161,19 @@ class FuncionarioController extends Controller{
         } 
     }
     
-    public function listar(){
+    public function selecionar($cpf){
 
         $funcionario = new FuncionarioModel();
 
-        $dados["funcionario"] = $funcionario->listarUm();
-
-        //echo"<pre>";
-
-        //print_r($dados);
+        $dados["funcionario"] = $funcionario->listarUm($cpf);
+      
    }
+   
+   public function listar(){
+      $funcionarios = new FuncionarioModel();
+      $dados["view"] = "template/listar-funcionario";
+      $dados["funcionarios"] = $funcionarios->listarTodos();
+      $this->load("admin", $dados);
+   }
+   
 }

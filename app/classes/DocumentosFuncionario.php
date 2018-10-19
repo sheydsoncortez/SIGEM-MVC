@@ -1,6 +1,9 @@
 <?php
 namespace app\classes;
-
+use app\classes\Ctps;
+use app\classes\Rg;
+use app\classes\TituloEleitoral;
+use app\classes\Reservista;
 
 class DocumentosFuncionario{
     private $cpf;

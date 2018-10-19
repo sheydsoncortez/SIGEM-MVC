@@ -3,6 +3,7 @@
 namespace app\classes;
 
 class Endereco{
+
     private $cep;
     private $cidade;
     private $logradouro;
@@ -13,7 +14,7 @@ class Endereco{
     public function __construct(){
 
     }
-
+    
     public function getCep(){
         return $this->cep;
     }
@@ -61,7 +62,7 @@ class Endereco{
     public function setUfEndereco($ufEndereco){
         $this->$ufEndereco = $ufEndereco;
     }
-
+    
     public function __toString(){
         return  "=========== ENDEREÇO ===========\n".
                 "Cep: ".$this->cep."\n".

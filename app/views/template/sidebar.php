@@ -27,7 +27,7 @@
             <li><a href="#funcionario" aria-expanded="false" data-toggle="collapse"> <i class="fas fa-user-tie"></i>Funcionário</a>
               <ul id="funcionario" class="collapse list-unstyled ">
                 <li><a href="<?php echo URL_BASE . "funcionario/cadastrar/1";?>">Cadastro</a></li>
-                <li><a href="#">Consulta</a></li>
+                <li><a href="<?php echo URL_BASE . "funcionario/listar";?>">Consulta</a></li>
                 <li><a href="#">Ponto Mensal</a></li>
                 <li><a href="#">Documetos</a></li>
               </ul>

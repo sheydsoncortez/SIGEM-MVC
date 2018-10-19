@@ -44,20 +44,20 @@
           <!-- INÍCIO DO FORM -->
 
             <form class='form-horizontal' id='formfuncionario' method='POST' 
-            action="<?php echo URL_BASE . "funcionario/salvar/".$page;?>" >
+              action="<?php echo URL_BASE . "funcionario/salvar/".$page;?>" >
 
-            <?php include($paginator); //echo URL_BASE . $paginator;?>           
+              <?php include($paginator); //echo URL_BASE . $paginator;?>           
 
-            <div class="line"></div>
-                <div class="form-group row">
-                    <div class="col-sm-5 offset-sm-1">
-                        <button type="cancel" class="btn btn-secondary">Cancel&nbsp&nbsp</button>
-                        <button type='submit' class='btn btn-primary'>Próximo</button>
-                        
-                    </div>
-                </div>
-            </div>
-          </form>
+              <div class="line"></div>
+                  <div class="form-group row">
+                      <div class="col-sm-5 offset-sm-1">
+                          <button type="cancel" class="btn btn-secondary">Cancel&nbsp&nbsp</button>
+                          <button type='submit' class='btn btn-primary'>Próximo</button>
+                          
+                      </div>
+                  </div>
+              </div>
+            </form>
       </div>
     </div>
 </section>

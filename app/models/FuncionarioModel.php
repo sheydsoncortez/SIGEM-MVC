@@ -3,6 +3,10 @@
 namespace app\models;
 
 use app\core\Model;
+use app\classes\Funcionario;
+use app\classes\Endereco;
+use app\classes\DocumentosFuncionario;
+use app\classes\DadosFuncionais;
 
 class FuncionarioModel extends Model{
 
@@ -119,14 +123,96 @@ class FuncionarioModel extends Model{
         return "";
     }
     
-    public function listarUm(){
-        $sql_entidades = "SELECT endereco_fun, carteiraprof_fun, rg_fun, tituloeleitor_fun,reservista_fun
-                            FROM public.funcionario WHERE cpf_fun='987.654.321-33'";
-        $query = $this->db->query($sql_entidades);
-        $entidades = $query->fetch(\PDO::FETCH_OBJ);
-        echo "<pre>";
-        print_r($entidades);
+    public function listarUm($cpf){
         
+        $sql_funcionario = "SELECT * FROM public.funcionario WHERE cpf_fun='{$cpf}'";                            
+        $query = $this->db->query($sql_funcionario);
+        
+        if($query->rowCount() == 1){
+            
+            $f = $query->fetch(\PDO::FETCH_OBJ);            
+            
+            $sql_end = "SELECT * FROM public.endereco WHERE codigo_end='{$f->endereco_fun}'";
+            $query = $this->db->query($sql_end);
+            $e = $query->fetch(\PDO::FETCH_OBJ);
+            
+            $sql_cart_pro = "SELECT * FROM public.carteira_profissional WHERE numero_car='{$f->carteiraprof_fun}'";
+            $query = $this->db->query($sql_cart_pro);
+            $cp = $query->fetch(\PDO::FETCH_OBJ);
+            
+            $sql_res = "SELECT * FROM public.reservista WHERE numero_res='{$f->reservista_fun}'";
+            $query = $this->db->query($sql_res);
+            $r = $query->fetch(\PDO::FETCH_OBJ);
+            
+            $sql_rg = "SELECT * FROM public.rg WHERE numero_rg='{$f->rg_fun}'";
+            $query = $this->db->query($sql_rg);
+            $rg = $query->fetch(\PDO::FETCH_OBJ);
+            
+            $sql_tit = "SELECT * FROM public.titulo_eleitoral WHERE numero_tit='{$f->tituloeleitor_fun}'";
+            $query = $this->db->query($sql_tit);
+            $tit = $query->fetch(\PDO::FETCH_OBJ);
+            
+            $funcionario = new Funcionario();
+            $funcionario->setNome($f->nome_fun);
+            $funcionario->setDataNasc($f->datanasc_fun);
+            $funcionario->setcidadeNasc($f->cidadenasc_fun);
+            $funcionario->setEstadoNasc($f->ufnasc_fun);
+            $funcionario->setNomePai($f->nomepai_fun);
+            $funcionario->setNomeMae($f->nomemae_fun);
+            $funcionario->setSexo($f->sexo_fun);
+            $funcionario->setEstadoCivil($f->estadocivil_fun);
+            $funcionario->setTelefone($f->telefone_fun);
+            $funcionario->setEmail($f->email_fun);
+            
+            $enderecof = new Endereco();
+            $enderecof->setCep($e->cep_end);
+            $enderecof->setCidade($e->cidade_end);
+            $enderecof->setLogradouro($e->logradouro_end);
+            $enderecof->setNumero($e->numero_end);
+            $enderecof->setBairro($e->bairro_end);
+            $enderecof->setUfEndereco($e->estado_end);       
+            
+            $documentosf = new DocumentosFuncionario();
+            $documentosf->setCpf($f->cpf_fun);
+            $documentosf->setPisPasep($f->pispasep_fun);
+            $documentosf->getCtps()->setNumeroCtps($cp->numero_car);
+            $documentosf->getCtps()->setSerieCtps($cp->serie_car);
+            $documentosf->getRg()->setNumeroRg($rg->numero_rg);
+            $documentosf->getRg()->setOrgaoExpRg($rg->orgaoexp_rg);
+            $documentosf->getRg()->setDataExpRg($rg->dataexp_rg);
+            $documentosf->getRg()->setUfExpRg($rg->ufexp_rg);
+            $documentosf->getTituloEleitoral()->setNumeroTit($tit->numero_tit);
+            $documentosf->getTituloEleitoral()->setSecaoTit($tit->secao_tit);
+            $documentosf->getTituloEleitoral()->setZonaTit($tit->zona_tit);
+            $documentosf->getReservista()->setNumeroRes($r->numero_res);
+            $documentosf->getReservista()->setCategoriaRes($r->categoria_res);
+            $documentosf->getReservista()->setSerieRes($r->serie_res);
+                    
+            $dadosFuncionaisf = new DadosFuncionais();
+            $dadosFuncionaisf->setFormacaoAcademicaFun($f->formacaoacademica_fun);
+            $dadosFuncionaisf->setMatriculaFun($f->matricula_fun);
+            $dadosFuncionaisf->setDataAdmissaoFun($f->dataadmissao_fun);
+            $dadosFuncionaisf->setEscolaridadeFun($f->escolaridade_fun);        
+            $dadosFuncionaisf->setAnoConclusaoFun($f->anoconclusao_fun);
+            $dadosFuncionaisf->setCargoFun($f->cargo_fun);
+            $dadosFuncionaisf->setFuncaoFun($f->funcao_fun);
+            
+            $funcionario->setEndereco($enderecof);
+            $funcionario->setDocumentos($documentosf);
+            $funcionario->setDadosFuncionais($dadosFuncionaisf);
+            
+            return $funcionario;
+        }
+        
+        return null;
+    }
+    
+    public function listarTodos(){
+        
+        $sql_funcionario = "SELECT * FROM public.funcionario";                            
+        $query = $this->db->query($sql_funcionario);
+        
+        return  $query->fetchAll(\PDO::FETCH_OBJ);        
     }
 
 }
