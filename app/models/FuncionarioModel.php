@@ -15,7 +15,9 @@ class FuncionarioModel extends Model{
     }
 
     public function inserir(){
-        
+
+        $status = array();
+
         $cpf = $_SESSION['funcionario']->getDocumentos()->getCpf();
         $pispasep = $_SESSION['funcionario']->getDocumentos()->getPisPasep();
         $nome = $_SESSION['funcionario']->getNome();
@@ -112,19 +114,30 @@ class FuncionarioModel extends Model{
             $query = $this->db->prepare($insert_funcionario);
             $query->execute();
 
+
+            $status["status"] = true;
+
+            $status["msn"] = "Funcionário inserido com Sucesso.";
+            $status["cpf"] = $cpf;
+
             unset($_SESSION['funcionario']);
 
-            return "Funcionário inserido com Sucesso.";
+            return $status ;
 
         }
         catch(\PDOException $e){
-            return "Erro ao inserir funcionário" . $e->getMessage();
+
+            $status["status"] = false;
+            $status["msn"] = "Erro ao inserir funcionário" . $e->getMessage();
+
+            return $status;
         }
         return "";
     }
     
-    public function listarUm($cpf){
+    public function getFuncionario($cpf){
 
+        $f = array();
 
         $sql_funcionario = "SELECT * FROM public.funcionario WHERE cpf_fun='{$cpf}'";
 
@@ -154,11 +167,10 @@ class FuncionarioModel extends Model{
             $sql_tit = "SELECT * FROM public.titulo_eleitoral WHERE numero_tit='{$f->tituloeleitor_fun}'";
             $query = $this->db->query($sql_tit);
             $f->titulo = $query->fetch(\PDO::FETCH_OBJ);
-            
-            return $f;
+
         }
         
-        return null;
+        return $f;
     }
     
     public function listarTodos(){

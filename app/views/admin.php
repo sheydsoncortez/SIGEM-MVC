@@ -16,17 +16,16 @@
     <!-- navbar-->
     <?php require_once('template/navbar.php');?>
 
-
       <?php if (isset($view)){
 
           $this->load($view, $viewData);
-          //isset($msn) ? print("<p>" . $msn . "</p>") : "";
+
       }
-      
-      //echo substr($_SERVER['HTTP_ACCEPT_LANGUAGE'],0,2); 
+
+      //echo substr($_SERVER['HTTP_ACCEPT_LANGUAGE'],0,2);
       //echo $_SERVER['HTTP_ACCEPT_LANGUAGE'];
-      ?>  
- 
+      ?>
+
     
   </body>
 

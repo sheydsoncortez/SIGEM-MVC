@@ -34,6 +34,22 @@ $(document).ready(function(){
 $(document).ready(function(){
     $('#numerocpf').mask('000.000.000-00');
 });
+
+$(document).ready(function(){
+    $('#pisPasep').mask('000.00000.00.0');
+})
+
+$(document).ready(function(){
+    String.prototype.replaceAt=function(index, replacement) {
+        return this.substr(0, index) + replacement+ this.substr(index + replacement.length);
+    }
+
+    $('#matriculafun').click(function () {
+        $('#matriculafun').attr('dir', 'rtl');
+    });
+});
+
+
       // ===========================================================
       
       // ===================== Tooltips INPUTS.=====================
@@ -172,7 +188,8 @@ $(document).ready(function(){
         $('#pills-dadosfuncionais-tab').addClass('active');
         $('#pills-dadosfuncionais').addClass('show active');
         $(".modal").modal();
-    });        
+    });
+
     $('#updateFuncionario').on('hidden.bs.modal', function(){
         $('#updateFuncionario').html(back);
     });
@@ -270,13 +287,17 @@ $(document).ready(function(){
     }
 });
 
+// OPÇÕES PARA TABELAS
 $(document).ready(function() {
-    $('#tbfuncionarios').DataTable( {
+    var h4TbDados = $('#tbcabecalho').html();
+
+    $('#tbdedados').DataTable( {
         select: true,
         select: {
             style: 'single',
             items: 'row'
         },
+        "bInfo" : false,
         "paging":   true,
         "pagingType": "first_last_numbers",
         "ordering": true,
@@ -291,11 +312,27 @@ $(document).ready(function() {
                 last:     '>>'
             },
             "search": "Buscar:",
-            searchPlaceholder: "Informações do funcinário...",
+            searchPlaceholder: "Informações do "+ h4TbDados + "...",
             "lengthMenu": "Mostrar _MENU_ ",
-            "emptyTable":     "Nenhum funcionário cadastrado",
+            "emptyTable":     "Nenhum "+ h4TbDados + " cadastrado",
             "info":           "",
-            "infoEmpty":      ""
+            "infoEmpty":      "",
+            "zeroRecords": "Nenhum resultado"
         }
     } );
+
+    $('input[type=search]').keyup(function(){
+
+        var rowCount = $('#tbdedados >tbody >tr').length;
+
+        if($('#tbdedados >tbody >tr >td').html() != "Nenhum resultado" ){
+
+            $('#totalRegistros').html(rowCount);
+
+        }else{
+
+            $('#totalRegistros').html("0");
+        }
+
+    });
 });

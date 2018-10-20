@@ -5,7 +5,7 @@
         <!-- Sidebar Header    -->
         <div class="sidenav-header d-flex align-items-center justify-content-center">
           <!-- User Info-->
-          <div class="sidenav-header-inner text-center"><img src="<?php echo URL_BASE . "assets/img/admin.jpg"; ?>" alt="person" class="img-fluid rounded-circle">
+          <div class="sidenav-header-inner text-center"><img src="<?php echo URL_BASE . "assets/img/entidades/admin.jpg"; ?>" alt="person" class="img-fluid rounded-circle">
               <!-- EXIBE O NOME DO USUÁRIO LOGADO NO SISTEMA -->
               <h2 class="h5"><?php echo $_SESSION[NOME_SESSION_LOGIN]["name"]; ?></h2><span><?php echo $_SESSION[NOME_SESSION_LOGIN]["function"]; ?></span>
           </div>
@@ -15,7 +15,7 @@
         <div class="main-menu">
           <h5 class="sidenav-heading">Menu</h5>
           <ul id="side-main-menu" class="side-menu list-unstyled">
-            <li><a href="/"> <i class="fas fa-home"></i>Inicio</a></li>
+            <li><a href="<?php echo URL_BASE ?>"> <i class="fas fa-home"></i>Inicio</a></li>
             <li><a href="#aluno" aria-expanded="false" data-toggle="collapse"> <i class="fas fa-user-graduate"></i>Aluno </a>
               <ul id="aluno" class="collapse list-unstyled ">
                 <li><a href="form-aluno.php?page=1">Matrícula</a></li>

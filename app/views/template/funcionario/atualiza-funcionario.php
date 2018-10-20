@@ -23,6 +23,7 @@
                             <div class="tab-content" id="pills-tabContent">
                             <div class="tab-pane fade" id="pills-dadospessoais" role="tabpanel" aria-labelledby="pills-dadospessoais-tab">
                                 <?php include('app/views/template/funcionario/dados-funcionario.php'); ?>
+
                             </div>
                             <div class="tab-pane fade" id="pills-endereco" role="tabpanel" aria-labelledby="pills-endereco-tab">
                                 <?php include('app/views/template/endereco/dados-endereco.php'); ?>

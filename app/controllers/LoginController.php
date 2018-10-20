@@ -45,7 +45,7 @@ class LoginController extends Controller{
     public function logout(){
 
         unset($_SESSION[NOME_SESSION_LOGIN]);
-
+        unset($_SESSION['funcionario']);
         session_unset();
         session_destroy();
 

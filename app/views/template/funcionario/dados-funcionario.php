@@ -4,7 +4,7 @@
       <label class="col-sm-2 form-control-label"></label>
       <div class="col-sm-8">
       <input type="text" placeholder="Nome" id="nomeFun" name="nome" 
-                  value="" required oninvalid="this.setCustomValidity("Preencha o campo nome")"
+                  value="<?php isset($_SESSION['funcionario']->nome_fun) ? print($_SESSION['funcionario']->nome_fun) : "" ?>" required oninvalid="this.setCustomValidity("Preencha o campo nome")"
                   oninput="setCustomValidity("")" class="form-control"/>
       </div>
     </div>
@@ -17,7 +17,7 @@
       <div class="col-sm-3">
         <div class="input-group date">
           <input type="text" class="form-control datetimepicker-input" id="data"
-                  value=""
+                  value="<?php isset($_SESSION['funcionario']->datanasc_fun) ? print($_SESSION['funcionario']->datanasc_fun) : "" ?>"
                   data-toggle="datetimepicker" data-target="#data"
                   placeholder="Data de Nascimeto"               
                   name="dataNasc" required
@@ -30,6 +30,7 @@
       </div>                           
       <div class="col-sm-3">
         <input type="text" placeholder="Cidade onde nasceu" class="form-control" name="cidadeNasc"
+                value="<?php isset($_SESSION['funcionario']->cidadenasc_fun) ? print($_SESSION['funcionario']->cidadenasc_fun) : ""?>"
                 required oninvalid="this.setCustomValidity('Preencha o campo cidade de nascimento')"
                 oninput="setCustomValidity('')"/>                              
       </div>
@@ -37,7 +38,10 @@
         <select id="estadoNasc" name="estadoNasc" title="Selecione o Estado onde Nasceu" 
                 required required oninvalid="this.setCustomValidity('Selecione o estado nascimento')"
                 oninput="setCustomValidity('')" class="form-control select_selecionado">
-          <option value=""  disabled selected hidden>Estado</option>
+
+          <?php if(isset($_SESSION['funcionario']->ufnasc_fun)){
+                    echo "<option value='{$_SESSION['funcionario']->ufnasc_fun}'>{$_SESSION['funcionario']->ufnasc_fun}</option>";
+          } else{   echo "<option value=''  disabled selected hidden>Estado</option>";}?>
           <option value="AC">AC</option>
           <option value="AL">AL</option>
           <option value="AM">AM</option>
@@ -91,20 +95,20 @@
   <div class="col-sm-12">
     <div class="row">
         <label class="col-sm-2 form-control-label"></label>
-        <div class="col-sm-3">
-          <fieldset class="form-inline">
+        <div class="col-sm-4">
+          <fieldset class="form-inline ">
             <legend id="legenda-sexo">Sexo</legend>
-              <div class="form-check">
-                <label class="form-check-label">                            
+              <div class="form-check-inline">
+                <label class="form-check-inline">
                   <input type="radio" value="M" name="sexo"
                           required oninvalid="this.setCustomValidity('Selecione uma das opções')"
                           oninput="setCustomValidity('')"/>
                   &nbspMasculino 
                 </label>
               </div> 
-              &nbsp&nbsp                                                                                    
-              <div class="form-check">
-                <label class="form-check-label">                            
+              &nbsp&nbsp
+              <div class="form-check-inline">
+                <label class="form-check-inline">
                   <input type="radio" value="F" name="sexo"/>
                   &nbspFeminino 
                 </label>
@@ -145,5 +149,4 @@
     </div>
   </div>
 </div>
-      
-      
+

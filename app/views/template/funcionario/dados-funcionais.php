@@ -6,8 +6,9 @@
             <div class="col-sm-3">
                 <input type="text" data-placement="bottom" placeholder="Matrícula Funcionário" 
                         id="matriculafun" name="matriculaFun" class="form-control"
+                        data-toggle="tooltip" title="Digite apenas números no formato 0.000.000/0"
                         required oninvalid="this.setCustomValidity('Insira a matricula do funcionário')"
-                        oninput="setCustomValidity('')"/>                              
+                        oninput="setCustomValidity('')" dir=""/>
             </div>                    
             <div class="col-sm-3">
                 <div class="input-group date">

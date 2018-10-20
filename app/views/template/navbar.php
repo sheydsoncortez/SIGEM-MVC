@@ -4,7 +4,7 @@
         <nav class="navbar">
           <div class="container-fluid">
             <div class="navbar-holder d-flex align-items-center justify-content-between">
-              <div class="navbar-header"><a id="toggle-btn" href="#" class="menu-btn"><i class="fas fa-bars"> </i></a><a href="/" class="navbar-brand">
+              <div class="navbar-header"><a id="toggle-btn" href="#" class="menu-btn"><i class="fas fa-bars"> </i></a><a href="<?php echo URL_BASE ?>" class="navbar-brand">
                   <div class="brand-text d-none d-md-inline-block"><span>SIGEM</span><strong class="text-primary"> | Secretaria</strong></div></a></div>
               <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
                 <!-- Notifications dropdown-->
@@ -71,7 +71,7 @@
       <div class="breadcrumb-holder">
         <div class="container-fluid">
           <ul class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+            <li class="breadcrumb-item"><a href="<?php echo URL_BASE ?>">Inicio</a></li>
           </ul>
         </div>
       </div>

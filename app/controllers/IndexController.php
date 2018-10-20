@@ -8,8 +8,8 @@ class IndexController extends Controller{
 
 
     public function index(){
-        
-        $this->load("admin");
+        $dados["view"] = "template/inicio";
+        $this->load("admin", $dados);
 
     }
 }

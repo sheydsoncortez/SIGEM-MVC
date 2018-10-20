@@ -13,9 +13,9 @@
             <div class="col-sm-3">
                 <input type="text" onkeypress="return isNumberKey(event);"
                         data-toggle="tooltip" data-placement="bottom" title="Digite apenas números"                                       
-                        placeholder="Número PIS/PASEP" id="numerocpf" name="pisPasep" 
+                        placeholder="Número PIS/PASEP" id="pisPasep" name="pisPasep"
                         required oninvalid="this.setCustomValidity('Insira o número do PIS/PASEP')" 
-                        oninput="setCustomValidity('')" class="form-control"/>                              
+                        oninput="setCustomValidity('')" class="form-control" maxlength="14"/>
             </div>                           
             </div>
     </div>

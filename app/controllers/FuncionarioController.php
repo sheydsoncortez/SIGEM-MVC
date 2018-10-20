@@ -66,16 +66,6 @@ class FuncionarioController extends Controller{
                 $dados["proximo"] = "5";
                 $dados["page"] = $page;
             break;
-            case '5';
-                $dados["titulo"] = "DADOS FUNCIONAIS";
-                $dados["paginator"] = "funcionario/revisadados-funcionario.php";
-                $dados["modal"] = "template/funcionario/atualiza-funcionario.php";
-                $dados["active"] = array("", "", "", "", "", "active");
-                $dados["disabled"] = array("","", "", "", "", "","disabled");  
-                $dados["voltar"] = "4";
-                $dados["proximo"] = "5";
-                $dados["page"] = $page;
-            break;
             
         }    
 
@@ -150,32 +140,50 @@ class FuncionarioController extends Controller{
                 $dadosFuncionaisF->setCargoFun($_POST['cargoFun']);
                 $dadosFuncionaisF->setFuncaoFun($_POST['funcaoFun']); 
                 $_SESSION['funcionario']->setDadosFuncionais($dadosFuncionaisF);
-                
-                header('location:' . URL_BASE . 'funcionario/cadastrar/5');
-            break;
-            case 5:
-                $funcionario = new FuncionarioModel();
-                $dados["msn"] = $funcionario->inserir();
-                $this->load("admin", $dados);
+
+                $f = new FuncionarioModel();
+
+                $dados["msn"] = $f->inserir();
+
+                if($dados["status"]) {
+
+                    header('location:' . URL_BASE . 'funcionario/editar/'.$dados["cpf"]);
+
+                }else{
+
+                    $this->load("admin", $dados);
+
+                }
+
             break;
         } 
     }
     
-    public function selecionar($cpf){
+    public function editar($cpf){
+
+        $dados["titulo"] = "DADOS FUNCIONARIO";
+        $dados["view"] = "template/funcionario/revisadados-funcionario";
+        $dados["modal"] = "template/funcionario/atualiza-funcionario.php";
 
         $funcionario = new FuncionarioModel();
 
-        $dados["funcionario"] = $funcionario->listarUm($cpf);
+        $_SESSION["funcionario"] = $funcionario->getFuncionario($cpf);
 
-        //echo "<pre>";
-        //print_r($dados);
+        $this->load("admin", $dados);
+
    }
    
    public function listar(){
       $funcionarios = new FuncionarioModel();
       $dados["view"] = "template/listar-funcionario";
+       $dados["modal"] = "template/funcionario/atualiza-funcionario.php";
       $dados["funcionarios"] = $funcionarios->listarTodos();
       $this->load("admin", $dados);
    }
-   
+
+   public function corrigir(){
+       $dados["msn"] = "Teste";
+       $dados["view"] = "template/inicio";
+       $this->load("admin", $dados);
+   }
 }
