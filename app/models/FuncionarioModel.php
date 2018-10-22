@@ -101,7 +101,7 @@ class FuncionarioModel extends Model{
                                 '{$cargo}', '{$funcao}', '{$enderecoCod}', '{$ctpsNum}', '{$rgNum}', '{$titNum}', 
                                 '{$resNum}', md5('{$cpf}'), '{$escola}', '{$ativo}');";
 
-        echo $insert_funcionario;
+        //echo $insert_funcionario;
 
         try {
             // set the PDO error mode to exception
@@ -181,6 +181,9 @@ class FuncionarioModel extends Model{
         }else{
             $f = false;
         }
+
+        //echo"<pre>";
+        //print_r($f);
 
         return $f;
     }

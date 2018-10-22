@@ -32,13 +32,15 @@ class FuncionarioController extends Controller{
         $dados['link'] = "funcionario/cadastrar/".$page;
         $dados['breadcrumbl1'] = "funcionário";
         $dados['breadcrumbl2'] = "cadastrar";
-        
+
+
+
         switch($page){
             case '1';
                 $dados["titulo"] = "DADOS PESSOAIS";
                 $dados["paginator"] = "funcionario/dados-funcionario.php";               
                 $dados["active"] = array("active", "", "", "", "");
-                $dados["disabled"] = array("disabled","", "disabled", "disabled", "disabled", "disabled","");
+                $dados["disabled"] = array("disabled","", "disabled", "disabled", "disabled", "");
                 $dados["voltar"] = "1";               
                 $dados["proximo"] = "2";
                 $dados["page"] = $page;
@@ -47,7 +49,7 @@ class FuncionarioController extends Controller{
                 $dados["titulo"] = "ENDEREÇO";
                 $dados["paginator"] = "endereco/dados-endereco.php";
                 $dados["active"] = array("", "active", "", "", "");
-                $dados["disabled"] = array("","", "", "disabled", "disabled", "disabled","");               
+                $dados["disabled"] = array("","", "", "disabled", "disabled", "");
                 $dados["voltar"] = "1";
                 $dados["proximo"] = "3";
                 $dados["page"] = $page;
@@ -56,7 +58,7 @@ class FuncionarioController extends Controller{
                 $dados["titulo"] = "DOCUMENTOS";
                 $dados["paginator"] = "funcionario/documentos-funcionario.php";
                 $dados["active"] = array("", "", "active", "", "");
-                $dados["disabled"] = array("","", "", "", "disabled", "disabled","");               
+                $dados["disabled"] = array("","", "", "", "disabled", "");
                 $dados["voltar"] = "2";
                 $dados["proximo"] = "4";
                 
@@ -65,14 +67,15 @@ class FuncionarioController extends Controller{
                 $dados["titulo"] = "DADOS FUNCIONAIS";
                 $dados["paginator"] = "funcionario/dados-funcionais.php";
                 $dados["active"] = array("", "", "", "active", "");
-                $dados["disabled"] = array("","", "", "", "", "disabled","");                
+                $dados["disabled"] = array("","", "", "", "", "disabled");
                 $dados["voltar"] = "3";
                 $dados["proximo"] = "5";
                 $dados["page"] = $page;
             break;
             
-        }    
-
+        }
+        //echo"<pre>";
+        //print_r($dados);
         $this->load("admin", $dados);
         $dados = "";
     }       
@@ -153,11 +156,11 @@ class FuncionarioController extends Controller{
 
                 if($dados["status"]) {
 
-                    //header('location:' . URL_BASE . 'funcionario/editar/'.$dados["cpf"]);
+                    header('location:' . URL_BASE . 'funcionario/editar/'.$dados["cpf"]);
 
                 }else{
 
-                    //header('location:' . URL_BASE);
+                    header('location:' . URL_BASE);
 
                 }
 

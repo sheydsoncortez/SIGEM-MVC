@@ -30,7 +30,7 @@
                       <?php echo "<li id='p4' class='page-item {$active[3]} {$disabled[4]}'>";?>
                       <a class="page-link" href="4/">4</a></li>
 
-                      <?php echo "<li id='p6' class='page-item {$disabled[6]}'>";
+                      <?php echo "<li id='p6' class='page-item {$disabled[5]}'>";
                       echo "<a class='page-link' href='javascript:formfuncionario.submit()' >Próximo</a></li>"; ?>
 
                   </ul>  
@@ -44,7 +44,8 @@
             <form class='form-horizontal' name='formfuncionario' id='formfuncionario' method='POST'
               action="<?php echo URL_BASE . "funcionario/salvar/".$page;?>" >
 
-              <?php include($paginator); //echo URL_BASE . $paginator;?>           
+              <?php include($paginator); //echo URL_BASE . $paginator;?>
+
 
               <div class="line"></div>
                   <div class="form-group row">
