@@ -1,10 +1,14 @@
+<?php if (isset($_SESSION['funcionario'])){
+    $f = $_SESSION['funcionario'];
+}?>
 <div class="form-group row">
   <div class="col-sm-12">
     <div class="row">
       <label class="col-sm-2 form-control-label"></label>
       <div class="col-sm-8">
       <input type="text" placeholder="Nome" id="nomeFun" name="nome" 
-                  value="<?php isset($_SESSION['funcionario']->nome_fun) ? print($_SESSION['funcionario']->nome_fun) : "" ?>" required oninvalid="this.setCustomValidity("Preencha o campo nome")"
+                  value="<?php isset($f) ? print($f->nome) : "" ?>"
+                  required oninvalid="this.setCustomValidity("Preencha o campo nome")"
                   oninput="setCustomValidity("")" class="form-control"/>
       </div>
     </div>
@@ -17,7 +21,7 @@
       <div class="col-sm-3">
         <div class="input-group date">
           <input type="text" class="form-control datetimepicker-input" id="data"
-                  value="<?php isset($_SESSION['funcionario']->datanasc_fun) ? print($_SESSION['funcionario']->datanasc_fun) : "" ?>"
+                  value="<?php isset($f) ? print($f->datanasc) : "" ?>"
                   data-toggle="datetimepicker" data-target="#data"
                   placeholder="Data de Nascimeto"               
                   name="dataNasc" required
@@ -27,10 +31,10 @@
               <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
             </div>
         </div>
-      </div>                           
+      </div>
       <div class="col-sm-3">
         <input type="text" placeholder="Cidade onde nasceu" class="form-control" name="cidadeNasc"
-                value="<?php isset($_SESSION['funcionario']->cidadenasc_fun) ? print($_SESSION['funcionario']->cidadenasc_fun) : ""?>"
+                value="<?php isset($f) ? print($f->cidadenasc) : ""?>"
                 required oninvalid="this.setCustomValidity('Preencha o campo cidade de nascimento')"
                 oninput="setCustomValidity('')"/>                              
       </div>
@@ -39,8 +43,8 @@
                 required required oninvalid="this.setCustomValidity('Selecione o estado nascimento')"
                 oninput="setCustomValidity('')" class="form-control select_selecionado">
 
-          <?php if(isset($_SESSION['funcionario']->ufnasc_fun)){
-                    echo "<option value='{$_SESSION['funcionario']->ufnasc_fun}'>{$_SESSION['funcionario']->ufnasc_fun}</option>";
+          <?php if(isset($f)){
+                    echo "<option selected='selected' value='{$f->estadonasc}'>{$f->estadonasc}</option>";
           } else{   echo "<option value=''  disabled selected hidden>Estado</option>";}?>
           <option value="AC">AC</option>
           <option value="AL">AL</option>
@@ -79,17 +83,19 @@
     <div class="row">
       <label class="col-sm-2 form-control-label"></label>
       <div class="col-sm-4">
-        <input type="text" placeholder="Nome do Pai..." class="form-control" 
+        <input type="text" placeholder="Nome do Pai..." class="form-control"
+                value="<?php isset($f) ? print($f->nomepai) : ""?>"
                 required oninvalid="this.setCustomValidity('Preencha com o nome do pai do funcionario')"
                 oninput="setCustomValidity('')" name="nomePai"/>
       </div>
       <div class="col-sm-4">
         <input type="text" placeholder="Nome do Mãe..." class="form-control"
+                value="<?php isset($f) ? print($f->nomemae) : ""?>"
                 required oninvalid="this.setCustomValidity('Preencha com o nome da mãe do funcionario')" 
                 oninput="setCustomValidity('')" name="nomeMae"/>
       </div>
     </div>
-  </div> 
+  </div>
 
   <!-- SEXO E ESTADO CIVIL -->
   <div class="col-sm-12">
@@ -100,7 +106,7 @@
             <legend id="legenda-sexo">Sexo</legend>
               <div class="form-check-inline">
                 <label class="form-check-inline">
-                  <input type="radio" value="M" name="sexo"
+                  <input type="radio" <?php if (isset($f) and $f->sexo == 'M') print('checked'); ?> value="M" name="sexo"
                           required oninvalid="this.setCustomValidity('Selecione uma das opções')"
                           oninput="setCustomValidity('')"/>
                   &nbspMasculino 
@@ -109,7 +115,7 @@
               &nbsp&nbsp
               <div class="form-check-inline">
                 <label class="form-check-inline">
-                  <input type="radio" value="F" name="sexo"/>
+                  <input type="radio" <?php if (isset($f) and $f->sexo == 'F') print('checked'); ?> value="F" name="sexo"/>
                   &nbspFeminino 
                 </label>
               </div>                            
@@ -119,7 +125,9 @@
           <select id="estadoCivil" name="estadoCivil" class="form-control select_selecionado"
                   required oninvalid="this.setCustomValidity('Selecione o estado civil')"
                   oninput="setCustomValidity('')">
-            <option value=""  disabled selected hidden>Estado Civil</option>
+              <?php if(isset($f)){
+                  echo "<option selected='selected' value='{$f->estadocivil}'>{$f->estadocivil}</option>";
+              } else{   echo "<option value=''  disabled selected hidden>Estado Civil</option>";}?>
             <option value="Solteiro(a)">Solteiro(a)</option>
             <option value="Casado(a)">Casado(a)</option>
             <option value="Separado(a)">Separado(a)</option>
@@ -137,16 +145,19 @@
       <label class="col-sm-2 form-control-label"></label>
       <div class="col-sm-3">
           <input type="text" placeholder="Telefone: (00)00000-0000" 
-                  class="form-control" id="telefone" name="telefone" required 
+                  class="form-control" id="telefone" name="telefone" required
+                  value="<?php isset($f) ? print($f->telefone) : ""?>"
                   oninvalid="this.setCustomValidity('Informe um número para contato')"
                   oninput="setCustomValidity('')"/>
       </div>
       <div class="col-sm-4">
-          <input type="email" placeholder="Email: login@provedor.com" class="form-control" 
+          <input type="email" placeholder="Email: login@provedor.com" class="form-control"
+                  value="<?php isset($f) ? print($f->email) : ""?>"
                   required oninvalid="this.setCustomValidity('Insira um email válido')" 
                   oninput="setCustomValidity('')" name="email"/>
       </div> 
     </div>
   </div>
 </div>
+<?php unset($f) ?>
 

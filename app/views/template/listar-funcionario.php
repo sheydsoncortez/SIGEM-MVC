@@ -34,15 +34,22 @@
                       <?php foreach($funcionarios as $index=>$funcionario) { ?>
                         <tr>
                           <th scope="row"><?php echo ($index + 1); ?></th>
-                          <td><?php echo $funcionario->matricula_fun; ?></td>
-                          <td><?php echo $funcionario->nome_fun; ?></td>
-                          <td><?php echo $funcionario->cargo_fun; ?></td>
-                          <td><?php echo $funcionario->funcao_fun; ?></td>
-                          <td><a href="<?php echo "editar/". $funcionario->cpf_fun ;?>">
-                                  <button id="editarFuncionario" type="button" class="btn btn-secondary" >Editar</button>
+                          <td><?php echo $funcionario->matricula ?></td>
+                          <td><?php echo $funcionario->nome ?></td>
+                          <td><?php echo $funcionario->cargo ?></td>
+                          <td><?php echo $funcionario->funcao ?></td>
+                          <td><a href="<?php echo "editar/". $funcionario->cpf ;?>">
+                                  <button id="editarFuncionario" type="button" class="btn btn-secondary" >Editar
+                                      <i class="fa fa-user-edit"></i>
+                                  </button>
                               </a>
                           </td>
-                          <td><button type="button" class="btn btn-danger form-control" >Remover</button></td>
+                          <td><a href="<?php echo "remover/". $funcionario->cpf ;?>">
+                                  <button id="removerFuncionario" type="button" class="btn btn-danger" >Remover
+                                      <i class="fa fa-user-times"></i>
+                                  </button>
+                              </a>
+                          </td>
                         </tr>
                       <?php } ?>
                     </tbody>

@@ -3,83 +3,95 @@
 namespace app\classes;
 
 class DadosFuncionais{
-    private $matriculaFun;
-    private $cargoFun;
-    private $funcaoFun;    
-    private $dataAdmissaoFun;
-    private $escolaridadeFun;
-    private $formacaoAcademicaFun;
-    private $anoConclusaoFun;
-    //private $disciplinaFun;
+    private $matricula;
+    private $cargo;
+    private $funcao;
+    private $dataadmissao;
+    private $escolaridade;
+    private $formacaoacademica;
+    private $anoaonclusao;
+    //private $disciplina;
 
     public function __construct(){
 
     }
 
-    public function getMatriculaFun(){
-        return $this->matriculaFun;
+    public function __get($atrib)
+    {
+        // TODO: Implement __get() method.
+        return $this->$atrib;
     }
 
-    public function setMatriculaFun($matriculaFun){
-        $this->matriculaFun = $matriculaFun;
+    public function __set($atrib, $value)
+    {
+        // TODO: Implement __set() method.
+        $this->$atrib = $value;
     }
 
-    public function getCargoFun(){
-        return $this->cargoFun;
+    public function getMatricula(){
+        return $this->matricula;
     }
 
-    public function setCargoFun($cargoFun){
-        $this->cargoFun = $cargoFun;
+    public function setMatricula($matricula){
+        $this->matricula = $matricula;
     }
 
-    public function getFuncaoFun(){
-        return $this->funcaoFun;
+    public function getCargo(){
+        return $this->cargo;
     }
 
-    public function setFuncaoFun($funcaoFun){
-        $this->funcaoFun = $funcaoFun;
+    public function setCargo($cargo){
+        $this->cargo = $cargo;
     }
 
-    public function getDataAdmissaoFun(){
-        return $this->dataAdmissaoFun;
+    public function getFuncao(){
+        return $this->Funcao;
     }
 
-    public function setDataAdmissaoFun($dataAdmissaoFun){
-        $this->dataAdmissaoFun = $dataAdmissaoFun;
+    public function setFuncao($Funcao){
+        $this->Funcao = $Funcao;
     }
 
-    public function getEscolaridadeFun(){
-        return $this->escolaridadeFun;
+    public function getDataadmissao(){
+        return $this->dataadmissao;
     }
 
-    public function setEscolaridadeFun($escolaridadeFun){
-        $this->escolaridadeFun = $escolaridadeFun;
-    }
-    public function getFormacaoAcademicaFun(){
-        return $this->formacaoAcademicaFun;
+    public function setDataadmissao($dataadmissao){
+        $this->dataadmissao = $dataadmissao;
     }
 
-    public function setFormacaoAcademicaFun($formacaoAcademicaFun){
-        $this->formacaoAcademicaFun = $formacaoAcademicaFun;
+    public function getEscolaridade(){
+        return $this->escolaridade;
     }
 
-    public function getAnoConclusaoFun(){
-        return $this->anoConclusaoFun;
+    public function setEscolaridade($escolaridade){
+        $this->escolaridade = $escolaridade;
+    }
+    public function getFormacaoacademica(){
+        return $this->formacaoacademica;
     }
 
-    public function setAnoConclusaoFun($anoConclusaoFun){
-        $this->anoConclusaoFun = $anoConclusaoFun;
+    public function setFormacaoacademica($formacaoacademica){
+        $this->formacaoacademica = $formacaoacademica;
+    }
+
+    public function getAnoconclusao(){
+        return $this->anoconclusao;
+    }
+
+    public function setAnoconclusao($anoconclusao){
+        $this->anoconclusao = $anoconclusao;
     }
 
     public function __toString(){
-        return  "======= DADOS FUNCIONAIS =======\n".
-                "Matricula: ".$this->matriculaFun."\n".
-                "Cargo: ".$this->cargoFun."\n".
-                "Função: ".$this->funcaoFun."\n".
-                "Data Admissão: ".$this->dataAdmissaoFun."\n".
-                "Escolaridade: ".$this->escolaridadeFun."\n".
-                "Formação Acadêmica: ".$this->formacaoAcademicaFun."\n".
-                "Ano de Conclusão: ".$this->anoConclusaoFun."\n";
+        return  "======= DADOS CIONAIS =======\n".
+                "Matricula: ".$this->matricula."\n".
+                "Cargo: ".$this->cargo."\n".
+                "Função: ".$this->funcao."\n".
+                "Data Admissão: ".$this->dataadmissao."\n".
+                "Escolaridade: ".$this->escolaridade."\n".
+                "Formação Acadêmica: ".$this->formacaoacademica."\n".
+                "Ano de Conclusão: ".$this->anoconclusao."\n";
     }
 }
 ?>

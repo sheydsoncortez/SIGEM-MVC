@@ -2,33 +2,45 @@
 namespace app\classes;
 
 class Ctps{
-    private $numeroCtps;
-    private $serieCtps;
+    private $numero;
+    private $serie;
 
     public function __construct(){
 
     }
 
-    public function getNumeroCtps(){
-        return $this->numeroCtps;
+    public function __get($atrib)
+    {
+        // TODO: Implement __get() method.
+        return $this->$atrib;
     }
 
-    public function setNumeroCtps($numeroCtps){
-        $this->numeroCtps = $numeroCtps;
+    public function __set($atrib, $value)
+    {
+        // TODO: Implement __set() method.
+        $this->$atrib = $value;
     }
 
-    public function getSerieCtps(){
-        return $this->serieCtps;
+    public function getNumero(){
+        return $this->numero;
     }
 
-    public function setSerieCtps($serieCtps){
-        $this->serieCtps = $serieCtps;
+    public function setNumero($numero){
+        $this->numero = $numero;
+    }
+
+    public function getSerie(){
+        return $this->serie;
+    }
+
+    public function setSerie($serie){
+        $this->serie = $serie;
     }
 
     public function __toString(){
         return  "============= CTPS =============\n".
-                "CTPS Nº: ".$this->numeroCtps."\n".
-                "CTPS Série: ".$this->serieCtps."\n";
+                "CTPS Nº: ".$this->numero."\n".
+                "CTPS Série: ".$this->serie."\n";
     }
 }
 ?>

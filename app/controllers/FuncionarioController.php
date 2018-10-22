@@ -14,7 +14,7 @@ class FuncionarioController extends Controller{
 
     
     public function __contruct(){
-        
+
     }
 
     public function index(){
@@ -28,6 +28,10 @@ class FuncionarioController extends Controller{
         $dados["page"] = $page;
         $dados["voltar"] = "";
         $dados["proximo"] = "";
+        $funcionarios = new FuncionarioModel();
+        $dados['link'] = "funcionario/cadastrar/".$page;
+        $dados['breadcrumbl1'] = "funcionário";
+        $dados['breadcrumbl2'] = "cadastrar";
         
         switch($page){
             case '1';
@@ -77,16 +81,17 @@ class FuncionarioController extends Controller{
         switch ($page){
             case 1:
                 $funcionario = new Funcionario();
-                $funcionario->setNome($_POST['nome']);
-                $funcionario->setDataNasc($_POST['dataNasc']);
-                $funcionario->setCidadeNasc($_POST['cidadeNasc']);
-                $funcionario->setEstadoNasc($_POST['estadoNasc']);
-                $funcionario->setNomePai($_POST['nomePai']);
-                $funcionario->setNomeMae($_POST['nomeMae']);
-                $funcionario->setSexo($_POST['sexo']);
-                $funcionario->setEstadoCivil($_POST['estadoCivil']);
-                $funcionario->setTelefone($_POST['telefone']);
-                $funcionario->setEmail($_POST['email']);
+
+                $funcionario->nome = $_POST['nome'];
+                $funcionario->datanasc = $_POST['dataNasc'];
+                $funcionario->cidadenasc = $_POST['cidadeNasc'];
+                $funcionario->estadonasc = $_POST['estadoNasc'] ;
+                $funcionario->nomepai = $_POST['nomePai'];
+                $funcionario->nomemae = $_POST['nomeMae'] ;
+                $funcionario->sexo = $_POST['sexo'];
+                $funcionario->estadocivil = $_POST['estadoCivil'];
+                $funcionario->telefone = $_POST['telefone'];
+                $funcionario->email = $_POST['email'];
                 $_SESSION['funcionario'] = $funcionario;
 
                 //echo nl2br( $_SESSION['funcionario']);
@@ -99,7 +104,7 @@ class FuncionarioController extends Controller{
                 $enderecof->setLogradouro($_POST['logradouro']);
                 $enderecof->setNumero($_POST['numero']);
                 $enderecof->setBairro($_POST['bairro']);
-                $enderecof->setUfEndereco($_POST['ufEndereco']);
+                $enderecof->setEstado($_POST['estado']);
                 $_SESSION['funcionario']->setEndereco($enderecof);
 
                 header('location:' . URL_BASE . 'funcionario/cadastrar/3');
@@ -108,50 +113,51 @@ class FuncionarioController extends Controller{
                 $documentosf = new DocumentosFuncionario();
                 $documentosf->setCpf($_POST['cpf']);
                 $documentosf->setPisPasep($_POST['pisPasep']);
-                $documentosf->getCtps()->setNumeroCtps($_POST['numeroCtps']);
-                $documentosf->getCtps()->setSerieCtps($_POST['serieCtps']);
-                $documentosf->getRg()->setNumeroRg($_POST['numeroRg']);
-                $documentosf->getRg()->setOrgaoExpRg($_POST['orgaoExpRg']);
-                $documentosf->getRg()->setDataExpRg($_POST['dataExpRg']);
-                $documentosf->getRg()->setUfExpRg($_POST['ufExpRg']);
-                $documentosf->getTituloEleitoral()->setNumeroTit($_POST['numeroTit']);
-                $documentosf->getTituloEleitoral()->setSecaoTit($_POST['secaoTit']);
-                $documentosf->getTituloEleitoral()->setZonaTit($_POST['zonaTit']);
-                $documentosf->getReservista()->setNumeroRes($_POST['numeroRes']);
-                $documentosf->getReservista()->setCategoriaRes($_POST['categoriaRes']);
-                $documentosf->getReservista()->setSerieRes($_POST['serieRes']);
-                $_SESSION['funcionario']->setDocumentos($documentosf); 
+                $documentosf->getCtps()->setNumero($_POST['numeroCtps']);
+                $documentosf->getCtps()->setSerie($_POST['serieCtps']);
+                $documentosf->getRg()->setNumero($_POST['numeroRg']);
+                $documentosf->getRg()->setOrgaoexp($_POST['orgaoExpRg']);
+                $documentosf->getRg()->setDataexp($_POST['dataExpRg']);
+                $documentosf->getRg()->setUfexp($_POST['ufExpRg']);
+                $documentosf->getTituloeleitor()->setNumero($_POST['numeroTit']);
+                $documentosf->getTituloeleitor()->setSecao($_POST['secaoTit']);
+                $documentosf->getTituloeleitor()->setZona($_POST['zonaTit']);
+                $documentosf->getReservista()->setNumero($_POST['numeroRes']);
+                $documentosf->getReservista()->setCategoria($_POST['categoriaRes']);
+                $documentosf->getReservista()->setSerie($_POST['serieRes']);
+                $_SESSION['funcionario']->setDocumentos($documentosf);
 
                 header('location:' . URL_BASE . 'funcionario/cadastrar/4');
             break;
             case 4:
+                $dados = array();
                 $dadosFuncionaisF = new DadosFuncionais();
                 
                 if(empty($_POST['formacaoAcademicaFun'])){
-                    $dadosFuncionaisF->setFormacaoAcademicaFun('-');
+                    $dadosFuncionaisF->setFormacaoAcademica('-');
                 }else{
-                    $dadosFuncionaisF->setFormacaoAcademicaFun($_POST['formacaoAcademicaFun']);
+                    $dadosFuncionaisF->setFormacaoAcademica($_POST['formacaoAcademicaFun']);
                 }
                 
-                $dadosFuncionaisF->setMatriculaFun($_POST['matriculaFun']);
-                $dadosFuncionaisF->setDataAdmissaoFun($_POST['dataAdmissaoFun']);
-                $dadosFuncionaisF->setEscolaridadeFun($_POST['escolaridadeFun']);        
-                $dadosFuncionaisF->setAnoConclusaoFun($_POST['anoConclusaoFun']);
-                $dadosFuncionaisF->setCargoFun($_POST['cargoFun']);
-                $dadosFuncionaisF->setFuncaoFun($_POST['funcaoFun']); 
-                $_SESSION['funcionario']->setDadosFuncionais($dadosFuncionaisF);
+                $dadosFuncionaisF->setMatricula($_POST['matriculaFun']);
+                $dadosFuncionaisF->setDataadmissao($_POST['dataAdmissaoFun']);
+                $dadosFuncionaisF->setEscolaridade($_POST['escolaridadeFun']);
+                $dadosFuncionaisF->setAnoconclusao($_POST['anoConclusaoFun']);
+                $dadosFuncionaisF->setCargo($_POST['cargoFun']);
+                $dadosFuncionaisF->setFuncao($_POST['funcaoFun']);
+                $_SESSION['funcionario']->setDadosfuncionais($dadosFuncionaisF);
 
                 $f = new FuncionarioModel();
 
-                $dados["msn"] = $f->inserir();
+                $dados = $f->inserir();
 
                 if($dados["status"]) {
 
-                    header('location:' . URL_BASE . 'funcionario/editar/'.$dados["cpf"]);
+                    //header('location:' . URL_BASE . 'funcionario/editar/'.$dados["cpf"]);
 
                 }else{
 
-                    $this->load("admin", $dados);
+                    //header('location:' . URL_BASE);
 
                 }
 
@@ -164,6 +170,10 @@ class FuncionarioController extends Controller{
         $dados["titulo"] = "DADOS FUNCIONARIO";
         $dados["view"] = "template/funcionario/revisadados-funcionario";
         $dados["modal"] = "template/funcionario/atualiza-funcionario.php";
+        $dados["page"] = "";
+        $dados['link'] = "funcionario/editar/".$cpf;
+        $dados['breadcrumbl1'] = "funcionário";
+        $dados['breadcrumbl2'] = "editar";
 
         $funcionario = new FuncionarioModel();
 
@@ -175,8 +185,11 @@ class FuncionarioController extends Controller{
    
    public function listar(){
       $funcionarios = new FuncionarioModel();
+      $dados['link'] = "funcionario/listar";
+      $dados['breadcrumbl1'] = "funcionário";
+      $dados['breadcrumbl2'] = "listar";
       $dados["view"] = "template/listar-funcionario";
-       $dados["modal"] = "template/funcionario/atualiza-funcionario.php";
+      $dados["modal"] = "template/funcionario/atualiza-funcionario.php";
       $dados["funcionarios"] = $funcionarios->listarTodos();
       $this->load("admin", $dados);
    }

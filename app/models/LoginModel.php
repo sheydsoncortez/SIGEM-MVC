@@ -14,11 +14,10 @@ class LoginModel extends Model{
 
         $msn = array();
 
-        $sql_user = "SELECT matricula_fun, senha_fun, nome_fun, funcao_fun  
-                     FROM funcionario WHERE matricula_fun=:user;";
+        $sql_user = "SELECT matricula FROM funcionario WHERE matricula=:user";
 
-        $sql_pass = "SELECT matricula_fun, senha_fun, nome_fun, funcao_fun  
-                     FROM funcionario WHERE matricula_fun=:user AND senha_fun=md5(:pass);";
+        $sql_pass = "SELECT matricula, senha, nome, funcao  
+                     FROM funcionario WHERE matricula=:user AND senha=md5(:pass)";
 
         $query = $this->db->prepare($sql_user);
 
@@ -42,10 +41,10 @@ class LoginModel extends Model{
             if($query->rowCount() == 1){
 
                 $_SESSION[NOME_SESSION_LOGIN] = array(
-                    "login" => $user['matricula_fun'],
-                    "pass" => $user['senha_fun'],
-                    "name" => $user['nome_fun'],
-                    "function" => $user['funcao_fun']
+                    "login" => $user['matricula'],
+                    "pass" => $user['senha'],
+                    "name" => $user['nome'],
+                    "function" => $user['funcao']
                 );
 
                 $msn["sucess"] = true;

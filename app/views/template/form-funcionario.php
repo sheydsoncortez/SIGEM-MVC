@@ -29,11 +29,9 @@
                       <a class="page-link" href="3/">3</a></li>
                       <?php echo "<li id='p4' class='page-item {$active[3]} {$disabled[4]}'>";?>
                       <a class="page-link" href="4/">4</a></li>
-                      <?php echo "<li id='p5' class='page-item {$active[4]} {$disabled[5]}'>";?>
-                      <a class="page-link" href="5/">5</a></li>
 
-                      <?php echo "<li id='p1' class='page-item {$disabled[6]}'>";
-                            echo "<a type='submit' class='page-link' href='".$proximo."'>Próximo</a></li>";?>
+                      <?php echo "<li id='p6' class='page-item {$disabled[6]}'>";
+                      echo "<a class='page-link' href='javascript:formfuncionario.submit()' >Próximo</a></li>"; ?>
 
                   </ul>  
                 </span>                     
@@ -43,7 +41,7 @@
 
           <!-- INÍCIO DO FORM -->
 
-            <form class='form-horizontal' id='formfuncionario' method='POST' 
+            <form class='form-horizontal' name='formfuncionario' id='formfuncionario' method='POST'
               action="<?php echo URL_BASE . "funcionario/salvar/".$page;?>" >
 
               <?php include($paginator); //echo URL_BASE . $paginator;?>           

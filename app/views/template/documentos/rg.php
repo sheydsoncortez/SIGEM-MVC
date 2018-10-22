@@ -9,6 +9,7 @@
             <input type="text" onkeypress="return isNumberKey(event);"
                     data-toggle="tooltip" data-placement="bottom" title="Digite apenas números"                                       
                     placeholder="Número RG" id="numeroRg" name="numeroRg" class="form-control"
+                    value="<?php isset($d) ? print($d->rg->numero) : "" ?>"
                     required oninvalid="this.setCustomValidity('Insira o número do RG')"
                     oninput="setCustomValidity('')"/>                              
             </div>
@@ -17,7 +18,9 @@
                 data-toggle="tooltip" data-placement="bottom" title="SSP, ITEP"
                 required oninvalid="this.setCustomValidity('Selecione o orgão de expedição')"
                 oninput="setCustomValidity('')">
-                <option value=""  disabled selected hidden>Orgão Expedidor.</option>
+                <?php if(isset($d)){
+                    echo "<option selected='selected' value='{$d->rg->orgaoexp}'>{$d->rg->orgaoexp}</option>";
+                } else{   echo "<option value=''  disabled selected hidden>Orgão Expedidor</option>";}?>
                 <option value="SSP">SSP - Secretaria de Segurança Pública</option>
                 <option value="ITEP">ITEP - Instituto Técnico-Científico de Perícia</option>
                 <option value="ABNC">ABNC – Academia Brasileira de Neurocirurgia</option>
@@ -91,7 +94,8 @@
         <div class="input-group date">
             <input type="text" class="form-control datetimepicker-input" id="data" 
               data-toggle="datetimepicker" data-target="#data"
-              placeholder="Data de Expedição"               
+              placeholder="Data de Expedição"
+              value="<?php isset($d) ? print($d->rg->dataexp) : "" ?>"
               name="dataExpRg" required oninvalid="this.setCustomValidity('Insira a data de expedição')"
               oninput="setCustomValidity('')"/>    
             <div class="input-group-append">
@@ -103,7 +107,9 @@
             <select id="ufExpRg" name="ufExpRg" class="form-control select_selecionado"
             required oninvalid="this.setCustomValidity('Selecione o extado expedidor')"
             oninput="setCustomValidity('')">
-            <option value=""  disabled selected hidden>Estado</option>
+            <?php if(isset($d)){
+                echo "<option selected='selected' value='{$d->rg->ufexp}'>{$d->rg->ufexp}</option>";
+            } else{   echo "<option value=''  disabled selected hidden>Estado</option>";}?>
             <option value="AC">Acre</option>
             <option value="AL">Alagoas</option>
             <option value="AP">Amapá</option>

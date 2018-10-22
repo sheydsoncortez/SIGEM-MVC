@@ -6,22 +6,35 @@ use app\classes\DadosFuncionais;
 
 class Funcionario{
     private $nome;
-    private $dataNasc;
-    private $cidadeNasc;
-    private $estadoNasc;
-    private $nomePai;
-    private $nomeMae;
+    private $datanasc;
+    private $cidadenasc;
+    private $estadonasc;
+    private $nomepai;
+    private $nomemae;
     private $sexo;
-    private $estadoCivil;
+    private $estadocivil;
     private $telefone;
     private $email;
     private $endereco;
     private $documentos;
-    private $dadosFuncionais;
+    private $dadosfuncionais;
 
     public function __construct(){
+        $this->view = new \stdClass;
+    }
 
-    }   
+    public function __get($atrib)
+    {
+        // TODO: Implement __get() method.
+
+        return $this->$atrib;
+    }
+
+    public function __set($atrib, $value)
+    {
+        // TODO: Implement __set() method.
+        $this->$atrib = $value;
+    }
 
     public function getNome(){
         return $this->nome;
@@ -31,44 +44,44 @@ class Funcionario{
         $this->nome = $nome;
     }
 
-    public function getDataNasc(){
-        return $this->dataNasc;
+    public function getDatanasc(){
+        return $this->datanasc;
     }
 
-    public function setDataNasc($dataNasc){
-        $this->dataNasc = $dataNasc;
+    public function setDatanasc($datanasc){
+        $this->datanasc = $datanasc;
     }
 
-    public function getCidadeNasc(){
-        return $this->cidadeNasc;
+    public function getCidadenasc(){
+        return $this->cidadenasc;
     }
 
-    public function setCidadeNasc($cidadeNasc){
+    public function setCidadenasc($cidadenasc){
         $this->cidadeNasc = $cidadeNasc;
     }
 
-    public function getEstadoNasc(){
-        return $this->estadoNasc;
+    public function getEstadonasc(){
+        return $this->estadonasc;
     }
 
-    public function setEstadoNasc($estadoNasc){
-        $this->estadoNasc = $estadoNasc;
+    public function setEstadonasc($estadonasc){
+        $this->estadonasc = $estadonasc;
     }
 
-    public function getNomePai(){
-        return $this->nomePai;
+    public function getNomepai(){
+        return $this->nomepai;
     }
 
-    public function setNomePai($nomePai){
-        $this->nomePai = $nomePai;
+    public function setNomepai($nomepai){
+        $this->nomepai = $nomepai;
     }
 
-    public function getNomeMae(){
-        return $this->nomeMae;
+    public function getNomemae(){
+        return $this->nomemae;
     }
 
-    public function setNomeMae($nomeMae){
-        $this->nomeMae = $nomeMae;
+    public function setNomemae($nomemae){
+        $this->nomemae = $nomemae;
     }
 
     public function getSexo(){
@@ -79,12 +92,12 @@ class Funcionario{
         $this->sexo = $sexo;
     }
 
-    public function getEstadoCivil(){
-        return $this->estadoCivil;
+    public function getEstadocivil(){
+        return $this->estadocivil;
     }
 
-    public function setEstadoCivil($estadoCivil){
-        $this->estadoCivil = $estadoCivil;
+    public function setEstadocivil($estadocivil){
+        $this->estadocivil = $estadocivil;
     }
 
     public function getTelefone(){
@@ -119,25 +132,25 @@ class Funcionario{
         $this->documentos = $documentos;
     }
 
-    public function getDadosFuncionais(){
-        return $this->dadosFuncionais;
+    public function getDadosfuncionais(){
+        return $this->dadosfuncionais;
     }
 
-    public function setDadosFuncionais(DadosFuncionais $dadosFuncionais){
-        $this->dadosFuncionais = $dadosFuncionais;
+    public function setDadosfuncionais(DadosFuncionais $dadosfuncionais){
+        $this->dadosfuncionais = $dadosfuncionais;
     }
     
     
     public function __toString(){
         return  "======== DADOS PESSOAIS ========\n".
                 "Nome: ".$this->nome."\n".
-                "Data de Nascimento: ".$this->dataNasc."\n".
-                "Cidade de Nascimento: ".$this->cidadeNasc."\n".
-                "Estado de Nascimento: ".$this->estadoNasc."\n".
-                "Nome do Pai: ".$this->nomePai."\n".
-                "Nome da Mãe: ".$this->nomeMae."\n".
+                "Data de Nascimento: ".$this->datanasc."\n".
+                "Cidade de Nascimento: ".$this->cidadenasc."\n".
+                "Estado de Nascimento: ".$this->estadonasc."\n".
+                "Nome do Pai: ".$this->nomepai."\n".
+                "Nome da Mãe: ".$this->nomemae."\n".
                 "Sexo: ".$this->sexo."\n".
-                "Estado Civil: ".$this->estadoCivil."\n".
+                "Estado Civil: ".$this->estadocivil."\n".
                 "Tel.: ".$this->telefone."\n".
                 "Email: ".$this->email."\n";
     }

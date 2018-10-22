@@ -72,6 +72,8 @@
         <div class="container-fluid">
           <ul class="breadcrumb">
             <li class="breadcrumb-item"><a href="<?php echo URL_BASE ?>">Inicio</a></li>
+              <?php isset($breadcrumbl1) ? print("<li class='breadcrumb-item'>".$breadcrumbl1."</li>") : ""?>
+              <?php isset($breadcrumbl2) ? print("<li class='breadcrumb-item'><a href='".URL_BASE . $link."'>{$breadcrumbl2}</a></li>") : ""?>
           </ul>
         </div>
       </div>

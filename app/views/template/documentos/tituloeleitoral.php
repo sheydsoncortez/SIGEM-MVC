@@ -9,23 +9,26 @@
                 <input type="text" onkeypress="return isNumberKey(event);"
                     data-toggle="tooltip" data-placement="bottom" title="Digite apenas números"                                       
                     placeholder="Número Título" id="numeroTit" name="numeroTit" class="form-control"
+                    value="<?php isset($d) ? print($d->tituloeleitor->numero) : "" ?>"
                     required oninvalid="this.setCustomValidity('Insira o número do título')"
-                    oninput="setCustomValidity('')"/>                              
-            </div> 
-            <div class="col-sm-2">
-                <input type="text" onkeypress="return isNumberKey(event);"
-                    data-toggle="tooltip" data-placement="bottom" title="Digite apenas números"                                       
-                    placeholder="Seção" id="secaoTit" name="secaoTit" class="form-control"
-                    required oninvalid="this.setCustomValidity('Insira o número da seção')"
                     oninput="setCustomValidity('')"/>                              
             </div>
             <div class="col-sm-2">
                 <input type="text" onkeypress="return isNumberKey(event);"
+                       data-toggle="tooltip" data-placement="bottom" title="Digite apenas números"
+                       placeholder="Zona" id="zonaTit" name="zonaTit" class="form-control"
+                       value="<?php isset($d) ? print($d->tituloeleitor->zona) : "" ?>"
+                       required oninvalid="this.setCustomValidity('Insira a zona eleitoral')"
+                       oninput="setCustomValidity('')"/>
+            </div>
+            <div class="col-sm-2">
+                <input type="text" onkeypress="return isNumberKey(event);"
                     data-toggle="tooltip" data-placement="bottom" title="Digite apenas números"                                       
-                    placeholder="Zona" id="zonaTit" name="zonaTit" class="form-control"
-                    required oninvalid="this.setCustomValidity('Insira a zona eleitoral')"
+                    placeholder="Seção" id="secaoTit" name="secaoTit" class="form-control"
+                    value="<?php isset($d) ? print($d->tituloeleitor->secao) : "" ?>"
+                    required oninvalid="this.setCustomValidity('Insira o número da seção')"
                     oninput="setCustomValidity('')"/>                              
-            </div>                            
+            </div>
         </div>
         </div>
     </div>

@@ -9,12 +9,24 @@ class Endereco{
     private $logradouro;
     private $numero;
     private $bairro;
-    private $ufEndereco;
+    private $estado;
 
     public function __construct(){
 
     }
-    
+
+    public function __get($atrib)
+    {
+        // TODO: Implement __get() method.
+        return $this->$atrib;
+    }
+
+    public function __set($atrib, $value)
+    {
+        // TODO: Implement __set() method.
+        $this->$atrib = $value;
+    }
+
     public function getCep(){
         return $this->cep;
     }
@@ -55,12 +67,12 @@ class Endereco{
         $this->bairro = $bairro;
     }
 
-    public function getUfEndereco(){
-        return $this->ufEndereco;
+    public function getEstado(){
+        return $this->estado;
     }
 
-    public function setUfEndereco($ufEndereco){
-        $this->$ufEndereco = $ufEndereco;
+    public function setEstado($estado){
+        $this->$estado= $uestado;
     }
     
     public function __toString(){
@@ -70,7 +82,7 @@ class Endereco{
                 "Logradouro: ".$this->logradouro."\n".
                 "Numero: ".$this->numero."\n".
                 "Bairro: ".$this->bairro."\n".
-                "Estado: ".$this->ufEndereco."\n";
+                "Estado: ".$this->estado."\n";
     }
 }
 ?>

@@ -1,3 +1,6 @@
+<?php if (isset($_SESSION['funcionario'])){
+    $e = $_SESSION['funcionario']->endereco;
+}?>
 <!-- CAMPOS DO ENDEREÇO -->
 
         <div class="form-group row has-success has-danger">                      
@@ -7,6 +10,7 @@
                 <div class="col-sm-3">
                 <input type="text" id="cep" name="cep" placeholder="CEP: 00000-000" 
                         class="form-control"
+                        value="<?php isset($e) ? print($e->cep) : "" ?>"
                         required oninvalid="this.setCustomValidity('Insira um CEP')"
                         onkeyup="setCustomValidity('')"/>                                    
                         <div class="invalid-feedback inner-addon left-addon">CEP não encontrado.</div>
@@ -14,6 +18,7 @@
                 </div>                            
                 <div class="col-sm-5">
                 <input type="text" id="cidade" name= "cidade" placeholder="Cidade" class="form-control"
+                        value="<?php isset($e) ? print($e->cidade) : "" ?>"
                         required oninvalid="this.setCustomValidity('Insira o nome da cidade')"
                         onkeyup="setCustomValidity('')"/>
                 </div>                                                                           
@@ -21,12 +26,14 @@
             <div class="row">
                 <label class="form-control-label col-sm-2"></label>
                 <div class="col-sm-6">
-                <input type="text" id="logradouro" name="logradouro" placeholder="Logradouro: Rua, Avenida..." 
+                <input type="text" id="logradouro" name="logradouro" placeholder="Logradouro: Rua, Avenida..."
+                        value="<?php isset($e) ? print($e->logradouro) : "" ?>"
                         required oninvalid="this.setCustomValidity('Preencha o campo logradouro')"
                         onkeyup="setCustomValidity('')" class="form-control"/>
                 </div>                        
                 <div class="col-sm-2">
-                <input type="text" id="numero" name="numero" placeholder="Número" 
+                <input type="text" id="numero" name="numero" placeholder="Número"
+                        value="<?php isset($e) ? print($e->numero) : "" ?>"
                         required oninvalid="this.setCustomValidity('Insira o número')" 
                         onkeyup="setCustomValidity('')" class="form-control"/>
                 </div>                          
@@ -34,15 +41,18 @@
             <div class="row">
             <label class="form-control-label col-sm-2"></label>
                 <div class="col-sm-5">
-                <input type="text" id="bairro" name="bairro" placeholder="Bairro" 
+                <input type="text" id="bairro" name="bairro" placeholder="Bairro"
+                        value="<?php isset($e) ? print($e->bairro) : "" ?>"
                         required oninvalid="this.setCustomValidity('Insira o nome do bairro')" 
                         onkeyup="setCustomValidity('')" class="form-control"/>
                 </div>                                                     
                 <div class="col-sm-3">
-                <select id="ufEndereco" name="ufEndereco" 
+                <select id="ufEndereco" name="estado"
                         required oninvalid="this.setCustomValidity('Selecione o estado')" 
                         onkeyup="setCustomValidity('')" class="form-control select_selecionado">
-                    <option value=""  disabled selected hidden>Estado</option>
+                    <?php if(isset($f)){
+                        echo "<option selected='selected' value='{$e->estado}'>{$f->estado}</option>";
+                    } else{   echo "<option value=''  disabled selected hidden>Estado</option>";}?>
                     <option value="AC">Acre</option>
                     <option value="AL">Alagoas</option>
                     <option value="AP">Amapá</option>
@@ -76,3 +86,4 @@
             </div>
         </div>
         <!-- FIM DOS CAMPOS ENDEREÇO -->
+<?php unset($e) ?>

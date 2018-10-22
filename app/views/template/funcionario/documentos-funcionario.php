@@ -1,7 +1,15 @@
-        <?php include('app/views/template/documentos/ctps.php');?>
+<?php
+        if (isset($_SESSION['funcionario']))
+        $d = $_SESSION['funcionario']->documentos;
 
-        <?php include('app/views/template/documentos/rg.php');?>   
 
-        <?php include('app/views/template/documentos/tituloeleitoral.php');?>  
+        include('app/views/template/documentos/ctps.php');
 
-        <?php include('app/views/template/documentos/reservista.php');?>    
+        include('app/views/template/documentos/rg.php');
+
+        include('app/views/template/documentos/tituloeleitoral.php');
+
+        include('app/views/template/documentos/reservista.php');
+
+        unset($d);
+?>

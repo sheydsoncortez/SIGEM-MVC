@@ -1,3 +1,7 @@
+<?php if (isset($_SESSION['funcionario'])) {
+    $f = $_SESSION['funcionario'];
+} ?>
+
 <section class="forms offset-sm-1">
     <div class="container-fluid">
 
@@ -12,7 +16,7 @@
 
                     <!-- INÍCIO DO FORM -->
 
-                    <form class='form-horizontal' id='formfuncionario' method='POST'
+                   <form class='form-horizontal' id='formfuncionario' method='POST'
                           action="<?php echo URL_BASE . "funcionario/salvar/".$page;?>" >
 
                         <br/><p id="cabecalho_blocos_form">DADOS DO FUNCIONÁRIO</p>
@@ -21,43 +25,43 @@
                             <div class="col-sm-12">
                                 <div class="row list-background">
                                     <strong class="col-sm-3 form-control-label">Nome:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$_SESSION['funcionario']->nome_fun}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$f->nome}</label>";?>
                                 </div>
                                 <div class="row">
                                     <strong class="col-sm-3 form-control-label">Data de Nasc:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$_SESSION['funcionario']->datanasc_fun}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$f->datanasc}</label>";?>
                                 </div>
                                 <div class="row list-background">
                                     <strong class="col-sm-3 form-control-label">Cidade de Nasc:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$_SESSION['funcionario']->cidadenasc_fun}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$f->cidadenasc}</label>";?>
                                 </div>
                                 <div class="row">
                                     <strong class="col-sm-3 form-control-label">Estado de Nasc:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$_SESSION['funcionario']->ufnasc_fun}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$f->estadonasc}</label>";?>
                                 </div>
                                 <div class="row list-background">
                                     <strong class="col-sm-3 form-control-label">Nome do Pai:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$_SESSION['funcionario']->nomepai_fun}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$f->nomepai}</label>";?>
                                 </div>
                                 <div class="row">
                                     <strong class="col-sm-3 form-control-label">Nome da Mãe:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$_SESSION['funcionario']->nomemae_fun}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$f->nomemae}</label>";?>
                                 </div>
                                 <div class="row list-background">
                                     <strong class="col-sm-3 form-control-label">Sexo:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$_SESSION['funcionario']->sexo_fun}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$f->sexo}</label>";?>
                                 </div>
                                 <div class="row">
                                     <strong class="col-sm-3 form-control-label">Estado Civil:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$_SESSION['funcionario']->estadocivil_fun}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$f->estadocivil}</label>";?>
                                 </div>
                                 <div class="row list-background">
                                     <strong class="col-sm-3 form-control-label">Telefone:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$_SESSION['funcionario']->telefone_fun}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$f->telefone}</label>";?>
                                 </div>
                                 <div class="row">
                                     <strong class="col-sm-3 form-control-label">Email:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$_SESSION['funcionario']->email_fun}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$f->email}</label>";?>
                                 </div>
 
                                 <div class="line"></div>
@@ -74,27 +78,27 @@
                             <div class="col-sm-12">
                                 <div class="row list-background">
                                     <strong class="col-sm-3 form-control-label">Cep:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$_SESSION['funcionario']->endereco->cep_end}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$f->endereco->cep}</label>";?>
                                 </div>
                                 <div class="row">
                                     <strong class="col-sm-3 form-control-label">Cidade:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$_SESSION['funcionario']->endereco->cidade_end}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$f->endereco->cidade}</label>";?>
                                 </div>
                                 <div class="row list-background">
                                     <strong class="col-sm-3 form-control-label">Logradouro:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$_SESSION['funcionario']->endereco->logradouro_end}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$f->endereco->logradouro}</label>";?>
                                 </div>
                                 <div class="row">
                                     <strong class="col-sm-3 form-control-label">Número:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$_SESSION['funcionario']->endereco->numero_end}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$f->endereco->numero}</label>";?>
                                 </div>
                                 <div class="row list-background">
                                     <strong class="col-sm-3 form-control-label">Bairro:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$_SESSION['funcionario']->endereco->bairro_end}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$f->endereco->bairro}</label>";?>
                                 </div>
                                 <div class="row">
                                     <strong class="col-sm-3 form-control-label">Estado:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$_SESSION['funcionario']->endereco->estado_end}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$f->endereco->estado}</label>";?>
                                 </div>
 
                                 <div class="line"></div>
@@ -111,59 +115,59 @@
                             <div class="col-sm-12">
                                 <div class="row list-background">
                                     <strong class="col-sm-3 form-control-label">Cpf:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$_SESSION['funcionario']->cpf_fun}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$f->cpf}</label>";?>
                                 </div>
                                 <div class="row">
                                     <strong class="col-sm-3 form-control-label">Pis/Pasep:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$_SESSION['funcionario']->pispasep_fun}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$f->pispasep}</label>";?>
                                 </div>
                                 <div class="row list-background">
                                     <strong class="col-sm-3 form-control-label">Número Ctps:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$_SESSION['funcionario']->ctps->numero_car}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$f->documentos->ctps->numero}</label>";?>
                                 </div>
                                 <div class="row">
                                     <strong class="col-sm-3 form-control-label">Série Ctps:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$_SESSION['funcionario']->ctps->serie_car}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$f->documentos->ctps->serie}</label>";?>
                                 </div>
                                 <div class="row list-background">
                                     <strong class="col-sm-3 form-control-label">Número Rg:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$_SESSION['funcionario']->rg->numero_rg}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$f->documentos->rg->numero}</label>";?>
                                 </div>
                                 <div class="row">
                                     <strong class="col-sm-3 form-control-label">Orgão Exp. Rg:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$_SESSION['funcionario']->rg->orgaoexp_rg}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$f->documentos->rg->orgaoexp}</label>";?>
                                 </div>
                                 <div class="row list-background">
                                     <strong class="col-sm-3 form-control-label">Data Exp. Rg:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$_SESSION['funcionario']->rg->dataexp_rg}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$f->documentos->rg->dataexp}</label>";?>
                                 </div>
                                 <div class="row">
                                     <strong class="col-sm-3 form-control-label">Estado Exp. Rg:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$_SESSION['funcionario']->rg->ufexp_rg}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$f->documentos->rg->ufexp}</label>";?>
                                 </div>
                                 <div class="row list-background">
                                     <strong class="col-sm-3 form-control-label">Núm. Título Eleitor:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$_SESSION['funcionario']->titulo->numero_tit}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$f->documentos->tituloeleitor->numero}</label>";?>
                                 </div>
                                 <div class="row">
                                     <strong class="col-sm-3 form-control-label">Zona Eleitoral:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$_SESSION['funcionario']->titulo->zona_tit}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$f->documentos->tituloeleitor->zona}</label>";?>
                                 </div>
                                 <div class="row list-background">
                                     <strong class="col-sm-3 form-control-label">Seção Eleitoral:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$_SESSION['funcionario']->titulo->secao_tit}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$f->documentos->tituloeleitor->secao}</label>";?>
                                 </div>
                                 <div class="row">
                                     <strong class="col-sm-3 form-control-label">Núm. Reservista:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$_SESSION['funcionario']->reservista->numero_res}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$f->documentos->reservista->numero}</label>";?>
                                 </div>
                                 <div class="row list-background">
                                     <strong class="col-sm-3 form-control-label">Cat. Reservista:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$_SESSION['funcionario']->reservista->categoria_res}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$f->documentos->reservista->categoria}</label>";?>
                                 </div>
                                 <div class="row">
                                     <strong class="col-sm-3 form-control-label lista-dados ">Série Reservista:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$_SESSION['funcionario']->reservista->serie_res}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$f->documentos->reservista->serie}</label>";?>
                                 </div>
                                 <div class="line"></div>
                                 <div class="row">
@@ -180,31 +184,31 @@
                             <div class="col-sm-12">
                                 <div class="row list-background">
                                     <strong class="col-sm-3 form-control-label">Matrícula:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$_SESSION['funcionario']->matricula_fun}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$f->matricula}</label>";?>
                                 </div>
                                 <div class="row">
                                     <strong class="col-sm-3 form-control-label">Data Admissão:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$_SESSION['funcionario']->dataadmissao_fun}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$f->dataadmissao}</label>";?>
                                 </div>
                                 <div class="row list-background">
                                     <strong class="col-sm-3 form-control-label">Escolaridade:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$_SESSION['funcionario']->escolaridade_fun}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$f->escolaridade}</label>";?>
                                 </div>
                                 <div class="row">
                                     <strong class="col-sm-3 form-control-label">Form. Acadêmica:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$_SESSION['funcionario']->formacaoacademica_fun}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$f->formacaoacademica}</label>";?>
                                 </div>
                                 <div class="row list-background">
                                     <strong class="col-sm-3 form-control-label">Ano Conclusão:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$_SESSION['funcionario']->anoconclusao_fun}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$f->anoconclusao}</label>";?>
                                 </div>
                                 <div class="row">
                                     <strong class="col-sm-3 form-control-label">Cargo:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$_SESSION['funcionario']->cargo_fun}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$f->cargo}</label>";?>
                                 </div>
                                 <div class="row list-background">
                                     <strong class="col-sm-3 form-control-label">Função:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$_SESSION['funcionario']->funcao_fun}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$f->funcao}</label>";?>
                                 </div>
 
                                 <div class="line"></div>

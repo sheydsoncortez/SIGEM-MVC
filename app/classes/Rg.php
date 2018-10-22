@@ -3,54 +3,66 @@
 namespace app\classes;
 
 class Rg{
-    private $numeroRg;
-    private $orgaoExpRg;
-    private $dataExpRg;
-    private $ufExpRg;
+    private $numero;
+    private $orgaoexp;
+    private $dataexp;
+    private $ufexp;
 
     public function __construct(){
 
     }
 
-    public function getNumeroRg(){
-        return $this->numeroRg;
+    public function __get($atrib)
+    {
+        // TODO: Implement __get() method.
+        return $this->$atrib;
     }
 
-    public function setNumeroRg($numeroRg){
-        $this->numeroRg = $numeroRg;
+    public function __set($atrib, $value)
+    {
+        // TODO: Implement __set() method.
+        $this->$atrib = $value;
     }
 
-    public function getOrgaoExpRg(){
-        return $this->orgaoExpRg;
+    public function getNumero(){
+        return $this->numero;
     }
 
-    public function setOrgaoExpRg($orgaoExpRg){
-        $this->orgaoExpRg = $orgaoExpRg;
+    public function setNumero($numero){
+        $this->numero = $numero;
+    }
+
+    public function getOrgaoexp(){
+        return $this->orgaoexp;
+    }
+
+    public function setOrgaoexp($orgaoexp){
+        $this->orgaoexp = $orgaoexp;
     }    
 
-    public function getDataExpRg(){
-        return $this->dataExpRg;
+    public function getDataexp(){
+        return $this->dataexp;
     }
     
-    public function setDataExpRg($dataExpRg){
-        $this->dataExpRg = $dataExpRg;
+    public function setDataexp($dataexp){
+        $this->dataexp = $dataexp;
     }
 
-    public function getUfExpRg(){
-        return $this->ufExpRg;
+    public function getUfexp(){
+        return $this->ufexp;
     }
 
-    public function setUfExpRg($ufExpRg){
-        $this->ufExpRg = $ufExpRg;
+    public function setUfexp($ufexp){
+        $this->ufexp = $ufexp;
     }    
 
 
     public function __toString(){
         return  "============== RG ==============\n".
-                "RG Nº: ".$this->numeroRg."\n".
-                "Orgão Expedidor: ".$this->orgaoExpRg."\n".
-                "Data Expedição: ".$this->dataExpRg."\n".
-                "RG UF: ".$this->ufExpRg."\n";
+                "RG Nº: ".$this->numero."\n".
+                "Orgão Expedidor: ".$this->orgaoexp."\n".
+                "Data Expedição: ".$this->dataexp."\n".
+                "RG UF: ".$this->ufexp."\n";
     }
 }
 ?>

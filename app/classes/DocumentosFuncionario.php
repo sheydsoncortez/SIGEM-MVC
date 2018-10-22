@@ -2,22 +2,34 @@
 namespace app\classes;
 use app\classes\Ctps;
 use app\classes\Rg;
-use app\classes\TituloEleitoral;
+use app\classes\TituloEleitor;
 use app\classes\Reservista;
 
 class DocumentosFuncionario{
     private $cpf;
-    private $pisPasep;
+    private $pispasep;
     private $ctps;
     private $rg;
-    private $tituloEleitoral;
+    private $tituloeleitor;
     private $reservista;
 
     public function __construct(){
         $this->ctps = new Ctps();
         $this->rg = new Rg();
-        $this->tituloEleitoral = new TituloEleitoral();
+        $this->tituloeleitor = new TituloEleitor();
         $this->reservista = new Reservista();
+    }
+
+    public function __get($atrib)
+    {
+        // TODO: Implement __get() method.
+        return $this->$atrib;
+    }
+
+    public function __set($atrib, $value)
+    {
+        // TODO: Implement __set() method.
+        $this->$atrib = $value;
     }
 
     public function getCpf(){
@@ -28,12 +40,12 @@ class DocumentosFuncionario{
         $this->cpf = $cpf;
     }
 
-    public function getPisPasep(){
-        return $this->pisPasep;
+    public function getPispasep(){
+        return $this->pispasep;
     }
 
-    public function setPisPasep($pisPasep){
-        $this->pisPasep = $pisPasep;
+    public function setPispasep($pispasep){
+        $this->pispasep = $pispasep;
     }
 
     public function getCtps(){
@@ -52,12 +64,12 @@ class DocumentosFuncionario{
         $this->rg = $rg;
     }
 
-    public function getTituloEleitoral(){
-        return $this->tituloEleitoral;
+    public function getTituloeleitor(){
+        return $this->tituloeleitor;
     }
 
-    public function setTituloEleitoral(TituloEleitoral $tituloEleitoral){
-        $this->tituloEleitoral = $tituloEleitoral;
+    public function setTituloeleitor(TituloEleitor $tituloeleitor){
+        $this->tituloeleitor = $tituloeleitor;
     }
 
     public function getReservista(){
@@ -71,7 +83,7 @@ class DocumentosFuncionario{
     public function __toString(){
         return  "========== DOCUMENTOS ==========\n".
                 "CPF: ".$this->cpf."\n".
-                "PIS/PASEP: ".$this->pisPasep."\n";
+                "PIS/PASEP: ".$this->pispasep."\n";
     }
 }
 

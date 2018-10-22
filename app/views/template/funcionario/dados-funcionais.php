@@ -1,10 +1,14 @@
-<!--   DADOS FUNCIONAIS  -->              
+<?php if (isset($_SESSION['funcionario'])){
+    $df = $_SESSION['funcionario']->dadosfuncionais;
+}?>
+<!--   DADOS FUNCIONAIS  -->
 <div class="form-group row">
     <div class="col-sm-12">
         <div class="row">
             <label class="col-sm-2 form-control-label"></label>
             <div class="col-sm-3">
-                <input type="text" data-placement="bottom" placeholder="Matrícula Funcionário" 
+                <input type="text" data-placement="bottom" placeholder="Matrícula Funcionário"
+                        value="<?php isset($df) ? print($df->matricula) : ""?>"
                         id="matriculafun" name="matriculaFun" class="form-control"
                         data-toggle="tooltip" title="Digite apenas números no formato 0.000.000/0"
                         required oninvalid="this.setCustomValidity('Insira a matricula do funcionário')"
@@ -14,7 +18,8 @@
                 <div class="input-group date">
                     <input type="text" class="form-control datetimepicker-input" id="data" 
                             data-toggle="datetimepicker" data-target="#data"
-                            placeholder="Data de Admissão"               
+                            placeholder="Data de Admissão"
+                            value="<?php isset($df) ? print($df->dataadmissao) : ""?>"
                             name="dataAdmissaoFun" required/>
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
@@ -25,7 +30,9 @@
                     <select id="escolaridadeFunc" name="escolaridadeFun" class="form-control select_selecionado"
                     required oninvalid="this.setCustomValidity('Selecione aescolaridade do funcionário')"
                     oninput="setCustomValidity('')">
-                        <option value=""  disabled selected hidden>Escolaridade</option>
+                        <?php if(isset($df)){
+                            echo "<option selected='selected' value='{$df->escolaridade}'>{$df->escolaridade}</option>";
+                        } else{   echo "<option value=''  disabled selected hidden>Escolaridade</option>";}?>
                         <option value="Ensino fundamental">Ensino fundamental</option>
                         <option value="Ensino fundamental incompleto">Ensino fundamental incompleto</option>
                         <option value="Ensino médio">Ensino médio</option>
@@ -41,13 +48,16 @@
             <label class="col-sm-2 form-control-label"></label> 
             <div class="col-sm-3">
                 <input type="text" data-placement="bottom" placeholder="Formação Acadêmica" 
-                    class="form-control" name="formacaoAcademicaFun" id="inputFormacao" disabled/>                              
+                       class="form-control" name="formacaoAcademicaFun"
+                       value="<?php isset($df) ? print($df->formacaoacademica) : ""?>"
+                       id="inputFormacao" disabled/>
             </div>                       
             <div class="col-sm-3">
                 <div class="input-group date">
                     <input type="text" class="form-control datetimepicker-input" id="ano" 
                             data-toggle="datetimepicker" data-target="#ano"
-                            placeholder="Ano de conclusão"               
+                            placeholder="Ano de conclusão"
+                            value="<?php isset($df) ? print($df->anoconclusao) : ""?>"
                             name="anoConclusaoFun"/>
                         <div class="input-group-append">
                         <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
@@ -58,7 +68,9 @@
                 <select id="cargoFun" name="cargoFun" class="form-control select_selecionado"
                 required oninvalid="this.setCustomValidity('Selecione o cargo ocupado')"
                 oninput="setCustomValidity('')">
-                    <option value=""  disabled selected hidden>Cargo</option>
+                    <?php if(isset($df)){
+                        echo "<option selected='selected' value='{$df->cargo}'>{$df->cargo}</option>";
+                    } else{   echo "<option value=''  disabled selected hidden>Cargo</option>";}?>
                     <option value="Assistente administrativo">Assistente administrativo</option>
                     <option value="Auxiliar Administrativo">Auxiliar Administrativo</option>
                     <option value="Auxiliar de Serviços Gerais">Auxiliar de Serviços Gerais</option>
@@ -77,4 +89,6 @@
             </div>
         </div>                                               
     </div>           
-</div>                    
+</div>
+
+<?php unset($df) ?>

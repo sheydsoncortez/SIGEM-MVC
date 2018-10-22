@@ -8,6 +8,8 @@ use app\classes\Endereco;
 use app\classes\DocumentosFuncionario;
 use app\classes\DadosFuncionais;
 
+error_reporting(E_ERROR);
+
 class FuncionarioModel extends Model{
 
     public function __construct(){
@@ -18,16 +20,21 @@ class FuncionarioModel extends Model{
 
         $status = array();
 
+        $fun = new Funcionario();
+        $fun = $_SESSION['funcionario'];
+
+
+
         $cpf = $_SESSION['funcionario']->getDocumentos()->getCpf();
-        $pispasep = $_SESSION['funcionario']->getDocumentos()->getPisPasep();
+        $pispasep = $_SESSION['funcionario']->getDocumentos()->getPispasep();
         $nome = $_SESSION['funcionario']->getNome();
-        $dataNasc = $_SESSION['funcionario']->getDataNasc();
-        $cidadeNasc = $_SESSION['funcionario']->getCidadeNasc();
-        $ufNasc = $_SESSION['funcionario']->getEstadoNasc();
-        $nomePai = $_SESSION['funcionario']->getNomePai();
-        $nomeMae = $_SESSION['funcionario']->getNomeMae();
+        $dataNasc = $_SESSION['funcionario']->getDatanasc();
+        $cidadeNasc = $_SESSION['funcionario']->getCidadenasc();
+        $ufNasc = $_SESSION['funcionario']->getEstadonasc();
+        $nomePai = $_SESSION['funcionario']->getNomepai();
+        $nomeMae = $_SESSION['funcionario']->getNomemae();
         $sexo = $_SESSION['funcionario']->getSexo();
-        $estadoCivil = $_SESSION['funcionario']->getEstadoCivil();
+        $estadoCivil = $_SESSION['funcionario']->getEstadocivil();
         $telefone = $_SESSION['funcionario']->getTelefone();
         $email = $_SESSION['funcionario']->getEmail();
 
@@ -37,60 +44,64 @@ class FuncionarioModel extends Model{
         $enderecoLogradouro = $_SESSION['funcionario']->getEndereco()->getLogradouro();
         $enderecoNum = $_SESSION['funcionario']->getEndereco()->getNumero();
         $enderecoBairro = $_SESSION['funcionario']->getEndereco()->getBairro();
-        $enderecoUf = $_SESSION['funcionario']->getEndereco()->getUfEndereco();
+        $enderecoUf = $_SESSION['funcionario']->getEndereco()->getEstado();
 
-        $ctpsNum = $_SESSION['funcionario']->getDocumentos()->getCtps()->getNumeroCtps();
-        $ctpsSerie = $_SESSION['funcionario']->getDocumentos()->getCtps()->getSerieCtps();
-        $rgNum = $_SESSION['funcionario']->getDocumentos()->getRg()->getNumeroRg();
-        $rgOrgao = $_SESSION['funcionario']->getDocumentos()->getRg()->getOrgaoExpRg();
-        $rgDataExp = $_SESSION['funcionario']->getDocumentos()->getRg()->getDataExpRg();
-        $rgUfExp = $_SESSION['funcionario']->getDocumentos()->getRg()->getUfExpRg();
-        $titNum = $_SESSION['funcionario']->getDocumentos()->getTituloEleitoral()->getNumeroTit();
-        $titSecao = $_SESSION['funcionario']->getDocumentos()->getTituloEleitoral()->getSecaoTit();
-        $titZona = $_SESSION['funcionario']->getDocumentos()->getTituloEleitoral()->getZonaTit();
-        $resNum = $_SESSION['funcionario']->getDocumentos()->getReservista()->getNumeroRes();
-        $resCat = $_SESSION['funcionario']->getDocumentos()->getReservista()->getCategoriaRes();
-        $resSerie = $_SESSION['funcionario']->getDocumentos()->getReservista()->getSerieRes();
+        $ctpsNum = $_SESSION['funcionario']->getDocumentos()->getCtps()->getNumero();
+        $ctpsSerie = $_SESSION['funcionario']->getDocumentos()->getCtps()->getSerie();
+        $rgNum = $_SESSION['funcionario']->getDocumentos()->getRg()->getNumero();
+        $rgOrgao = $_SESSION['funcionario']->getDocumentos()->getRg()->getOrgaoexp();
+        $rgDataExp = $_SESSION['funcionario']->getDocumentos()->getRg()->getDataexp();
+        $rgUfExp = $_SESSION['funcionario']->getDocumentos()->getRg()->getUfexp();
+        $titNum = $_SESSION['funcionario']->getDocumentos()->getTituloeleitor()->getNumero();
+        $titSecao = $_SESSION['funcionario']->getDocumentos()->getTituloeleitor()->getSecao();
+        $titZona = $_SESSION['funcionario']->getDocumentos()->getTituloeleitor()->getZona();
+        $resNum = $_SESSION['funcionario']->getDocumentos()->getReservista()->getNumero();
+        $resCat = $_SESSION['funcionario']->getDocumentos()->getReservista()->getCategoria();
+        $resSerie = $_SESSION['funcionario']->getDocumentos()->getReservista()->getSerie();
 
         
-        $formAcad = $_SESSION['funcionario']->getDadosFuncionais()->getFormacaoAcademicaFun();        
-        $matricula = $_SESSION['funcionario']->getDadosFuncionais()->getMatriculaFun();
-        $dataAdmis = $_SESSION['funcionario']->getDadosFuncionais()->getDataAdmissaoFun();
-        $escolaridade = $_SESSION['funcionario']->getDadosFuncionais()->getEscolaridadeFun();        
-        $anoConclusao = $_SESSION['funcionario']->getDadosFuncionais()->getAnoConclusaoFun();
-        $cargo = $_SESSION['funcionario']->getDadosFuncionais()->getCargoFun();
-        $funcao = $_SESSION['funcionario']->getDadosFuncionais()->getFuncaoFun();
+        $formAcad = $_SESSION['funcionario']->getDadosfuncionais()->getFormacaoacademica();
+        $matricula = $_SESSION['funcionario']->getDadosfuncionais()->getMatricula();
+        $dataAdmis = $_SESSION['funcionario']->getDadosfuncionais()->getDataadmissao();
+        $escolaridade = $_SESSION['funcionario']->getDadosfuncionais()->getEscolaridade();
+        $anoConclusao = $_SESSION['funcionario']->getDadosfuncionais()->getAnoconclusao();
+        $cargo = $_SESSION['funcionario']->getDadosfuncionais()->getCargo();
+        $funcao = $_SESSION['funcionario']->getDadosfuncionais()->getFuncao();
+
+        $escola = "24032239";
+        $ativo = '1';
 
         $insert_endereco = "INSERT INTO public.endereco
-                            (codigo_end, cep_end, cidade_end, logradouro_end, numero_end, bairro_end, estado_end) 
+                            (codigo, cep, cidade, logradouro, numero, bairro, estado) 
                             VALUES 
                             ('{$enderecoCod}','{$enderecoCep}' , '{$enderecoCidade}', '{$enderecoLogradouro}', 
                             '{$enderecoNum}', '{$enderecoBairro}', '{$enderecoUf}');";
 
-        $insert_carteiraprof = "INSERT INTO public.carteira_profissional(numero_car, serie_car) 
+        $insert_carteiraprof = "INSERT INTO public.ctps(numero, serie) 
                                 VALUES ('{$ctpsNum}', '{$ctpsSerie}');";
 
-        $insert_rg = "INSERT INTO public.rg(numero_rg, orgaoexp_rg, dataexp_rg, ufexp_rg)
+        $insert_rg = "INSERT INTO public.rg(numero, orgaoexp, dataexp, ufexp)
                       VALUES ('{$rgNum}', '{$rgOrgao}', '$rgDataExp', '{$rgUfExp}');";
         
-        $insert_tituloeleitor = "INSERT INTO public.titulo_eleitoral(numero_tit, zona_tit, secao_tit)
+        $insert_tituloeleitor = "INSERT INTO public.tituloeleitor(numero, zona, secao)
                                  VALUES ('{$titNum}', {$titZona}, {$titSecao});";
         
-        $insert_reservista = "INSERT INTO public.reservista(numero_res, categoria_res, serie_res)
+        $insert_reservista = "INSERT INTO public.reservista(numero, categoria, serie)
                               VALUES ('{$resNum}', '{$resCat}','{$resSerie}');";
         
         $insert_funcionario = "INSERT INTO public.funcionario(
-                                cpf_fun, nome_fun, datanasc_fun, cidadenasc_fun, ufnasc_fun, nomepai_fun, 
-                                nomemae_fun, sexo_fun, estadocivil_fun, telefone_fun, email_fun, pispasep_fun, 
-                                matricula_fun, dataadmissao_fun, escolaridade_fun, formacaoacademica_fun, 
-                                anoconclusao_fun, cargo_fun, funcao_fun, endereco_fun, carteiraprof_fun, rg_fun, 
-                                tituloeleitor_fun, reservista_fun, senha_fun)
+                                cpf, nome, datanasc, cidadenasc, estadonasc, nomepai, nomemae, 
+                                sexo, estadocivil, telefone, email, pispasep, matricula, dataadmissao, 
+                                escolaridade, formacaoacademica, anoconclusao, cargo, funcao, endereco, 
+                                ctps, rg, tituloeleitor, reservista, senha, escola, ativo)
                                VALUES 
                                 ('{$cpf}', '{$nome}', '{$dataNasc}', '{$cidadeNasc}', '{$ufNasc}', '{$nomePai}', 
                                 '{$nomeMae}', '{$sexo}', '{$estadoCivil}', '{$telefone}', '{$email}', '{$pispasep}', 
                                 '{$matricula}', '$dataAdmis', '{$escolaridade}', '{$formAcad}', {$anoConclusao}, 
                                 '{$cargo}', '{$funcao}', '{$enderecoCod}', '{$ctpsNum}', '{$rgNum}', '{$titNum}', 
-                                '{$resNum}', md5('{$cpf}'));";
+                                '{$resNum}', md5('{$cpf}'), '{$escola}', '{$ativo}');";
+
+        echo $insert_funcionario;
 
         try {
             // set the PDO error mode to exception
@@ -132,50 +143,52 @@ class FuncionarioModel extends Model{
 
             return $status;
         }
-        return "";
+        return $status;
     }
     
-    public function getFuncionario($cpf){
+    public function getFuncionario($cpf)
+    {
 
-        $f = array();
-
-        $sql_funcionario = "SELECT * FROM public.funcionario WHERE cpf_fun='{$cpf}'";
+        $sql_funcionario = "SELECT * FROM public.funcionario WHERE cpf='{$cpf}' AND ativo=true";
 
         $query = $this->db->query($sql_funcionario);
-        
-        if($query->rowCount() == 1){
+
+        if ($query->rowCount() == 1) {
 
             $f = $query->fetch(\PDO::FETCH_OBJ);
 
-            $sql_end = "SELECT cep_end, cidade_end, logradouro_end, numero_end, bairro_end, estado_end
-                         FROM public.endereco WHERE codigo_end='{$f->endereco_fun}'";
+            $sql_end = "SELECT cep, cidade, logradouro, numero, bairro, estado
+                         FROM public.endereco WHERE codigo='{$f->endereco}'";
             $query = $this->db->query($sql_end);
             $f->endereco = $query->fetch(\PDO::FETCH_OBJ);
 
-            $sql_cart_pro = "SELECT * FROM public.carteira_profissional WHERE numero_car='{$f->carteiraprof_fun}'";
-            $query = $this->db->query($sql_cart_pro);
-            $f->ctps = $query->fetch(\PDO::FETCH_OBJ);
-            
-            $sql_res = "SELECT * FROM public.reservista WHERE numero_res='{$f->reservista_fun}'";
-            $query = $this->db->query($sql_res);
-            $f->reservista = $query->fetch(\PDO::FETCH_OBJ);
-            
-            $sql_rg = "SELECT * FROM public.rg WHERE numero_rg='{$f->rg_fun}'";
-            $query = $this->db->query($sql_rg);
-            $f->rg = $query->fetch(\PDO::FETCH_OBJ);
-            
-            $sql_tit = "SELECT * FROM public.titulo_eleitoral WHERE numero_tit='{$f->tituloeleitor_fun}'";
-            $query = $this->db->query($sql_tit);
-            $f->titulo = $query->fetch(\PDO::FETCH_OBJ);
+            $sql_ctps = "SELECT * FROM public.ctps WHERE numero='{$f->ctps}'";
+            $query = $this->db->query($sql_ctps);
+            $f->documentos->ctps = $query->fetch(\PDO::FETCH_OBJ);
 
+            $sql_res = "SELECT * FROM public.reservista WHERE numero='{$f->reservista}'";
+            $query = $this->db->query($sql_res);
+            $f->documentos->reservista = $query->fetch(\PDO::FETCH_OBJ);
+
+            $sql_rg = "SELECT * FROM public.rg WHERE numero='{$f->rg}'";
+            $query = $this->db->query($sql_rg);
+            $f->documentos->rg = $query->fetch(\PDO::FETCH_OBJ);
+
+            $sql_tit = "SELECT * FROM public.tituloeleitor WHERE numero='{$f->tituloeleitor}'";
+            $query = $this->db->query($sql_tit);
+            $f->documentos->tituloeleitor = $query->fetch(\PDO::FETCH_OBJ);
+
+        }else{
+            $f = false;
         }
-        
+
         return $f;
     }
+
     
     public function listarTodos(){
         
-        $sql_funcionario = "SELECT * FROM public.funcionario";                            
+        $sql_funcionario = "SELECT * FROM public.funcionario WHERE ativo=true";
         $query = $this->db->query($sql_funcionario);
         
         return  $query->fetchAll(\PDO::FETCH_OBJ);        
