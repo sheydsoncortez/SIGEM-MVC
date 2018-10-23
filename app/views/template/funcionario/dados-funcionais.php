@@ -85,6 +85,7 @@
             <label class="col-sm-2 form-control-label"></label>                          
             <div class="col-sm-3">
                 <input type="text" data-placement="bottom" placeholder="Função" 
+                    value="<?php isset($df) ? print($df->funcao) : ""?>"
                     class="form-control" name="funcaoFun"/>                              
             </div>
         </div>                                               

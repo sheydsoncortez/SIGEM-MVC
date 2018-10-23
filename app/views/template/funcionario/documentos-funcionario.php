@@ -1,7 +1,13 @@
 <?php
-        if (isset($_SESSION['funcionario']))
-        $d = $_SESSION['funcionario']->documentos;
+        if (isset($_SESSION['funcionario'])){
+        	$d = $_SESSION['funcionario']->documentos;
 
+    		if($_SESSION['funcionario']->sexo == 'M'){
+    			$required = "required";
+    		}else{
+    			$required = "";
+    		}    		    		
+    	}
 
         include('app/views/template/documentos/ctps.php');
 

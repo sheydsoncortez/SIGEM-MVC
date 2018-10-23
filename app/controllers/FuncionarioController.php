@@ -78,6 +78,7 @@ class FuncionarioController extends Controller{
         //print_r($dados);
         $this->load("admin", $dados);
         $dados = "";
+
     }       
 
     public function salvar($page){        
@@ -95,6 +96,7 @@ class FuncionarioController extends Controller{
                 $funcionario->estadocivil = $_POST['estadoCivil'];
                 $funcionario->telefone = $_POST['telefone'];
                 $funcionario->email = $_POST['email'];
+
                 $_SESSION['funcionario'] = $funcionario;
 
                 //echo nl2br( $_SESSION['funcionario']);
@@ -102,33 +104,40 @@ class FuncionarioController extends Controller{
             break;
             case 2:
                 $enderecof = new Endereco();
-                $enderecof->setCep($_POST['cep']);
-                $enderecof->setCidade($_POST['cidade']);
-                $enderecof->setLogradouro($_POST['logradouro']);
-                $enderecof->setNumero($_POST['numero']);
-                $enderecof->setBairro($_POST['bairro']);
-                $enderecof->setEstado($_POST['estado']);
-                $_SESSION['funcionario']->setEndereco($enderecof);
+                $enderecof->cep = $_POST['cep'];
+                $enderecof->cidade = $_POST['cidade'];
+                $enderecof->logradouro = $_POST['logradouro'];
+                $enderecof->numero = $_POST['numero'];
+                $enderecof->bairro = $_POST['bairro'];
+                $enderecof->estado = $_POST['estado'];
+
+                $_SESSION['funcionario']->endereco = $enderecof;
 
                 header('location:' . URL_BASE . 'funcionario/cadastrar/3');
             break;
             case 3:
                 $documentosf = new DocumentosFuncionario();
-                $documentosf->setCpf($_POST['cpf']);
-                $documentosf->setPisPasep($_POST['pisPasep']);
-                $documentosf->getCtps()->setNumero($_POST['numeroCtps']);
-                $documentosf->getCtps()->setSerie($_POST['serieCtps']);
-                $documentosf->getRg()->setNumero($_POST['numeroRg']);
-                $documentosf->getRg()->setOrgaoexp($_POST['orgaoExpRg']);
-                $documentosf->getRg()->setDataexp($_POST['dataExpRg']);
-                $documentosf->getRg()->setUfexp($_POST['ufExpRg']);
-                $documentosf->getTituloeleitor()->setNumero($_POST['numeroTit']);
-                $documentosf->getTituloeleitor()->setSecao($_POST['secaoTit']);
-                $documentosf->getTituloeleitor()->setZona($_POST['zonaTit']);
-                $documentosf->getReservista()->setNumero($_POST['numeroRes']);
-                $documentosf->getReservista()->setCategoria($_POST['categoriaRes']);
-                $documentosf->getReservista()->setSerie($_POST['serieRes']);
-                $_SESSION['funcionario']->setDocumentos($documentosf);
+                $documentosf->cpf = $_POST['cpf'];
+                $documentosf->pispasep = $_POST['pisPasep'];
+                $documentosf->ctps->numero = $_POST['numeroCtps'];
+                $documentosf->ctps->serie = $_POST['serieCtps'];
+                $documentosf->rg->numero = $_POST['numeroRg'];
+                $documentosf->rg->orgaoexp = $_POST['orgaoExpRg'];
+                $documentosf->rg->dataexp = $_POST['dataExpRg'];
+                $documentosf->rg->estadoexp = $_POST['ufExpRg'];
+                $documentosf->tituloeleitor->numero = $_POST['numeroTit'];
+                $documentosf->tituloeleitor->secao = $_POST['secaoTit'];
+                $documentosf->tituloeleitor->zona = $_POST['zonaTit'];
+
+                if($_SESSION['funcionario']->sexo == 'M'){
+
+                    $documentosf->reservista->numero = $_POST['numeroRes'];
+                    $documentosf->reservista->categoria = $_POST['categoriaRes'];
+                    $documentosf->reservista->serie = $_POST['serieRes'];
+
+                }
+
+                $_SESSION['funcionario']->documentos = $documentosf;
 
                 header('location:' . URL_BASE . 'funcionario/cadastrar/4');
             break;
@@ -137,18 +146,23 @@ class FuncionarioController extends Controller{
                 $dadosFuncionaisF = new DadosFuncionais();
                 
                 if(empty($_POST['formacaoAcademicaFun'])){
-                    $dadosFuncionaisF->setFormacaoAcademica('-');
+
+                    $dadosFuncionaisF->formacaoacademica = '-';
+
                 }else{
-                    $dadosFuncionaisF->setFormacaoAcademica($_POST['formacaoAcademicaFun']);
+
+                    $dadosFuncionaisF->formacaoacademica = $_POST['formacaoAcademicaFun'];
+
                 }
                 
-                $dadosFuncionaisF->setMatricula($_POST['matriculaFun']);
-                $dadosFuncionaisF->setDataadmissao($_POST['dataAdmissaoFun']);
-                $dadosFuncionaisF->setEscolaridade($_POST['escolaridadeFun']);
-                $dadosFuncionaisF->setAnoconclusao($_POST['anoConclusaoFun']);
-                $dadosFuncionaisF->setCargo($_POST['cargoFun']);
-                $dadosFuncionaisF->setFuncao($_POST['funcaoFun']);
-                $_SESSION['funcionario']->setDadosfuncionais($dadosFuncionaisF);
+                $dadosFuncionaisF->matricula = $_POST['matriculaFun'];
+                $dadosFuncionaisF->dataadmissao = $_POST['dataAdmissaoFun'];
+                $dadosFuncionaisF->escolaridade = $_POST['escolaridadeFun'];
+                $dadosFuncionaisF->anoconclusao = $_POST['anoConclusaoFun'];
+                $dadosFuncionaisF->cargo = $_POST['cargoFun'];
+                $dadosFuncionaisF->funcao = $_POST['funcaoFun'];
+
+                $_SESSION['funcionario']->dadosfuncionais = $dadosFuncionaisF;
 
                 $f = new FuncionarioModel();
 

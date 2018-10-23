@@ -108,7 +108,7 @@
             required oninvalid="this.setCustomValidity('Selecione o extado expedidor')"
             oninput="setCustomValidity('')">
             <?php if(isset($d)){
-                echo "<option selected='selected' value='{$d->rg->ufexp}'>{$d->rg->ufexp}</option>";
+                echo "<option selected='selected' value='{$d->rg->estadoexp}'>{$d->rg->estadoexp}</option>";
             } else{   echo "<option value=''  disabled selected hidden>Estado</option>";}?>
             <option value="AC">Acre</option>
             <option value="AL">Alagoas</option>

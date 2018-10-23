@@ -25,48 +25,67 @@ class FuncionarioModel extends Model{
 
 
 
-        $cpf = $_SESSION['funcionario']->getDocumentos()->getCpf();
-        $pispasep = $_SESSION['funcionario']->getDocumentos()->getPispasep();
-        $nome = $_SESSION['funcionario']->getNome();
-        $dataNasc = $_SESSION['funcionario']->getDatanasc();
-        $cidadeNasc = $_SESSION['funcionario']->getCidadenasc();
-        $ufNasc = $_SESSION['funcionario']->getEstadonasc();
-        $nomePai = $_SESSION['funcionario']->getNomepai();
-        $nomeMae = $_SESSION['funcionario']->getNomemae();
-        $sexo = $_SESSION['funcionario']->getSexo();
-        $estadoCivil = $_SESSION['funcionario']->getEstadocivil();
-        $telefone = $_SESSION['funcionario']->getTelefone();
-        $email = $_SESSION['funcionario']->getEmail();
+        $cpf = $_SESSION['funcionario']->documentos->cpf;
+        $pispasep = $_SESSION['funcionario']->documentos->pispasep;
+        $nome = $_SESSION['funcionario']->nome;
+        $dataNasc = $_SESSION['funcionario']->datanasc;
+        $cidadeNasc = $_SESSION['funcionario']->cidadenasc;
+        $ufNasc = $_SESSION['funcionario']->estadonasc;
+        $nomePai = $_SESSION['funcionario']->nomepai;
+        $nomeMae = $_SESSION['funcionario']->nomemae;
+        $sexo = $_SESSION['funcionario']->sexo;
+        $estadoCivil = $_SESSION['funcionario']->estadocivil;
+        $telefone = $_SESSION['funcionario']->telefone;
+        $email = $_SESSION['funcionario']->email;
 
         $enderecoCod = $cpf;
-        $enderecoCep = $_SESSION['funcionario']->getEndereco()->getCep();
-        $enderecoCidade = $_SESSION['funcionario']->getEndereco()->getCidade();
-        $enderecoLogradouro = $_SESSION['funcionario']->getEndereco()->getLogradouro();
-        $enderecoNum = $_SESSION['funcionario']->getEndereco()->getNumero();
-        $enderecoBairro = $_SESSION['funcionario']->getEndereco()->getBairro();
-        $enderecoUf = $_SESSION['funcionario']->getEndereco()->getEstado();
+        $enderecoCep = $_SESSION['funcionario']->endereco->cep;
+        $enderecoCidade = $_SESSION['funcionario']->endereco->cidade;
+        $enderecoLogradouro = $_SESSION['funcionario']->endereco->logradouro;
+        $enderecoNum = $_SESSION['funcionario']->endereco->numero;
+        $enderecoBairro = $_SESSION['funcionario']->endereco->bairro;
+        $enderecoUf = $_SESSION['funcionario']->endereco->estado;
 
-        $ctpsNum = $_SESSION['funcionario']->getDocumentos()->getCtps()->getNumero();
-        $ctpsSerie = $_SESSION['funcionario']->getDocumentos()->getCtps()->getSerie();
-        $rgNum = $_SESSION['funcionario']->getDocumentos()->getRg()->getNumero();
-        $rgOrgao = $_SESSION['funcionario']->getDocumentos()->getRg()->getOrgaoexp();
-        $rgDataExp = $_SESSION['funcionario']->getDocumentos()->getRg()->getDataexp();
-        $rgUfExp = $_SESSION['funcionario']->getDocumentos()->getRg()->getUfexp();
-        $titNum = $_SESSION['funcionario']->getDocumentos()->getTituloeleitor()->getNumero();
-        $titSecao = $_SESSION['funcionario']->getDocumentos()->getTituloeleitor()->getSecao();
-        $titZona = $_SESSION['funcionario']->getDocumentos()->getTituloeleitor()->getZona();
-        $resNum = $_SESSION['funcionario']->getDocumentos()->getReservista()->getNumero();
-        $resCat = $_SESSION['funcionario']->getDocumentos()->getReservista()->getCategoria();
-        $resSerie = $_SESSION['funcionario']->getDocumentos()->getReservista()->getSerie();
+        $ctpsNum = $_SESSION['funcionario']->documentos->ctps->numero;
+        $ctpsSerie = $_SESSION['funcionario']->documentos->ctps->serie;
+        $rgNum = $_SESSION['funcionario']->documentos->rg->numero;
+        $rgOrgao = $_SESSION['funcionario']->documentos->rg->orgaoexp;
+        $rgDataExp = $_SESSION['funcionario']->documentos->rg->dataexp;
+        $rgUfExp = $_SESSION['funcionario']->documentos->rg->estadoexp;
+        $titNum = $_SESSION['funcionario']->documentos->tituloeleitor->numero;
+        $titSecao = $_SESSION['funcionario']->documentos->tituloeleitor->secao;
+        $titZona = $_SESSION['funcionario']->documentos->tituloeleitor->zona;
 
+        if(sexo == 'M'){
+            
+            $resNum = $_SESSION['funcionario']->documentos->reservista->numero;
+            $resCat = $_SESSION['funcionario']->documentos->reservista->categoria;
+            $resSerie = $_SESSION['funcionario']->documentos->reservista->serie;
+
+            $insert_reservista = "INSERT INTO public.reservista(numero, categoria, serie)
+                              VALUES ('{$resNum}', '{$resCat}','{$resSerie}');";
+
+            try{
+
+                $query = $this->db->prepare($insert_reservista);
+                $query->execute();
+
+            }catch(\PDOException $e){
+                echo "erro ao inserir reservista";
+            }
+        }else{
+
+            $resNum = "000000000";
+
+        }
         
-        $formAcad = $_SESSION['funcionario']->getDadosfuncionais()->getFormacaoacademica();
-        $matricula = $_SESSION['funcionario']->getDadosfuncionais()->getMatricula();
-        $dataAdmis = $_SESSION['funcionario']->getDadosfuncionais()->getDataadmissao();
-        $escolaridade = $_SESSION['funcionario']->getDadosfuncionais()->getEscolaridade();
-        $anoConclusao = $_SESSION['funcionario']->getDadosfuncionais()->getAnoconclusao();
-        $cargo = $_SESSION['funcionario']->getDadosfuncionais()->getCargo();
-        $funcao = $_SESSION['funcionario']->getDadosfuncionais()->getFuncao();
+        $formAcad = $_SESSION['funcionario']->dadosfuncionais->formacaoacademica;
+        $matricula = $_SESSION['funcionario']->dadosfuncionais->matricula;
+        $dataAdmis = $_SESSION['funcionario']->dadosfuncionais->dataadmissao;
+        $escolaridade = $_SESSION['funcionario']->dadosfuncionais->escolaridade;
+        $anoConclusao = $_SESSION['funcionario']->dadosfuncionais->anoconclusao;
+        $cargo = $_SESSION['funcionario']->dadosfuncionais->cargo;
+        $funcao = $_SESSION['funcionario']->dadosfuncionais->funcao;
 
         $escola = "24032239";
         $ativo = '1';
@@ -84,10 +103,8 @@ class FuncionarioModel extends Model{
                       VALUES ('{$rgNum}', '{$rgOrgao}', '$rgDataExp', '{$rgUfExp}');";
         
         $insert_tituloeleitor = "INSERT INTO public.tituloeleitor(numero, zona, secao)
-                                 VALUES ('{$titNum}', {$titZona}, {$titSecao});";
-        
-        $insert_reservista = "INSERT INTO public.reservista(numero, categoria, serie)
-                              VALUES ('{$resNum}', '{$resCat}','{$resSerie}');";
+                                 VALUES ('{$titNum}', '{$titZona}', '{$titSecao}');";
+
         
         $insert_funcionario = "INSERT INTO public.funcionario(
                                 cpf, nome, datanasc, cidadenasc, estadonasc, nomepai, nomemae, 
@@ -97,11 +114,15 @@ class FuncionarioModel extends Model{
                                VALUES 
                                 ('{$cpf}', '{$nome}', '{$dataNasc}', '{$cidadeNasc}', '{$ufNasc}', '{$nomePai}', 
                                 '{$nomeMae}', '{$sexo}', '{$estadoCivil}', '{$telefone}', '{$email}', '{$pispasep}', 
-                                '{$matricula}', '$dataAdmis', '{$escolaridade}', '{$formAcad}', {$anoConclusao}, 
+                                '{$matricula}', '$dataAdmis', '{$escolaridade}', '{$formAcad}', '{$anoConclusao}', 
                                 '{$cargo}', '{$funcao}', '{$enderecoCod}', '{$ctpsNum}', '{$rgNum}', '{$titNum}', 
                                 '{$resNum}', md5('{$cpf}'), '{$escola}', '{$ativo}');";
 
-        //echo $insert_funcionario;
+        echo $insert_funcionario."</br>";
+        echo $insert_endereco."</br>";
+        echo $insert_carteiraprof."</br>";
+        echo $insert_rg."</br>";
+        echo $insert_tituloeleitor."</br>";
 
         try {
             // set the PDO error mode to exception
@@ -117,9 +138,6 @@ class FuncionarioModel extends Model{
             $query->execute();
 
             $query = $this->db->prepare($insert_tituloeleitor);
-            $query->execute();
-
-            $query = $this->db->prepare($insert_reservista);
             $query->execute();
 
             $query = $this->db->prepare($insert_funcionario);
