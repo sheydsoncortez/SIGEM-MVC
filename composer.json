@@ -1,4 +1,15 @@
 {
+    "name": "emancos/SIGEM-MVC",
+    "description": "Sistema Escolar",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Emanuel Costa",
+            "email": "emancos@gmail.com",
+            "role": "Developer"
+        }
+    ],
+
     "require": {},
     "autoload": {
         "psr-4": {
