@@ -118,12 +118,6 @@ class FuncionarioModel extends Model{
                                 '{$cargo}', '{$funcao}', '{$enderecoCod}', '{$ctpsNum}', '{$rgNum}', '{$titNum}', 
                                 '{$resNum}', md5('{$cpf}'), '{$escola}', '{$ativo}');";
 
-        echo $insert_funcionario."</br>";
-        echo $insert_endereco."</br>";
-        echo $insert_carteiraprof."</br>";
-        echo $insert_rg."</br>";
-        echo $insert_tituloeleitor."</br>";
-
         try {
             // set the PDO error mode to exception
             $this->db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
