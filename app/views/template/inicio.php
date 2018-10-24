@@ -5,7 +5,7 @@
     <div class="container-fluid">
 
         <header>
-            <h1 class="h3 display">HOME</h1>
+
         </header>
 
         <div class="col-lg-12" >
@@ -15,10 +15,10 @@
 
                        <span class="topleft" >
                            <img src="<?php echo URL_BASE . "assets/img/entidades/24032239.png"; ?>"
-                                alt="person" class="img-fluid rounded-circle" height="100" width="100">
+                                alt="person" class="img-fluid rounded-circle" height="150" width="150">
                        </span>
-                       <p id='cabecalho_blocos_form'>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                         <?php echo strtoupper("E.M. Professor Mateus Viana") ?></p>
+                       <h1 id='cabecalho_blocos_form'>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                         <?php echo strtoupper("E.M. Professor Mateus Viana") ?></h1>
 
                     </div>
                 </div>
