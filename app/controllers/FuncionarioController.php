@@ -100,7 +100,7 @@ class FuncionarioController extends Controller{
             case 4:
 
                 $this->setDadosFuncionais();                
-                header('location:' . URL_BASE . 'funcionario/editar/'.$_SESSION["funcionario"]->documentos->cpf);
+                header('location:' . URL_BASE . 'funcionario/editar/'.$_SESSION["funcionario"]->cpf);
 
             break;
             case 5:{
