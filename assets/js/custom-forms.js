@@ -37,16 +37,6 @@ $(document).ready(function(){
 
 $(document).ready(function(){
     $('#pisPasep').mask('000.00000.00.0');
-})
-
-$(document).ready(function(){
-    String.prototype.replaceAt=function(index, replacement) {
-        return this.substr(0, index) + replacement+ this.substr(index + replacement.length);
-    }
-
-    $('#matriculafun').click(function () {
-        $('#matriculafun').attr('dir', 'rtl');
-    });
 });
 
 

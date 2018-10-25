@@ -25,8 +25,8 @@ class FuncionarioModel extends Model{
 
 
 
-        $cpf = $_SESSION['funcionario']->documentos->cpf;
-        $pispasep = $_SESSION['funcionario']->documentos->pispasep;
+        $cpf = $_SESSION['funcionario']->cpf;
+        $pispasep = $_SESSION['funcionario']->pispasep;
         $nome = $_SESSION['funcionario']->nome;
         $dataNasc = $_SESSION['funcionario']->datanasc;
         $cidadeNasc = $_SESSION['funcionario']->cidadenasc;
@@ -189,6 +189,10 @@ class FuncionarioModel extends Model{
             $sql_tit = "SELECT * FROM public.tituloeleitor WHERE numero='{$f->tituloeleitor}'";
             $query = $this->db->query($sql_tit);
             $f->documentos->tituloeleitor = $query->fetch(\PDO::FETCH_OBJ);
+
+            $sql_dadosfuncionais = "SELECT matricula, dataadmissao, escolaridade, formacaoacademica, anoconclusao, cargo, funcao FROM funcionario WHERE cpf='{$cpf}' AND ativo=true";
+            $query = $this->db->query($sql_dadosfuncionais);
+            $f->dadosfuncionais = $query->fetch(\PDO::FETCH_OBJ);
 
         }else{
             $f = false;

@@ -1,6 +1,7 @@
 <?php if (isset($_SESSION['funcionario'])) {
     $f = $_SESSION['funcionario'];
-} ?>
+} 
+?>
 
 <section class="forms offset-sm-1">
     <div class="container-fluid">
@@ -184,31 +185,31 @@
                             <div class="col-sm-12">
                                 <div class="row list-background">
                                     <strong class="col-sm-3 form-control-label">Matrícula:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$f->matricula}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$f->dadosfuncionais->matricula}</label>";?>
                                 </div>
                                 <div class="row">
                                     <strong class="col-sm-3 form-control-label">Data Admissão:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$f->dataadmissao}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$f->dadosfuncionais->dataadmissao}</label>";?>
                                 </div>
                                 <div class="row list-background">
                                     <strong class="col-sm-3 form-control-label">Escolaridade:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$f->escolaridade}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$f->dadosfuncionais->escolaridade}</label>";?>
                                 </div>
                                 <div class="row">
                                     <strong class="col-sm-3 form-control-label">Form. Acadêmica:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$f->formacaoacademica}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$f->dadosfuncionais->formacaoacademica}</label>";?>
                                 </div>
                                 <div class="row list-background">
                                     <strong class="col-sm-3 form-control-label">Ano Conclusão:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$f->anoconclusao}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$f->dadosfuncionais->anoconclusao}</label>";?>
                                 </div>
                                 <div class="row">
                                     <strong class="col-sm-3 form-control-label">Cargo:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$f->cargo}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$f->dadosfuncionais->cargo}</label>";?>
                                 </div>
                                 <div class="row list-background">
                                     <strong class="col-sm-3 form-control-label">Função:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$f->funcao}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$f->dadosfuncionais->funcao}</label>";?>
                                 </div>
 
                                 <div class="line"></div>
@@ -226,7 +227,7 @@
                                 <a href="<?php echo URL_BASE; ?>">
                                     <button type="button" class="btn btn-secondary" >Cancelar</button>
                                 </a>
-                                <a href="<?php echo URL_BASE . "funcionario/corrigir" ;?>">
+                                <a href="<?php echo URL_BASE . "funcionario/salvar/5" ;?>">
                                     <button type="button" class="btn btn-primary" >Salvar</button>
                                 </a>
 
