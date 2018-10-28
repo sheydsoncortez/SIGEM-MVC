@@ -4,6 +4,7 @@ namespace app\classes;
 
 use app\core\Controller;
 use app\classes\Rg;
+use app\classes\DocumentosAluno;
 
 class Aluno{
 
