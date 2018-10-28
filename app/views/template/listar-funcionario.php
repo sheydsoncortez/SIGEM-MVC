@@ -1,4 +1,4 @@
-<form action="to_something.php" method="post">
+<form action="" method="post">
     <section>
     <div class="container-fluid">
       <!-- Page Header-->
@@ -38,7 +38,7 @@
                           <td><?php echo $funcionario->nome ?></td>
                           <td><?php echo $funcionario->cargo ?></td>
                           <td><?php echo $funcionario->funcao ?></td>
-                          <td><a href="<?php echo "editar/". $funcionario->cpf ;?>">
+                          <td><a href="<?php echo "editar/". base64_encode($funcionario->cpf) ;?>">
                                   <button id="editarFuncionario" type="button" class="btn btn-secondary" >Editar
                                       <i class="fa fa-user-edit"></i>
                                   </button>

@@ -13,7 +13,7 @@
         <div class="col-lg-12" >
             <div class="card ">
 
-                <div class="card-body">
+                <div class="card-body" id="verDadosFuncionario">
 
                     <!-- INÍCIO DO FORM -->
 
@@ -23,14 +23,14 @@
                         <br/><p id="cabecalho_blocos_form">DADOS DO FUNCIONÁRIO</p>
                         <div class="line"></div>
                         <div class="form-group row">
-                            <div class="col-sm-12">
+                            <div class="col-sm-12" >
                                 <div class="row list-background">
                                     <strong class="col-sm-3 form-control-label">Nome:</strong>
                                     <?php echo "<label class='form-control-label lista-dados'>{$f->nome}</label>";?>
                                 </div>
                                 <div class="row">
                                     <strong class="col-sm-3 form-control-label">Data de Nasc:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$f->datanasc}</label>";?>
+                                    <?php $date = new DateTime($f->datanasc); $nd = $date->format('d/m/Y'); echo "<label class='form-control-label lista-dados'>{$nd}</label>";?>
                                 </div>
                                 <div class="row list-background">
                                     <strong class="col-sm-3 form-control-label">Cidade de Nasc:</strong>
@@ -224,7 +224,7 @@
                         <div class="line"></div>
                         <div class="form-group row">
                             <div class="col-sm-5 offset-sm-1">
-                                <a href="<?php echo URL_BASE; ?>">
+                                <a href="<?php echo URL_BASE . "funcionario/listar"; ?>">
                                     <button type="button" class="btn btn-secondary" >Cancelar</button>
                                 </a>
                                 <a href="<?php echo URL_BASE . "funcionario/salvar/5" ;?>">
@@ -238,4 +238,3 @@
             </div>
         </div>
 </section>
-

@@ -100,7 +100,7 @@ class FuncionarioController extends Controller{
             case 4:
 
                 $this->setDadosFuncionais();                
-                header('location:' . URL_BASE . 'funcionario/editar/'.$_SESSION["funcionario"]->cpf);
+                header('location:' . URL_BASE . 'funcionario/editar/'.base64_encode($_SESSION["funcionario"]->cpf));
 
             break;
             case 5:{
@@ -135,17 +135,15 @@ class FuncionarioController extends Controller{
 
         $funcionario = new FuncionarioModel();
 
-        if(!$funcionario->getFuncionario($cpf)){
+        if(!$funcionario->getFuncionario(base64_decode($cpf))){
             if($_SESSION["funcionario"]){
                 $this->load("admin", $dados);
             }
         }else{
-            $_SESSION["funcionario"] = $funcionario->getFuncionario($cpf);
+            $_SESSION["funcionario"] = $funcionario->getFuncionario(base64_decode($cpf));
             $this->load("admin", $dados);
         }
-            
 
-        
 
    }
    
@@ -174,10 +172,10 @@ class FuncionarioController extends Controller{
     * @method mixed setDadosFuncionario()
     * @return void
     */
-   private function setDadosFuncionario(){
+   public function setDadosFuncionario(){
         $funcionario = new Funcionario();
 
-        $funcionario->nome = $_POST['nome'];
+        $funcionario->nome = $_POST['nomeFun'];
         $funcionario->datanasc = $_POST['dataNasc'];
         $funcionario->cidadenasc = $_POST['cidadeNasc'];
         $funcionario->estadonasc = $_POST['estadoNasc'] ;
@@ -189,7 +187,8 @@ class FuncionarioController extends Controller{
         $funcionario->email = $_POST['email'];
 
         $_SESSION['funcionario'] = $funcionario;
-   }
+
+    }
 
    /**
     * Adiciona um Objeto endereço a SESSION Funcionário

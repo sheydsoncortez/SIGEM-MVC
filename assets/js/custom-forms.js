@@ -1,3 +1,4 @@
+var URL_BASE_JQ = "http://localhost/SIGEM-MVC/";
 // ================= Placeholder campos DATA.=================
 $(function () {
     $('#data').datetimepicker({
@@ -147,12 +148,13 @@ $('#cargoFun').change(function(){
 //ABRE O MODAL DO UPDATE FUNCIONÁRIO
 $(document).ready(function(){
     var back = $('#updateFuncionario').html();
-    $("#corrigirDadosPessoais").click(function(){        
+    $("#corrigirDadosPessoais").click(function(){
         $('#pills-dadospessoais-tab').addClass('active');
         $('#pills-dadospessoais').addClass('show active');
         $('#pills-endereco-tab').hide();
         $('#pills-documentos-tab').hide();
         $('#pills-dadosfuncionais-tab').hide();
+        $('.modal form').attr('action', "funcionario/setDadosFuncionario");
         $(".modal").modal();
     });           
     $("#corrigirEndereco").click(function(){
@@ -161,6 +163,7 @@ $(document).ready(function(){
         $('#pills-endereco').addClass('show active');
         $('#pills-documentos-tab').hide();
         $('#pills-dadosfuncionais-tab').hide();
+        $('.modal-footer a').attr('rel', 'funcionario/setEndereco');
         $(".modal").modal();
     }); 
     $("#corrigirDocumentos").click(function(){
@@ -169,6 +172,7 @@ $(document).ready(function(){
         $('#pills-documentos-tab').addClass('active');
         $('#pills-documentos').addClass('show active');
         $('#pills-dadosfuncionais-tab').hide();
+        $('.modal-footer a').attr('rel', '<?php echo URL_BASE ;?>funcionario/setDocumentosFuncionario');
         $(".modal").modal();
     });
     $("#corrigirDadosFuncionais").click(function(){
@@ -177,6 +181,7 @@ $(document).ready(function(){
         $('#pills-documentos-tab').hide();
         $('#pills-dadosfuncionais-tab').addClass('active');
         $('#pills-dadosfuncionais').addClass('show active');
+        $('.modal-footer a').attr('rel', 'funcionario/setDadosFuncionais');
         $(".modal").modal();
     });
 

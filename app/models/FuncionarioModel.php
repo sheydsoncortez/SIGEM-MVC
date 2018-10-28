@@ -56,7 +56,7 @@ class FuncionarioModel extends Model{
         $titSecao = $_SESSION['funcionario']->documentos->tituloeleitor->secao;
         $titZona = $_SESSION['funcionario']->documentos->tituloeleitor->zona;
 
-        if(sexo == 'M'){
+        if($sexo == 'M'){
             
             $resNum = $_SESSION['funcionario']->documentos->reservista->numero;
             $resCat = $_SESSION['funcionario']->documentos->reservista->categoria;
@@ -167,6 +167,8 @@ class FuncionarioModel extends Model{
 
         if ($query->rowCount() == 1) {
 
+            unset($_SESSION['funcionario']);
+
             $f = $query->fetch(\PDO::FETCH_OBJ);
 
             $sql_end = "SELECT cep, cidade, logradouro, numero, bairro, estado
@@ -195,7 +197,9 @@ class FuncionarioModel extends Model{
             $f->dadosfuncionais = $query->fetch(\PDO::FETCH_OBJ);
 
         }else{
+
             $f = false;
+
         }
 
         //echo"<pre>";

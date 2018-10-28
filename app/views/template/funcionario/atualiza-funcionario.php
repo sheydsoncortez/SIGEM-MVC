@@ -1,11 +1,13 @@
 <!-- MODAL UPDATE FUNCIONARIO -->
         <div class="modal fade" id="updateFuncionario" role="dialog" aria-labelledby="updateFuncionario" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">                    
+                <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>                        
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     </div>
+                    <form id="updateFuncionario" method="POST" action="">
                     <div class="modal-body">
+
                         <ul class="nav nav-pills mb-3" id="updateFuncionario" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link" id="pills-dadospessoais-tab" data-toggle="pill" href="#pills-dadospessoais" role="tab" aria-controls="pills-dadospessoais" aria-selected="true">Dados Pessoais</a>
@@ -37,8 +39,32 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Atualizar</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">Cancelar</button>
+                        <button id="atualizadados" type="submit" class="btn btn-primary">Atualizar</button>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#atualizadados').click(function(){
+            var dados = $('.modal form').serializeArray();
+            var div = $('#verDadosFuncionario').html();
+            /*console.clear();
+            $.each(dados, function(i, field){
+                console.log(field.name+": "+field.value);
+            });*/
+
+            $.ajax({
+                type: "POST",
+                url: URL_BASE_JQ + $('.modal form').attr('action'),
+                data: dados, // serializes the form's elements.
+                success: function(data)
+                {
+                    //$('body').load(location.href);
+                }
+            });
+        });
+    });
+</script>

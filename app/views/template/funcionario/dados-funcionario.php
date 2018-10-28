@@ -1,12 +1,13 @@
 <?php if (isset($_SESSION['funcionario'])){
     $f = $_SESSION['funcionario'];
+    $date = new DateTime($f->datanasc); $nd = $date->format('d/m/Y');
 }?>
 <div class="form-group row">
   <div class="col-sm-12">
     <div class="row">
       <label class="col-sm-2 form-control-label"></label>
       <div class="col-sm-8">
-      <input type="text" placeholder="Nome" id="nomeFun" name="nome" 
+      <input type="text" placeholder="Nome" id="nomeFun" name="nomeFun"
                   value="<?php isset($f) ? print($f->nome) : "" ?>"
                   required oninvalid="this.setCustomValidity("Preencha o campo nome")"
                   oninput="setCustomValidity("")" class="form-control"/>
@@ -21,7 +22,7 @@
       <div class="col-sm-3">
         <div class="input-group date">
           <input type="text" class="form-control datetimepicker-input" id="data"
-                  value="<?php isset($f) ? print($f->datanasc) : "" ?>"
+                  value="<?php isset($nd) ? print($nd) : "" ?>"
                   data-toggle="datetimepicker" data-target="#data"
                   placeholder="Data de Nascimeto"               
                   name="dataNasc" required
