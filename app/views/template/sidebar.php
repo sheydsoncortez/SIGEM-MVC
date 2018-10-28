@@ -18,7 +18,7 @@
             <li><a href="<?php echo URL_BASE ?>"> <i class="fas fa-home"></i>Inicio</a></li>
             <li><a href="#aluno" aria-expanded="false" data-toggle="collapse"> <i class="fas fa-user-graduate"></i>Aluno </a>
               <ul id="aluno" class="collapse list-unstyled ">
-                <li><a href="form-aluno.php?page=1">Matrícula</a></li>
+                <li><a href="<?php echo URL_BASE . "aluno/cadastrar/1";?>">Matrícula</a></li>
                 <li><a href="#">Consulta</a></li>
                 <li><a href="#">Frequência</a></li>
                 <li><a href="#">Documetos</a></li>
