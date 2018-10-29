@@ -4,7 +4,6 @@
 }?>
 
 <!-- CADASTRO DE DISCIPLINA -->
-
 <div class="form-group row">
     <div class="col-sm-12">
         <div class="row">

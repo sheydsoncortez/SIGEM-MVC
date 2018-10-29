@@ -17,7 +17,6 @@ class Disciplina{
     private $codigoTurma;
     private $codigoSerie;
 
-
     public function __construct(){
         $this->view = new \stdClass;
     }

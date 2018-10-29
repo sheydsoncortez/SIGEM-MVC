@@ -10,6 +10,7 @@
 
         <div class="col-lg-12" >
             <div class="card ">
+                
                 <div class="col-sm-12">
                     <div class="card-header d-flex align-items-center">
 
@@ -31,7 +32,7 @@
                       <a class="page-link" href="4/">4</a></li>
 
                       <?php echo "<li id='p6' class='page-item {$disabled[5]}'>";
-                      echo "<a class='page-link' href='javascript:formfuncionario.submit()' >Próximo</a></li>"; ?>
+                      echo "<a class='page-link' href='javascript:formdisciplina.submit()' >Próximo</a></li>"; ?>
 
                   </ul>
                 </span>
@@ -43,6 +44,7 @@
 
                     <form class='form-horizontal' name='formdisciplina' id='formdisciplina' method='POST'
                           action="<?php echo URL_BASE . "disciplina/salvar/".$page;?>" >
+
 
                         <?php include($paginator); //echo URL_BASE . $paginator;?>
 

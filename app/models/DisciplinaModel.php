@@ -26,7 +26,6 @@ class DisciplinaModel extends Model
         $disciplina = new Disciplina();
         $disciplina = $_SESSION['disciplina'];
 
-
         $codigoDisciplina = $_SESSION['disciplina']->codigodisciplina;
 
     }

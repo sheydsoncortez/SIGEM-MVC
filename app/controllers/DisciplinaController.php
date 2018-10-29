@@ -48,6 +48,7 @@ class DisciplinaController extends Controller
                 $dados["page"] = $page;
                 break;
         }
+
         //echo"<pre>";
         //print_r($dados);
         $this->load("admin", $dados);
