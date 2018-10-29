@@ -4,9 +4,7 @@ namespace app\models;
 
 use app\core\Model;
 use app\classes\Disciplina;
-use app\classes\Endereco;
-use app\classes\DocumentosFuncionario;
-use app\classes\DadosFuncionais;
+
 
 error_reporting(E_ERROR);
 

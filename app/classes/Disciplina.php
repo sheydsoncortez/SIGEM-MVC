@@ -114,5 +114,4 @@ class Disciplina{
         $this->codigoSerie = $codigoSerie;
     }
 
-
 }

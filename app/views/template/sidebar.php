@@ -34,7 +34,8 @@
             </li>
             <li><a href="#disciplina" aria-expanded="false" data-toggle="collapse"> <i class="fas fa-chalkboard"></i>Disciplinas</a>
               <ul id="disciplina" class="collapse list-unstyled ">
-                <li><a href="form-disciplina.php?page=1">Cadastro</a></li>
+                <li><a href="<?php echo URL_BASE . "disciplina/cadastrar/1";?>">Cadastro</a></li>
+
                 <li><a href="#">Consulta</a></li>
                 <li><a href="#">Documetos</a></li>
               </ul>

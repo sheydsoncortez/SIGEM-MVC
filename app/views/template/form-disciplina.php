@@ -1,6 +1,7 @@
 <!-- ================================================================================================= -->
 
 <!-- FORMULARIO DE DISCIPLINA-->
+
 <section class="forms offset-sm-1">
     <div class="container-fluid">
 
@@ -10,7 +11,7 @@
 
         <div class="col-lg-12" >
             <div class="card ">
-                
+
                 <div class="col-sm-12">
                     <div class="card-header d-flex align-items-center">
 
@@ -26,10 +27,7 @@
                       <a class="page-link" href="1/">1</a></li>
                       <?php echo "<li id='p2' class='page-item {$active[1]} {$disabled[2]}'>";?>
                       <a class="page-link" href="2/">2</a></li>
-                      <?php echo "<li id='p3' class='page-item {$active[2]} {$disabled[3]}'>";?>
-                      <a class="page-link" href="3/">3</a></li>
-                      <?php echo "<li id='p4' class='page-item {$active[3]} {$disabled[4]}'>";?>
-                      <a class="page-link" href="4/">4</a></li>
+
 
                       <?php echo "<li id='p6' class='page-item {$disabled[5]}'>";
                       echo "<a class='page-link' href='javascript:formdisciplina.submit()' >Próximo</a></li>"; ?>
