@@ -67,7 +67,8 @@ class DocumentosAluno{
 
     public function __toString(){
         return  "========== DOCUMENTOS ==========\n".
-                "CPF: ".$this->cpf."\n".
+                "CPF: ".$this->cpf."\n";
     }
+}
 
 ?>
