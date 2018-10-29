@@ -1,26 +1,26 @@
 var URL_BASE_JQ = "http://localhost/SIGEM-MVC/";
 // ================= Placeholder campos DATA.=================
-$(function () {
+$(document).ready(function () {
+    jQuery.datetimepicker.setLocale('pt-BR');
     $('#data').datetimepicker({
-        locale: 'pt-br',
-        format: 'DD/MM/YYYY',
-        minDate: '1920/01/01'
+        timepicker:false,
+        format:'d/m/Y'
     });
 });
 
-$(function () {
+$(document).ready(function () {
+    jQuery.datetimepicker.setLocale('pt-BR');
     $('#ano').datetimepicker({
-        locale: 'pt-br',
-        format: 'YYYY',
-        viewMode:'years',
-        minDate: '1920/01/01'
+            timepicker:false,
+            disabledWeekDays:[],
+            format:'Y'
     });
 });
 
-$('form-control').click(function(){ 
-        if($('.datetimepicker-input').val() == ""){
-            $('.datetimepicker-input').attr('required', true);
-        }    
+$('form-control').click(function(){
+    if($('#data').val() == ""){
+        $('#data').attr('required', true);
+    }
 });
 
 $(document).ready(function(){
@@ -106,7 +106,7 @@ $(document).ready(function() {
                         $("#logradouro").val(dados.logradouro);
                         $("#bairro").val(dados.bairro);
                         $("#cidade").val(dados.localidade);
-                        $("#ufEndereco").val(dados.uf);
+                        $("#ufEndereco").val(dados.uf).change();
                         $("#ibge").val(dados.ibge);  
                         
                     } //end if.
@@ -156,6 +156,14 @@ $(document).ready(function(){
         $('#pills-dadosfuncionais-tab').hide();
         $('.modal form').attr('action', "funcionario/setDadosFuncionario");
         $(".modal").modal();
+        $('.modal').on('shown.bs.modal', function() {
+                $('#data').attr('data-target', '#data');
+                $('#data').datetimepicker({
+                    locale: 'pt-br',
+                    format: 'DD/MM/YYYY',
+                    minDate: '1920/01/01'
+                });
+        });
     });           
     $("#corrigirEndereco").click(function(){
         $('#pills-dadospessoais-tab').hide();

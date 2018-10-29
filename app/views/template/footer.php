@@ -30,10 +30,13 @@
     <script src="<?php echo URL_BASE . "assets/js/charts-home.js"; ?>"></script>
     <!-- Main File-->
     <script src="<?php echo URL_BASE . "assets/js/front.js"; ?>"></script>
-    <script type="text/javascript" src="<?php echo URL_BASE . "assets/js/moment.js"; ?>"></script>
-    <script type="text/javascript" src="<?php echo URL_BASE . "assets/js/tempusdominus-bootstrap-4.js"; ?>"></script>
+
     <script src="<?php echo URL_BASE . "assets/js/custom-forms.js"; ?>"></script>
+
     <script src="<?php echo URL_BASE . "assets/js/jquery.mask.js"; ?>"></script>
+
+    <script type="text/javascript" src="<?php echo URL_BASE . "assets/js/moment.js"; ?>"></script>
+    <script src="<?php echo URL_BASE . "assets/js/jquery.datetimepicker.full.min.js"; ?>"></script>
 
     <script src="<?php echo URL_BASE . "assets/js/datatables.js"; ?>"></script>
     <script src="<?php echo URL_BASE . "assets/js/dataTables.bootstrap4.js"; ?>"></script>

@@ -1,5 +1,7 @@
 <?php if (isset($_SESSION['funcionario'])){
     $df = $_SESSION['funcionario']->dadosfuncionais;
+    $date = new DateTime($df->dataadmissao);
+    $nd = $date->format('d/m/Y'); $na = $date->format('Y');
 }?>
 <!--   DADOS FUNCIONAIS  -->
 <div class="form-group row">
@@ -15,15 +17,14 @@
                         oninput="setCustomValidity('')" dir=""/>
             </div>                    
             <div class="col-sm-3">
-                <div class="input-group date">
-                    <input type="text" class="form-control datetimepicker-input" id="data" 
-                            data-toggle="datetimepicker" data-target="#data"
-                            placeholder="Data de Admissão"
-                            value="<?php isset($df) ? print($df->dataadmissao) : ""?>"
+                <div class="input-group">
+                    <input type="text" class="form-control" id="data"
+                            placeholder="Data de Admissão" data-target="#data"
+                            value="<?php isset($nd) ? print($nd) : ""?>"
                             name="dataAdmissaoFun" required/>
-                            <div class="input-group-append">
-                                <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
-                            </div>
+                    <div class="input-group-append">
+                        <div class="input-group-text"><i class="fa fa-calendar-alt"></i></div>
+                    </div>
                 </div>
             </div>
             <div class="col-sm-3">
@@ -53,15 +54,14 @@
                        id="inputFormacao" disabled/>
             </div>                       
             <div class="col-sm-3">
-                <div class="input-group date">
-                    <input type="text" class="form-control datetimepicker-input" id="ano" 
-                            data-toggle="datetimepicker" data-target="#ano"
+                <div class="input-group">
+                    <input type="text" class="form-control" id="ano"
                             placeholder="Ano de conclusão"
-                            value="<?php isset($df) ? print($df->anoconclusao) : ""?>"
+                            value="<?php isset($na) ? print($na) : ""?>"
                             name="anoConclusaoFun"/>
-                        <div class="input-group-append">
-                        <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
-                        </div>
+                    <div class="input-group-append">
+                        <div class="input-group-text"><i class="fa fa-calendar-alt"></i></div>
+                    </div>
                 </div>
             </div>
             <div class="col-sm-3">

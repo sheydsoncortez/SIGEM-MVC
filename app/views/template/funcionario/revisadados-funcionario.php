@@ -1,9 +1,15 @@
 <?php if (isset($_SESSION['funcionario'])) {
     $f = $_SESSION['funcionario'];
+    $img = str_replace(" ","",$f->nome);
+    $filename = "assets/img/entidades/{$img}.png";
+
+    if (!file_exists($filename)) {
+        $img = "users";
+    }
 } 
 ?>
 
-<section class="forms offset-sm-1">
+<section class="forms offset-sm-1" xmlns="http://www.w3.org/1999/html">
     <div class="container-fluid">
 
         <header>
@@ -20,7 +26,13 @@
                    <form class='form-horizontal' id='formfuncionario' method='POST'
                           action="<?php echo URL_BASE . "funcionario/salvar/".$page;?>" >
 
-                        <br/><p id="cabecalho_blocos_form">DADOS DO FUNCIONÁRIO</p>
+                       <br/>
+                        <span class="topright" >
+                                    <img src="<?php echo URL_BASE . "assets/img/entidades/{$img}.png"; ?>"
+                                         alt="person" class="img-fluid rounded-bottom rounded-top" height="140" width="120" >
+                        </span>
+                       <p style="padding-top: 50px" id="cabecalho_blocos_form">DADOS DO FUNCIONÁRIO</p>
+
                         <div class="line"></div>
                         <div class="form-group row">
                             <div class="col-sm-12" >
@@ -30,7 +42,7 @@
                                 </div>
                                 <div class="row">
                                     <strong class="col-sm-3 form-control-label">Data de Nasc:</strong>
-                                    <?php $date = new DateTime($f->datanasc); $nd = $date->format('d/m/Y'); echo "<label class='form-control-label lista-dados'>{$nd}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$f->datanasc}</label>";?>
                                 </div>
                                 <div class="row list-background">
                                     <strong class="col-sm-3 form-control-label">Cidade de Nasc:</strong>
