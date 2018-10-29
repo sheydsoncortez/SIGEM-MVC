@@ -91,15 +91,14 @@
     <div class="row">
         <label class="col-sm-2 form-control-label"></label>
         <div class="col-sm-3">
-        <div class="input-group date">
-            <input type="text" class="form-control datetimepicker-input" id="data" 
-              data-toggle="datetimepicker" data-target="#data"
+        <div class="input-group">
+            <input type="text" class="form-control" id="data"
               placeholder="Data de Expedição"
               value="<?php isset($d) ? print($d->rg->dataexp) : "" ?>"
               name="dataExpRg" required oninvalid="this.setCustomValidity('Insira a data de expedição')"
-              oninput="setCustomValidity('')"/>    
+              oninput="setCustomValidity('')"/>
             <div class="input-group-append">
-                <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+                <div class="input-group-text"><i class="fa fa-calendar-alt"></i></div>
             </div>
         </div>
         </div>
@@ -108,7 +107,7 @@
             required oninvalid="this.setCustomValidity('Selecione o extado expedidor')"
             oninput="setCustomValidity('')">
             <?php if(isset($d)){
-                echo "<option selected='selected' value='{$d->rg->estadoexp}'>{$d->rg->estadoexp}</option>";
+                echo "<option selected='selected' value='{$d->rg->ufexp}'>{$d->rg->ufexp}</option>";
             } else{   echo "<option value=''  disabled selected hidden>Estado</option>";}?>
             <option value="AC">Acre</option>
             <option value="AL">Alagoas</option>

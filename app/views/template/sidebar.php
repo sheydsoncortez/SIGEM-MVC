@@ -5,7 +5,7 @@
         <!-- Sidebar Header    -->
         <div class="sidenav-header d-flex align-items-center justify-content-center">
           <!-- User Info-->
-          <div class="sidenav-header-inner text-center"><img src="<?php echo URL_BASE . "assets/img/entidades/admin.jpg"; ?>" alt="person" class="img-fluid rounded-circle">
+          <div class="sidenav-header-inner text-center"><img src="<?php echo URL_BASE . "assets/img/entidades/{$_SESSION[NOME_SESSION_LOGIN]["name"]}.png"; ?>" alt="person" class="img-fluid rounded-circle">
               <!-- EXIBE O NOME DO USUÁRIO LOGADO NO SISTEMA -->
               <h2 class="h5"><?php echo $_SESSION[NOME_SESSION_LOGIN]["name"]; ?></h2><span><?php echo $_SESSION[NOME_SESSION_LOGIN]["function"]; ?></span>
           </div>

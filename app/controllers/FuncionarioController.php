@@ -73,11 +73,12 @@ class FuncionarioController extends Controller{
         //echo"<pre>";
         //print_r($dados);
         $this->load("admin", $dados);
-        $dados = "";
+        unset($dados);
 
     }       
 
-    public function salvar($page){        
+    public function salvar($page){
+
         switch ($page){
             case 1:
 
@@ -127,7 +128,7 @@ class FuncionarioController extends Controller{
 
         $dados["titulo"] = "DADOS FUNCIONARIO";
         $dados["view"] = "template/funcionario/revisadados-funcionario";
-        $dados["modal"] = "template/funcionario/atualiza-funcionario.php";
+        $dados["modal"] = "template/funcionario/atualiza-funcionario-modal.php";
         $dados["page"] = "";
         $dados['link'] = "funcionario/editar/".$cpf;
         $dados['breadcrumbl1'] = "funcionário";
@@ -141,7 +142,7 @@ class FuncionarioController extends Controller{
             }
         }else{
             $_SESSION["funcionario"] = $funcionario->getFuncionario(base64_decode($cpf));
-            $this->load("admin", $dados);
+           $this->load("admin", $dados);
         }
 
 
@@ -153,7 +154,7 @@ class FuncionarioController extends Controller{
       $dados['breadcrumbl1'] = "funcionário";
       $dados['breadcrumbl2'] = "listar";
       $dados["view"] = "template/listar-funcionario";
-      $dados["modal"] = "template/funcionario/atualiza-funcionario.php";
+      $dados["modal"] = "template/funcionario/atualiza-funcionario-modal.php";
       $dados["funcionarios"] = $funcionarios->listarTodos();
       $this->load("admin", $dados);
    }

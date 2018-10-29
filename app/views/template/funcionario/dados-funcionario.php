@@ -1,6 +1,7 @@
 <?php if (isset($_SESSION['funcionario'])){
     $f = $_SESSION['funcionario'];
-    $date = new DateTime($f->datanasc); $nd = $date->format('d/m/Y');
+    //$date = new DateTime($f->datanasc); $nd = $date->format('d/m/Y');
+    //echo(strcmp($f->sexo,"F"));
 }?>
 <div class="form-group row">
   <div class="col-sm-12">
@@ -20,18 +21,17 @@
     <div class="row">
       <label class="col-sm-2 form-control-label"></label>
       <div class="col-sm-3">
-        <div class="input-group date">
-          <input type="text" class="form-control datetimepicker-input" id="data"
-                  value="<?php isset($nd) ? print($nd) : "" ?>"
-                  data-toggle="datetimepicker" data-target="#data"
-                  placeholder="Data de Nascimeto"               
-                  name="dataNasc" required
-                  required oninvalid="this.setCustomValidity('Preencha o campo data de nascimento')"
-                  oninput="setCustomValidity('')"/>      
-            <div class="input-group-append">
-              <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
-            </div>
-        </div>
+          <div class="input-group">
+              <input type="text" class="form-control" id="data"
+                     value="<?php echo($f->datanasc != null) ? $f->datanasc : "" ?>"
+                     placeholder="Data de Nascimeto"
+                     name="dataNasc"
+                     oninvalid="this.setCustomValidity('Preencha o campo data de nascimento')"
+                     oninput="setCustomValidity('')"/>
+              <div class="input-group-append">
+                  <div class="input-group-text"><i class="fa fa-calendar-alt"></i></div>
+              </div>
+          </div>
       </div>
       <div class="col-sm-3">
         <input type="text" placeholder="Cidade onde nasceu" class="form-control" name="cidadeNasc"
@@ -107,17 +107,16 @@
             <legend id="legenda-sexo">Sexo</legend>
               <div class="form-check-inline">
                 <label class="form-check-inline">
-                  <input type="radio" <?php if (isset($f) and $f->sexo == 'M') print('checked'); ?> value="M" name="sexo"
-                          required oninvalid="this.setCustomValidity('Selecione uma das opções')"
-                          oninput="setCustomValidity('')"/>
-                  &nbspMasculino 
+                  <input type="radio" value="M" name="sexo"
+                         <?php if(strcmp($f->sexo,"M") == 2) echo 'checked'; ?>
+                         required oninvalid="this.setCustomValidity('Selecione uma das opções')"
+                         oninput="setCustomValidity('')"/>&nbspMasculino
                 </label>
               </div> 
               &nbsp&nbsp
               <div class="form-check-inline">
                 <label class="form-check-inline">
-                  <input type="radio" <?php if (isset($f) and $f->sexo == 'F') print('checked'); ?> value="F" name="sexo"/>
-                  &nbspFeminino 
+                  <input type="radio" value="F" <?php if(strcmp($f->sexo,"F") == 2) echo 'checked'; ?> name="sexo"/>&nbspFeminino
                 </label>
               </div>                            
           </fieldset>

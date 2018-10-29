@@ -1,6 +1,10 @@
 <?php
         if (isset($_SESSION['funcionario'])){
+
         	$d = $_SESSION['funcionario']->documentos;
+
+        	$d->cpf = $_SESSION['funcionario']->cpf;
+            $d->pispasep = $_SESSION['funcionario']->pispasep;
 
     		if($_SESSION['funcionario']->sexo == 'M'){
     			$required = "required";
@@ -8,6 +12,9 @@
     			$required = "";
     		}    		    		
     	}
+
+        //echo"<pre>";
+        //print_r($d);
 
         include('app/views/template/documentos/ctps.php');
 
