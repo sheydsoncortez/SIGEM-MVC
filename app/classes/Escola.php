@@ -11,10 +11,10 @@ namespace app\classes;
 
 class Escola
 {
-    private $codigoEscola;
-    private $nomeEscola;
-    private $telefoneEscola;
-    private $emailEscola;
+    private $codigo;
+    private $nome;
+    private $telefone;
+    private $email;
     private $endereco;
 
 
@@ -34,65 +34,65 @@ class Escola
     /**
      * @return mixed
      */
-    public function getCodigoEscola()
+    public function getCodigo()
     {
-        return $this->codigoEscola;
+        return $this->codigo;
     }
 
     /**
-     * @param mixed $codigoEscola
+     * @param mixed $codigo
      */
-    public function setCodigoEscola($codigoEscola)
+    public function setCodigo($codigo)
     {
-        $this->codigoEscola = $codigoEscola;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getNomeEscola()
-    {
-        return $this->nomeEscola;
-    }
-
-    /**
-     * @param mixed $nomeEscola
-     */
-    public function setNomeEscola($nomeEscola)
-    {
-        $this->nomeEscola = $nomeEscola;
+        $this->codigo = $codigo;
     }
 
     /**
      * @return mixed
      */
-    public function getTelefoneEscola()
+    public function getNome()
     {
-        return $this->telefoneEscola;
+        return $this->nome;
     }
 
     /**
-     * @param mixed $telefoneEscola
+     * @param mixed $nome
      */
-    public function setTelefoneEscola($telefoneEscola)
+    public function setNome($nome)
     {
-        $this->telefoneEscola = $telefoneEscola;
+        $this->nome = $nome;
     }
 
     /**
      * @return mixed
      */
-    public function getEmailEscola()
+    public function getTelefone()
     {
-        return $this->emailEscola;
+        return $this->telefone;
     }
 
     /**
-     * @param mixed $emailEscola
+     * @param mixed $telefone
      */
-    public function setEmailEscola($emailEscola)
+    public function setTelefone($telefone)
     {
-        $this->emailEscola = $emailEscola;
+        $this->telefone = $telefone;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param mixed $email
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
     }
 
     /**
@@ -110,6 +110,8 @@ class Escola
     {
         $this->endereco = $endereco;
     }
+
+
 
 
 
