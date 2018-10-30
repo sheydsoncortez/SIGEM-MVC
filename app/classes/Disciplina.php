@@ -17,6 +17,7 @@ class Disciplina{
     private $turma;
     private $serie;
 
+
     public function __construct(){
         $this->view = new \stdClass;
     }
