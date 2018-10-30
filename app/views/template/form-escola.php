@@ -6,13 +6,11 @@
  * Time: 11:01
  */
 
-<!-- FORMULARIO DE DISCIPLINA-->
-
 <section class="forms offset-sm-1">
     <div class="container-fluid">
 
         <header>
-            <h1 class="h3 display">Cadastro de Escolas</h1>
+            <h1 class="h3 display">Cadastro de Escola</h1>
         </header>
 
         <div class="col-lg-12" >
@@ -46,8 +44,8 @@
 
     <!-- INÍCIO DO FORM -->
 
-    <form class='form-horizontal' name='formdisciplina' id='formdisciplina' method='POST'
-          action="<?php echo URL_BASE . "disciplina/salvar/".$page;?>" >
+    <form class='form-horizontal' name='formescola' id='formescola' method='POST'
+          action="<?php echo URL_BASE . "escola/salvar/".$page;?>" >
 
 
         <?php include($paginator); //echo URL_BASE . $paginator;?>
@@ -65,3 +63,4 @@
 </form>
 </div>
 </div>
+</section>
