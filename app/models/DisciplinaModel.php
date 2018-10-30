@@ -25,6 +25,10 @@ class DisciplinaModel extends Model
         $disciplina = $_SESSION['disciplina'];
 
         $codigoDisciplina = $_SESSION['disciplina']->codigodisciplina;
+        $nomeDisciplina = $_SESSION['disciplina']->nomedisciplina;
+        $codigoProfessor = $_SESSION['disciplina']->codigoprofessor;
+        $codigoTurma = $_SESSION['disciplina']->codigoturma;
+        $codigoSerie = $_SESSION['disciplina']->codigoserie;
 
     }
 }

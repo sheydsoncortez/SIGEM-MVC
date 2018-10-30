@@ -11,11 +11,11 @@ namespace app\classes;
 
 class Disciplina{
 
-    private $codigoDisciplina;
-    private $nomeDisciplina;
-    private $codigoProfessor;
-    private $codigoTurma;
-    private $codigoSerie;
+    private $codigo;
+    private $nome;
+    private $professor;
+    private $turma;
+    private $serie;
 
     public function __construct(){
         $this->view = new \stdClass;
@@ -37,81 +37,82 @@ class Disciplina{
     /**
      * @return mixed
      */
-    public function getCodigoDisciplina()
+    public function getCodigo()
     {
-        return $this->codigoDisciplina;
+        return $this->codigo;
     }
 
     /**
-     * @param mixed $codigoDisciplina
+     * @param mixed $codigo
      */
-    public function setCodigoDisciplina($codigoDisciplina)
+    public function setCodigo($codigo)
     {
-        $this->codigoDisciplina = $codigoDisciplina;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getNomeDisciplina()
-    {
-        return $this->nomeDisciplina;
-    }
-
-    /**
-     * @param mixed $nomeDisciplina
-     */
-    public function setNomeDisciplina($nomeDisciplina)
-    {
-        $this->nomeDisciplina = $nomeDisciplina;
+        $this->codigo = $codigo;
     }
 
     /**
      * @return mixed
      */
-    public function getCodigoProfessor()
+    public function getNome()
     {
-        return $this->codigoProfessor;
+        return $this->nome;
     }
 
     /**
-     * @param mixed $codigoProfessor
+     * @param mixed $nome
      */
-    public function setCodigoProfessor($codigoProfessor)
+    public function setNome($nome)
     {
-        $this->codigoProfessor = $codigoProfessor;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCodigoTurma()
-    {
-        return $this->codigoTurma;
-    }
-
-    /**
-     * @param mixed $codigoTurma
-     */
-    public function setCodigoTurma($codigoTurma)
-    {
-        $this->codigoTurma = $codigoTurma;
+        $this->nome = $nome;
     }
 
     /**
      * @return mixed
      */
-    public function getCodigoSerie()
+    public function getProfessor()
     {
-        return $this->codigoSerie;
+        return $this->professor;
     }
 
     /**
-     * @param mixed $codigoSerie
+     * @param mixed $professor
      */
-    public function setCodigoSerie($codigoSerie)
+    public function setProfessor($professor)
     {
-        $this->codigoSerie = $codigoSerie;
+        $this->professor = $professor;
     }
 
-}
+    /**
+     * @return mixed
+     */
+    public function getTurma()
+    {
+        return $this->turma;
+    }
+
+    /**
+     * @param mixed $turma
+     */
+    public function setTurma($turma)
+    {
+        $this->turma = $turma;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSerie()
+    {
+        return $this->serie;
+    }
+
+    /**
+     * @param mixed $serie
+     */
+    public function setSerie($serie)
+    {
+        $this->serie = $serie;
+    }
+
+
+   }

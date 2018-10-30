@@ -29,7 +29,7 @@
                       <a class="page-link" href="2/">2</a></li>
 
 
-                      <?php echo "<li id='p6' class='page-item {$disabled[5]}'>";
+                      <?php echo "<li id='p3' class='page-item {$disabled[5]}'>";
                       echo "<a class='page-link' href='javascript:formdisciplina.submit()' >Próximo</a></li>"; ?>
 
                   </ul>
