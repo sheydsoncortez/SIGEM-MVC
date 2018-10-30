@@ -129,4 +129,10 @@ class DisciplinaController extends Controller
         $dados["funcionarios"] = $disciplinas->listarTodos();
         $this->load("admin", $dados);
     }
+
+    public function corrigir(){
+        $dados["msn"] = "Teste";
+        $dados["view"] = "template/inicio";
+        $this->load("admin", $dados);
+    }
 }
