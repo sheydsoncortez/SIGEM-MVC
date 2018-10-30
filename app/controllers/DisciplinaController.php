@@ -135,4 +135,25 @@ class DisciplinaController extends Controller
         $dados["view"] = "template/inicio";
         $this->load("admin", $dados);
     }
+
+
+    /**
+     * Cria uma SESSION de um Objeto Disciplina para armazenar
+     * os dados enquanto navega no formulário de cadastro.
+     *
+     * @method mixed setDadosDisciplina()
+     * @return void
+     */
+    public function setDadosDisciplina(){
+        $disciplina = new Disciplina();
+
+        $disciplina->nome = $_POST['nome'];
+        $disciplina->professor = $_POST['professor'];
+        $disciplina->turma = $_POST['turma'];
+        $disciplina->serie = $_POST['serie'] ;
+
+
+        $_SESSION['disciplina'] = $disciplina;
+
+    }
 }
