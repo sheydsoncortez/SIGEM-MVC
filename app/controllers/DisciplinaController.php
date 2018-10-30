@@ -19,15 +19,18 @@ use app\classes\Disciplina;
 class DisciplinaController extends Controller
 {
 
-    public function __contruct(){
+    public function __contruct()
+    {
 
     }
 
-    public function index(){
+    public function index()
+    {
         $this->load("admin");
     }
 
-    public function cadastrar($page){
+    public function cadastrar($page)
+    {
         $dados["view"] = "template/form-disciplina";
         $dados["page"] = $page;
         $dados["voltar"] = "";
@@ -47,12 +50,68 @@ class DisciplinaController extends Controller
                 $dados["proximo"] = "2";
                 $dados["page"] = $page;
                 break;
-        }
 
+        }
         //echo"<pre>";
         //print_r($dados);
         $this->load("admin", $dados);
         $dados = "";
+    }
 
+    public function salvar($page){
+        switch ($page) {
+            case 1:
+                $this->setDadosDisciplina();
+                header('location:' . URL_BASE . 'disciplina/editar/' . base64_encode($_SESSION["disciplina"]->codigo));
+                break;
+            case 2:
+                $dados = array();
+                $d = new DisciplinaModel();
+                //$dados = $d->inserir();
+                if ($dados["status"]) {
+                    $dados["view"] = "template/inicio";
+                    $this->load("admin", $dados);
+
+                } else {
+
+                    $this->load("admin", $dados);
+                }
+        }
+    }
+    public function setDadosDisciplina(){
+        $disciplina = new Disciplina();
+
+        $disciplina->nome = $_POST["nome"];
+        $disciplina->codigo = $_POST["codigo"];
+        $disciplina->professor = $_POST["professor"];
+        $disciplina->turma = $_POST["turma"];
+        $disciplina->serie = $_POST["serie"];
+
+        $_SESSION["disciplina"] = $disciplina;
+        echo "<pre>";
+        print_r($_SESSION["disciplina"]);
+    }
+
+    public function editar($codigo){
+        $dados["titulo"] = "DADOS DISCIPLINA";
+        $dados["view"] = "template/disciplina/revisadados-disciplina";
+        //$dados["modal"] = "template/funcionario/atualiza-funcionario-modal.php";
+        $dados["page"] = "";
+        $dados['link'] = "disciplina/editar/".$codigo;
+        $dados['breadcrumbl1'] = "disciplina";
+        $dados['breadcrumbl2'] = "editar";
+
+        //$funcionario = new FuncionarioModel();
+
+        /*if(!$funcionario->getFuncionario(base64_decode($cpf))){
+            if($_SESSION["funcionario"]){
+                $this->load("admin", $dados);
+            }
+        }else{
+            $_SESSION["funcionario"] = $funcionario->getFuncionario(base64_decode($cpf));
+            $this->load("admin", $dados);
+        }*/
+
+        $this->load("admin", $dados);
     }
 }

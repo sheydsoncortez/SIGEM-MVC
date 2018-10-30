@@ -142,7 +142,7 @@ class FuncionarioController extends Controller{
             }
         }else{
             $_SESSION["funcionario"] = $funcionario->getFuncionario(base64_decode($cpf));
-           $this->load("admin", $dados);
+            $this->load("admin", $dados);
         }
 
 
