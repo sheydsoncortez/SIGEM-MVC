@@ -12,6 +12,24 @@ namespace app\classes;
 class Escola
 {
     private $codigoEscola;
+    private $nomeEscola;
+    private $telefoneEscola;
+    private $emailEscola;
+    private $endereco;
+
+
+    public function __get($atrib)
+    {
+        // TODO: Implement __get() method.
+
+        return $this->$atrib;
+    }
+
+    public function __set($atrib, $value)
+    {
+        // TODO: Implement __set() method.
+        $this->$atrib = $value;
+    }
 
     /**
      * @return mixed
@@ -92,10 +110,7 @@ class Escola
     {
         $this->endereco = $endereco;
     }
-    private $nomeEscola;
-    private $telefoneEscola;
-    private $emailEscola;
-    private $endereco;
+
 
 
 }
