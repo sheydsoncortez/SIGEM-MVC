@@ -67,7 +67,8 @@ class DisciplinaController extends Controller
             case 2:
                 $dados = array();
                 $d = new DisciplinaModel();
-                //$dados = $d->inserir();
+
+                $dados = $d->inserir();
                 if ($dados["status"]) {
                     $dados["view"] = "template/inicio";
                     $this->load("admin", $dados);
@@ -76,6 +77,9 @@ class DisciplinaController extends Controller
 
                     $this->load("admin", $dados);
                 }
+                //echo "<pre>";
+                //print_r($d->inserir());
+
         }
     }
     public function setDadosDisciplina(){
@@ -88,8 +92,8 @@ class DisciplinaController extends Controller
         $disciplina->serie = $_POST["serie"];
 
         $_SESSION["disciplina"] = $disciplina;
-        echo "<pre>";
-        print_r($_SESSION["disciplina"]);
+        //echo "<pre>";
+        //print_r($_SESSION["disciplina"]);
     }
 
     public function editar($codigo){

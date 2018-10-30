@@ -13,12 +13,12 @@
         <div class="col-lg-12" >
             <div class="card ">
 
-                <div class="card-body" id="verDadosFuncionario">
+                <div class="card-body" id="verDadosDisciplina">
 
                     <!-- INÍCIO DO FORM -->
 
                    <form class='form-horizontal' id='formfuncionario' method='POST'
-                          action="<?php echo URL_BASE . "funcionario/salvar/".$page;?>" >
+                          action="<?php echo URL_BASE . "disciplina/salvar/".$page;?>" >
 
                        <br/>
 
