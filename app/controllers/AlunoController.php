@@ -22,9 +22,9 @@ class AlunoController extends Controller{
         $dados["page"] = $page;
         $dados["voltar"] = "";
         $dados["proximo"] = "";
-        $funcionarios = new FuncionarioModel();
+        $alunos = new AlunoModel();
         $dados['link'] = "funcionario/cadastrar/".$page;
-        $dados['breadcrumbl1'] = "funcionário";
+        $dados['breadcrumbl1'] = "aluno";
         $dados['breadcrumbl2'] = "cadastrar";
     }
 }

@@ -73,7 +73,7 @@ class AlunoModel extends Model{
             $resSerieAluno = $_SESSION['aluno']->documentos->reservista->serie;
 
             $insert_reservista = "INSERT INTO public.reservista(numero, categoria, serie)
-                              VALUES ('{$resNum}', '{$resCat}','{$resSerie}');";
+                              VALUES ('{$resNumAluno}', '{$resCatAluno}','{$resSerieAluno}');";
 
             try{
 
@@ -88,5 +88,71 @@ class AlunoModel extends Model{
             $resNum = "000000000";
 
         }
+
+        //Status do Aluno
+        $statusAluno = '1';
+
+        //Variaveis para insert no banco
+        $insert_aluno = "INSERT INTO public.aluno(matriculaAluno, nomeAluno, dataNascAluno, cidadeNascAluno,
+                        estadoNascAluno, corAluno, sexoAluno, pcdAluno, statusAluno, rg, resgistroNascimento,
+                        tituloEleitoral, reservista, rgPaiAluno, rgMaeAluno)
+                        VALUES ('{$matriculaAluno}', '{$nomeAluno}', '{$dataNascAluno}', '{$cidadeNascAluno}',
+                        '{$estadoNascAluno}', '{$corAluno}', '{$sexoAluno}', '{$pcdAluno}', '{$statusAluno}',
+                        '{$rgNumAluno}', '{$regNumAluno}', '{$titNumAluno}', '{$resNumAluno}', '{$rgNumPaiAluno}', 
+                        '{$rgNumMaeAluno}');";
+        
+        $insert_rgAluno = "INSERT INTO  public.rg(numero, orgaoexp, dataexp, ufexp)
+                            VALUES ('{$rgNumAluno}', '{$rgOrgaoAluno}', '$rgDataAluno', '{$rgUfAluno}');";
+        
+        $insert_regAluno = "INSERT INTO public.registroNasc(numeroRegistro, livro, folha, dataReg,
+                            cartorio, cidade, uf)
+                            VALUES ('{$regNumAluno}', '{$regLivroAluno}', '{$regFolhaAluno}', '{$regDataAluno}',
+                            '{$regCartorioAluno}', '{$regCidadeAluno}', '{$regUfAluno}');";
+        
+        $insert_titAluno = "INSERT INTO public.tituloeleitor(numero, zona, secao)
+                            VALUES ('{$titNumAluno}', '{$titZonaAluno}', '{$titSecaoAluno}');";
+
+        try {
+            // set the PDO error mode to exception
+            $this->db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+
+            $query = $this->db->prepare($insert_rgAluno);
+            $query->execute();
+
+            $query = $this->db->prepare($insert_regAluno);
+            $query->execute();
+
+            $query = $this->db->prepare($insert_titAluno);
+            $query->execute();
+
+            $query = $this->db->prepare($insert_aluno);
+            $query->execute();
+
+            $status["status"] = true;
+
+            $status["msn"] = "Aluno inserido com Sucesso.";
+            $status["cpf"] = $cpf;
+
+            unset($_SESSION['aluno']);
+
+            return $status ;
+
+        }
+        catch(\PDOException $e){
+
+            $status["status"] = false;
+            $status["msn"] = "Erro ao inserir aluno." . $e->getMessage();
+
+            return $status;
+        }
+        return $status;
+    }
+
+    public function getAluno(){
+        return null;
+    }
+
+    public function listarTodos(){
+        return null;
     }
 }
