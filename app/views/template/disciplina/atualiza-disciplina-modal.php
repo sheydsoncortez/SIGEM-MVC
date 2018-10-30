@@ -10,21 +10,12 @@
 
                         <ul class="nav nav-pills mb-3" id="updateDisciplina" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link" id="pills-dadospessoais-tab" data-toggle="pill" href="#pills-dadospessoais" role="tab" aria-controls="pills-dadospessoais" aria-selected="true">Dados Pessoais</a>
+                                <a class="nav-link" id="pills-dadosdisciplina-tab" data-toggle="pill" href="#pills-dadosdisciplina" role="tab" aria-controls="pills-dadosdisciplina" aria-selected="true">Dados da Disciplina</a>
                             </li>
                         </ul>
                             <div class="tab-content" id="pills-tabContent">
-                            <div class="tab-pane fade" id="pills-dadospessoais" role="tabpanel" aria-labelledby="pills-dadospessoais-tab">
+                            <div class="tab-pane fade" id="pills-dadosdisciplina" role="tabpanel" aria-labelledby="pills-dadosdisciplina-tab">
                                 <?php include('app/views/template/funcionario/dados-funcionario.php'); ?>
-                            </div>
-                            <div class="tab-pane fade" id="pills-endereco" role="tabpanel" aria-labelledby="pills-endereco-tab">
-                                <?php include('app/views/template/endereco/dados-endereco.php'); ?>
-                            </div>
-                            <div class="tab-pane fade" id="pills-documentos" role="tabpanel" aria-labelledby="pills-documentos-tab">
-                                <?php include('app/views/template/funcionario/documentos-funcionario.php'); ?>
-                            </div>
-                            <div class="tab-pane fade" id="pills-dadosfuncionais" role="tabpanel" aria-labelledby="pills-dadosfuncionais-tab">
-                                <?php include('app/views/template/funcionario/dados-funcionais.php'); ?>
                             </div>
                         </div>
                     </div>
