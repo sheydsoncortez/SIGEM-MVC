@@ -49,7 +49,7 @@
             </li>
             <li><a href="#turma" aria-expanded="false" data-toggle="collapse"><i class="fas fa-chalkboard-teacher"></i>Turma</a>
               <ul id="turma" class="collapse list-unstyled ">
-              <li><a href="form-turma.php?page=1">Cadastro</a></li>
+              <li><a href="<?php echo URL_BASE . "turma/cadastrar/1";?>">Cadastro</a></li>
                 <li><a href="#">Consulta</a></li>
                 <li><a href="#">Documetos</a></li>
               </ul>
