@@ -25,7 +25,34 @@ class EscolaController extends Controller
     {
         $this->load("admin");
     }
+    public function cadastrar($page)
+    {
+        $dados["view"] = "template/form-escola";
+        $dados["page"] = $page;
+        $dados["voltar"] = "";
+        $dados["proximo"] = "";
+        $funcionarios = new Escola();
+        $dados['link'] = "escola/cadastrar/" . $page;
+        $dados['breadcrumbl1'] = "escola";
+        $dados['breadcrumbl2'] = "cadastrar";
 
+        switch ($page) {
+            case '1';
+                $dados["titulo"] = "DADOS DA ESCOLA";
+                $dados["paginator"] = "escola/dados-escola.php";
+                $dados["active"] = array("active", "", "", "", "");
+                $dados["disabled"] = array("disabled", "", "disabled", "disabled", "disabled", "");
+                $dados["voltar"] = "1";
+                $dados["proximo"] = "2";
+                $dados["page"] = $page;
+                break;
+
+        }
+        //echo"<pre>";
+        //print_r($dados);
+        $this->load("admin", $dados);
+        $dados = "";
+    }
 
 
 

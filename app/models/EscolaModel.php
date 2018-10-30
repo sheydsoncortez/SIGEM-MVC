@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: mikmi
+ * User: mikmimichel
  * Date: 29/10/2018
  * Time: 21:19
  */
@@ -31,7 +31,7 @@ class EscolaModel extends Model
         $telefoneEscola = $_SESSION['escola']->telefoneescola;
         $emailEscola = $_SESSION['escola']->emailescola;
 
-        $enderecoCod = $codigoescola;
+        $enderecoCod = $codigoEscola;
         $enderecoCep = $_SESSION['escola']->endereco->cep;
         $enderecoCidade = $_SESSION['escola']->endereco->cidade;
         $enderecoLogradouro = $_SESSION['escola']->endereco->logradouro;
