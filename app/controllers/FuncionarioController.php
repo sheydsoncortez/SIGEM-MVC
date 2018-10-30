@@ -105,19 +105,13 @@ class FuncionarioController extends Controller{
 
             break;
             case 5:{
-
-                $dados = array(); 
-
+                $dados = array();
                 $f = new FuncionarioModel();
-
                 $dados = $f->inserir();
-                
                 if($dados["status"]) {
                     $dados["view"] = "template/inicio";
                     $this->load("admin", $dados);
-
                 }else{
-
                     $this->load("admin", $dados);
                 }
             }
@@ -125,7 +119,6 @@ class FuncionarioController extends Controller{
     }
     
     public function editar($cpf){
-
         $dados["titulo"] = "DADOS FUNCIONARIO";
         $dados["view"] = "template/funcionario/revisadados-funcionario";
         $dados["modal"] = "template/funcionario/atualiza-funcionario-modal.php";

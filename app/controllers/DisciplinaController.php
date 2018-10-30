@@ -118,4 +118,15 @@ class DisciplinaController extends Controller
 
         $this->load("admin", $dados);
     }
+
+    public function listar(){
+        $disciplinas = DisciplinaModel();
+        $dados['link'] = "disciplina/listar";
+        $dados['breadcrumbl1'] = "disciplina";
+        $dados['breadcrumbl2'] = "listar";
+        $dados["view"] = "template/listar-disciplina";
+        $dados["modal"] = "template/funcionario/atualiza-disciplina-modal.php";
+        $dados["funcionarios"] = $disciplinas->listarTodos();
+        $this->load("admin", $dados);
+    }
 }
