@@ -13,9 +13,9 @@ class Disciplina{
 
     private $codigo;
     private $nome;
-    private $telefone;
-    private $email;
-    private $endereco;
+    private $professor;
+    private $turma;
+    private $serie;
 
     public function __construct(){
         $this->view = new \stdClass;
@@ -69,51 +69,50 @@ class Disciplina{
     /**
      * @return mixed
      */
-    public function getTelefone()
+    public function getProfessor()
     {
-        return $this->telefone;
+        return $this->professor;
     }
 
     /**
-     * @param mixed $telefone
+     * @param mixed $professor
      */
-    public function setTelefone($telefone)
+    public function setProfessor($professor)
     {
-        $this->telefone = $telefone;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     * @param mixed $email
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
+        $this->professor = $professor;
     }
 
     /**
      * @return mixed
      */
-    public function getEndereco()
+    public function getTurma()
     {
-        return $this->endereco;
+        return $this->turma;
     }
 
     /**
-     * @param mixed $endereco
+     * @param mixed $turma
      */
-    public function setEndereco($endereco)
+    public function setTurma($turma)
     {
-        $this->endereco = $endereco;
+        $this->turma = $turma;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getSerie()
+    {
+        return $this->serie;
+    }
+
+    /**
+     * @param mixed $serie
+     */
+    public function setSerie($serie)
+    {
+        $this->serie = $serie;
+    }
 
 
    }

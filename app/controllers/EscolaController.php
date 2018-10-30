@@ -9,10 +9,26 @@
 namespace app\controllers;
 
 use app\classes\Escola;
+use app\core\Controller;
 use app\models\EscolaModel;
 
 
-class EscolaController
+class EscolaController extends Controller
 {
+
+    public function __contruct()
+    {
+
+    }
+
+    public function index()
+    {
+        $this->load("admin");
+    }
+
+
+
+
+
 
 }
