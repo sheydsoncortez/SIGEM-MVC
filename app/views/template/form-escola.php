@@ -1,16 +1,12 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: mikmimichel
- * Date: 30/10/2018
- * Time: 11:01
- */
+<!-- ================================================================================================= -->
+
+<!-- FORMULARIO DE DISCIPLINA-->
 
 <section class="forms offset-sm-1">
     <div class="container-fluid">
 
         <header>
-            <h1 class="h3 display">Cadastro de Escola</h1>
+            <h1 class="h3 display">Cadastro de Escolas</h1>
         </header>
 
         <div class="col-lg-12" >
@@ -21,7 +17,7 @@
 
                         <p id='cabecalho_blocos_form'><?php echo "{$titulo}" ?></p>
 
-<span class="topright" >
+                        <span class="topright" >
                   <ul class="pagination pagination-sm" id="navegacao">
 
                     <?php echo "<li id='p1' class='page-item {$disabled[0]}'>";
@@ -38,29 +34,29 @@
 
                   </ul>
                 </span>
-</div>
-</div>
-<div class="card-body">
+                    </div>
+                </div>
+                <div class="card-body">
 
-    <!-- INÍCIO DO FORM -->
+                    <!-- INÍCIO DO FORM -->
 
-    <form class='form-horizontal' name='formescola' id='formescola' method='POST'
-          action="<?php echo URL_BASE . "escola/salvar/".$page;?>" >
-
-
-        <?php include($paginator); //echo URL_BASE . $paginator;?>
+                    <form class='form-horizontal' name='formescola' id='formescola' method='POST'
+                          action="<?php echo URL_BASE . "escola/salvar/".$page;?>" >
 
 
-        <div class="line"></div>
-        <div class="form-group row">
-            <div class="col-sm-5 offset-sm-1">
-                <button type="cancel" class="btn btn-secondary">Cancel&nbsp&nbsp</button>
-                <button type='submit' class='btn btn-primary'>Próximo</button>
+                        <?php include($paginator); //echo URL_BASE . $paginator;?>
 
+
+                        <div class="line"></div>
+                        <div class="form-group row">
+                            <div class="col-sm-5 offset-sm-1">
+                                <button type="cancel" class="btn btn-secondary">Cancel&nbsp&nbsp</button>
+                                <button type='submit' class='btn btn-primary'>Próximo</button>
+
+                            </div>
+                        </div>
+                </div>
+                </form>
             </div>
         </div>
-</div>
-</form>
-</div>
-</div>
 </section>
