@@ -1,6 +1,6 @@
 <!-- ================================================================================================= -->
 
-<!-- FORMULARIO DE DISCIPLINA-->
+<!-- FORMULARIO DE ESCOLA-->
 
 <section class="forms offset-sm-1">
     <div class="container-fluid">

@@ -8,7 +8,6 @@
 
  if (isset($_SESSION['escola'])){
     $f = $_SESSION['escola'];
-    $date = new DateTime($f->datanasc); $nd = $date->format('d/m/Y');
 }?>
 
 <!-- CÓDIGO DA ESCOLA -->
@@ -25,7 +24,7 @@
         </div>
     </div>
 
-<!-- NOME DA DISCIPLINA -->
+<!-- NOME DA ESCOLA -->
 
     <div class="col-sm-12">
         <div class="row">
@@ -41,46 +40,41 @@
         </div>
     </div>
 
-<!-- CÓDIGO DO PROFESSOR -->
+<!-- TELEFONE DA ESCOLA -->
     <div class="col-sm-12">
         <div class="row">
             <label class="col-sm-2 form-control-label"></label>
             <div class="col-sm-8">
-                <input type="text" placeholder="Código do Professor" id="codigoProfessor" name="professor"
-                       value="<?php isset($f) ? print($f->codigoProfessor) : "" ?>"
-                       required oninvalid="this.setCustomValidity("Preencha o Campo Código do Professor")"
+                <input type="text" placeholder="Telefone da Escola" id="telefoneEscola" name="telefone"
+                       value="<?php isset($f) ? print($f->telefoneEscola) : "" ?>"
+                       required oninvalid="this.setCustomValidity("Preencha o Campo Telefone da Escola")"
                 oninput="setCustomValidity("")" class="form-control"/>
             </div>
         </div>
     </div>
 
-<!-- CÓDIGO DA TURMA -->
+    <!-- DADOS DE CONTATO -->
+
+    <!-- TELEFONE DA ESCOLA -->
     <div class="col-sm-12">
         <div class="row">
-
             <label class="col-sm-2 form-control-label"></label>
-            <div class="col-sm-8">
-                <input type="text" placeholder="Código da Turma" id="codigoTurma" name="turma"
-                       value="<?php isset($f) ? print($f->codigoTurma) : "" ?>"
-                       required oninvalid="this.setCustomValidity("Preencha o Campo Código da Turma")"
-                oninput="setCustomValidity("")" class="form-control"/>
+            <div class="col-sm-3">
+                <input type="text" placeholder="Telefone: (00)00000-0000"
+                       class="form-control" id="telefone" name="telefone" required
+                       value="<?php isset($f) ? print($f->telefone) : ""?>"
+                       oninvalid="this.setCustomValidity('Informe um número para contato')"
+                       oninput="setCustomValidity('')"/>
             </div>
-
+            <!-- EMAIL DA ESCOLA -->
+            <div class="col-sm-4">
+                <input type="email" placeholder="Email: login@provedor.com" class="form-control"
+                       value="<?php isset($f) ? print($f->email) : ""?>"
+                       required oninvalid="this.setCustomValidity('Insira um email válido')"
+                       oninput="setCustomValidity('')" name="email"/>
+            </div>
         </div>
     </div>
 
-<!-- CÓDIGO DA SÉRIE -->
-    <div class="col-sm-12">
-        <div class="row">
-
-            <label class="col-sm-2 form-control-label"></label>
-            <div class="col-sm-8">
-                <input type="text" placeholder="Código da Série" id="codigoSerie" name="serie"
-                       value="<?php isset($f) ? print($f->codigoSerie) : "" ?>"
-                       required oninvalid="this.setCustomValidity("Preencha o Campo Código da Série")"
-                oninput="setCustomValidity("")" class="form-control"/>
-            </div>
-
-        </div>
-    </div>
 </div>
+<?php unset($f) ?>
