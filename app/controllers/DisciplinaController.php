@@ -144,7 +144,7 @@ class DisciplinaController extends Controller
      * @method mixed setDadosDisciplina()
      * @return void
      */
-    public function setDadosDisciplina(){
+    public function setDadosDisciplina{
         $disciplina = new Disciplina();
 
         $disciplina->nome = $_POST['nome'];
