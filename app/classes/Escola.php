@@ -9,8 +9,7 @@
 namespace app\classes;
 
 
-class Escola
-{
+class Escola{
     private $codigoEscola;
 
     /**
