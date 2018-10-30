@@ -137,6 +137,7 @@ class DisciplinaController extends Controller
     }
 
 
+
     /**
      * Cria uma SESSION de um Objeto Disciplina para armazenar
      * os dados enquanto navega no formulário de cadastro.
@@ -144,6 +145,7 @@ class DisciplinaController extends Controller
      * @method mixed setDadosDisciplina()
      * @return void
      */
+    /*
     public function setDadosDisciplina{
         $disciplina = new Disciplina();
 
@@ -154,6 +156,6 @@ class DisciplinaController extends Controller
 
 
         $_SESSION['disciplina'] = $disciplina;
-
     }
+    */
 }
