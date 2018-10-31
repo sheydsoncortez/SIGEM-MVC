@@ -11,7 +11,7 @@
         <label class="col-sm-2 form-control-label"></label>
         <div class = 'col-sm-8'>
             <input type="text" placeholder="Nome do Aluno" id="nomeAluno" name="nomeAluno"
-                    value="<?php isset($a) ? print($a->nomealuno) : '' ?>"
+                    value="<?php isset($a) ? print($a->nomeAluno) : '' ?>"
                     required oninvalid="this.setCustomValidity('Preencha o campo nome')"
                     oninput="this.setCustomValidity('')" class="form-control"/>
         </div>
@@ -23,7 +23,7 @@
               <input type="text" class="form-control" id="data"
                      value="<?php echo($a->dataNascAluno != null) ? $a->dataNascAluno : "" ?>"
                      placeholder="Data de Nascimeto"
-                     name="dataNasc"
+                     name="dataNascAluno"
                      oninvalid="this.setCustomValidity('Preencha o campo data de nascimento')"
                      oninput="setCustomValidity('')"/>
               <div class="input-group-append">
