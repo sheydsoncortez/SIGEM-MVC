@@ -4,7 +4,7 @@ namespace app\models;
 
 use app\core\Model;
 use app\classes\Aluno;
-use app\classes\Rg;
+use app\classes\FiliacaoAluno;
 use app\classes\DocumentosAluno;
 
 error_reporting(E_ERROR);
@@ -36,18 +36,18 @@ class AlunoModel extends Model{
         $codigoEscola = $_SESSION['aluno']->codigoEscola;
 
         //Filiação
-        $nomePaiAluno = $_SESSION['aluno']->nomePaiAluno;
-        $profissaoPaiAluno = $_SESSION['aluno']->profissaoPaiAluno;
-        $rgNumPaiAluno = $_SESSION['aluno']->rgPaiAluno->rg->numero;
-        $rgOrgaoPaiAluno = $_SESSION['aluno']->rgPaiAluno->rg->orgaoexp;
-        $rgDataPaiAluno = $_SESSION['aluno']->rgPaiAluno->rg->dataexp;
-        $rgUfPaiAluno = $_SESSION['aluno']->rgPaiAluno->rg->estadoexp;
-        $nomeMaeAluno = $_SESSION['aluno']->nomeMaeAluno;
-        $profissaoMaeAluno = $_SESSION['aluno']->profissaoMaeAluno;
-        $rgNumMaeAluno = $_SESSION['aluno']->rgMaeAluno->rg->numero;
-        $rgOrgaoMaeAluno = $_SESSION['aluno']->rgMaeAluno->rg->orgaoexp;
-        $rgDataMaeAluno = $_SESSION['aluno']->rgMaeAluno->rg->dataexp;
-        $rgUfMaeAluno = $_SESSION['aluno']->rgMaeAluno->rg->estadoexp;
+        $nomePaiAluno = $_SESSION['aluno']->filiacaoAluno->nomePaiAluno;
+        $profissaoPaiAluno = $_SESSION['aluno']->filiacaoAluno->profissaoPaiAluno;
+        $rgNumPaiAluno = $_SESSION['aluno']->filiacaoAluno->rgPaiAluno->rg->numero;
+        $rgOrgaoPaiAluno = $_SESSION['aluno']->filiacaoAluno->rgPaiAluno->rg->orgaoexp;
+        $rgDataPaiAluno = $_SESSION['aluno']->filiacaoAluno->rgPaiAluno->rg->dataexp;
+        $rgUfPaiAluno = $_SESSION['aluno']->filiacaoAluno->rgPaiAluno->rg->estadoexp;
+        $nomeMaeAluno = $_SESSION['aluno']->filiacaoAluno->nomeMaeAluno;
+        $profissaoMaeAluno = $_SESSION['aluno']->filiacaoAluno->profissaoMaeAluno;
+        $rgNumMaeAluno = $_SESSION['aluno']->filiacaoAluno->rgMaeAluno->rg->numero;
+        $rgOrgaoMaeAluno = $_SESSION['aluno']->filiacaoAluno->rgMaeAluno->rg->orgaoexp;
+        $rgDataMaeAluno = $_SESSION['aluno']->filiacaoAluno->rgMaeAluno->rg->dataexp;
+        $rgUfMaeAluno = $_SESSION['aluno']->filiacaoAluno->rgMaeAluno->rg->estadoexp;
 
         //Documentos Aluno
         $rgNumAluno = $_SESSION['aluno']->documentosAluno->rg->numero;
