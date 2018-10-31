@@ -31,7 +31,7 @@
                       <a class="page-link" href="4/">4</a></li>
 
                       <?php echo "<li id='p6' class='page-item {$disabled[5]}'>";
-                      echo "<a class='page-link' href='javascript:formfuncionario.submit()' >Próximo</a></li>"; ?>
+                      echo "<a class='page-link' href='javascript:formaluno.submit()' >Próximo</a></li>"; ?>
 
                   </ul>  
                 </span>                     
