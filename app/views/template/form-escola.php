@@ -15,7 +15,7 @@
                 <div class="col-sm-12">
                     <div class="card-header d-flex align-items-center">
 
-                        <p id='cabecalho_blocos_form'><?php echo " df{$titulo}" ?></p>
+                        <p id='cabecalho_blocos_form'><?php echo " {$titulo}" ?></p>
 
                         <span class="topright" >
                   <ul class="pagination pagination-sm" id="navegacao">
