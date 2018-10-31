@@ -9,8 +9,8 @@
 namespace app\controllers;
 
 use app\core\Controller;
-use app\classes\Escola;
-use app\classes\Endereco;
+
+
 use app\models\EscolaModel;
 
 
@@ -28,6 +28,7 @@ class EscolaController extends Controller
     }
     public function cadastrar($page)
     {
+
         $dados["view"] = "template/form-escola";
         $dados["page"] = $page;
         $dados["voltar"] = "";
@@ -41,8 +42,8 @@ class EscolaController extends Controller
             case '1':
                 $dados["titulo"] = "DADOS DA ESCOLA";
                 $dados["paginator"] = "escola/dados-escola.php";
-                $dados["active"] = array("active", "", "");
-                $dados["disabled"] = array("disabled", "", "");
+                $dados["active"] = array("active", "", "", "", "");
+                $dados["disabled"] = array("disabled", "", "disabled", "disabled", "disabled", "");
                 $dados["voltar"] = "1";
                 $dados["proximo"] = "2";
                 $dados["page"] = $page;
@@ -50,8 +51,8 @@ class EscolaController extends Controller
             case '2';
                 $dados["titulo"] = "ENDEREÇO";
                 $dados["paginator"] = "endereco/dados-endereco.php";
-                $dados["active"] = array("", "active", "");
-                $dados["disabled"] = array("","","");
+                $dados["active"] = array("", "active", "", "", "");
+                $dados["disabled"] = array("","", "", "disabled", "disabled", "");
                 $dados["voltar"] = "1";
                 $dados["proximo"] = "3";
                 $dados["page"] = $page;
@@ -63,6 +64,37 @@ class EscolaController extends Controller
         //echo"<pre>";
         //print_r($dados);
 
+    }
+
+
+    public function salvar($page){
+
+        switch ($page){
+            case 1:
+
+                $this->setDadosEscola();
+                header('location:' . URL_BASE . 'escola/cadastrar/2');
+
+                break;
+            case 2:
+
+                $this->setEndereco();
+                header('location:' . URL_BASE . 'escola/cadastrar/3');
+
+                break;
+
+            case 3:{
+                $dados = array();
+                $f = new EscolaModel();
+                $dados = $f->inserir();
+                if($dados["status"]) {
+                    $dados["view"] = "template/inicio";
+                    $this->load("admin", $dados);
+                }else{
+                    $this->load("admin", $dados);
+                }
+            }
+        }
     }
 
 
