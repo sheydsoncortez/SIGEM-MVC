@@ -35,7 +35,7 @@ class DisciplinaController extends Controller
         $dados["page"] = $page;
         $dados["voltar"] = "";
         $dados["proximo"] = "";
-        $funcionarios = new DisciplinaModel();
+        $disciplina = new DisciplinaModel();
         $dados['link'] = "disciplina/cadastrar/" . $page;
         $dados['breadcrumbl1'] = "disciplina";
         $dados['breadcrumbl2'] = "cadastrar";
@@ -78,7 +78,7 @@ class DisciplinaController extends Controller
                     $this->load("admin", $dados);
                 }
                 //echo "<pre>";
-                //print_r($d->inserir());
+                //print_r($dados);
 
         }
     }
@@ -99,35 +99,36 @@ class DisciplinaController extends Controller
     public function editar($codigo){
         $dados["titulo"] = "DADOS DISCIPLINA";
         $dados["view"] = "template/disciplina/revisadados-disciplina";
-        //$dados["modal"] = "template/funcionario/atualiza-funcionario-modal.php";
+        $dados["modal"] = "template/disciplina/atualiza-disciplina-modal.php";
         $dados["page"] = "";
         $dados['link'] = "disciplina/editar/".$codigo;
         $dados['breadcrumbl1'] = "disciplina";
         $dados['breadcrumbl2'] = "editar";
 
-        //$funcionario = new FuncionarioModel();
+        $disciplina = new DisciplinaModel();
 
-        /*if(!$funcionario->getFuncionario(base64_decode($cpf))){
-            if($_SESSION["funcionario"]){
+        if(!$disciplina->getDisciplina(base64_decode($codigo))){
+            if($_SESSION["disciplina"]){
                 $this->load("admin", $dados);
             }
         }else{
-            $_SESSION["funcionario"] = $funcionario->getFuncionario(base64_decode($cpf));
+            $_SESSION["disciplina"] = $disciplina->getDisciplina(base64_decode($codigo));
             $this->load("admin", $dados);
-        }*/
-
-        $this->load("admin", $dados);
+        }
     }
 
     public function listar(){
-        $disciplinas = DisciplinaModel();
+        $disciplinas = new DisciplinaModel();
         $dados['link'] = "disciplina/listar";
         $dados['breadcrumbl1'] = "disciplina";
         $dados['breadcrumbl2'] = "listar";
-        $dados["view"] = "template/listar-disciplina";
-        $dados["modal"] = "template/funcionario/atualiza-disciplina-modal.php";
-        $dados["funcionarios"] = $disciplinas->listarTodos();
+        $dados["view"] = "template/disciplina/listar-disciplinas";
+        $dados["modal"] = "template/disciplina/atualiza-disciplina-modal.php";
+        $dados["disciplinas"] = $disciplinas->listarTodos();
         $this->load("admin", $dados);
+
+        //echo "<pre>";
+        //print_r($dados["disciplina"]);
     }
 
     public function corrigir(){

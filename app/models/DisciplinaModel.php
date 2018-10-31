@@ -24,6 +24,8 @@ class DisciplinaModel extends Model
 
         $d = $_SESSION['disciplina'];
 
+
+
         $discplinaSQL = "INSERT INTO public.disciplina(
                             nome, professor, turma, serie)
 	                      VALUES (?, ?, ?, ?);";
@@ -38,6 +40,7 @@ class DisciplinaModel extends Model
                     $query->bindValue(2, intval($d->professor), \PDO::PARAM_INT);
                     $query->bindValue(3, intval($d->turma), \PDO::PARAM_INT);
                     $query->bindValue(4, $d->serie, \PDO::PARAM_STR);
+                    //$query->bindValue(5,'1', \PDO::PARAM_BOOL);
 
                     $query->execute();
 
@@ -62,5 +65,40 @@ class DisciplinaModel extends Model
 
 
 
+    }
+
+
+    public function getDisciplina($codigo)
+    {
+        $c = intval ($codigo);
+        $sql_disciplina = "SELECT * FROM public.disciplina WHERE codigo={$c} AND ativo=true";
+
+        $query = $this->db->query($sql_disciplina);
+
+        if ($query->rowCount() == 1) {
+
+            unset($_SESSION['disciplina']);
+
+            $d = $query->fetch(\PDO::FETCH_OBJ);
+
+
+        }else{
+
+            $d = false;
+
+        }
+
+        //echo"<pre>";
+        //print_r($f);
+
+        return $d;
+    }
+
+    public function listarTodos(){
+
+        $sql_disciplina = "SELECT * FROM public.disciplina WHERE ativo=TRUE";
+        $query = $this->db->query($sql_disciplina);
+
+        return  $query->fetchAll(\PDO::FETCH_OBJ);
     }
 }

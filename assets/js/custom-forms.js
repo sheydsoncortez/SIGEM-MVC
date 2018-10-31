@@ -148,6 +148,7 @@ $('#cargoFun').change(function(){
 //ABRE O MODAL DO UPDATE FUNCIONÁRIO
 $(document).ready(function(){
     var back = $('#updateFuncionario').html();
+
     $("#corrigirDadosPessoais").click(function(){
         $('#pills-dadospessoais-tab').addClass('active');
         $('#pills-dadospessoais').addClass('show active');
@@ -195,6 +196,21 @@ $(document).ready(function(){
 
     $('#updateFuncionario').on('hidden.bs.modal', function(){
         $('#updateFuncionario').html(back);
+    });
+});
+
+$(document).ready(function () {
+    var disc = $('#updateDisciplina').html();
+    
+    $('#corrigirDadosDisciplina').click(function () {
+        $('#pills-dadosdisciplina-tab').addClass('active');
+        $('#pills-dadosdisciplina').addClass('show active');
+        $('.modal form').attr('action', "disciplina/setDadosDisciplina");
+        $(".modal").modal();
+    });
+
+    $('#updateDisciplina').on('hidden.bs.modal', function(){
+        $('#updateDisciplina').html(disc);
     });
 });
 // ===========================================================

@@ -15,7 +15,7 @@
                         </ul>
                             <div class="tab-content" id="pills-tabContent">
                             <div class="tab-pane fade" id="pills-dadosdisciplina" role="tabpanel" aria-labelledby="pills-dadosdisciplina-tab">
-                                <?php include('app/views/template/funcionario/dados-funcionario.php'); ?>
+                                <?php include('app/views/template/disciplina/dados-disciplina.php'); ?>
                             </div>
                         </div>
                     </div>
