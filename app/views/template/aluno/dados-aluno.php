@@ -98,22 +98,22 @@
     </div>
     <div class = 'row'>
         <label class="col-sm-2 form-control-label"></label>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <fieldset class="form-inline">
-                <legend id="legenda-sexo">O aluno possui deficiencia?</legend>
+                <legend id="legenda-sexo">Possui deficiencia?</legend>
                 <div class="form-check">                            
                     <input type="radio" value="Sim" name="pcd" id="pcd"
-                            required oninvalid="this.setCustomValidity('Selecione uma das opções')"
-                            oninput="setCustomValidity('')"/>
-                            &nbspSim 
-                </div>                                                                                  
-                <div class="form-check">                       
+                        required oninvalid="this.setCustomValidity('Selecione uma das opções')"
+                        oninput="setCustomValidity('')"/> 
+                        &nbspSim
+                </div>
+                <div class = "form-check">
                     <input type="radio" value="Nao" name="pcd"/>
-                    &nbspNão 
-                </div>                           
+                        &nbspNão 
+                </div>                                                                                                             
             </fieldset>       
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-5">
           <input type="text" placeholder="Especifique" class="form-control"
                   required oninvalid="this.setCustomValidity('Preencha com a especificação da deficiencia do aluno.')" 
                   oninput="setCustomValidity('')" name="pcdAluno" id="pcdAluno" disabled/>
