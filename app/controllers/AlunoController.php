@@ -46,6 +46,14 @@ class AlunoController extends Controller{
                 $dados["proximo"] = "3";
                 $dados["page"] = $page;
                 break;
+            case '3';
+                $dados["titulo"] = "DOCUMENTOS DO ALUNO";
+                $dados["paginator"] = "aluno/documentos-aluno.php";
+                $dados["active"] = array("", "", "active", "", "");
+                $dados["disabled"] = array("","", "", "", "disabled", "");
+                $dados["voltar"] = "2";
+                $dados["proximo"] = "4";
+                $dados["page"] = $page;
         }
 
         $this->load("admin", $dados);
