@@ -10,7 +10,7 @@ namespace app\controllers;
 
 use app\classes\Escola;
 use app\core\Controller;
-
+use app\classes\Endereco;
 
 use app\models\EscolaModel;
 
@@ -31,12 +31,11 @@ class EscolaController extends Controller
 
     public function cadastrar($page)
     {
-
         $dados["view"] = "template/form-escola";
         $dados["page"] = $page;
         $dados["voltar"] = "";
         $dados["proximo"] = "";
-        $escola = new EscolaModel();
+        // $escola = new EscolaModel(); Não utilizado
         $dados['link'] = "escola/cadastrar/" . $page;
         $dados['breadcrumbl1'] = "escola";
         $dados['breadcrumbl2'] = "cadastrar";
@@ -116,12 +115,12 @@ class EscolaController extends Controller
     private function setEndereco(){
         $enderecoe = new Endereco();
 
-        $enderecof->cep = $_POST['cep'];
-        $enderecof->cidade = $_POST['cidade'];
-        $enderecof->logradouro = $_POST['logradouro'];
-        $enderecof->numero = $_POST['numero'];
-        $enderecof->bairro = $_POST['bairro'];
-        $enderecof->estado = $_POST['estado'];
+        $enderecoe->cep = $_POST['cep'];
+        $enderecoe->cidade = $_POST['cidade'];
+        $enderecoe->logradouro = $_POST['logradouro'];
+        $enderecoe->numero = $_POST['numero'];
+        $enderecoe->bairro = $_POST['bairro'];
+        $enderecoe->estado = $_POST['estado'];
 
         $_SESSION['escola']->endereco = $enderecoe;
     }
