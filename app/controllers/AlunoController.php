@@ -4,7 +4,7 @@ namespace app\controllers;
 
 use app\core\Controller;
 use app\models\AlunoModel;
-use app\classes\Rg;
+use app\models\FiliacaoAluno;
 use app\classes\DocumentosAluno;
 
 class AlunoController extends Controller{
@@ -58,5 +58,23 @@ class AlunoController extends Controller{
 
         $this->load("admin", $dados);
         unset($dados);
+    }
+
+    public function salvar(){
+        return null;
+    }
+
+    public function setDadosAluno(){
+        $aluno = new Funcionario();
+
+        $aluno->nomeAluno = $_POST['nomeAluno'];
+        $aluno->dataNascAluno = $_POST['dataNascAluno'];
+        $aluno->cidadeNascAluno = $_POST['cidadeNascAluno'];
+        $aluno->estadoNascAluno = $_POST['estadoNascAluno'] ;
+        $aluno->corAluno = $_POST['corAluno'];
+        $aluno->sexoAluno = $_POST['sexoAluno'];
+        $aluno->pcdAluno = $_POST['pcdAluno'];
+
+        $_SESSION['aluno'] = $aluno;
     }
 }
