@@ -41,8 +41,8 @@ class EscolaController extends Controller
             case '1':
                 $dados["titulo"] = "DADOS DA ESCOLA";
                 $dados["paginator"] = "escola/dados-escola.php";
-                $dados["active"] = array("active", "", "", "", "");
-                $dados["disabled"] = array("disabled", "", "disabled", "disabled", "disabled", "");
+                $dados["active"] = array("active", "", "");
+                $dados["disabled"] = array("disabled", "", "");
                 $dados["voltar"] = "1";
                 $dados["proximo"] = "2";
                 $dados["page"] = $page;
@@ -50,8 +50,8 @@ class EscolaController extends Controller
             case '2';
                 $dados["titulo"] = "ENDEREÇO";
                 $dados["paginator"] = "endereco/dados-endereco.php";
-                $dados["active"] = array("", "active", "", "", "");
-                $dados["disabled"] = array("","", "", "disabled", "disabled", "");
+                $dados["active"] = array("", "active", "");
+                $dados["disabled"] = array("","","");
                 $dados["voltar"] = "1";
                 $dados["proximo"] = "3";
                 $dados["page"] = $page;
