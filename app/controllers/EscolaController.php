@@ -8,6 +8,7 @@
 
 namespace app\controllers;
 
+use app\classes\Escola;
 use app\core\Controller;
 
 
@@ -26,6 +27,8 @@ class EscolaController extends Controller
     {
         $this->load("admin");
     }
+
+
     public function cadastrar($page)
     {
 
@@ -97,8 +100,31 @@ class EscolaController extends Controller
         }
     }
 
+    public function setDadosEscola(){
+        $escola = new Escola();
+
+        $escola->nome = $_POST['nomeEsc'];
+        $escola->codigo = $_POST['dataNasc'];
+        $escola->telefone = $_POST['telefone'];
+        $escola->email = $_POST['email'];
+
+        $_SESSION['escola'] = $escola;
+
+    }
 
 
+    private function setEndereco(){
+        $enderecoe = new Endereco();
+
+        $enderecof->cep = $_POST['cep'];
+        $enderecof->cidade = $_POST['cidade'];
+        $enderecof->logradouro = $_POST['logradouro'];
+        $enderecof->numero = $_POST['numero'];
+        $enderecof->bairro = $_POST['bairro'];
+        $enderecof->estado = $_POST['estado'];
+
+        $_SESSION['escola']->endereco = $enderecoe;
+    }
 
 
 }
