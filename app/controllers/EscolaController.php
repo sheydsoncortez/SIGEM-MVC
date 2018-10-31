@@ -1,15 +1,16 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: mikmi
+ * User: mikmimichel
  * Date: 29/10/2018
  * Time: 21:17
  */
 
 namespace app\controllers;
 
-use app\classes\Escola;
 use app\core\Controller;
+use app\classes\Escola;
+use app\classes\Endereco;
 use app\models\EscolaModel;
 
 
@@ -31,13 +32,13 @@ class EscolaController extends Controller
         $dados["page"] = $page;
         $dados["voltar"] = "";
         $dados["proximo"] = "";
-        $funcionarios = new Escola();
+        $escola = new EscolaModel();
         $dados['link'] = "escola/cadastrar/" . $page;
         $dados['breadcrumbl1'] = "escola";
         $dados['breadcrumbl2'] = "cadastrar";
 
-        switch ($page) {
-            case '1';
+        switch($page){
+            case '1':
                 $dados["titulo"] = "DADOS DA ESCOLA";
                 $dados["paginator"] = "escola/dados-escola.php";
                 $dados["active"] = array("active", "", "", "", "");
@@ -46,12 +47,22 @@ class EscolaController extends Controller
                 $dados["proximo"] = "2";
                 $dados["page"] = $page;
                 break;
-
+            case '2';
+                $dados["titulo"] = "ENDEREÇO";
+                $dados["paginator"] = "endereco/dados-endereco.php";
+                $dados["active"] = array("", "active", "", "", "");
+                $dados["disabled"] = array("","", "", "disabled", "disabled", "");
+                $dados["voltar"] = "1";
+                $dados["proximo"] = "3";
+                $dados["page"] = $page;
+                break;
         }
+
+        $this->load("admin", $dados);
+        unset($dados);
         //echo"<pre>";
         //print_r($dados);
-        $this->load("admin", $dados);
-        $dados = "";
+
     }
 
 

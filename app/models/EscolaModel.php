@@ -44,7 +44,7 @@ class EscolaModel extends Model
                             (codigo, cep, cidade, logradouro, numero, bairro, estado) 
                             VALUES 
                             ('{$enderecoCod}','{$enderecoCep}' , '{$enderecoCidade}', '{$enderecoLogradouro}', 
-                            '{$enderecoNum}', '{$enderecoBairro}', '{$enderecoUf}');";
+                            '{$enderecoNum}', '{$enderecoBairro}', '{$enderecoUf}')";
 
 
         $insert_escola = "INSERT INTO public.escola(

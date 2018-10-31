@@ -31,8 +31,8 @@
 
             <label class="col-sm-2 form-control-label"></label>
             <div class="col-sm-8">
-                <input type="text" placeholder="Nome da Disciplina" id="nomeDisciplina" name="nome"
-                       value="<?php isset($f) ? print($f->nomeDisciplina) : "" ?>"
+                <input type="text" placeholder="Nome da Escola" id="nomeEscola" name="nome"
+                       value="<?php isset($f) ? print($f->nomeEscola) : "" ?>"
                        required oninvalid="this.setCustomValidity("Preencha o campo nome da disciplina")"
                 oninput="setCustomValidity("")" class="form-control"/>
             </div>
@@ -40,20 +40,7 @@
         </div>
     </div>
 
-<!-- TELEFONE DA ESCOLA -->
-    <div class="col-sm-12">
-        <div class="row">
-            <label class="col-sm-2 form-control-label"></label>
-            <div class="col-sm-8">
-                <input type="text" placeholder="Telefone da Escola" id="telefoneEscola" name="telefone"
-                       value="<?php isset($f) ? print($f->telefoneEscola) : "" ?>"
-                       required oninvalid="this.setCustomValidity("Preencha o Campo Telefone da Escola")"
-                oninput="setCustomValidity("")" class="form-control"/>
-            </div>
-        </div>
-    </div>
-
-    <!-- DADOS DE CONTATO -->
+                        <!-- DADOS DE CONTATO -->
 
     <!-- TELEFONE DA ESCOLA -->
     <div class="col-sm-12">
