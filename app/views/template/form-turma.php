@@ -30,7 +30,7 @@
 
 
                       <?php echo "<li id='p3' class='page-item {$disabled[5]}'>";
-                      echo "<a class='page-link' href='javascript:formdisciplina.submit()' >Próximo</a></li>"; ?>
+                      echo "<a class='page-link' href='javascript:formturma.submit()' >Próximo</a></li>"; ?>
 
                   </ul>
                 </span>
@@ -60,4 +60,5 @@
                 </form>
             </div>
         </div>
+
 </section>
