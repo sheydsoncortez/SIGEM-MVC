@@ -1,5 +1,7 @@
 <?php if (isset($_SESSION['funcionario'])){
     $f = $_SESSION['funcionario'];
+    $date = new DateTime($f->datanasc);
+    $nd = $date->format('d/m/Y');
     //$date = new DateTime($f->datanasc); $nd = $date->format('d/m/Y');
     //echo(strcmp($f->sexo,"F"));
 }?>
@@ -23,7 +25,7 @@
       <div class="col-sm-3">
           <div class="input-group">
               <input type="text" class="form-control" id="data"
-                     value="<?php echo($f->datanasc != null) ? $f->datanasc : "" ?>"
+                     value="<?php isset($nd) ? print($nd) : ""?>"
                      placeholder="Data de Nascimeto"
                      name="dataNasc"
                      oninvalid="this.setCustomValidity('Preencha o campo data de nascimento')"

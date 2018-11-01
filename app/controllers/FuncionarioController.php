@@ -104,21 +104,35 @@ class FuncionarioController extends Controller{
                 header('location:' . URL_BASE . 'funcionario/editar/'.base64_encode($_SESSION["funcionario"]->cpf));
 
             break;
-            case 5:{
-                $dados = array();
+            case 5:
+
+                $dados = array(); 
+
                 $f = new FuncionarioModel();
+
                 $dados = $f->inserir();
+                
                 if($dados["status"]) {
                     $dados["view"] = "template/inicio";
                     $this->load("admin", $dados);
+
                 }else{
+
                     $this->load("admin", $dados);
                 }
-            }
+            break;
+            case 6:
+
+                $f = new FuncionarioModel();
+
+                $dados = $f->update($_SESSION['funcionario']);
+
+            break;
         } 
     }
     
     public function editar($cpf){
+
         $dados["titulo"] = "DADOS FUNCIONARIO";
         $dados["view"] = "template/funcionario/revisadados-funcionario";
         $dados["modal"] = "template/funcionario/atualiza-funcionario-modal.php";
@@ -135,7 +149,7 @@ class FuncionarioController extends Controller{
             }
         }else{
             $_SESSION["funcionario"] = $funcionario->getFuncionario(base64_decode($cpf));
-            $this->load("admin", $dados);
+           $this->load("admin", $dados);
         }
 
 

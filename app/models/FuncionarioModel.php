@@ -157,7 +157,65 @@ class FuncionarioModel extends Model{
         }
         return $status;
     }
-    
+
+    public function update(Funcionario $f){
+
+        $upct_sql = 'UPDATE public.ctps SET 
+                        numero=?, serie=?
+	                 WHERE numero=:numero;';
+
+        $query = $this->db->prepare($upct_sql);
+        $query->bindValue(1, $f->documentos->ctps->numero, \PDO::PARAM_STR);
+        $query->bindValue(2, $f->documentos->ctps->serie, \PDO::PARAM_STR);
+        $query->bindValue(':numero', $f->ctps->numero, \PDO::PARAM_STR);
+        $query->execute();
+
+        $upen_sql = 'UPDATE public.endereco SET 
+                        cep=?, cidade=?, logradouro=?, 
+                        numero=?, bairro=?, estado=?
+	                WHERE codigo=:codigo;';
+
+        $query = $this->db->prepare($upen_sql);
+        $query->bindValue(1, $f->endereco->cep, \PDO::PARAM_STR);
+        $query->bindValue(2, $f->endereco->cidade, \PDO::PARAM_STR);
+        $query->bindValue(3, $f->endereco->logradouro, \PDO::PARAM_STR);
+        $query->bindValue(4, $f->endereco->numero, \PDO::PARAM_STR);
+        $query->bindValue(5, $f->endereco->bairro, \PDO::PARAM_STR);
+        $query->bindValue(6, $f->endereco->estado, \PDO::PARAM_STR);
+        $query->bindValue(':codigo', $f->endereco->codigo, \PDO::PARAM_STR);
+        $query->execute();
+
+        $upre_sql = 'UPDATE public.reservista SET 
+                        numero=?, categoria=?, serie=?
+                     WHERE numero=:numero;';
+                     
+        $query = $this->db->prepare($upre_sql);
+        $query->bindValue(1, $f->documentos->reservista->numero, \PDO::PARAM_STR);
+        $query->bindValue(2, $f->documentos->reservista->categoria, \PDO::PARAM_STR);
+        $query->bindValue(3, $f->documentos->reservista->serie, \PDO::PARAM_STR);
+        $query->bindValue(':numero', $f->documentos->reservista->numero, \PDO::PARAM_STR);
+        $query->execute();
+
+        $uprg_sql = 'UPDATE public.rg SET 
+                        numero=?, orgaoexp=?, dataexp=?, ufexp=?
+	                 WHERE numero=:numero;';
+
+        $upti_sql = 'UPDATE public.tituloeleitor SET 
+                        numero=?, zona=?, secao=?
+	                 WHERE numero=:numero;';
+
+        $upfu_sql = 'UPDATE public.funcionario	SET 
+                        cpf=?, nome=?, datanasc=?, cidadenasc=?, estadonasc=?, 
+                        nomepai=?, nomemae=?, sexo=?, estadocivil=?, telefone=?, 
+                        email=?, pispasep=?, matricula=?, dataadmissao=?, escolaridade=?, 
+                        formacaoacademica=?, anoconclusao=?, cargo=?, funcao=?, endereco=?, 
+                        ctps=?, rg=?, tituloeleitor=?, reservista=?, senha=?, escola=?, ativo=?
+	                  WHERE cpf=:cpf;';
+
+
+    }
+
+
     public function getFuncionario($cpf)
     {
 

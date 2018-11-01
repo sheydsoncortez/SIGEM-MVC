@@ -42,7 +42,7 @@
                                 </div>
                                 <div class="row">
                                     <strong class="col-sm-3 form-control-label">Data de Nasc:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$f->datanasc}</label>";?>
+                                    <?php $data = new DateTime($f->datanasc);echo "<label class='form-control-label lista-dados'>{$data->format('d/m/Y')}</label>";?>
                                 </div>
                                 <div class="row list-background">
                                     <strong class="col-sm-3 form-control-label">Cidade de Nasc:</strong>
@@ -152,7 +152,7 @@
                                 </div>
                                 <div class="row list-background">
                                     <strong class="col-sm-3 form-control-label">Data Exp. Rg:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$f->documentos->rg->dataexp}</label>";?>
+                                    <?php $data = new DateTime($f->documentos->rg->dataexp); echo "<label class='form-control-label lista-dados'>{$data->format('d/m/y')}</label>";?>
                                 </div>
                                 <div class="row">
                                     <strong class="col-sm-3 form-control-label">Estado Exp. Rg:</strong>
@@ -201,7 +201,7 @@
                                 </div>
                                 <div class="row">
                                     <strong class="col-sm-3 form-control-label">Data Admissão:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$f->dadosfuncionais->dataadmissao}</label>";?>
+                                    <?php $data = new DateTime($f->dadosfuncionais->dataadmissao); echo "<label class='form-control-label lista-dados'>{$data->format('d/m/y')}</label>";?>
                                 </div>
                                 <div class="row list-background">
                                     <strong class="col-sm-3 form-control-label">Escolaridade:</strong>
