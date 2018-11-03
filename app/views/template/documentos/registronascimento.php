@@ -89,7 +89,7 @@
                         <input type="text" class="form-control" id="data"
                         placeholder="Data do Registro"
                         value="<?php isset($d) ? print($d->registroNascimento->data) : "" ?>"
-                        name="dataExpRg" required oninvalid="this.setCustomValidity('Insira a data do registro.')"
+                        name="dataReg" required oninvalid="this.setCustomValidity('Insira a data do registro.')"
                         oninput="setCustomValidity('')"/>
                         <div class="input-group-append">
                             <div class="input-group-text"><i class="fa fa-calendar-alt"></i></div>
