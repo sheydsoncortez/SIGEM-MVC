@@ -60,8 +60,51 @@ class AlunoController extends Controller{
         unset($dados);
     }
 
-    public function salvar(){
-        return null;
+    public function salvar($page){
+        switch ($page){
+            case 1:
+
+                $this->setDadosAluno();
+                header('location:' . URL_BASE . 'aluno/cadastrar/2');
+
+            break;
+            case 2:
+                
+                $this->setFiliacao();
+                header('location:' . URL_BASE . 'aluno/cadastrar/3');
+                
+            break;
+            case 3:
+                
+                $this->setDocumentosAluno();
+                header('location:' . URL_BASE . 'aluno/cadastrar/4');
+
+            break;
+            case 4:
+
+                $dados = array(); 
+
+                $a = new AlunoModel();
+
+                $dados = $a->inserir();
+                
+                if($dados["status"]) {
+                    $dados["view"] = "template/inicio";
+                    $this->load("admin", $dados);
+
+                }else{
+
+                    $this->load("admin", $dados);
+                }
+            break;
+            //case 6:
+            //
+            //    $f = new AlunoModel();
+            //
+            //    $dados = $f->update($_SESSION['aluno']);
+            //
+            //break;
+        } 
     }
 
     public function setDadosAluno(){
@@ -77,4 +120,59 @@ class AlunoController extends Controller{
 
         $_SESSION['aluno'] = $aluno;
     }
+
+    public function setFiliacao(){
+        $filiacao = new FiliacaoAluno();
+
+        $filiacao->nomePaiAluno = $_POST['nomePaiAluno'];
+        $filiacao->profissaoPai = $_POST['profissaoPai'];
+        $filiacao->rgPaiAluno->numero = $_POST['numeroRg'];
+        $filiacao->rgPaiAluno->orgaoexp = $_POST['orgaoExpRg'];
+        $filiacao->rgPaiAluno->dataexp = $_POST['dataExpRg'];
+        $filiacao->rgPaiAluno->estadoexp = $_POST['ufExpRg'];
+        $filiacao->nomePaiAluno = $_POST['nomePaiAluno'];
+        $filiacao->nomePaiAluno = $_POST['nomePaiAluno'];
+        $filiacao->rgMaeAluno->numero = $_POST['numeroRg'];
+        $filiacao->rgMaeAluno->orgaoexp = $_POST['orgaoExpRg'];
+        $filiacao->rgMaeAluno->dataexp = $_POST['dataExpRg'];
+        $filiacao->rgMaeAluno->estadoexp = $_POST['ufExpRg'];
+    }
+
+    public function setDocumentosAluno(){
+        $documentosa = new DocumentosAluno();
+
+        $documentosa->rg->numero = $_POST['numeroRg'];
+        $documentosa->rg->orgaoexp = $_POST['orgaoExpRg'];
+        $documentosa->rg->dataexp = $_POST['dataExpRg'];
+        $documentosa->rg->estadoexp = $_POST['ufExpRg'];
+        $documentosa->tituloEleitoral->numero = $_POST['numeroTit'];
+        $documentosa->tituloEleitoral->secao = $_POST['secaoTit'];
+        $documentosa->tituloEleitoral->zona = $_POST['zonaTit'];
+        $documentosa->registroNascimento->cartorio = $_POST['nomeCartorio'];
+        $documentosa->registroNascimento->numeroRegistro = $_POST['numeroReg'];
+        $documentosa->registroNascimento->livro = $_POST['livroReg'];
+        $documentosa->registroNascimento->folha = $_POST['folhaReg'];
+        $documentosa->registroNascimento->cidade = $_POST['cidadeReg'];
+        $documentosa->registroNascimento->uf = $_POST['ufReg'];
+        $documentosa->registroNascimento->data = $_POST['dataReg'];
+
+        if($_SESSION['aluno']->sexo == 'M'){
+
+            $documentosa->reservista->numero = $_POST['numeroRes'];
+            $documentosa->reservista->categoria = $_POST['categoriaRes'];
+            $documentosa->reservista->serie = $_POST['serieRes'];
+
+        }else if($_SESSION['aluno']->sexo == 'F'){
+            isset($_POST['numeroRes']) ? $documentosa->reservista->numero = $_POST['numeroRes'] : 
+                                         $documentosa->reservista->numero ="";
+
+            isset($_POST['CategoriaRes']) ? $documentosa->reservista->categoria = $_POST['CategoriaRes'] : 
+                                            $documentosa->reservista->categoria = "";
+                                            
+            isset($_POST['serieRes']) ? $documentosa->reservista->serie = $_POST['serieRes'] : 
+                                        $documentosa->reservista->serie = "";
+        }
+
+        $_SESSION['aluno']->documentos = $documentosa;
+   }
 }
