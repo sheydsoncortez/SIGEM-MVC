@@ -94,7 +94,7 @@
         <div class="input-group">
             <input type="text" class="form-control" id="data"
               placeholder="Data de Expedição"
-              value="<?php isset($d) ? print($d->rg->dataexp) : "" ?>"
+              value="<?php isset($d) ? print($data->format("d/m/Y")) : "" ?>"
               name="dataExpRg" required oninvalid="this.setCustomValidity('Insira a data de expedição')"
               oninput="setCustomValidity('')"/>
             <div class="input-group-append">

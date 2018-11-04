@@ -2,7 +2,7 @@
     $f = $_SESSION['funcionario'];
     $date = new DateTime($f->datanasc);
     $nd = $date->format('d/m/Y');
-    //$date = new DateTime($f->datanasc); $nd = $date->format('d/m/Y');
+    //$date = new DateTime($f->datanasc); echo "$date->format('d/m/Y')";
     //echo(strcmp($f->sexo,"F"));
 }?>
 <div class="form-group row">

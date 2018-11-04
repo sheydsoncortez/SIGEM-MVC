@@ -160,58 +160,109 @@ class FuncionarioModel extends Model{
 
     public function update(Funcionario $f){
 
-        $upct_sql = 'UPDATE public.ctps SET 
-                        numero=?, serie=?
-	                 WHERE numero=:numero;';
+        try {
+            // set the PDO error mode to exception
+            $this->db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+            $upct_sql = 'UPDATE public.ctps SET 
+                            numero=?, serie=?
+                         WHERE numero=:numero;';
 
-        $query = $this->db->prepare($upct_sql);
-        $query->bindValue(1, $f->documentos->ctps->numero, \PDO::PARAM_STR);
-        $query->bindValue(2, $f->documentos->ctps->serie, \PDO::PARAM_STR);
-        $query->bindValue(':numero', $f->ctps->numero, \PDO::PARAM_STR);
-        $query->execute();
+            $query = $this->db->prepare($upct_sql);
+            $query->bindValue(1, $f->documentos->ctps->numero, \PDO::PARAM_STR);
+            $query->bindValue(2, $f->documentos->ctps->serie, \PDO::PARAM_STR);
+            $query->bindValue(':numero', $f->ctps->numero, \PDO::PARAM_STR);
+            $query->execute();
 
-        $upen_sql = 'UPDATE public.endereco SET 
-                        cep=?, cidade=?, logradouro=?, 
-                        numero=?, bairro=?, estado=?
-	                WHERE codigo=:codigo;';
+            $upen_sql = 'UPDATE public.endereco SET 
+                            cep=?, cidade=?, logradouro=?, 
+                            numero=?, bairro=?, estado=?
+                        WHERE codigo=:codigo;';
 
-        $query = $this->db->prepare($upen_sql);
-        $query->bindValue(1, $f->endereco->cep, \PDO::PARAM_STR);
-        $query->bindValue(2, $f->endereco->cidade, \PDO::PARAM_STR);
-        $query->bindValue(3, $f->endereco->logradouro, \PDO::PARAM_STR);
-        $query->bindValue(4, $f->endereco->numero, \PDO::PARAM_STR);
-        $query->bindValue(5, $f->endereco->bairro, \PDO::PARAM_STR);
-        $query->bindValue(6, $f->endereco->estado, \PDO::PARAM_STR);
-        $query->bindValue(':codigo', $f->endereco->codigo, \PDO::PARAM_STR);
-        $query->execute();
+            $query = $this->db->prepare($upen_sql);
+            $query->bindValue(1, $f->endereco->cep, \PDO::PARAM_STR);
+            $query->bindValue(2, $f->endereco->cidade, \PDO::PARAM_STR);
+            $query->bindValue(3, $f->endereco->logradouro, \PDO::PARAM_STR);
+            $query->bindValue(4, $f->endereco->numero, \PDO::PARAM_STR);
+            $query->bindValue(5, $f->endereco->bairro, \PDO::PARAM_STR);
+            $query->bindValue(6, $f->endereco->estado, \PDO::PARAM_STR);
+            $query->bindValue(':codigo', $f->endereco->codigo, \PDO::PARAM_STR);
+            $query->execute();
 
-        $upre_sql = 'UPDATE public.reservista SET 
-                        numero=?, categoria=?, serie=?
-                     WHERE numero=:numero;';
-                     
-        $query = $this->db->prepare($upre_sql);
-        $query->bindValue(1, $f->documentos->reservista->numero, \PDO::PARAM_STR);
-        $query->bindValue(2, $f->documentos->reservista->categoria, \PDO::PARAM_STR);
-        $query->bindValue(3, $f->documentos->reservista->serie, \PDO::PARAM_STR);
-        $query->bindValue(':numero', $f->documentos->reservista->numero, \PDO::PARAM_STR);
-        $query->execute();
+            $upre_sql = 'UPDATE public.reservista SET 
+                            numero=?, categoria=?, serie=?
+                         WHERE numero=:numero;';
 
-        $uprg_sql = 'UPDATE public.rg SET 
-                        numero=?, orgaoexp=?, dataexp=?, ufexp=?
-	                 WHERE numero=:numero;';
+            $query = $this->db->prepare($upre_sql);
+            $query->bindValue(1, $f->documentos->reservista->numero, \PDO::PARAM_STR);
+            $query->bindValue(2, $f->documentos->reservista->categoria, \PDO::PARAM_STR);
+            $query->bindValue(3, $f->documentos->reservista->serie, \PDO::PARAM_STR);
+            $query->bindValue(':numero', $f->documentos->reservista->numero, \PDO::PARAM_STR);
+            $query->execute();
 
-        $upti_sql = 'UPDATE public.tituloeleitor SET 
-                        numero=?, zona=?, secao=?
-	                 WHERE numero=:numero;';
+            $uprg_sql = 'UPDATE public.rg SET 
+                            numero=?, orgaoexp=?, dataexp=?, ufexp=?
+                         WHERE numero=:numero;';
 
-        $upfu_sql = 'UPDATE public.funcionario	SET 
-                        cpf=?, nome=?, datanasc=?, cidadenasc=?, estadonasc=?, 
-                        nomepai=?, nomemae=?, sexo=?, estadocivil=?, telefone=?, 
-                        email=?, pispasep=?, matricula=?, dataadmissao=?, escolaridade=?, 
-                        formacaoacademica=?, anoconclusao=?, cargo=?, funcao=?, endereco=?, 
-                        ctps=?, rg=?, tituloeleitor=?, reservista=?, senha=?, escola=?, ativo=?
-	                  WHERE cpf=:cpf;';
+            $query = $this->db->prepare($uprg_sql);
+            $query->bindValue(1, $f->documentos->rg->numero, \PDO::PARAM_STR);
+            $query->bindValue(2, $f->documentos->rg->orgaoexp, \PDO::PARAM_STR);
+            $query->bindValue(3, $f->documentos->rg->dataexp, \PDO::PARAM_STR);
+            $query->bindValue(4, $f->documentos->rg->ufexp, \PDO::PARAM_STR);
+            $query->bindValue(':numero', $f->documentos->rg->numero, \PDO::PARAM_STR);
 
+            $upti_sql = 'UPDATE public.tituloeleitor SET 
+                            numero=?, zona=?, secao=?
+                         WHERE numero=:numero;';
+
+            $query = $this->db->prepare($upti_sql);
+            $query->bindValue(1, $f->documentos->tituloeleitor->numero, \PDO::PARAM_STR);
+            $query->bindValue(2, $f->documentos->tituloeleitor->zona, \PDO::PARAM_STR);
+            $query->bindValue(3, $f->documentos->tituloeleitor->secao, \PDO::PARAM_STR);
+            $query->bindValue(':numero', $f->documentos->tituloeleitor->numero, \PDO::PARAM_STR);
+
+            $upfu_sql = 'UPDATE public.funcionario	SET 
+                            cpf=?, nome=?, datanasc=?, cidadenasc=?, estadonasc=?, 
+                            nomepai=?, nomemae=?, sexo=?, estadocivil=?, telefone=?, 
+                            email=?, pispasep=?, matricula=?, dataadmissao=?, escolaridade=?, 
+                            formacaoacademica=?, anoconclusao=?, cargo=?, funcao=?, senha=?, escola=?, ativo=?
+                          WHERE cpf=:cpf;';
+
+            $query = $this->db->prepare($upfu_sql);
+            $query->bindValue(1, $f->documentos->cpf, \PDO::PARAM_STR);
+            $query->bindValue(2, $f->nome, \PDO::PARAM_STR);
+            $query->bindValue(3, $f->datanasc, \PDO::PARAM_STR);
+            $query->bindValue(4, $f->cidadenasc, \PDO::PARAM_STR);
+            $query->bindValue(5, $f->estadonasc, \PDO::PARAM_STR);
+            $query->bindValue(6, $f->nomepai, \PDO::PARAM_STR);
+            $query->bindValue(7, $f->nomemae, \PDO::PARAM_STR);
+            $query->bindValue(8, $f->sexo, \PDO::PARAM_STR);
+            $query->bindValue(9, $f->estadocivil, \PDO::PARAM_STR);
+            $query->bindValue(10, $f->telefone, \PDO::PARAM_STR);
+            $query->bindValue(11, $f->email, \PDO::PARAM_STR);
+            $query->bindValue(12, $f->documentos->pispasep, \PDO::PARAM_STR);
+            $query->bindValue(13, $f->dadosfuncionais->matricula, \PDO::PARAM_STR);
+            $query->bindValue(14, $f->dadosfuncionais->dataadmissao, \PDO::PARAM_STR);
+            $query->bindValue(15, $f->dadosfuncionais->escolaridade, \PDO::PARAM_STR);
+            $query->bindValue(16, $f->dadosfuncionais->formacaoacademica, \PDO::PARAM_STR);
+            $query->bindValue(17, $f->dadosfuncionais->anoconclusao, \PDO::PARAM_STR);
+            $query->bindValue(18, $f->dadosfuncionais->cargo, \PDO::PARAM_STR);
+            $query->bindValue(19, $f->dadosfuncionais->funcao, \PDO::PARAM_STR);
+            $query->bindValue(20, $f->senha, \PDO::PARAM_STR);
+            $query->bindValue(21, $f->escola, \PDO::PARAM_STR);
+            $query->bindValue(22, $f->ativo, \PDO::PARAM_STR);
+            $query->bindValue(':cpf', $f->documentos->cpf, \PDO::PARAM_STR);
+
+            unset($_SESSION['funcionario']);
+
+            return $this->getFuncionario($f->documentos->cpf);
+
+        }catch (\PDOException $e){
+
+            $status["status"] = false;
+            $status["msn"] = "Erro ao inserir funcionário" . $e->getMessage();
+
+            return $status;
+        }
 
     }
 
