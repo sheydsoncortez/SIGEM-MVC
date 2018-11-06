@@ -41,22 +41,37 @@ class TurmaController extends Controller
                 $dados["proximo"] = "2";
                 $dados["page"] = $page;
                 break;
+            case '2';
+                $dados["titulo"] = "PREENCHER TURMA";
+                $dados["paginator"] = "turma/preencher-turma.php";
+                $dados["active"] = array("", "active", "", "", "");
+                $dados["disabled"] = array("","", "", "disabled", "disabled", "");
+                $dados["voltar"] = "1";
+                $dados["proximo"] = "3";
+                $dados["page"] = $page;
+                break;
 
         }
 
         //echo"<pre>";
         //print_r($dados);
         $this->load("admin", $dados);
-        $dados = "";
+        unset($dados);
     }
 
     public function salvar($page){
         switch ($page) {
             case 1:
                 $this->setDadosTurma();
-                header('location:' . URL_BASE . 'turma/cadastrar/1' . base64_encode($_SESSION["turma"]->nome));
+                header('location:' . URL_BASE . 'turma/cadastrar/2');
                 break;
             case 2:
+
+                $this->setPreencherTurma();
+                header('location:' . URL_BASE . 'turma/cadastrar/3');
+
+                break;
+            case 3:
                 $dados = array();
                 $d = new TurmaModel();
 
@@ -79,6 +94,14 @@ class TurmaController extends Controller
         $turma = new turma();
 
         $turma->nome = $_POST["nome"];
+
+        $_SESSION["turma"] = $turma;
+        //echo "<pre>";
+        //print_r($_SESSION["turma"]);
+    }
+    public function setPreencherTurma(){
+        $turma = new turma();
+
         $turma->turma = $_POST["disciplina"];
         $turma->serie = $_POST["aluno"];
 
@@ -86,7 +109,6 @@ class TurmaController extends Controller
         //echo "<pre>";
         //print_r($_SESSION["turma"]);
     }
-
 
 
 
