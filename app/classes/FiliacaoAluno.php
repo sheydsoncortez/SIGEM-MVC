@@ -4,7 +4,7 @@ namespace app\classes;
 
 use app\classes\Rg;
 
-class FiliacaoAluno(){
+class FiliacaoAluno{
 
     private $nomePaiAluno;
     private $profissaoPai;

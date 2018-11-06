@@ -4,8 +4,9 @@ namespace app\controllers;
 
 use app\core\Controller;
 use app\models\AlunoModel;
-use app\models\FiliacaoAluno;
+use app\classes\FiliacaoAluno;
 use app\classes\DocumentosAluno;
+use app\classes\Aluno;
 
 class AlunoController extends Controller{
     public function __contruct(){
@@ -108,7 +109,7 @@ class AlunoController extends Controller{
     }
 
     public function setDadosAluno(){
-        $aluno = new Funcionario();
+        $aluno = new Aluno();
 
         $aluno->nomeAluno = $_POST['nomeAluno'];
         $aluno->dataNascAluno = $_POST['dataNascAluno'];
