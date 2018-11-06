@@ -6,6 +6,7 @@ use app\classes\Rg;
 
 class FiliacaoAluno{
 
+    private $codigo;
     private $nomePaiAluno;
     private $profissaoPai;
     private $rgPaiAluno;
@@ -28,6 +29,14 @@ class FiliacaoAluno{
     {
         // TODO: Implement __set() method.
         $this->$atrib = $value;
+    }
+
+    public function getCodigoFiliacao(){
+        return $this->codigo;
+    }
+
+    public function setCodigoFiliacao($codigo){
+        $this->codigo = $codigo;
     }
 
     public function getNomePaiAluno(){

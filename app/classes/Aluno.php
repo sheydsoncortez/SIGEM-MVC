@@ -10,6 +10,7 @@ use app\classes\FiliacaoAluno;
 class Aluno{
 
     // Dados do Aluno
+    private $codigo;
     private $matriculaAluno;
     private $nomeAluno;
     private $dataNascAluno;
@@ -44,6 +45,14 @@ class Aluno{
     {
         // TODO: Implement __set() method.
         $this->$atrib = $value;
+    }
+
+    public function getCodigoAluno(){
+        return $this->codigo;
+    }
+
+    public function setCodigoAluno($codigo){
+        $this->codigo = $codigo;
     }
 
     public function getNomeAluno(){

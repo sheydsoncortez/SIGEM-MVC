@@ -4,6 +4,7 @@ namespace app\classes;
 
 class RegistroNascimento{
 
+    private $codigo;
     private $numeroRegistro;
     private $livro;
     private $folha;
@@ -26,6 +27,14 @@ class RegistroNascimento{
     {
         // TODO: Implement __set() method.
         $this->$atrib = $value;
+    }
+
+    public function getCodigoReg(){
+        return $this->codigo;
+    }
+
+    public function setCodigoReg($codigo){
+        $this->codigo = $codigo;
     }
 
     public function getNumeroRegistro(){
