@@ -1,4 +1,4 @@
-
+CREATE SCHEMA "public";
 
 CREATE TABLE "public".ctps ( 
 	numero               varchar(20)  NOT NULL ,
@@ -37,6 +37,18 @@ CREATE TABLE "public".escola (
 
 CREATE INDEX idx_escola_endereco ON "public".escola ( endereco );
 
+CREATE TABLE "public".registronascimento ( 
+	codigo               integer  NOT NULL ,
+	numeroregistro       varchar(10)   ,
+	livro                varchar(10)   ,
+	folha                varchar(10)   ,
+	dataregistro         varchar(10)   ,
+	cartorio             varchar(255)   ,
+	cidade               varchar(50)   ,
+	uf                   varchar(50)   ,
+	CONSTRAINT pk_registronascimento_codigo PRIMARY KEY ( codigo )
+ );
+
 CREATE TABLE "public".reservista ( 
 	numero               varchar(15)  NOT NULL ,
 	categoria            varchar(20)  NOT NULL ,
@@ -58,6 +70,21 @@ CREATE TABLE "public".tituloeleitor (
 	secao                integer  NOT NULL ,
 	CONSTRAINT pk_titulo_eleitoral_numero_tit PRIMARY KEY ( numero )
  );
+
+CREATE TABLE "public".filiacao ( 
+	codigo               integer  NOT NULL ,
+	nomepaialuno         varchar(255)   ,
+	nomemaealuno         varchar(255)   ,
+	profissaopai         varchar(50)   ,
+	profissaomae         varchar(50)   ,
+	rgpaialuno           varchar(16)   ,
+	rgmaealuno           varchar(16)   ,
+	CONSTRAINT pk_filiacao_codigo PRIMARY KEY ( codigo )
+ );
+
+CREATE INDEX idx_filiacao_rgpaialuno ON "public".filiacao ( rgpaialuno );
+
+CREATE INDEX idx_filiacao_rgmaealuno ON "public".filiacao ( rgmaealuno );
 
 CREATE TABLE "public".funcionario ( 
 	cpf                  varchar(16)  NOT NULL ,
@@ -110,7 +137,55 @@ COMMENT ON COLUMN "public".funcionario.tituloeleitor IS 'Número do título elei
 
 COMMENT ON COLUMN "public".funcionario.reservista IS 'Número da reservista - Chave estrangeira para entidade Reservista';
 
+CREATE TABLE "public".aluno ( 
+	codigo               integer  NOT NULL ,
+	matriculaaluno       varchar(15)   ,
+	nomealuno            varchar(255)   ,
+	datanascaluno        varchar(10)   ,
+	cidadenascaluno      varchar(50)   ,
+	estadonascaluno      varchar(50)   ,
+	coraluno             varchar(15)   ,
+	sexoaluno            char(1)   ,
+	pcdaluno             varchar(100)   ,
+	statusaluno          integer   ,
+	filiacaoaluno        integer   ,
+	codigoescola         integer   ,
+	rg                   varchar(16)   ,
+	tituloeleitor        varchar(20)   ,
+	registronasc         integer   ,
+	reservista           varchar(15)   ,
+	CONSTRAINT pk_aluno_id PRIMARY KEY ( codigo )
+ );
+
+CREATE INDEX idx_aluno_rg ON "public".aluno ( rg );
+
+CREATE INDEX idx_aluno_tituloeleitor ON "public".aluno ( tituloeleitor );
+
+CREATE INDEX idx_aluno_reservista ON "public".aluno ( reservista );
+
+CREATE INDEX idx_aluno_codigoescola ON "public".aluno ( codigoescola );
+
+CREATE INDEX idx_aluno_registronasc ON "public".aluno ( registronasc );
+
+CREATE INDEX idx_aluno_filiacaoaluno ON "public".aluno ( filiacaoaluno );
+
+ALTER TABLE "public".aluno ADD CONSTRAINT fk_aluno_rg FOREIGN KEY ( rg ) REFERENCES "public".rg( numero );
+
+ALTER TABLE "public".aluno ADD CONSTRAINT fk_aluno_tituloeleitor FOREIGN KEY ( tituloeleitor ) REFERENCES "public".tituloeleitor( numero );
+
+ALTER TABLE "public".aluno ADD CONSTRAINT fk_aluno_reservista FOREIGN KEY ( reservista ) REFERENCES "public".reservista( numero );
+
+ALTER TABLE "public".aluno ADD CONSTRAINT fk_aluno_escola FOREIGN KEY ( codigoescola ) REFERENCES "public".escola( codigo );
+
+ALTER TABLE "public".aluno ADD CONSTRAINT fk_aluno_registronascimento FOREIGN KEY ( registronasc ) REFERENCES "public".registronascimento( codigo );
+
+ALTER TABLE "public".aluno ADD CONSTRAINT fk_aluno_filiacao FOREIGN KEY ( filiacaoaluno ) REFERENCES "public".filiacao( codigo );
+
 ALTER TABLE "public".escola ADD CONSTRAINT fk_escola_endereco FOREIGN KEY ( endereco ) REFERENCES "public".endereco( codigo );
+
+ALTER TABLE "public".filiacao ADD CONSTRAINT fk_filiacao_rgpai FOREIGN KEY ( rgpaialuno ) REFERENCES "public".rg( numero );
+
+ALTER TABLE "public".filiacao ADD CONSTRAINT fk_filiacao_rgmae FOREIGN KEY ( rgmaealuno ) REFERENCES "public".rg( numero );
 
 ALTER TABLE "public".funcionario ADD CONSTRAINT fk_funcionario_carteiraprof FOREIGN KEY ( ctps ) REFERENCES "public".ctps( numero );
 
@@ -121,3 +196,4 @@ ALTER TABLE "public".funcionario ADD CONSTRAINT fk_funcionario_reservista FOREIG
 ALTER TABLE "public".funcionario ADD CONSTRAINT fk_funcionario_rg FOREIGN KEY ( rg ) REFERENCES "public".rg( numero );
 
 ALTER TABLE "public".funcionario ADD CONSTRAINT fk_funcionario_tituloeleitoral FOREIGN KEY ( tituloeleitor ) REFERENCES "public".tituloeleitor( numero );
+
