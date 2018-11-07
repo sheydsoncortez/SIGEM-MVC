@@ -20,7 +20,8 @@ class TurmaModel extends Model
         $turma = new Turma();
         $turma = $_SESSION['turma'];
 
-        $nome = $_SESSION['turma']->nome;
+        $serie = $_SESSION['turma']->serie;
+        $classe = $_SESSION['turma']->classe;
         $disciplina = $_SESSION['turma']->disciplina;
         $aluno = $_SESSION['turma']->aluno;
 

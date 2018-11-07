@@ -5,7 +5,8 @@ namespace app\classes;
 
 class Turma{
 
-    private $nome;
+    private $serie;
+    private $classe;
     private $disciplina;
     private $aluno;
 
@@ -30,17 +31,33 @@ class Turma{
     /**
      * @return mixed
      */
-    public function getNome()
+    public function getSerie()
     {
-        return $this->nome;
+        return $this->serie;
     }
 
     /**
-     * @param mixed $nome
+     * @param mixed $serie
      */
-    public function setNome($nome)
+    public function setSerie($serie)
     {
-        $this->nome = $nome;
+        $this->serie = $serie;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getClasse()
+    {
+        return $this->classe;
+    }
+
+    /**
+     * @param mixed $classe
+     */
+    public function setClasse($classe)
+    {
+        $this->classe = $classe;
     }
 
     /**

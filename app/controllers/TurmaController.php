@@ -93,7 +93,8 @@ class TurmaController extends Controller
     public function setDadosTurma(){
         $turma = new turma();
 
-        $turma->nome = $_POST["nome"];
+        $turma->nome = $_POST["serie"];
+        $turma->classe = $_POST["classe"];
 
         $_SESSION["turma"] = $turma;
         //echo "<pre>";
