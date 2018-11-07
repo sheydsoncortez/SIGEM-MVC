@@ -116,12 +116,4 @@ class Escola
         $this->endereco = $endereco;
     }
 
-
-
-
-
-
-
-
-
 }
