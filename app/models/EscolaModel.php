@@ -7,8 +7,9 @@
  */
 
 namespace app\models;
-use app\classes\Endereco;
+//use app\classes\Endereco;
 use app\core\Model;
+use app\classes\Escola;
 
 error_reporting(E_ERROR);
 
@@ -19,9 +20,18 @@ class EscolaModel extends Model
         parent::__construct();
     }
 
+
+
+
+
     public function inserir()
     {
+
         $status = array();
+
+        //$e = $_SESSION['escola'];
+
+
 
         $escola = new Escola();
         $escola = $_SESSION['escola'];
@@ -44,15 +54,45 @@ class EscolaModel extends Model
                             (codigo, cep, cidade, logradouro, numero, bairro, estado) 
                             VALUES 
                             ('{$enderecoCod}','{$enderecoCep}' , '{$enderecoCidade}', '{$enderecoLogradouro}', 
-                            '{$enderecoNum}', '{$enderecoBairro}', '{$enderecoUf}')";
+                            '{$enderecoNum}', '{$enderecoBairro}', '{$enderecoUf}');";
 
 
         $insert_escola = "INSERT INTO public.escola(
                                 codigo, nome, telefone, email)
                                VALUES 
-                                ('{$codigoEscola}', '{$nomeEscola}', '{$telefoneEscola}', '{$emailEscola}')";
+                                ('{$codigoEscola}', '{$nomeEscola}', '{$telefoneEscola}', '{$emailEscola}');";
 
 
+
+        try {
+            // set the PDO error mode to exception
+            $this->db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+
+            $query = $this->db->prepare($insert_endereco);
+            $query->execute();
+
+            $query = $this->db->prepare($insert_escola);
+            $query->execute();
+
+
+
+            $status["status"] = true;
+
+            $status["msn"] = "Escola inserida com Sucesso.";
+            $status["codigo"] = $codigoEscola ;
+
+            unset($_SESSION['escola']);
+
+            return $status ;
+
+        }
+        catch(\PDOException $e){
+
+            $status["status"] = false;
+            $status["msn"] = "Erro ao inserir a escola" . $e->getMessage();
+
+            return $status;
+        }
 
 
 
