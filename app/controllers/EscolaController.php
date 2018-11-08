@@ -102,8 +102,8 @@ class EscolaController extends Controller
     public function setDadosEscola(){
         $escola = new Escola();
 
-        $escola->nome = $_POST['nomeEsc'];
-        $escola->codigo = $_POST['dataNasc'];
+        $escola->nome = $_POST['nome'];
+        $escola->codigo = $_POST['codigo'];
         $escola->telefone = $_POST['telefone'];
         $escola->email = $_POST['email'];
 
