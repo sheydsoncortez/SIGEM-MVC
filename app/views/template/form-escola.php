@@ -50,7 +50,7 @@
                         <div class="line"></div>
                         <div class="form-group row">
                             <div class="col-sm-5 offset-sm-1">
-                                <button type="cancel" class="btn btn-secondary">Cancel&nbsp&nbsp</button>
+                                <button type="reset" class="btn btn-secondary">Cancel&nbsp&nbsp</button>
                                 <button type='submit' class='btn btn-primary'>Próximo</button>
 
                             </div>
