@@ -1,5 +1,5 @@
-<?php if (isset($_SESSION['disciplina'])) {
-    $d = $_SESSION['disciplina'];
+<?php if (isset($_SESSION['escola'])) {
+    $e = $_SESSION['escola'];
 }
 ?>
 
@@ -29,19 +29,19 @@
                             <div class="col-sm-12" >
                                 <div class="row list-background">
                                     <strong class="col-sm-3 form-control-label">Código da Escola</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$d->codigo}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$e->codigo}</label>";?>
                                 </div>
                                 <div class="row">
                                     <strong class="col-sm-3 form-control-label">Nome da Escola</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$d->nome}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$e->nome}</label>";?>
                                 </div>
                                 <div class="row list-background">
                                     <strong class="col-sm-3 form-control-label">Telefone:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$f->telefone}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$e->telefone}</label>";?>
                                 </div>
                                 <div class="row">
                                     <strong class="col-sm-3 form-control-label">Email:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$f->email}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$e->email}</label>";?>
                                 </div>
 
 
