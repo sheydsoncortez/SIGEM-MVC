@@ -17,7 +17,7 @@ class DocumentosAluno{
     public function __construct(){
         $this->registroNascimento = new RegistroNascimento();
         $this->rg = new Rg();
-        $this->tituloEleitoral = new TituloEleitoral();
+        $this->tituloEleitoral = new TituloEleitor();
         $this->reservista = new Reservista();
     }
 
