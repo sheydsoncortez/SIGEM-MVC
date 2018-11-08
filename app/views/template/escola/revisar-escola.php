@@ -45,15 +45,6 @@
                                 </div>
 
 
-                                <div class="line"></div>
-                                <div class="row">
-                                    <div class="col-sm-2">
-                                        <button id="corrigirDadosPessoais" type='button' class='btn btn-warning corrigir'><strong>Corrigir</strong></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
                         <br/><p id="cabecalho_blocos_form">ENDEREÇO</p>
                         <div class="line"></div>
                         <div class="form-group row">
@@ -93,15 +84,7 @@
                         </div>
 
 
-                                <!-- BOTÃO CORRIGIR DADOS-->
-                                <div class="line"></div>
-                                <div class="row">
-                                    <div class="col-sm-2">
-                                        <button id="corrigirDadosEscola" type='button' class='btn btn-warning corrigir'><strong>Corrigir</strong></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
 
                         <div class="line"></div>
                         <div class="form-group row">
@@ -109,7 +92,7 @@
                                 <a href="<?php echo URL_BASE . "escola/listar"; ?>">
                                     <button type="button" class="btn btn-secondary" >Cancelar</button>
                                 </a>
-                                <a href="<?php echo URL_BASE . "escola/salvar/2" ;?>">
+                                <a href="<?php echo URL_BASE . "escola/salvar/3" ;?>">
                                     <button type="button" class="btn btn-primary" >Salvar</button>
                                 </a>
 
