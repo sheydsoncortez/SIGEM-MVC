@@ -17,7 +17,7 @@
             <label class="col-sm-2 form-control-label"></label>
             <div class="col-sm-8">
                 <input type="text" placeholder="Código da Escola" id="codigoEscola" name="codigo"
-                       value="<?php isset($f) ? print($f->codigoEscola) : "" ?>"
+                       value="<?php isset($f) ? print($f->codigo) : "" ?>"
                        required oninvalid="this.setCustomValidity("Preencha o campo código da Escola")"
                 oninput="setCustomValidity("")" class="form-control"/>
             </div>
@@ -32,7 +32,7 @@
             <label class="col-sm-2 form-control-label"></label>
             <div class="col-sm-8">
                 <input type="text" placeholder="Nome da Escola" id="nomeEscola" name="nome"
-                       value="<?php isset($f) ? print($f->nomeEscola) : "" ?>"
+                       value="<?php isset($f) ? print($f->nome) : "" ?>"
                        required oninvalid="this.setCustomValidity("Preencha o campo nome da disciplina")"
                 oninput="setCustomValidity("")" class="form-control"/>
             </div>
