@@ -1,11 +1,11 @@
 <!-- ================================================================================================= -->
 
-<!-- FORMULARIO DE CADASTRO DE ALUNOS -->
+<!-- FORMULARIO DE CADASTRO DE FUNCIONÁRIOS -->
 <section class="forms offset-sm-1">
   <div class="container-fluid">
 
       <header> 
-        <h1 class="h3 display">Cadastro de Alunos</h1>
+        <h1 class="h3 display">Cadastro de Aluno</h1>
       </header>
 
       <div class="col-lg-12" >
