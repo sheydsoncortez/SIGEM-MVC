@@ -1246,6 +1246,10 @@ legend {
   margin-bottom: .00em;
 }
 
+legend#legenda-pd{
+  padding-bottom: .08em;
+}
+
 radio{
   font-size: .80em;
   color: #999;

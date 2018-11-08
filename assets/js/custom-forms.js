@@ -355,3 +355,16 @@ $(document).ready(function() {
 
     });
 });
+
+//
+$(document).ready(function(){
+    $('#add-professor').on('click',function() {
+        var v = [];
+        for(var i = 0; i < $("#sel1").val(); i++ ){
+            t = t + $("#sel1").val();
+        }
+        alert(t);
+    });
+});
+
+

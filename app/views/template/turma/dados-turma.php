@@ -29,11 +29,11 @@
         <?php if(isset($f)){
                 echo "<option selected='selected' value='{$f->classeTurma}'>{$f->classeTurma}</option>";
         } else{   echo "<option value=''  disabled selected hidden>Classe</option>";}?>
-        <option value="'1'">''1''</option>
-        <option value="'2'">''2''</option>
-        <option value="'3'">''3''</option>
-        <option value="'4'">''4''</option>
-        <option value="'5'">''5''</option>
+        <option value="'A'">''A''</option>
+        <option value="'B'">''B''</option>
+        <option value="'C'">''C''</option>
+        <option value="'D'">''D''</option>
+        <option value="'E'">''E''</option>
         </select>
     </div>
 </div>

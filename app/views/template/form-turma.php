@@ -27,6 +27,10 @@
                       <a class="page-link" href="1/">1</a></li>
                       <?php echo "<li id='p2' class='page-item {$active[1]} {$disabled[2]}'>";?>
                       <a class="page-link" href="2/">2</a></li>
+                      <?php echo "<li id='p3' class='page-item {$active[2]} {$disabled[3]}'>";?>
+                      <a class="page-link" href="3/">3</a></li>
+                      <?php echo "<li id='p4' class='page-item {$active[3]} {$disabled[4]}'>";?>
+                      <a class="page-link" href="4/">4</a></li>
 
 
                       <?php echo "<li id='p3' class='page-item {$disabled[5]}'>";

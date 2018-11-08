@@ -101,12 +101,12 @@ class TurmaController extends Controller
         //print_r($_SESSION["turma"]);
     }
     public function setPreencherTurma(){
-        $turma = new turma();
+        $turmaf = new turma();
 
-        $turma->turma = $_POST["disciplina"];
-        $turma->serie = $_POST["aluno"];
+        $turmaf->disciplina = $_POST["disciplina"];
+        $turmaf->serie = $_POST["aluno"];
 
-        $_SESSION["turma"] = $turma;
+        $_SESSION["turma"]->turma = $turmaf;
         //echo "<pre>";
         //print_r($_SESSION["turma"]);
     }

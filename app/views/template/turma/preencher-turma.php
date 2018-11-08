@@ -7,12 +7,33 @@
         <div class="row">
             <label class="col-sm-1 form-control-label"></label>
             <div class="col-sm-8">
-                <textarea name="comentário" rows="10" cols="32">Disciplinas Disponíveis:</textarea>
-                <textarea name="comentário" rows="10" cols="32">Alunos Disponíveis:</textarea>
-                <textarea name="comentário" rows="10" cols="67">Turma:</textarea>
+                <div class="form-group">
+                    <legend id="legenda-pd">Professores/Disciplina</legend>
+                    <select multiple class="form-control" id="sel1">
+                        <option>Professor 1</option>
+                        <option>Professor 2</option>
+                        <option>Professor 3</option>
+                        <option>Professor 4</option>
+                        <option>Professor 5</option>
+                        <option>Professor 6</option>
+                    </select>
+                </div>
+            <input type="button" class='btn btn-primary' id="add-professor" value="Adicionar" />
+            </div>
+
+            
+        </div>
+        <div class="row">
+            <label class="col-sm-1 form-control-label"></label>
+            <div class="col-sm-8">
+                <div class="form-group">
+                    <legend id="legenda-pd">Turma</legend>
+                    <select multiple class="form-control" id="sel2">
+
+                    </select>
+                </div>
                 
             </div>
-            
         </div>
     </div>
 </div>
