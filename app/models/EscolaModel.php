@@ -36,10 +36,10 @@ class EscolaModel extends Model
         $escola = new Escola();
         $escola = $_SESSION['escola'];
 
-        $codigoEscola = $_SESSION['escola']->codigoescola;
-        $nomeEscola = $_SESSION['escola']->nomeescola;
-        $telefoneEscola = $_SESSION['escola']->telefoneescola;
-        $emailEscola = $_SESSION['escola']->emailescola;
+        $codigoEscola = $_SESSION['escola']->codigo;
+        $nomeEscola = $_SESSION['escola']->nome;
+        $telefoneEscola = $_SESSION['escola']->telefone;
+        $emailEscola = $_SESSION['escola']->email;
 
         $enderecoCod = $codigoEscola;
         $enderecoCep = $_SESSION['escola']->endereco->cep;
@@ -58,10 +58,9 @@ class EscolaModel extends Model
 
 
         $insert_escola = "INSERT INTO public.escola(
-                                codigo, nome, telefone, email)
+                                codigo, nome, telefone, email, endereco)
                                VALUES 
-                                ('{$codigoEscola}', '{$nomeEscola}', '{$telefoneEscola}', '{$emailEscola}');";
-
+                                (".intval($codigoEscola).", '{$nomeEscola}', '{$telefoneEscola}', '{$emailEscola}', '{$enderecoCod}');";
 
 
         try {
