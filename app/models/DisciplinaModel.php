@@ -40,7 +40,7 @@ class DisciplinaModel extends Model
                     $query->bindValue(2, intval($d->professor), \PDO::PARAM_INT);
                     $query->bindValue(3, intval($d->turma), \PDO::PARAM_INT);
                     $query->bindValue(4, $d->serie, \PDO::PARAM_STR);
-                    //$query->bindValue(5,'1', \PDO::PARAM_BOOL);
+                    //$query->bindValue(5,'1', \PDO::PARAM_STR);
 
                     $query->execute();
 
@@ -71,7 +71,7 @@ class DisciplinaModel extends Model
     public function getDisciplina($codigo)
     {
         $c = intval ($codigo);
-        $sql_disciplina = "SELECT * FROM public.disciplina WHERE codigo={$c} AND ativo=true";
+        $sql_disciplina = "SELECT * FROM public.disciplina WHERE codigo={$c} AND ativo=TRUE";
 
         $query = $this->db->query($sql_disciplina);
 

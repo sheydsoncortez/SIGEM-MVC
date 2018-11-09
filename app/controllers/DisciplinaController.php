@@ -62,7 +62,7 @@ class DisciplinaController extends Controller
         switch ($page) {
             case 1:
                 $this->setDadosDisciplina();
-                header('location:' . URL_BASE . 'disciplina/editar/' . base64_encode($_SESSION["disciplina"]->codigo));
+                header('location:' . URL_BASE . 'disciplina/editar/' . base64_encode("0000"));
                 break;
             case 2:
                 $dados = array();
@@ -71,11 +71,11 @@ class DisciplinaController extends Controller
                 $dados = $d->inserir();
                 if ($dados["status"]) {
                     $dados["view"] = "template/inicio";
-                    $this->load("admin", $dados);
+                   $this->load("admin", $dados);
 
                 } else {
 
-                    $this->load("admin", $dados);
+                   $this->load("admin", $dados);
                 }
                 //echo "<pre>";
                 //print_r($dados);
@@ -107,7 +107,7 @@ class DisciplinaController extends Controller
 
         $disciplina = new DisciplinaModel();
 
-        if(!$disciplina->getDisciplina(base64_decode($codigo))){
+        if(!$disciplina->getDisciplina(base64_decode($codigo)) || base64_decode($codigo) == '0000'){
             if($_SESSION["disciplina"]){
                 $this->load("admin", $dados);
             }

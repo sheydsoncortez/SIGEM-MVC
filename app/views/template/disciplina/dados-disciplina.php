@@ -5,17 +5,6 @@
 
 <!-- CÓDIGO DA DISCIPLINA -->
 <div class="form-group row">
-    <div class="col-sm-12">
-        <div class="row">
-            <label class="col-sm-2 form-control-label"></label>
-            <div class="col-sm-8">
-                <input type="text" placeholder="Código da Disciplina" id="codigoDisciplina" name="codigo"
-                       value="<?php isset($f) ? print($f->codigoDisciplina) : "" ?>"
-                       required oninvalid="this.setCustomValidity("Preencha o campo código da disciplina")"
-                oninput="setCustomValidity("")" class="form-control"/>
-            </div>
-        </div>
-    </div>
 
 <!-- NOME DA DISCIPLINA -->
 
@@ -25,9 +14,9 @@
             <label class="col-sm-2 form-control-label"></label>
             <div class="col-sm-8">
                 <input type="text" placeholder="Nome da Disciplina" id="nomeDisciplina" name="nome"
-                       value="<?php isset($f) ? print($f->nomeDisciplina) : "" ?>"
-                       required oninvalid="this.setCustomValidity("Preencha o campo nome da disciplina")"
-                oninput="setCustomValidity("")" class="form-control"/>
+                       value="<?php isset($f) ? print($f->nome) : '' ?>"
+                       required oninvalid="this.setCustomValidity('Preencha o campo nome da disciplina')"
+                oninput="setCustomValidity('')" class="form-control"/>
             </div>
 
         </div>
@@ -39,9 +28,9 @@
             <label class="col-sm-2 form-control-label"></label>
             <div class="col-sm-8">
                 <input type="text" placeholder="Código do Professor" id="codigoProfessor" name="professor"
-                       value="<?php isset($f) ? print($f->codigoProfessor) : "" ?>"
-                       required oninvalid="this.setCustomValidity("Preencha o Campo Código do Professor")"
-                oninput="setCustomValidity("")" class="form-control"/>
+                       value="<?php isset($f) ? print($f->professor) : '' ?>"
+                       required oninvalid="this.setCustomValidity('Preencha o Campo Código do Professor')"
+                oninput="setCustomValidity('')" class="form-control"/>
             </div>
         </div>
     </div>
@@ -53,9 +42,9 @@
             <label class="col-sm-2 form-control-label"></label>
             <div class="col-sm-8">
                 <input type="text" placeholder="Código da Turma" id="codigoTurma" name="turma"
-                       value="<?php isset($f) ? print($f->codigoTurma) : "" ?>"
-                       required oninvalid="this.setCustomValidity("Preencha o Campo Código da Turma")"
-                oninput="setCustomValidity("")" class="form-control"/>
+                       value="<?php isset($f) ? print($f->turma) : '' ?>"
+                       required oninvalid="this.setCustomValidity('Preencha o Campo Código da Turma')"
+                oninput="setCustomValidity('')" class="form-control" onkeypress="return isNumberKey(event);" />
             </div>
 
         </div>
@@ -68,9 +57,9 @@
             <label class="col-sm-2 form-control-label"></label>
             <div class="col-sm-8">
                 <input type="text" placeholder="Código da Série" id="codigoSerie" name="serie"
-                       value="<?php isset($f) ? print($f->codigoSerie) : "" ?>"
-                       required oninvalid="this.setCustomValidity("Preencha o Campo Código da Série")"
-                oninput="setCustomValidity("")" class="form-control"/>
+                       value="<?php isset($f) ? print($f->serie) : '' ?>"
+                       required oninvalid="this.setCustomValidity('Preencha o Campo Código da Série')"
+                oninput="setCustomValidity('')" class="form-control" onkeypress="return isNumberKey(event);" />
             </div>
 
         </div>

@@ -27,10 +27,12 @@
                         <div class="line"></div>
                         <div class="form-group row">
                             <div class="col-sm-12" >
-                                <div class="row list-background">
-                                    <strong class="col-sm-3 form-control-label">Código da Disciplina</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$d->codigo}</label>";?>
-                                </div>
+                                <?php if(isset($d->codigo)) echo " 
+                                <div class='row list-background'>
+                                    <strong class='col-sm-3 form-control-label'>Código da Disciplina</strong>
+                                    <label class='form-control-label lista-dados'>{$d->codigo}</label>
+                                </div>"?>
+
                                 <div class="row">
                                     <strong class="col-sm-3 form-control-label">Nome da Disciplina</strong>
                                     <?php echo "<label class='form-control-label lista-dados'>{$d->nome}</label>";?>
