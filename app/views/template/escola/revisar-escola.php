@@ -51,27 +51,27 @@
                             <div class="col-sm-12">
                                 <div class="row list-background">
                                     <strong class="col-sm-3 form-control-label">Cep:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$f->endereco->cep}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$e->endereco->cep}</label>";?>
                                 </div>
                                 <div class="row">
                                     <strong class="col-sm-3 form-control-label">Cidade:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$f->endereco->cidade}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$e->endereco->cidade}</label>";?>
                                 </div>
                                 <div class="row list-background">
                                     <strong class="col-sm-3 form-control-label">Logradouro:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$f->endereco->logradouro}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$e->endereco->logradouro}</label>";?>
                                 </div>
                                 <div class="row">
                                     <strong class="col-sm-3 form-control-label">Número:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$f->endereco->numero}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$e->endereco->numero}</label>";?>
                                 </div>
                                 <div class="row list-background">
                                     <strong class="col-sm-3 form-control-label">Bairro:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$f->endereco->bairro}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$e->endereco->bairro}</label>";?>
                                 </div>
                                 <div class="row">
                                     <strong class="col-sm-3 form-control-label">Estado:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$f->endereco->estado}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$e->endereco->estado}</label>";?>
                                 </div>
 
                                 <div class="line"></div>
