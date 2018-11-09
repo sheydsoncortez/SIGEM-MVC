@@ -50,7 +50,7 @@ class EscolaController extends Controller
                 $dados["proximo"] = "2";
                 $dados["page"] = $page;
                 break;
-            case '2';
+            case '2':
                 $dados["titulo"] = "ENDEREÇO";
                 $dados["paginator"] = "endereco/dados-endereco.php";
                 $dados["active"] = array("", "active", "", "", "");
@@ -59,6 +59,7 @@ class EscolaController extends Controller
                 $dados["proximo"] = "3";
                 $dados["page"] = $page;
                 break;
+
         }
 
         $this->load("admin", $dados);
@@ -81,7 +82,7 @@ class EscolaController extends Controller
             case 2:
 
                 $this->setEndereco();
-                header('location:' . URL_BASE . 'escola/cadastrar/3');
+                header('location:' . URL_BASE . 'escola/editar/'.base64_encode($_SESSION['escola']->codigo));
 
                 break;
 
@@ -95,6 +96,8 @@ class EscolaController extends Controller
                 }else{
                     $this->load("admin", $dados);
                 }
+             // echo "<pre>";
+             // print_r($dados);
             }
         }
     }
@@ -124,6 +127,33 @@ class EscolaController extends Controller
 
         $_SESSION['escola']->endereco = $enderecoe;
     }
+
+
+    public function editar($codigo){
+
+        $dados["titulo"] = "DADOS ESCOLA";
+        $dados["view"] = "template/escola/revisar-escola";
+       // $dados["modal"] = "template/funcionario/atualiza-funcionario-modal.php";
+        $dados["page"] = "";
+        $dados['link'] = "escola/editar/".$codigo;
+        $dados['breadcrumbl1'] = "escola";
+        $dados['breadcrumbl2'] = "editar";
+
+        $escola = new EscolaModel();
+
+       /* if(!$escola->getEscola(base64_decode($codigo))){
+            if($_SESSION["Escola"]){
+                $this->load("admin", $dados);
+            }
+        }else{
+            $_SESSION["escola"] = $escola->getEscola(base64_decode($codigo));
+            $this->load("admin", $dados);
+        }*/
+
+        $this->load("admin", $dados);
+    }
+
+
 
 
 }
