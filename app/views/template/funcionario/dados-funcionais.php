@@ -1,7 +1,5 @@
 <?php if (isset($_SESSION['funcionario'])){
     $df = $_SESSION['funcionario']->dadosfuncionais;
-    $date = new DateTime($df->dataadmissao);
-    $nd = $date->format('d/m/Y'); $na = $date->format('Y');
 }?>
 <!--   DADOS FUNCIONAIS  -->
 <div class="form-group row">
@@ -20,7 +18,7 @@
                 <div class="input-group">
                     <input type="text" class="form-control" id="data"
                             placeholder="Data de Admissão" data-target="#data"
-                            value="<?php isset($nd) ? print($nd) : ""?>"
+                            value="<?php isset($df) ? print($df->dataadmissao) : ""?>"
                             name="dataAdmissaoFun" required/>
                     <div class="input-group-append">
                         <div class="input-group-text"><i class="fa fa-calendar-alt"></i></div>

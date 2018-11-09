@@ -5,9 +5,8 @@
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     </div>
-                    <form id="updateFuncionario" method="POST" action="">
                     <div class="modal-body">
-
+                        <form class="form-horizontal" role="form" action="<?php echo URL_BASE . 'funcionario/corrigir' ?>" method="post" id="modalform-up">
                         <ul class="nav nav-pills mb-3" id="updateFuncionario" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link" id="pills-dadospessoais-tab" data-toggle="pill" href="#pills-dadospessoais" role="tab" aria-controls="pills-dadospessoais" aria-selected="true">Dados Pessoais</a>
@@ -23,48 +22,55 @@
                             </li>
                         </ul>
                             <div class="tab-content" id="pills-tabContent">
-                            <div class="tab-pane fade" id="pills-dadospessoais" role="tabpanel" aria-labelledby="pills-dadospessoais-tab">
-                                <?php include('app/views/template/funcionario/dados-funcionario.php'); ?>
+                                <div class="tab-pane fade" id="pills-dadospessoais" role="tabpanel" aria-labelledby="pills-dadospessoais-tab">
+                                    <?php include('app/views/template/funcionario/dados-funcionario.php'); ?>
+                                </div>
+                                <div class="tab-pane fade" id="pills-endereco" role="tabpanel" aria-labelledby="pills-endereco-tab">
+                                    <?php include('app/views/template/endereco/dados-endereco.php'); ?>
+                                </div>
+                                <div class="tab-pane fade" id="pills-documentos" role="tabpanel" aria-labelledby="pills-documentos-tab">
+                                    <?php include('app/views/template/funcionario/documentos-funcionario.php'); ?>
+                                </div>
+                                <div class="tab-pane fade" id="pills-dadosfuncionais" role="tabpanel" aria-labelledby="pills-dadosfuncionais-tab">
+                                    <?php include('app/views/template/funcionario/dados-funcionais.php'); ?>
+                                </div>
                             </div>
-                            <div class="tab-pane fade" id="pills-endereco" role="tabpanel" aria-labelledby="pills-endereco-tab">
-                                <?php include('app/views/template/endereco/dados-endereco.php'); ?>
-                            </div>
-                            <div class="tab-pane fade" id="pills-documentos" role="tabpanel" aria-labelledby="pills-documentos-tab">
-                                <?php include('app/views/template/funcionario/documentos-funcionario.php'); ?>
-                            </div>
-                            <div class="tab-pane fade" id="pills-dadosfuncionais" role="tabpanel" aria-labelledby="pills-dadosfuncionais-tab">
-                                <?php include('app/views/template/funcionario/dados-funcionais.php'); ?>
-                            </div>
-                        </div>
+                        </form>
                     </div>
+
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">Cancelar</button>
-                        <button id="atualizadados" type="submit" class="btn btn-primary">Atualizar</button>
+                        <button id="atualizadados" type="submit" class="btn btn-success" >Atualizar</button>
                     </div>
-                    </form>
                 </div>
             </div>
         </div>
+
 <script type="text/javascript">
+    /*function form_submit(e) {
+        document.getElementById("modalform-up").submit();
+        e.preventDefault();
+    }*/
 
-    $(document).ready(function() {
-        $('#atualizadados').click(function(){
-            var dados = $('.modal form').serializeArray();
-            var div = $('#verDadosFuncionario').html();
-            /*console.clear();
-            $.each(dados, function(i, field){
-                console.log(field.name+": "+field.value);
-            });*/
 
-            $.ajax({
-                type: "POST",
-                url: URL_BASE_JQ + $('.modal form').attr('action'),
-                data: dados, // serializes the form's elements.
-                success: function(data)
-                {
-                    //$('body').load(location.href);
-                }
-            });
-        });
+    $("button#atualizadados").on('click', function () {
+
+        var dados = $("form#modalform-up").serializeArray();
+
+        /*$.ajax({
+           type: "POST",
+           url: $("form#modalform-up").attr('action'),
+           data:  dados,
+
+           success: function(){
+               console.clear();
+               $.each(dados, function(i, field){
+                   console.log(field.name+": "+field.value);
+               });
+
+           }
+        });*/
+        $("form#modalform-up").submit();
+        //location.reload();
     });
 </script>

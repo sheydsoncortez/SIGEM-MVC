@@ -72,7 +72,7 @@ class Endereco{
     }
 
     public function setEstado($estado){
-        $this->$estado= $uestado;
+        $this->estado= $estado;
     }
     
     public function __toString(){

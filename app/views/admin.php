@@ -20,6 +20,7 @@
 
           $this->load($view, $viewData);
 
+
       }
 
       //echo substr($_SERVER['HTTP_ACCEPT_LANGUAGE'],0,2);

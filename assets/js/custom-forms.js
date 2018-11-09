@@ -155,25 +155,18 @@ $(document).ready(function(){
         $('#pills-endereco-tab').hide();
         $('#pills-documentos-tab').hide();
         $('#pills-dadosfuncionais-tab').hide();
-        $('.modal form').attr('action', "funcionario/setDadosFuncionario");
         $(".modal").modal();
-        $('.modal').on('shown.bs.modal', function() {
-                $('#data').attr('data-target', '#data');
-                $('#data').datetimepicker({
-                    locale: 'pt-br',
-                    format: 'DD/MM/YYYY',
-                    minDate: '1920/01/01'
-                });
-        });
-    });           
+
+    });
+
     $("#corrigirEndereco").click(function(){
         $('#pills-dadospessoais-tab').hide();
         $('#pills-endereco-tab').addClass('active');
         $('#pills-endereco').addClass('show active');
         $('#pills-documentos-tab').hide();
         $('#pills-dadosfuncionais-tab').hide();
-        $('.modal-footer a').attr('rel', 'funcionario/setEndereco');
         $(".modal").modal();
+
     }); 
     $("#corrigirDocumentos").click(function(){
         $('#pills-dadospessoais-tab').hide();
@@ -181,7 +174,6 @@ $(document).ready(function(){
         $('#pills-documentos-tab').addClass('active');
         $('#pills-documentos').addClass('show active');
         $('#pills-dadosfuncionais-tab').hide();
-        $('.modal-footer a').attr('rel', '<?php echo URL_BASE ;?>funcionario/setDocumentosFuncionario');
         $(".modal").modal();
     });
     $("#corrigirDadosFuncionais").click(function(){
@@ -190,7 +182,6 @@ $(document).ready(function(){
         $('#pills-documentos-tab').hide();
         $('#pills-dadosfuncionais-tab').addClass('active');
         $('#pills-dadosfuncionais').addClass('show active');
-        $('.modal-footer a').attr('rel', 'funcionario/setDadosFuncionais');
         $(".modal").modal();
     });
 
@@ -199,7 +190,7 @@ $(document).ready(function(){
     });
 });
 
-$(document).ready(function () {
+/*$(document).ready(function () {
     var disc = $('#updateDisciplina').html();
     
     $('#corrigirDadosDisciplina').click(function () {
@@ -212,7 +203,7 @@ $(document).ready(function () {
     $('#updateDisciplina').on('hidden.bs.modal', function(){
         $('#updateDisciplina').html(disc);
     });
-});
+});*/
 // ===========================================================
 
 // HABILITA FORMAÇÃO CASO SUPERIO SELECIONADO (FORM DADOS FUNCIONAIS)

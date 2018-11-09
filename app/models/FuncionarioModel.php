@@ -25,8 +25,8 @@ class FuncionarioModel extends Model{
 
 
 
-        $cpf = $_SESSION['funcionario']->cpf;
-        $pispasep = $_SESSION['funcionario']->pispasep;
+        $cpf = $_SESSION['funcionario']->documentos->cpf;
+        $pispasep = $_SESSION['funcionario']->documentos->pispasep;
         $nome = $_SESSION['funcionario']->nome;
         $dataNasc = $_SESSION['funcionario']->datanasc;
         $cidadeNasc = $_SESSION['funcionario']->cidadenasc;
@@ -158,7 +158,7 @@ class FuncionarioModel extends Model{
         return $status;
     }
 
-    public function update(Funcionario $f){
+    public function update(Funcionario $f, $a = array() ){
 
         try {
             // set the PDO error mode to exception
@@ -170,7 +170,7 @@ class FuncionarioModel extends Model{
             $query = $this->db->prepare($upct_sql);
             $query->bindValue(1, $f->documentos->ctps->numero, \PDO::PARAM_STR);
             $query->bindValue(2, $f->documentos->ctps->serie, \PDO::PARAM_STR);
-            $query->bindValue(':numero', $f->ctps->numero, \PDO::PARAM_STR);
+            $query->bindValue(':numero', $a->ctps_id, \PDO::PARAM_STR);
             $query->execute();
 
             $upen_sql = 'UPDATE public.endereco SET 
@@ -185,7 +185,7 @@ class FuncionarioModel extends Model{
             $query->bindValue(4, $f->endereco->numero, \PDO::PARAM_STR);
             $query->bindValue(5, $f->endereco->bairro, \PDO::PARAM_STR);
             $query->bindValue(6, $f->endereco->estado, \PDO::PARAM_STR);
-            $query->bindValue(':codigo', $f->endereco->codigo, \PDO::PARAM_STR);
+            $query->bindValue(':codigo', $a->endereco_id, \PDO::PARAM_STR);
             $query->execute();
 
             $upre_sql = 'UPDATE public.reservista SET 
@@ -196,7 +196,7 @@ class FuncionarioModel extends Model{
             $query->bindValue(1, $f->documentos->reservista->numero, \PDO::PARAM_STR);
             $query->bindValue(2, $f->documentos->reservista->categoria, \PDO::PARAM_STR);
             $query->bindValue(3, $f->documentos->reservista->serie, \PDO::PARAM_STR);
-            $query->bindValue(':numero', $f->documentos->reservista->numero, \PDO::PARAM_STR);
+            $query->bindValue(':numero', $a->reservista_id, \PDO::PARAM_STR);
             $query->execute();
 
             $uprg_sql = 'UPDATE public.rg SET 
@@ -208,7 +208,7 @@ class FuncionarioModel extends Model{
             $query->bindValue(2, $f->documentos->rg->orgaoexp, \PDO::PARAM_STR);
             $query->bindValue(3, $f->documentos->rg->dataexp, \PDO::PARAM_STR);
             $query->bindValue(4, $f->documentos->rg->ufexp, \PDO::PARAM_STR);
-            $query->bindValue(':numero', $f->documentos->rg->numero, \PDO::PARAM_STR);
+            $query->bindValue(':numero', $a->rg_id, \PDO::PARAM_STR);
 
             $upti_sql = 'UPDATE public.tituloeleitor SET 
                             numero=?, zona=?, secao=?
@@ -218,7 +218,7 @@ class FuncionarioModel extends Model{
             $query->bindValue(1, $f->documentos->tituloeleitor->numero, \PDO::PARAM_STR);
             $query->bindValue(2, $f->documentos->tituloeleitor->zona, \PDO::PARAM_STR);
             $query->bindValue(3, $f->documentos->tituloeleitor->secao, \PDO::PARAM_STR);
-            $query->bindValue(':numero', $f->documentos->tituloeleitor->numero, \PDO::PARAM_STR);
+            $query->bindValue(':numero', $a->titulo_id, \PDO::PARAM_STR);
 
             $upfu_sql = 'UPDATE public.funcionario	SET 
                             cpf=?, nome=?, datanasc=?, cidadenasc=?, estadonasc=?, 
@@ -250,7 +250,7 @@ class FuncionarioModel extends Model{
             $query->bindValue(20, $f->senha, \PDO::PARAM_STR);
             $query->bindValue(21, $f->escola, \PDO::PARAM_STR);
             $query->bindValue(22, $f->ativo, \PDO::PARAM_STR);
-            $query->bindValue(':cpf', $f->documentos->cpf, \PDO::PARAM_STR);
+            $query->bindValue(':cpf', $a->funcionario_id, \PDO::PARAM_STR);
 
             unset($_SESSION['funcionario']);
 
@@ -270,7 +270,10 @@ class FuncionarioModel extends Model{
     public function getFuncionario($cpf)
     {
 
-        $sql_funcionario = "SELECT * FROM public.funcionario WHERE cpf='{$cpf}' AND ativo=true";
+        $sql_funcionario = "SELECT  cpf, nome, to_char(\"datanasc\", 'DD/MM/YYYY') as datanasc, 
+                            cidadenasc, estadonasc, nomepai, nomemae, sexo, estadocivil, telefone, 
+                            email, pispasep, endereco, ctps, rg, tituloeleitor, reservista, senha, escola, ativo
+	                        FROM public.funcionario WHERE cpf='{$cpf}' AND ativo=true";
 
         $query = $this->db->query($sql_funcionario);
 
@@ -285,6 +288,9 @@ class FuncionarioModel extends Model{
             $query = $this->db->query($sql_end);
             $f->endereco = $query->fetch(\PDO::FETCH_OBJ);
 
+            $f->documentos->cpf = $f->cpf;
+            $f->documentos->pispasep = $f->pispasep;
+
             $sql_ctps = "SELECT * FROM public.ctps WHERE numero='{$f->ctps}'";
             $query = $this->db->query($sql_ctps);
             $f->documentos->ctps = $query->fetch(\PDO::FETCH_OBJ);
@@ -293,7 +299,8 @@ class FuncionarioModel extends Model{
             $query = $this->db->query($sql_res);
             $f->documentos->reservista = $query->fetch(\PDO::FETCH_OBJ);
 
-            $sql_rg = "SELECT * FROM public.rg WHERE numero='{$f->rg}'";
+            $sql_rg = "SELECT numero, orgaoexp, to_char(\"dataexp\", 'DD/MM/YYYY') as dataexp, ufexp
+	                   FROM public.rg WHERE numero='{$f->rg}'";
             $query = $this->db->query($sql_rg);
             $f->documentos->rg = $query->fetch(\PDO::FETCH_OBJ);
 
@@ -301,7 +308,9 @@ class FuncionarioModel extends Model{
             $query = $this->db->query($sql_tit);
             $f->documentos->tituloeleitor = $query->fetch(\PDO::FETCH_OBJ);
 
-            $sql_dadosfuncionais = "SELECT matricula, dataadmissao, escolaridade, formacaoacademica, anoconclusao, cargo, funcao FROM funcionario WHERE cpf='{$cpf}' AND ativo=true";
+            $sql_dadosfuncionais = "SELECT matricula, to_char(\"dataadmissao\", 'DD/MM/YYYY') as dataadmissao, 
+                                    escolaridade, formacaoacademica, anoconclusao, cargo, funcao 
+                                    FROM funcionario WHERE cpf='{$cpf}' AND ativo=true";
             $query = $this->db->query($sql_dadosfuncionais);
             $f->dadosfuncionais = $query->fetch(\PDO::FETCH_OBJ);
 

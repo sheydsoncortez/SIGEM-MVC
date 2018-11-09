@@ -3,10 +3,6 @@
 
         	$d = $_SESSION['funcionario']->documentos;
 
-        	$d->cpf = $_SESSION['funcionario']->cpf;
-            $d->pispasep = $_SESSION['funcionario']->pispasep;
-            $data = new DateTime($d->rg->dataexp);
-
     		if($_SESSION['funcionario']->sexo == 'M'){
     			$required = "required";
     		}else{

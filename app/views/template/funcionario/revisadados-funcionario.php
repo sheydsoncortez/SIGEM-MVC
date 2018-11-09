@@ -6,6 +6,7 @@
     if (!file_exists($filename)) {
         $img = "users";
     }
+
 } 
 ?>
 
@@ -23,7 +24,7 @@
 
                     <!-- INÍCIO DO FORM -->
 
-                   <form class='form-horizontal' id='formfuncionario' method='POST'
+                   <form class='form-horizontal' id='formfuncionario' method='POST' name="formfuncionario"
                           action="<?php echo URL_BASE . "funcionario/salvar/".$page;?>" >
 
                        <br/>
@@ -42,7 +43,7 @@
                                 </div>
                                 <div class="row">
                                     <strong class="col-sm-3 form-control-label">Data de Nasc:</strong>
-                                    <?php $data = new DateTime($f->datanasc);echo "<label class='form-control-label lista-dados'>{$data->format('d/m/Y')}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$f->datanasc}</label>";?>
                                 </div>
                                 <div class="row list-background">
                                     <strong class="col-sm-3 form-control-label">Cidade de Nasc:</strong>
@@ -128,11 +129,11 @@
                             <div class="col-sm-12">
                                 <div class="row list-background">
                                     <strong class="col-sm-3 form-control-label">Cpf:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$f->cpf}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$f->documentos->cpf}</label>";?>
                                 </div>
                                 <div class="row">
                                     <strong class="col-sm-3 form-control-label">Pis/Pasep:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$f->pispasep}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$f->documentos->pispasep}</label>";?>
                                 </div>
                                 <div class="row list-background">
                                     <strong class="col-sm-3 form-control-label">Número Ctps:</strong>
@@ -152,7 +153,7 @@
                                 </div>
                                 <div class="row list-background">
                                     <strong class="col-sm-3 form-control-label">Data Exp. Rg:</strong>
-                                    <?php $data = new DateTime($f->documentos->rg->dataexp); echo "<label class='form-control-label lista-dados'>{$data->format('d/m/Y')}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$f->documentos->rg->dataexp}</label>";?>
                                 </div>
                                 <div class="row">
                                     <strong class="col-sm-3 form-control-label">Estado Exp. Rg:</strong>
@@ -201,7 +202,7 @@
                                 </div>
                                 <div class="row">
                                     <strong class="col-sm-3 form-control-label">Data Admissão:</strong>
-                                    <?php $data = new DateTime($f->dadosfuncionais->dataadmissao); echo "<label class='form-control-label lista-dados'>{$data->format('d/m/Y')}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$f->dadosfuncionais->dataadmissao}</label>";?>
                                 </div>
                                 <div class="row list-background">
                                     <strong class="col-sm-3 form-control-label">Escolaridade:</strong>
@@ -239,14 +240,19 @@
                                 <a href="<?php echo URL_BASE . "funcionario/listar"; ?>">
                                     <button type="button" class="btn btn-secondary" >Cancelar</button>
                                 </a>
-                                <a href="<?php echo URL_BASE . "funcionario/salvar/5" ;?>">
+                                <a href="<?php echo URL_BASE . "funcionario/corrigir" ;?>">
                                     <button type="button" class="btn btn-primary" >Salvar</button>
                                 </a>
 
                             </div>
                         </div>
+
+                   </form>
                 </div>
-                </form>
             </div>
         </div>
+    </div>
+
 </section>
+
+

@@ -143,15 +143,25 @@ class FuncionarioController extends Controller{
 
         $funcionario = new FuncionarioModel();
 
-        if(!$funcionario->getFuncionario(base64_decode($cpf))){
-            if($_SESSION["funcionario"]){
-                $this->load("admin", $dados);
-            }
-        }else{
-            $_SESSION["funcionario"] = $funcionario->getFuncionario(base64_decode($cpf));
-           $this->load("admin", $dados);
-        }
+        if(isset($_SESSION['funcionario'])){
 
+            $this->load("admin", $dados);
+            echo "1";
+
+        }else
+            if(empty($_SESSION['funcionario'])){
+                if($funcionario->getFuncionario(base64_decode($cpf))) {
+                    $_SESSION["funcionario"] = $funcionario->getFuncionario(base64_decode($cpf));
+                    $this->load("admin", $dados);
+                    echo "2";
+                }
+        }else{
+
+            $this->load("admin", $dados);
+            echo "3";
+        }
+        //echo "<pre>";
+        //print_r($_SESSION['funcionario']);
 
    }
    
@@ -167,9 +177,27 @@ class FuncionarioController extends Controller{
    }
 
    public function corrigir(){
-       $dados["msn"] = "Teste";
-       $dados["view"] = "template/inicio";
-       $this->load("admin", $dados);
+
+        $this->setDadosFuncionario();
+        $this->setEndereco();
+        $this->setDocumentosFuncionario();
+        $this->setDadosFuncionais();
+
+        $this->editar(base64_encode($_SESSION['funcionario']->documentos->cpf));
+        /*$array_ids = array(
+            "ctps_id" => $f->documentos->ctps->numero,
+            "endereco_id" => $f->documentos->cpf,
+            "reservista_id" => $f->documentos->reservista->numero,
+            "rg_id" => $f->documentos->rg->numero,
+            "titulo_id" => $f->documentos->tituloeleitor->numero,
+            "funcionario_id" =>$f->documentos->cpf
+        );*/
+
+        //$update = new FuncionarioModel();
+        //$update->update($_SESSION['funcionario'], $array_ids);*/
+
+        //echo "<pre>";
+        //print_r($_SESSION['funcionario']);
    }
 
 
@@ -181,6 +209,7 @@ class FuncionarioController extends Controller{
     * @return void
     */
    public function setDadosFuncionario(){
+
         $funcionario = new Funcionario();
 
         $funcionario->nome = $_POST['nomeFun'];
@@ -195,7 +224,6 @@ class FuncionarioController extends Controller{
         $funcionario->email = $_POST['email'];
 
         $_SESSION['funcionario'] = $funcionario;
-
     }
 
    /**
@@ -204,7 +232,8 @@ class FuncionarioController extends Controller{
     * @method mixed setEndereco()
     * @return void
     */
-   private function setEndereco(){
+   public function setEndereco(){
+
         $enderecof = new Endereco();
 
         $enderecof->cep = $_POST['cep'];
@@ -226,17 +255,17 @@ class FuncionarioController extends Controller{
     * @method mixed setDocumentosFuncionario()
     * @return void
     */
-   private function setDocumentosFuncionario(){
+    public function setDocumentosFuncionario(){
         $documentosf = new DocumentosFuncionario();
 
-        $cpf = $_POST['cpf'];
-        $pispasep = $_POST['pisPasep'];
+        $documentosf->cpf = $_POST['cpf'];
+        $documentosf->pispasep = $_POST['pisPasep'];
         $documentosf->ctps->numero = $_POST['numeroCtps'];
         $documentosf->ctps->serie = $_POST['serieCtps'];
         $documentosf->rg->numero = $_POST['numeroRg'];
         $documentosf->rg->orgaoexp = $_POST['orgaoExpRg'];
         $documentosf->rg->dataexp = $_POST['dataExpRg'];
-        $documentosf->rg->estadoexp = $_POST['ufExpRg'];
+        $documentosf->rg->ufexp = $_POST['ufExpRg'];
         $documentosf->tituloeleitor->numero = $_POST['numeroTit'];
         $documentosf->tituloeleitor->secao = $_POST['secaoTit'];
         $documentosf->tituloeleitor->zona = $_POST['zonaTit'];
@@ -257,8 +286,7 @@ class FuncionarioController extends Controller{
             isset($_POST['serieRes']) ? $documentosf->reservista->serie = $_POST['serieRes'] : 
                                         $documentosf->reservista->serie = "";
         }
-        $_SESSION['funcionario']->cpf = $cpf;
-        $_SESSION['funcionario']->pispasep = $pispasep;
+
         $_SESSION['funcionario']->documentos = $documentosf;
    }
 
@@ -268,7 +296,7 @@ class FuncionarioController extends Controller{
     * @method mixed setDadosFuncionais()
     * @return void
     */
-   private function setDadosFuncionais(){
+    public function setDadosFuncionais(){
         $dadosFuncionaisF = new DadosFuncionais();
                     
         if(empty($_POST['formacaoAcademicaFun'])){
