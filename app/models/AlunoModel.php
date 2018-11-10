@@ -153,6 +153,9 @@ class AlunoModel extends Model{
     }
 
     public function listarTodos(){
-        return null;
+        $sql_aluno = "SELECT * FROM public.aluno WHERE ativo=true";
+        $query = $this->db->query($sql_aluno);
+        
+        return  $query->fetchAll(\PDO::FETCH_OBJ);   
     }
 }
