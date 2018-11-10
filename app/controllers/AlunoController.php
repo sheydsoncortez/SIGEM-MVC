@@ -78,7 +78,7 @@ class AlunoController extends Controller{
             case 3:
                 
                 $this->setDocumentosAluno();
-                header('location:' . URL_BASE . 'aluno/cadastrar/4');
+                header('location:' . URL_BASE . 'aluno/editar/');
 
             break;
             case 4:
@@ -98,15 +98,26 @@ class AlunoController extends Controller{
                     $this->load("admin", $dados);
                 }
             break;
-            //case 6:
-            //
-            //    $f = new AlunoModel();
-            //
-            //    $dados = $f->update($_SESSION['aluno']);
-            //
-            //break;
+            case 6:
+            
+                $f = new AlunoModel();
+            
+                $dados = $f->update($_SESSION['aluno']);
+            
+            break;
         } 
     }
+
+    public function listar(){
+        $aluno = new AlunoModel();
+        $dados['link'] = "aluno/listar";
+        $dados['breadcrumbl1'] = "aluno";
+        $dados['breadcrumbl2'] = "listar";
+        $dados["view"] = "template/listar-aluno";
+        $dados["modal"] = "template/funcionario/atualiza-funcionario-modal.php";
+        $dados["aluno"] = $aluno->listarTodos();
+        $this->load("admin", $dados);
+     }
 
     public function setDadosAluno(){
         $aluno = new Aluno();
