@@ -10,10 +10,12 @@
 	- [Front End](https://github.com/emancos/SIGEM#front-end)
 	- [Back End](https://github.com/emancos/SIGEM#back-end)
 	- [Banco de dados](https://github.com/emancos/SIGEM#banco-de-dados)
-- [Como executar](https://github.com/emancos/SIGEM#como-executar)
+- [Peparar o ambiente](https://github.com/emancos/SIGEM#preparar-o-ambiente)
+    - [Instalação Composer](https://github.com/emancos/SIGEM#instalação-composer)
 	- [Instalação XAMPP](https://github.com/emancos/SIGEM#instalação-xampp)
 	- [Instalação PostgreSQL](https://github.com/emancos/SIGEM#instalação-postgresql)
 	- [Habilitar PostgreSQL XAMPP](https://github.com/emancos/SIGEM#habilitar-postgressql-xampp)
+- [Executar o projeto](https://github.com/emancos/SIGEM#executar-o-projeto)
 - [Equipe de desenvolvimento](https://github.com/emancos/SIGEM#equipe-de-desenvolvimento)
 
 ---
@@ -40,12 +42,20 @@ O sistema será desenvolvido como projeto da disciplina de Gestão e Projeto de 
 ### Back End
 - PHP 7
 
+### Gerenciador de dependências para PHP 
+- Composer
+
 ### Banco de dados
 - PostgreSQL 10
 
 ---
-## Como executar
+## Peparar o ambiente
 Para o desenvolvimento e utilização do SIGEM foi utilizado o XAMPP(LAMPP no Linunx e MAMP no Mac) que é um pacote com os principais servidores de código aberto do mercado, incluindo FTP, banco de dados MySQL e Apache com suporte as linguagens PHP e Perl.
+### Instalação Composer:
+- [Windows](https://getcomposer.org/doc/00-intro.md#installation-windows).
+- [Linux](https://www.hostinger.com/tutorials/how-to-install-composer#gref).
+- [Mac OS](https://medium.com/@felipefranco_22418/instalando-o-composer-no-macos-sierra-10-13-5d761ba3092b).
+
 ### Instalação XAMPP:
 - [Windows](https://www.webucator.com/how-to/how-install-start-test-xampp-on-windows-setup-of-introduction-php.cfm).
 - [Linux (LAPP)](https://hectorgarciaperez.wordpress.com/2012/02/22/instalar-un-servidor-lapp-linux-apache-postgresql-php-en-debian-6/).
@@ -53,42 +63,21 @@ Para o desenvolvimento e utilização do SIGEM foi utilizado o XAMPP(LAMPP no Li
 
 ### Instalação PostgreSQL:
 - [Windows and Linux](http://www.techken.in/linux/install-postgresql-10-windows-10-linux/).
-- [Mac OS](https://coolestguidesontheplanet.com/installing-postgresql-database-os-x-10-9-mavericks-configure-phppgadmin/).
+- [Mac OS](https://coolestguidesontheplant.com/installing-postgresql-database-os-x-10-9-mavericks-configure-phppgadmin/).
+
 ### Habilitar PostgresSQL XAMPP:
 - [Windows](https://santiagobambui.wordpress.com/2013/02/06/ativando-o-postgresql-no-xampp/).
 - [linux(LAMPP)](http://desarrollomaya.blogspot.com/2013/04/preparar-apache-de-xampp-para-acceder.html)
 - [Mac OS (MAMP)](https://stackoverflow.com/questions/26003058/how-to-enable-postgresql-in-xampp-on-mac-os).
 
-git clone https://github.com/emancos/SIGEM.git na pasta htdocs do xampp.  
-Execute o Script SQL abaixo no pgAdmin do PostgreSQL e acesse a pagina do sistema:  
-localhost/SIGEM.  
-Efetue login usando o usuário "admin" e senha "admin".
-```sql
--- Table: public.login_teste
+### Executar o projeto:
+git clone https://github.com/emancos/SIGEM-MVC.git na pasta htdocs do xampp.  
+Execute os Scripts SQL contidos na pasta 'database' na raís do projeto no pgAdmin do PostgreSQL e acessar a pagina do sistema:  
+localhost/SIGEM-MVC.
+Usar o login e usuário padrão:
+- Usuário: admin
+- Senha: admin
 
--- DROP TABLE public.login_teste;
-
-CREATE TABLE public.login_teste
-(
-    login character varying(50) COLLATE pg_catalog."default" NOT NULL,
-    senha character varying(100) COLLATE pg_catalog."default" NOT NULL,
-    nome character varying(100) COLLATE pg_catalog."default",
-    funcao character varying(100) COLLATE pg_catalog."default",
-    CONSTRAINT login_teste_pkey PRIMARY KEY (login)
-)
-WITH (
-    OIDS = FALSE
-)
-TABLESPACE pg_default;
-
-ALTER TABLE public.login_teste
-    OWNER to postgres;
-	
--- INSERT USER	
-INSERT INTO public.login_teste(
-	login, senha, nome, funcao)
-	VALUES ('admin', 'admin', 'Administrador', 'Administrador do sistemas');
-```
 ## Equipe de desenvolvimento
 Nome|email
 ------------------------------|-----------------------------------
