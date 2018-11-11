@@ -9,7 +9,7 @@ class DadosFuncionais{
     private $dataadmissao;
     private $escolaridade;
     private $formacaoacademica;
-    private $anoaonclusao;
+    private $anoconclusao;
     //private $disciplina;
 
     public function __construct(){

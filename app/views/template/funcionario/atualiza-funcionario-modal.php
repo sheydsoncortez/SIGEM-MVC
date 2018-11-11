@@ -3,7 +3,7 @@
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <button id="resetmodal" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     </div>
                     <div class="modal-body">
                         <form class="form-horizontal" role="form" action="<?php echo URL_BASE . 'funcionario/corrigir' ?>" method="post" id="modalform-up">
@@ -39,7 +39,7 @@
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">Cancelar</button>
+                        <button id="resetmodal" type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">Cancelar</button>
                         <button id="atualizadados" type="submit" class="btn btn-success" >Atualizar</button>
                     </div>
                 </div>
@@ -52,10 +52,12 @@
         e.preventDefault();
     }*/
 
-
+    $("button#resetmodal").on('click', function () {
+        location.reload();
+    });
     $("button#atualizadados").on('click', function () {
 
-        var dados = $("form#modalform-up").serializeArray();
+        //var dados = $("form#modalform-up").serializeArray();
 
         /*$.ajax({
            type: "POST",

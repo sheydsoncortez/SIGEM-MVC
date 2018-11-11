@@ -106,7 +106,7 @@
               <div class="form-check-inline">
                 <label class="form-check-inline">
                   <input type="radio" value="M" name="sexo"
-                         <?php if(strcmp($f->sexo,"M") == 2) echo 'checked'; ?>
+                         <?php if(strcasecmp('M', str_replace(" ","",$f->sexo)) == 0) echo 'checked'; ?>
                          required oninvalid="this.setCustomValidity('Selecione uma das opções')"
                          oninput="setCustomValidity('')"/>&nbspMasculino
                 </label>
@@ -114,7 +114,7 @@
               &nbsp&nbsp
               <div class="form-check-inline">
                 <label class="form-check-inline">
-                  <input type="radio" value="F" <?php if(strcmp($f->sexo,"F") == 2) echo 'checked'; ?> name="sexo"/>&nbspFeminino
+                  <input type="radio" value="F" <?php if(strcasecmp('F', str_replace(" ","",$f->sexo)) == 0) echo 'checked'; ?> name="sexo"/>&nbspFeminino
                 </label>
               </div>                            
           </fieldset>

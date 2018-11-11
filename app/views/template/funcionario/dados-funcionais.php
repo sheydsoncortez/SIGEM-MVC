@@ -55,7 +55,7 @@
                 <div class="input-group">
                     <input type="text" class="form-control" id="ano"
                             placeholder="Ano de conclusão"
-                            value="<?php isset($na) ? print($na) : ""?>"
+                            value="<?php isset($df) ? print($df->anoconclusao) : ""?>"
                             name="anoConclusaoFun"/>
                     <div class="input-group-append">
                         <div class="input-group-text"><i class="fa fa-calendar-alt"></i></div>

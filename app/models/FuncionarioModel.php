@@ -3,10 +3,6 @@
 namespace app\models;
 
 use app\core\Model;
-use app\classes\Funcionario;
-use app\classes\Endereco;
-use app\classes\DocumentosFuncionario;
-use app\classes\DadosFuncionais;
 
 error_reporting(E_ERROR);
 
@@ -20,10 +16,8 @@ class FuncionarioModel extends Model{
 
         $status = array();
 
-        $fun = new Funcionario();
-        $fun = $_SESSION['funcionario'];
-
-
+        //$fun = new Funcionario();
+        //$fun = $_SESSION['funcionario'];
 
         $cpf = $_SESSION['funcionario']->documentos->cpf;
         $pispasep = $_SESSION['funcionario']->documentos->pispasep;
@@ -153,104 +147,98 @@ class FuncionarioModel extends Model{
             $status["status"] = false;
             $status["msn"] = "Erro ao inserir funcionário" . $e->getMessage();
 
+
             return $status;
+
         }
-        return $status;
     }
 
-    public function update(Funcionario $f, $a = array() ){
+    public function update($a = array()){
+        //echo "<pre>";
 
         try {
             // set the PDO error mode to exception
             $this->db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-            $upct_sql = 'UPDATE public.ctps SET 
-                            numero=?, serie=?
-                         WHERE numero=:numero;';
+            $upct_sql = 'UPDATE public.ctps SET numero=:numero, serie=:serie WHERE numero=:ctps_id';
+
 
             $query = $this->db->prepare($upct_sql);
-            $query->bindValue(1, $f->documentos->ctps->numero, \PDO::PARAM_STR);
-            $query->bindValue(2, $f->documentos->ctps->serie, \PDO::PARAM_STR);
-            $query->bindValue(':numero', $a->ctps_id, \PDO::PARAM_STR);
+            $query->bindValue(':numero', $f->documentos->ctps->numero);
+            $query->bindValue(':serie', $f->documentos->ctps->serie);
+            $query->bindValue(':ctps_id', $a['ctps_id']);
             $query->execute();
+            $query->errorInfo();
 
-            $upen_sql = 'UPDATE public.endereco SET 
-                            cep=?, cidade=?, logradouro=?, 
-                            numero=?, bairro=?, estado=?
-                        WHERE codigo=:codigo;';
+
+            $upen_sql = 'UPDATE public.endereco SET cep=:cep, cidade=:cidade, logradouro=:logradouro, numero=:numero, bairro=:bairro, estado=:estado WHERE codigo=:endereco_id';
 
             $query = $this->db->prepare($upen_sql);
-            $query->bindValue(1, $f->endereco->cep, \PDO::PARAM_STR);
-            $query->bindValue(2, $f->endereco->cidade, \PDO::PARAM_STR);
-            $query->bindValue(3, $f->endereco->logradouro, \PDO::PARAM_STR);
-            $query->bindValue(4, $f->endereco->numero, \PDO::PARAM_STR);
-            $query->bindValue(5, $f->endereco->bairro, \PDO::PARAM_STR);
-            $query->bindValue(6, $f->endereco->estado, \PDO::PARAM_STR);
-            $query->bindValue(':codigo', $a->endereco_id, \PDO::PARAM_STR);
+            $query->bindValue(':cep', $f->endereco->cep);
+            $query->bindValue(':cidade', $f->endereco->cidade);
+            $query->bindValue('logradouro', $f->endereco->logradouro);
+            $query->bindValue(':numero', $f->endereco->numero);
+            $query->bindValue(':bairro', $f->endereco->bairro);
+            $query->bindValue(':estado', $f->endereco->estado);
+            $query->bindValue('endereco_id', $a['endereco_id']);
             $query->execute();
+            $query->errorInfo();
 
-            $upre_sql = 'UPDATE public.reservista SET 
-                            numero=?, categoria=?, serie=?
-                         WHERE numero=:numero;';
+            $upre_sql = 'UPDATE public.reservista SET numero=:numero, categoria=:categoria, serie=:serie WHERE numero=:reservista_id';
 
             $query = $this->db->prepare($upre_sql);
-            $query->bindValue(1, $f->documentos->reservista->numero, \PDO::PARAM_STR);
-            $query->bindValue(2, $f->documentos->reservista->categoria, \PDO::PARAM_STR);
-            $query->bindValue(3, $f->documentos->reservista->serie, \PDO::PARAM_STR);
-            $query->bindValue(':numero', $a->reservista_id, \PDO::PARAM_STR);
+            $query->bindValue(':numero', $f->documentos->reservista->numero);
+            $query->bindValue(':categoria', $f->documentos->reservista->categoria);
+            $query->bindValue(':serie', $f->documentos->reservista->serie);
+            $query->bindValue(':reservista_id', $a['reservista_id']);
             $query->execute();
+            $query->errorInfo();
 
-            $uprg_sql = 'UPDATE public.rg SET 
-                            numero=?, orgaoexp=?, dataexp=?, ufexp=?
-                         WHERE numero=:numero;';
+            $uprg_sql = 'UPDATE public.rg SET numero=:numero, orgaoexp=:orgaoexp, dataexp=:dataexp, ufexp=:ufexp WHERE numero=:rg_id';
 
             $query = $this->db->prepare($uprg_sql);
-            $query->bindValue(1, $f->documentos->rg->numero, \PDO::PARAM_STR);
-            $query->bindValue(2, $f->documentos->rg->orgaoexp, \PDO::PARAM_STR);
-            $query->bindValue(3, $f->documentos->rg->dataexp, \PDO::PARAM_STR);
-            $query->bindValue(4, $f->documentos->rg->ufexp, \PDO::PARAM_STR);
-            $query->bindValue(':numero', $a->rg_id, \PDO::PARAM_STR);
+            $query->bindValue(':numero', $f->documentos->rg->numero);
+            $query->bindValue(':orgaoexp', $f->documentos->rg->orgaoexp);
+            $query->bindValue(':dataexp', $f->documentos->rg->dataexp);
+            $query->bindValue(':ufexp', $f->documentos->rg->ufexp);
+            $query->bindValue(':rg_id', $a['rg_id']);
+            $query->execute();
+            $query->errorInfo();
 
-            $upti_sql = 'UPDATE public.tituloeleitor SET 
-                            numero=?, zona=?, secao=?
-                         WHERE numero=:numero;';
+            $upti_sql = 'UPDATE public.tituloeleitor SET numero=:numero, zona=:zona, secao=:secao WHERE numero=:titulo_id';
 
             $query = $this->db->prepare($upti_sql);
-            $query->bindValue(1, $f->documentos->tituloeleitor->numero, \PDO::PARAM_STR);
-            $query->bindValue(2, $f->documentos->tituloeleitor->zona, \PDO::PARAM_STR);
-            $query->bindValue(3, $f->documentos->tituloeleitor->secao, \PDO::PARAM_STR);
-            $query->bindValue(':numero', $a->titulo_id, \PDO::PARAM_STR);
+            $query->bindValue(':numero', $f->documentos->tituloeleitor->numero);
+            $query->bindValue(':zona', $f->documentos->tituloeleitor->zona);
+            $query->bindValue(':secao', $f->documentos->tituloeleitor->secao);
+            $query->bindValue(':titulo_id', $a['titulo_id']);
+            $query->execute();
+            $query->errorInfo();
 
-            $upfu_sql = 'UPDATE public.funcionario	SET 
-                            cpf=?, nome=?, datanasc=?, cidadenasc=?, estadonasc=?, 
-                            nomepai=?, nomemae=?, sexo=?, estadocivil=?, telefone=?, 
-                            email=?, pispasep=?, matricula=?, dataadmissao=?, escolaridade=?, 
-                            formacaoacademica=?, anoconclusao=?, cargo=?, funcao=?, senha=?, escola=?, ativo=?
-                          WHERE cpf=:cpf;';
+            $upfu_sql = 'UPDATE public.funcionario SET cpf=:cpf, nome=:nome, datanasc=:datanasc, cidadenasc=:cidadenasc, estadonasc=:estadonasc, nomepai=:nomepai, nomemae=:nomemae, sexo=:sexo, estadocivil=:estadocivil, telefone=:telefone, email=:email, pispasep=:pispasep, matricula=:matricula, dataadmissao=:dataadmissao, escolaridade=:escolaridade, formacaoacademica=:formacaoacademica, anoconclusao=:anoconclusao, cargo=:cargo, funcao=:funcao WHERE cpf=:funcionario_id';
 
             $query = $this->db->prepare($upfu_sql);
-            $query->bindValue(1, $f->documentos->cpf, \PDO::PARAM_STR);
-            $query->bindValue(2, $f->nome, \PDO::PARAM_STR);
-            $query->bindValue(3, $f->datanasc, \PDO::PARAM_STR);
-            $query->bindValue(4, $f->cidadenasc, \PDO::PARAM_STR);
-            $query->bindValue(5, $f->estadonasc, \PDO::PARAM_STR);
-            $query->bindValue(6, $f->nomepai, \PDO::PARAM_STR);
-            $query->bindValue(7, $f->nomemae, \PDO::PARAM_STR);
-            $query->bindValue(8, $f->sexo, \PDO::PARAM_STR);
-            $query->bindValue(9, $f->estadocivil, \PDO::PARAM_STR);
-            $query->bindValue(10, $f->telefone, \PDO::PARAM_STR);
-            $query->bindValue(11, $f->email, \PDO::PARAM_STR);
-            $query->bindValue(12, $f->documentos->pispasep, \PDO::PARAM_STR);
-            $query->bindValue(13, $f->dadosfuncionais->matricula, \PDO::PARAM_STR);
-            $query->bindValue(14, $f->dadosfuncionais->dataadmissao, \PDO::PARAM_STR);
-            $query->bindValue(15, $f->dadosfuncionais->escolaridade, \PDO::PARAM_STR);
-            $query->bindValue(16, $f->dadosfuncionais->formacaoacademica, \PDO::PARAM_STR);
-            $query->bindValue(17, $f->dadosfuncionais->anoconclusao, \PDO::PARAM_STR);
-            $query->bindValue(18, $f->dadosfuncionais->cargo, \PDO::PARAM_STR);
-            $query->bindValue(19, $f->dadosfuncionais->funcao, \PDO::PARAM_STR);
-            $query->bindValue(20, $f->senha, \PDO::PARAM_STR);
-            $query->bindValue(21, $f->escola, \PDO::PARAM_STR);
-            $query->bindValue(22, $f->ativo, \PDO::PARAM_STR);
-            $query->bindValue(':cpf', $a->funcionario_id, \PDO::PARAM_STR);
+            $query->bindValue(':cpf', $f->documentos->cpf);
+            $query->bindValue(':nome', $f->nome);
+            $query->bindValue(':datanasc', $f->datanasc);
+            $query->bindValue(':cidadenasc', $f->cidadenasc);
+            $query->bindValue(':estadonasc', $f->estadonasc);
+            $query->bindValue(':nomepai', $f->nomepai);
+            $query->bindValue(':nomemae', $f->nomemae);
+            $query->bindValue(':sexo', $f->sexo);
+            $query->bindValue(':estadocivil', $f->estadocivil);
+            $query->bindValue(':telefone', $f->telefone);
+            $query->bindValue(':email', $f->email);
+            $query->bindValue(':pispasep', $f->documentos->pispasep);
+            $query->bindValue(':matricula', $f->dadosfuncionais->matricula);
+            $query->bindValue(':dataadmissao', $f->dadosfuncionais->dataadmissao);
+            $query->bindValue(':escolaridade', $f->dadosfuncionais->escolaridade);
+            $query->bindValue(':formacaoacademica', $f->dadosfuncionais->formacaoacademica);
+            $query->bindValue(':anoconclusao', $f->dadosfuncionais->anoconclusao);
+            $query->bindValue(':cargo', $f->dadosfuncionais->cargo);
+            $query->bindValue(':funcao', $f->dadosfuncionais->funcao);
+            $query->bindValue(':funcionario_id', $a['funcionario_id']);
+            $query->execute();
+            $query->errorInfo();
 
             unset($_SESSION['funcionario']);
 
@@ -261,30 +249,30 @@ class FuncionarioModel extends Model{
             $status["status"] = false;
             $status["msn"] = "Erro ao inserir funcionário" . $e->getMessage();
 
+            echo $status["msn"];
+
             return $status;
         }
 
     }
 
+    public function remover(){
+
+    }
 
     public function getFuncionario($cpf)
     {
 
-        $sql_funcionario = "SELECT  cpf, nome, to_char(\"datanasc\", 'DD/MM/YYYY') as datanasc, 
-                            cidadenasc, estadonasc, nomepai, nomemae, sexo, estadocivil, telefone, 
-                            email, pispasep, endereco, ctps, rg, tituloeleitor, reservista, senha, escola, ativo
-	                        FROM public.funcionario WHERE cpf='{$cpf}' AND ativo=true";
+        $sql_funcionario = "SELECT  cpf, nome, to_char(\"datanasc\", 'DD/MM/YYYY') as datanasc, cidadenasc, estadonasc, nomepai, nomemae, sexo, estadocivil, telefone, email, pispasep, endereco, ctps, rg, tituloeleitor, reservista, senha, escola, ativo FROM public.funcionario WHERE cpf='{$cpf}' AND ativo=true";
 
         $query = $this->db->query($sql_funcionario);
 
         if ($query->rowCount() == 1) {
 
-            unset($_SESSION['funcionario']);
-
             $f = $query->fetch(\PDO::FETCH_OBJ);
 
-            $sql_end = "SELECT cep, cidade, logradouro, numero, bairro, estado
-                         FROM public.endereco WHERE codigo='{$f->endereco}'";
+            $sql_end = "SELECT cep, cidade, logradouro, numero, bairro, estado FROM public.endereco WHERE codigo='{$f->endereco}'";
+
             $query = $this->db->query($sql_end);
             $f->endereco = $query->fetch(\PDO::FETCH_OBJ);
 
@@ -292,27 +280,31 @@ class FuncionarioModel extends Model{
             $f->documentos->pispasep = $f->pispasep;
 
             $sql_ctps = "SELECT * FROM public.ctps WHERE numero='{$f->ctps}'";
+
             $query = $this->db->query($sql_ctps);
             $f->documentos->ctps = $query->fetch(\PDO::FETCH_OBJ);
 
             $sql_res = "SELECT * FROM public.reservista WHERE numero='{$f->reservista}'";
+
             $query = $this->db->query($sql_res);
             $f->documentos->reservista = $query->fetch(\PDO::FETCH_OBJ);
 
-            $sql_rg = "SELECT numero, orgaoexp, to_char(\"dataexp\", 'DD/MM/YYYY') as dataexp, ufexp
-	                   FROM public.rg WHERE numero='{$f->rg}'";
+            $sql_rg = "SELECT numero, orgaoexp, to_char(\"dataexp\", 'DD/MM/YYYY') as dataexp, ufexp FROM public.rg WHERE numero='{$f->rg}'";
+
             $query = $this->db->query($sql_rg);
             $f->documentos->rg = $query->fetch(\PDO::FETCH_OBJ);
 
             $sql_tit = "SELECT * FROM public.tituloeleitor WHERE numero='{$f->tituloeleitor}'";
+
             $query = $this->db->query($sql_tit);
             $f->documentos->tituloeleitor = $query->fetch(\PDO::FETCH_OBJ);
 
-            $sql_dadosfuncionais = "SELECT matricula, to_char(\"dataadmissao\", 'DD/MM/YYYY') as dataadmissao, 
-                                    escolaridade, formacaoacademica, anoconclusao, cargo, funcao 
-                                    FROM funcionario WHERE cpf='{$cpf}' AND ativo=true";
+            $sql_dadosfuncionais = "SELECT matricula, to_char(\"dataadmissao\", 'DD/MM/YYYY') as dataadmissao, escolaridade, formacaoacademica, anoconclusao, cargo, funcao FROM funcionario WHERE cpf='{$cpf}' AND ativo=true";
+
             $query = $this->db->query($sql_dadosfuncionais);
             $f->dadosfuncionais = $query->fetch(\PDO::FETCH_OBJ);
+
+            unset($_SESSION['funcionario']);
 
         }else{
 

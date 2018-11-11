@@ -133,6 +133,8 @@ class FuncionarioController extends Controller{
     
     public function editar($cpf){
 
+
+
         $dados["titulo"] = "DADOS FUNCIONARIO";
         $dados["view"] = "template/funcionario/revisadados-funcionario";
         $dados["modal"] = "template/funcionario/atualiza-funcionario-modal.php";
@@ -146,19 +148,19 @@ class FuncionarioController extends Controller{
         if(isset($_SESSION['funcionario'])){
 
             $this->load("admin", $dados);
-            echo "1";
+            //echo "1";
 
         }else
             if(empty($_SESSION['funcionario'])){
                 if($funcionario->getFuncionario(base64_decode($cpf))) {
                     $_SESSION["funcionario"] = $funcionario->getFuncionario(base64_decode($cpf));
                     $this->load("admin", $dados);
-                    echo "2";
+                    //echo "2";
                 }
         }else{
 
             $this->load("admin", $dados);
-            echo "3";
+            //echo "3";
         }
         //echo "<pre>";
         //print_r($_SESSION['funcionario']);
@@ -166,6 +168,9 @@ class FuncionarioController extends Controller{
    }
    
    public function listar(){
+
+      unset($_SESSION['funcionario']);
+
       $funcionarios = new FuncionarioModel();
       $dados['link'] = "funcionario/listar";
       $dados['breadcrumbl1'] = "funcionário";
@@ -178,25 +183,31 @@ class FuncionarioController extends Controller{
 
    public function corrigir(){
 
+        $f = $_SESSION['funcionario'];
+
         $this->setDadosFuncionario();
         $this->setEndereco();
         $this->setDocumentosFuncionario();
         $this->setDadosFuncionais();
 
-        $this->editar(base64_encode($_SESSION['funcionario']->documentos->cpf));
-        /*$array_ids = array(
-            "ctps_id" => $f->documentos->ctps->numero,
-            "endereco_id" => $f->documentos->cpf,
-            "reservista_id" => $f->documentos->reservista->numero,
-            "rg_id" => $f->documentos->rg->numero,
-            "titulo_id" => $f->documentos->tituloeleitor->numero,
-            "funcionario_id" =>$f->documentos->cpf
-        );*/
+       $array_ids = array(
+           "ctps_id" => $f->documentos->ctps->numero,
+           "endereco_id" => $f->documentos->cpf,
+           "reservista_id" => $f->documentos->reservista->numero,
+           "rg_id" => $f->documentos->rg->numero,
+           "titulo_id" => $f->documentos->tituloeleitor->numero,
+           "funcionario_id" =>$f->documentos->cpf
+       );
 
-        //$update = new FuncionarioModel();
-        //$update->update($_SESSION['funcionario'], $array_ids);*/
+       $update = new FuncionarioModel();
+       $update->update($array_ids);
+
+        
+        $this->editar(base64_encode($_SESSION['funcionario']->documentos->cpf));
+
 
         //echo "<pre>";
+        //print_r($array_ids);
         //print_r($_SESSION['funcionario']);
    }
 
@@ -215,15 +226,16 @@ class FuncionarioController extends Controller{
         $funcionario->nome = $_POST['nomeFun'];
         $funcionario->datanasc = $_POST['dataNasc'];
         $funcionario->cidadenasc = $_POST['cidadeNasc'];
-        $funcionario->estadonasc = $_POST['estadoNasc'] ;
+        $funcionario->estadonasc = $_POST['estadoNasc'];
         $funcionario->nomepai = $_POST['nomePai'];
-        $funcionario->nomemae = $_POST['nomeMae'] ;
+        $funcionario->nomemae = $_POST['nomeMae'];
         $funcionario->sexo = $_POST['sexo'];
         $funcionario->estadocivil = $_POST['estadoCivil'];
         $funcionario->telefone = $_POST['telefone'];
         $funcionario->email = $_POST['email'];
 
         $_SESSION['funcionario'] = $funcionario;
+
     }
 
    /**
