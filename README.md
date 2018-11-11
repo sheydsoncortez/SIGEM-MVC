@@ -4,19 +4,19 @@
 ![](https://img.shields.io/badge/php-v7-green.svg?longCache=true&style=flat-square) ![](https://img.shields.io/badge/css-v3-blue.svg?longCache=true&style=flat-square) ![](https://img.shields.io/badge/html-v5-orange.svg?longCache=true&style=flat-square) ![](https://img.shields.io/badge/jQuery-v3.3.1-blue.svg?longCache=true&style=flat-square) ![](https://img.shields.io/badge/javascript-developer-pink.svg?longCache=true&style=flat-square) ![](https://img.shields.io/badge/Bootstrap-v4-purple.svg?longCache=true&style=flat-square) ![](https://img.shields.io/badge/PostgreSQL-v10-blue.svg?longCache=true&style=flat-square) ![](https://img.shields.io/badge/ViaCep-API-green.svg?longCache=true&style=flat-square) ![](https://img.shields.io/badge/BootstrapDatapicker-v1.6.4-purple.svg?longCache=true&style=flat-square)
 
 ## Sumário
-- [Descrição do Sistema](https://github.com/emancos/SIGEM#descrição-do-sistema)
-- [Motivação](https://github.com/emancos/SIGEM#motivação)
-- [Tecnologias utilizadas](https://github.com/emancos/SIGEM#tecnologias-utilizadas)
-	- [Front End](https://github.com/emancos/SIGEM#front-end)
-	- [Back End](https://github.com/emancos/SIGEM#back-end)
-	- [Banco de dados](https://github.com/emancos/SIGEM#banco-de-dados)
-- [Peparar o ambiente](https://github.com/emancos/SIGEM#preparar-o-ambiente)
-    - [Instalação Composer](https://github.com/emancos/SIGEM#instalação-composer)
-	- [Instalação XAMPP](https://github.com/emancos/SIGEM#instalação-xampp)
-	- [Instalação PostgreSQL](https://github.com/emancos/SIGEM#instalação-postgresql)
-	- [Habilitar PostgreSQL XAMPP](https://github.com/emancos/SIGEM#habilitar-postgressql-xampp)
-- [Executar o projeto](https://github.com/emancos/SIGEM#executar-o-projeto)
-- [Equipe de desenvolvimento](https://github.com/emancos/SIGEM#equipe-de-desenvolvimento)
+- [Descrição do Sistema](https://github.com/emancos/SIGEM-MVC#descrição-do-sistema)
+- [Motivação](https://github.com/emancos/SIGEM-MVC#motivação)
+- [Tecnologias utilizadas](https://github.com/emancos/SIGEM-MVC#tecnologias-utilizadas)
+	- [Front End](https://github.com/emancos/SIGEM-MVC#front-end)
+	- [Back End](https://github.com/emancos/SIGEM-MVC#back-end)
+	- [Banco de dados](https://github.com/emancos/SIGEM-MVC#banco-de-dados)
+- [Peparar o ambiente](https://github.com/emancos/SIGEM-MVC#preparar-o-ambiente)
+    - [Instalação Composer](https://github.com/emancos/SIGEM-MVC#instalação-composer)
+	- [Instalação XAMPP](https://github.com/emancos/SIGEM-MVC#instalação-xampp)
+	- [Instalação PostgreSQL](https://github.com/emancos/SIGEM-MVC#instalação-postgresql)
+	- [Habilitar PostgreSQL XAMPP](https://github.com/emancos/SIGEM-MVC#habilitar-postgressql-xampp)
+- [Executar o projeto](https://github.com/emancos/SIGEM-MVC#executar-o-projeto)
+- [Equipe de desenvolvimento](https://github.com/emancos/SIGEM-MVC#equipe-de-desenvolvimento)
 
 ---
 
@@ -71,7 +71,7 @@ Para o desenvolvimento e utilização do SIGEM foi utilizado o XAMPP(LAMPP no Li
 - [Mac OS (MAMP)](https://stackoverflow.com/questions/26003058/how-to-enable-postgresql-in-xampp-on-mac-os).
 
 ### Executar o projeto:
-git clone https://github.com/emancos/SIGEM-MVC.git na pasta htdocs do xampp.  
+git clone https://github.com/emancos/SIGEM-MVC-MVC.git na pasta htdocs do xampp.  
 Execute os Scripts SQL contidos na pasta 'database' na raís do projeto no pgAdmin do PostgreSQL e acessar a pagina do sistema:  
 localhost/SIGEM-MVC.
 Usar o login e usuário padrão:
