@@ -108,6 +108,40 @@ class AlunoController extends Controller{
         } 
     }
 
+    public function editar(){
+
+        $dados["titulo"] = "DADOS ALUNO";
+        $dados["view"] = "template/aluno/revisadados-aluno";
+        $dados["modal"] = "template/funcionario/atualiza-funcionario-modal.php";
+        $dados["page"] = "";
+        $dados['link'] = "aluno/editar/";
+        $dados['breadcrumbl1'] = "aluno";
+        $dados['breadcrumbl2'] = "editar";
+
+        $aluno = new AlunoModel();
+
+        if(isset($_SESSION['aluno'])){
+
+            $this->load("admin", $dados);
+            echo "1";
+
+        }else
+            if(empty($_SESSION['aluno'])){
+                $_SESSION["aluno"] = $aluno->getAluno();
+                $this->load("admin", $dados);
+                echo "2";
+                //if($aluno->getAluno()) {
+                //}
+        }else{
+
+            $this->load("admin", $dados);
+            echo "3";
+        }
+        //echo "<pre>";
+        //print_r($_SESSION['funcionario']);
+
+   }
+
     public function listar(){
         $aluno = new AlunoModel();
         $dados['link'] = "aluno/listar";
@@ -123,6 +157,7 @@ class AlunoController extends Controller{
         $aluno = new Aluno();
 
         $aluno->nomeAluno = $_POST['nomeAluno'];
+        $aluno->matriculaAluno = mt_rand(10000000, 99999999);
         $aluno->dataNascAluno = $_POST['dataNascAluno'];
         $aluno->cidadeNascAluno = $_POST['cidadeNascAluno'];
         $aluno->estadoNascAluno = $_POST['estadoNascAluno'] ;
@@ -148,6 +183,8 @@ class AlunoController extends Controller{
         $filiacao->rgMaeAluno->orgaoexp = $_POST['orgaoExpRg'];
         $filiacao->rgMaeAluno->dataexp = $_POST['dataExpRg'];
         $filiacao->rgMaeAluno->estadoexp = $_POST['ufExpRg'];
+
+        $_SESSION['aluno']->filiacaoAluno = $filiacao;
     }
 
     public function setDocumentosAluno(){
@@ -185,6 +222,6 @@ class AlunoController extends Controller{
                                         $documentosa->reservista->serie = "";
         }
 
-        $_SESSION['aluno']->documentos = $documentosa;
+        $_SESSION['aluno']->documentosAluno = $documentosa;
    }
 }

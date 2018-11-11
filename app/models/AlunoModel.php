@@ -148,10 +148,6 @@ class AlunoModel extends Model{
         return $status;
     }
 
-    public function getAluno(){
-        return null;
-    }
-
     public function listarTodos(){
         $sql_aluno = "SELECT * FROM public.aluno WHERE ativo=true";
         $query = $this->db->query($sql_aluno);
