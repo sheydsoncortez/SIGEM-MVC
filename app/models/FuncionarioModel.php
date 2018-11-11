@@ -345,10 +345,12 @@ class FuncionarioModel extends Model{
     }
 
     
-    public function listarTodos(){
+    public function listarTodos($ativo){
         
-        $sql_funcionario = "SELECT * FROM public.funcionario WHERE ativo=true";
-        $query = $this->db->query($sql_funcionario);
+        $sql_funcionario = "SELECT * FROM public.funcionario WHERE ativo=:ativo";
+        $query = $this->db->prepare($sql_funcionario);
+        $query->bindValue(':ativo', $ativo);
+        $query->execute();
         
         return  $query->fetchAll(\PDO::FETCH_OBJ);        
     }

@@ -167,7 +167,7 @@ class FuncionarioController extends Controller{
 
    }
    
-   public function listar(){
+   public function listar($ativo){
 
       unset($_SESSION['funcionario']);
 
@@ -177,7 +177,8 @@ class FuncionarioController extends Controller{
       $dados['breadcrumbl2'] = "listar";
       $dados["view"] = "template/listar-funcionario";
       $dados["modal"] = "template/funcionario/atualiza-funcionario-modal.php";
-      $dados["funcionarios"] = $funcionarios->listarTodos();
+      $dados["ativo"] = $ativo;
+      $dados["funcionarios"] = $funcionarios->listarTodos($ativo);
       $this->load("admin", $dados);
    }
 
@@ -205,10 +206,6 @@ class FuncionarioController extends Controller{
         
         $this->editar(base64_encode($_SESSION['funcionario']->documentos->cpf));
 
-
-        //echo "<pre>";
-        //print_r($array_ids);
-        //print_r($_SESSION['funcionario']);
    }
 
    public function remover($cpf){
@@ -218,15 +215,12 @@ class FuncionarioController extends Controller{
 
         if($dados['status']){
 
-            //$this->listar();
-            echo '<pre>';
-            print_r($dados);
+            $this->listar();
 
         }else{
             $dados["view"] = "template/inicio";
-            //$this->load("admin", $dados);
-            echo '<pre>';
-            print_r($dados);
+            $this->load("admin", $dados);
+
         }
 
    }

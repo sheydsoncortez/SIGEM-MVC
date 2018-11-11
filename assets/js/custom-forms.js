@@ -264,6 +264,9 @@ $(document).ready(function(){
   $('#legenda-cor').change(function(){
     $('#legenda-cor').css('font-weight', 'bold');
   });
+$('#statusfuncionario').change(function(){
+    $('#statusfuncionario').css('font-weight', 'bold');
+});
   // ===========================================================
 
   // REMOVE SOMBRA DO INPUT (FORM DADOS FUNCIONAIS)

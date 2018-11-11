@@ -9,11 +9,22 @@
         <div class="col-lg-12">
           <div class="card mx-auto">
             <div class="card-header">
-                <h4>Funcionários</td></h4>
+                <h4>Funcionários <?php if($ativo == 1) {echo " ativos";}else{echo " inativos";} ?></td></h4>
                 <span id="tbcabecalho" hidden>Funcionário</span>
             </div>
               <div class="card-body">
 
+                  <div class="col-sm-12">
+                      <div class="row">
+                          <label class="col-sm-10 form-control-label"></label>
+                          <div class="col-sm-2">
+                          <select id="statusfuncionario" name="statusfuncionario" class="form-control select_selecionado">
+                              <option value="1">Ativos</option>
+                              <option value="0">Inativos</option>
+                          </select>
+                          </div>
+                      </div>
+                  </div>
                 <div class="table-responsive col-lg-12 mx-auto">
 
                   </br>
