@@ -156,6 +156,8 @@ class FuncionarioModel extends Model{
     public function update($a = array()){
         //echo "<pre>";
 
+        $f = $_SESSION['funcionario'];
+
         try {
             // set the PDO error mode to exception
             $this->db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
@@ -249,14 +251,38 @@ class FuncionarioModel extends Model{
             $status["status"] = false;
             $status["msn"] = "Erro ao inserir funcionário" . $e->getMessage();
 
-            echo $status["msn"];
-
             return $status;
         }
 
     }
 
-    public function remover(){
+    public function remover($cpf){
+
+        $status = array();
+
+        try{
+            $this->db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+
+            $upfu_sql = 'UPDATE public.funcionario SET ativo=false WHERE cpf=:cpf';
+
+            $query = $this->db->prepare($upfu_sql);
+            $query->bindValue(':cpf', $cpf);
+            $query->execute();
+            $query->errorInfo();
+
+            $status["status"] = true;
+            $status["msn"] = "Funcionário removido";
+
+            return $status;
+
+        }catch (\PDOException $e){
+
+            $status["status"] = false;
+            $status["msn"] = "Erro ao remover funcionário" . $e->getMessage();
+
+            return $status;
+
+        }
 
     }
 

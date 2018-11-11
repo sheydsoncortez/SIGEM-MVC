@@ -211,6 +211,25 @@ class FuncionarioController extends Controller{
         //print_r($_SESSION['funcionario']);
    }
 
+   public function remover($cpf){
+
+        $remover = new FuncionarioModel();
+        $dados = $remover->remover(base64_decode($cpf));
+
+        if($dados['status']){
+
+            //$this->listar();
+            echo '<pre>';
+            print_r($dados);
+
+        }else{
+            $dados["view"] = "template/inicio";
+            //$this->load("admin", $dados);
+            echo '<pre>';
+            print_r($dados);
+        }
+
+   }
 
    /**
     * Cria uma SESSION de um Objeto Funcionário para armazenar 
