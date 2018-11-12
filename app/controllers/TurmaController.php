@@ -50,6 +50,14 @@ class TurmaController extends Controller
                 $dados["proximo"] = "3";
                 $dados["page"] = $page;
                 break;
+            case '3';
+                $dados["titulo"] = "PREENCHER TURMA";
+                $dados["paginator"] = "turma/preencher-turma2.php";
+                $dados["active"] = array("", "", "active", "", "");
+                $dados["disabled"] = array("","", "", "", "disabled", "");
+                $dados["voltar"] = "2";
+                $dados["proximo"] = "4";
+                $dados["page"] = $page;
 
         }
 
@@ -72,6 +80,10 @@ class TurmaController extends Controller
 
                 break;
             case 3:
+                $this->setPreencherTurma2();
+                header('location:' . URL_BASE . 'turma/cadastrar/4');
+
+            case 4:
                 $dados = array();
                 $d = new TurmaModel();
 
@@ -104,9 +116,17 @@ class TurmaController extends Controller
         $turmaf = new turma();
 
         $turmaf->disciplina = $_POST["disciplina"];
-        $turmaf->serie = $_POST["aluno"];
 
         $_SESSION["turma"]->turma = $turmaf;
+        //echo "<pre>";
+        //print_r($_SESSION["turma"]);
+    }
+    public function setPreencherTurma2(){
+        $turma2 = new turma();
+
+        $turma2->aluno = $_POST["aluno"];
+
+        $_SESSION["turma"]->turma = $turma2;
         //echo "<pre>";
         //print_r($_SESSION["turma"]);
     }
