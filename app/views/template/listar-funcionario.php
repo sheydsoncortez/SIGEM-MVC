@@ -9,7 +9,7 @@
         <div class="col-lg-12">
           <div class="card mx-auto">
             <div class="card-header">
-                <h4>Funcionários <?php if($ativo == 1) {echo " ativos";}else{echo " inativos";} ?></td></h4>
+                <h4>Lista de Funcionários <?php if(strcasecmp('Todos', str_replace(" ","",$ativos)) != 0) echo  ucfirst($ativos) ?></td></h4>
                 <span id="tbcabecalho" hidden>Funcionário</span>
             </div>
               <div class="card-body">
@@ -18,9 +18,11 @@
                       <div class="row">
                           <label class="col-sm-10 form-control-label"></label>
                           <div class="col-sm-2">
-                          <select id="statusfuncionario" name="statusfuncionario" class="form-control select_selecionado">
-                              <option value="1">Ativos</option>
-                              <option value="0">Inativos</option>
+                          <select id="statusfuncionario" name="statusfuncionario" class="form-control select_selecionado" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                              <option value="ativos">Listar...</option>
+                              <option value="ativos">Ativos</option>
+                              <option value="inativos">Inativos</option>
+                              <option value="todos">Todos</option>
                           </select>
                           </div>
                       </div>

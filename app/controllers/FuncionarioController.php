@@ -146,26 +146,25 @@ class FuncionarioController extends Controller{
         if(isset($_SESSION['funcionario'])){
 
             $this->load("admin", $dados);
-            //echo "1";
+            echo "1";
 
-        }else
-            if(empty($_SESSION['funcionario'])){
+        }else if(empty($_SESSION['funcionario'])){
                 if($funcionario->getFuncionario(base64_decode($cpf))) {
                     $_SESSION["funcionario"] = $funcionario->getFuncionario(base64_decode($cpf));
                     $this->load("admin", $dados);
-                    //echo "2";
+                    echo "2";
                 }
         }else{
 
             $this->load("admin", $dados);
-            //echo "3";
+            echo "3";
         }
         //echo "<pre>";
         //print_r($_SESSION['funcionario']);
 
    }
    
-   public function listar($ativo){
+   public function listar($status){
 
       unset($_SESSION['funcionario']);
 
@@ -175,8 +174,9 @@ class FuncionarioController extends Controller{
       $dados['breadcrumbl2'] = "listar";
       $dados["view"] = "template/listar-funcionario";
       $dados["modal"] = "template/funcionario/atualiza-funcionario-modal.php";
-      $dados["ativo"] = $ativo;
-      $dados["funcionarios"] = $funcionarios->listarTodos($ativo);
+      $dados["ativos"] = $status;
+      $dados["funcionarios"] = $funcionarios->listarTodos($status);
+
       $this->load("admin", $dados);
    }
 
@@ -199,10 +199,10 @@ class FuncionarioController extends Controller{
        );
 
        $update = new FuncionarioModel();
-       $update->update($array_ids);
 
-        
-        $this->editar(base64_encode($_SESSION['funcionario']->documentos->cpf));
+       $f = $update->update($array_ids);
+
+       header('Location:'.URL_BASE.'funcionario/editar/'.base64_encode($f->cpf));
 
    }
 
@@ -213,7 +213,7 @@ class FuncionarioController extends Controller{
 
         if($dados['status']){
 
-            $this->listar();
+            $this->listar('ativos');
 
         }else{
             $dados["view"] = "template/inicio";
