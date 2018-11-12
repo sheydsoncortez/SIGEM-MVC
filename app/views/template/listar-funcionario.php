@@ -49,13 +49,13 @@
                           <td><?php echo $funcionario->nome ?></td>
                           <td><?php echo $funcionario->cargo ?></td>
                           <td><?php echo $funcionario->funcao ?></td>
-                          <td><a href="<?php echo "editar/". base64_encode($funcionario->cpf) ;?>">
+                          <td><a href="<?php echo URL_BASE . "funcionario/editar/". base64_encode($funcionario->cpf) ;?>">
                                   <button id="editarFuncionario" type="button" class="btn btn-secondary" >
                                       <i class="fa fa-user-edit"></i>
                                   </button>
                               </a>
                           </td>
-                          <td><a href="<?php echo "remover/". base64_encode($funcionario->cpf) ;?>">
+                          <td><a href="<?php echo URL_BASE . "funcionario/remover/". base64_encode($funcionario->cpf) ;?>">
                                   <button id="removerFuncionario" type="button" class="btn btn-danger" >
                                       <i class="fa fa-user-times"></i>
                                   </button>

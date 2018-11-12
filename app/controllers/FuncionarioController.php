@@ -133,8 +133,6 @@ class FuncionarioController extends Controller{
     
     public function editar($cpf){
 
-
-
         $dados["titulo"] = "DADOS FUNCIONARIO";
         $dados["view"] = "template/funcionario/revisadados-funcionario";
         $dados["modal"] = "template/funcionario/atualiza-funcionario-modal.php";
