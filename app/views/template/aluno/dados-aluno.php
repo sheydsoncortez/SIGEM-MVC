@@ -37,7 +37,7 @@
             oninput="this.setCustomValidity('')" class="form-control"/>                              
     </div>
     <div class="col-sm-2">
-        <select id="estadoNascAluno" name="estadoNascAluno" class="form-control select_selecionado"
+        <select id="estadoNasc" name="estadoNasc" class="form-control select_selecionado"
         required oninvalid="this.setCustomValidity('Selecione o estado do Cartorio.')"
         oninput="setCustomValidity('')">
         <?php if(isset($a)){
@@ -95,7 +95,11 @@
         required oninvalid="this.setCustomValidity('Selecione o sexo do aluno.')"
         oninput="setCustomValidity('')">
         <?php if(isset($a)){
-            echo "<option selected='selected' value='{$a->sexoAluno}'>{$a->sexoAluno}</option>";
+                if(strcasecmp('M', str_replace(" ", "",$a->sexoAluno)) == 0){
+                    echo "<option selected='selected' value='M'>Masculino</option>";
+                }else{
+                    echo "<option selected='selected' value='F'>Feminino</option>";
+                }
         } else{   echo "<option value=''  disabled selected hidden>Sexo do Aluno</option>";}?>
         <option value="M">Masculino</option>
         <option value="F">Feminino</option>
@@ -109,7 +113,7 @@
         <legend id="legenda-sexo">O aluno possui deficiencia?</legend>
             <div class="form-check-inline">
             <label class="form-check-inline">
-                <input type="radio" value="Sim" name="sexo"
+                <input type="radio" value="Sim"  id="pcdAlunoSim" name="pcdAluno"
                         <?php if(strcmp($a->pcdAluno,"Sim") == 2) echo 'checked'; ?>
                         required oninvalid="this.setCustomValidity('Selecione uma das opções')"
                         oninput="setCustomValidity('')"/>&nbspSim
@@ -117,7 +121,7 @@
             </div> 
             <div class="form-check-inline">
             <label class="form-check-inline">
-                <input type="radio" value="Nao" <?php if(strcmp($a->pcdAluno,"Nao") == 2) echo 'checked'; ?> name="sexo"/>
+                <input type="radio" value="Não" <?php if(strcmp($a->pcdAluno,"Nao") == 2) echo 'checked'; ?> name="pcdAluno"/>
                 &nbspNão
             </label>
             </div>                            
@@ -126,6 +130,6 @@
     <div class="col-sm-4">
         <input type="text" placeholder="Especifique" class="form-control"
                 required oninvalid="this.setCustomValidity('Preencha com a especificação da deficiencia do aluno.')" 
-                oninput="setCustomValidity('')" name="pcdAluno" id="pcdAluno" disabled/>
+                oninput="setCustomValidity('')" name="pcdAlunoInput" id="pcdAlunoInput" disabled/>
     </div>
 </div>
