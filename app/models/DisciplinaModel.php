@@ -61,10 +61,34 @@ class DisciplinaModel extends Model
 
             return $status;
         }
+    }
 
+    public function remover($codigo){
 
+        $status = array();
 
+        try{
+            $this->db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 
+            $updisciplina_sql = 'UPDATE public.disciplina SET ativo=false WHERE codigo=:codigo';
+
+            $query = $this->db->prepare($updisciplina_sql);
+            $query->bindValue(':codigo', $codigo);
+            $query->execute();
+            $query->errorInfo();
+
+            $status["status"] = true;
+            $status["msn"] = "Disciplina Removida!";
+
+            return $status;
+
+        }catch (\PDOException $e){
+
+            $status["status"] = false;
+            $status["msn"] = "Erro ao remover a Disciplina" . $e->getMessage();
+
+            return $status;
+        }
     }
 
 
