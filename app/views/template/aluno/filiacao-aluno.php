@@ -126,7 +126,7 @@
         required oninvalid="this.setCustomValidity('Selecione o extado expedidor')"
         oninput="setCustomValidity('')">
         <?php if(isset($f)){
-            echo "<option selected='selected' value='{$f->rgPaiAluno->ufexp}'>{$a->rgPaiAluno->ufexp}</option>";
+            echo "<option selected='selected' value='{$f->rgPaiAluno->ufexp}'>{$f->rgPaiAluno->ufexp}</option>";
         } else{   echo "<option value=''  disabled selected hidden>Estado</option>";}?>
         <option value="AC">Acre</option>
         <option value="AL">Alagoas</option>
@@ -265,7 +265,7 @@
     <label class="col-sm-2 form-control-label"></label>
     <div class="col-sm-3">
         <div class="input-group">
-            <input type="text" class="form-control" id="data"
+            <input type="text" class="form-control" id="data1"
             placeholder="Data de Expedição"
             value="<?php isset($f) ? print($f->rgMaeAluno->dataexp) : "" ?>"
             name="dataExpRg" required oninvalid="this.setCustomValidity('Insira a data de expedição')"

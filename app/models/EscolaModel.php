@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: mikmimichel
+ * User: Michael Angelo
  * Date: 29/10/2018
  * Time: 21:19
  */
@@ -21,16 +21,10 @@ class EscolaModel extends Model
     }
 
 
-
-
-
     public function inserir()
     {
 
         $status = array();
-
-        //$e = $_SESSION['escola'];
-
 
 
         $escola = new Escola();
@@ -88,16 +82,66 @@ class EscolaModel extends Model
         catch(\PDOException $e){
 
             $status["status"] = false;
-            $status["msn"] = "Erro ao inserir a escola" . $e->getMessage();
+            $status["msn"] = "Erro ao inserir a Escola" . $e->getMessage();
 
             return $status;
         }
 
 
+        /**public function update($a = array()){
+
+        //echo "<pre>";
+
+        $f = $_SESSION['escola'];
+
+        try {
+        // set the PDO error mode to exception
+        $this->db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+        $upct_sql = 'UPDATE public.ctps SET numero=:numero, serie=:serie WHERE numero=:ctps_id';
+
+         **/
+
+        /** Metodo para recuperar as escolas do banco **/
+
+        public function getEscola($codigo)
+    {
+        $c = intval ($codigo);
+        $sql_escola = "SELECT * FROM public.escola WHERE codigo={$c}";
+
+        $query = $this->db->query($sql_escola);
+
+        if ($query->rowCount() == 1) {
+
+            unset($_SESSION['escola']);
+
+            $d = $query->fetch(\PDO::FETCH_OBJ);
+
+
+        }else{
+
+            $d = false;
+
+        }
+
+        //echo"<pre>";
+        //print_r($f);
+
+        return $d;
+    }
 
 
 
 
+
+
+        /** Medoto para listar as escolas**/
+        public function listarTodos(){
+
+        $sql_escola = "SELECT * FROM public.escola";
+        $query = $this->db->query($sql_escola);
+
+        return  $query->fetchAll(\PDO::FETCH_OBJ);
+    }
 
 
 

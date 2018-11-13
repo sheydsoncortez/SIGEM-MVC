@@ -85,7 +85,7 @@
             </div>
             <div class="col-sm-3">
                 <div class="input-group">
-                    <input type="text" class="form-control" id="data"
+                    <input type="text" class="form-control" id="data1"
                     placeholder="Data do Registro"
                     value="<?php isset($d) ? print($d->registroNascimento->data) : "" ?>"
                     name="dataReg" required oninvalid="this.setCustomValidity('Insira a data do registro.')"

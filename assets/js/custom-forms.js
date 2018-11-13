@@ -10,6 +10,14 @@ $(document).ready(function () {
 
 $(document).ready(function () {
     jQuery.datetimepicker.setLocale('pt-BR');
+    $('#data1').datetimepicker({
+        timepicker:false,
+        format:'d/m/Y'
+    });
+});
+
+$(document).ready(function () {
+    jQuery.datetimepicker.setLocale('pt-BR');
     $('#ano').datetimepicker({
             timepicker:false,
             disabledWeekDays:[],
@@ -361,4 +369,25 @@ $(document).ready(function(){
     });
 });
 
+// MASCARA RG
+$(document).ready(function(){
+    $("#rgTeste").mask("0.000.000");
+});
 
+$(document).ready(function(){
+    $("input[name='pcdAluno']").click(function(){
+
+        var deficiencia = $("input[name='pcdAluno']:checked").val();
+        
+        if(deficiencia == "Sim"){
+            $('#pcdAlunoInput').removeAttr('disabled');
+            $('#pcdAlunoInput').css('box-shadow', '0 0 3px 3px #54cc78');  
+        }else if(deficiencia == "Nao"){
+            $('#pcdAlunoInput').val('');
+            $('#pcdAlunoInput').attr('disabled', true);
+            $('#pcdAlunoInput').css('box-shadow', '0 0 0 0 #ffff');
+        }
+    
+        $('#pcdAluno').css('font-weight', 'bold');
+      });
+});

@@ -121,21 +121,13 @@ class AlunoController extends Controller{
         $aluno = new AlunoModel();
 
         if(isset($_SESSION['aluno'])){
-
             $this->load("admin", $dados);
-            echo "1";
-
         }else
             if(empty($_SESSION['aluno'])){
                 $_SESSION["aluno"] = $aluno->getAluno();
                 $this->load("admin", $dados);
-                echo "2";
-                //if($aluno->getAluno()) {
-                //}
         }else{
-
             $this->load("admin", $dados);
-            echo "3";
         }
         //echo "<pre>";
         //print_r($_SESSION['funcionario']);
@@ -160,10 +152,15 @@ class AlunoController extends Controller{
         $aluno->matriculaAluno = mt_rand(10000000, 99999999);
         $aluno->dataNascAluno = $_POST['dataNascAluno'];
         $aluno->cidadeNascAluno = $_POST['cidadeNascAluno'];
-        $aluno->estadoNascAluno = $_POST['estadoNascAluno'] ;
+        $aluno->estadoNascAluno = $_POST['estadoNasc'];
         $aluno->corAluno = $_POST['corAluno'];
         $aluno->sexoAluno = $_POST['sexoAluno'];
-        $aluno->pcdAluno = $_POST['pcdAluno'];
+        
+        if($_POST['pcdAluno'] == "Sim"){
+            $aluno->pcdAluno = $_POST['pcdAlunoInput'];
+        }else{
+            $aluno->pcdAluno = $_POST['pcdAluno'];
+        }
 
         $_SESSION['aluno'] = $aluno;
     }
@@ -176,13 +173,13 @@ class AlunoController extends Controller{
         $filiacao->rgPaiAluno->numero = $_POST['numeroRg'];
         $filiacao->rgPaiAluno->orgaoexp = $_POST['orgaoExpRg'];
         $filiacao->rgPaiAluno->dataexp = $_POST['dataExpRg'];
-        $filiacao->rgPaiAluno->estadoexp = $_POST['ufExpRg'];
+        $filiacao->rgPaiAluno->ufexp = $_POST['ufExpRg'];
         $filiacao->nomePaiAluno = $_POST['nomePaiAluno'];
         $filiacao->nomePaiAluno = $_POST['nomePaiAluno'];
         $filiacao->rgMaeAluno->numero = $_POST['numeroRg'];
         $filiacao->rgMaeAluno->orgaoexp = $_POST['orgaoExpRg'];
         $filiacao->rgMaeAluno->dataexp = $_POST['dataExpRg'];
-        $filiacao->rgMaeAluno->estadoexp = $_POST['ufExpRg'];
+        $filiacao->rgMaeAluno->ufexp = $_POST['ufExpRg'];
 
         $_SESSION['aluno']->filiacaoAluno = $filiacao;
     }
@@ -193,7 +190,7 @@ class AlunoController extends Controller{
         $documentosa->rg->numero = $_POST['numeroRg'];
         $documentosa->rg->orgaoexp = $_POST['orgaoExpRg'];
         $documentosa->rg->dataexp = $_POST['dataExpRg'];
-        $documentosa->rg->estadoexp = $_POST['ufExpRg'];
+        $documentosa->rg->ufexp = $_POST['ufExpRg'];
         $documentosa->tituloEleitoral->numero = $_POST['numeroTit'];
         $documentosa->tituloEleitoral->secao = $_POST['secaoTit'];
         $documentosa->tituloEleitoral->zona = $_POST['zonaTit'];

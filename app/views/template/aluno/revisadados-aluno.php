@@ -45,7 +45,7 @@
                                 </div>
                                 <div class="row list-background">
                                     <strong class="col-sm-3 form-control-label">Estado de Nascimento:</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$a->estadonasc}</label>";?>
+                                    <?php echo "<label class='form-control-label lista-dados'>{$a->estadoNascAluno}</label>";?>
                                 </div>
                                 <div class="row">
                                     <strong class="col-sm-3 form-control-label">Sexo:</strong>
