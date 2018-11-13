@@ -382,7 +382,7 @@ $(document).ready(function(){
         if(deficiencia == "Sim"){
             $('#pcdAlunoInput').removeAttr('disabled');
             $('#pcdAlunoInput').css('box-shadow', '0 0 3px 3px #54cc78');  
-        }else if(deficiencia == "Nao"){
+        }else if(deficiencia == "Não"){
             $('#pcdAlunoInput').val('');
             $('#pcdAlunoInput').attr('disabled', true);
             $('#pcdAlunoInput').css('box-shadow', '0 0 0 0 #ffff');
