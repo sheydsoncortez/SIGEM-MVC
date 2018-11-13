@@ -202,13 +202,13 @@ class AlunoController extends Controller{
         $documentosa->registroNascimento->uf = $_POST['ufReg'];
         $documentosa->registroNascimento->data = $_POST['dataReg'];
 
-        if($_SESSION['aluno']->sexo == 'M'){
+        if($_SESSION['aluno']->sexoAluno == 'M'){
 
             $documentosa->reservista->numero = $_POST['numeroRes'];
             $documentosa->reservista->categoria = $_POST['categoriaRes'];
             $documentosa->reservista->serie = $_POST['serieRes'];
 
-        }else if($_SESSION['aluno']->sexo == 'F'){
+        }else if($_SESSION['aluno']->sexoAluno == 'F'){
             isset($_POST['numeroRes']) ? $documentosa->reservista->numero = $_POST['numeroRes'] : 
                                          $documentosa->reservista->numero ="";
 
