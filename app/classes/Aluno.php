@@ -11,24 +11,24 @@ class Aluno{
 
     // Dados do Aluno
     private $codigo;
-    private $matriculaAluno;
-    private $nomeAluno;
-    private $dataNascAluno;
-    private $cidadeNascAluno;
-    private $estadoNascAluno;
-    private $corAluno;
-    private $sexoAluno;
-    private $pcdAluno; // pcd = Pessoa com Deficiencia
-    private $statusAluno;
+    private $matriculaaluno;
+    private $nomealuno;
+    private $datanascaluno;
+    private $cidadenascaluno;
+    private $estadonascaluno;
+    private $coraluno;
+    private $sexoaluno;
+    private $pcdaluno; // pcd = Pessoa com Deficiencia
+    private $ativo;
 
     // Escola
-    private $codigoEscola;
+    private $codigoescola;
 
     // Filiação
-    private $filiacaoAluno;
+    private $filiacaoaluno;
 
     // Documentos Alunos
-    private $documentosAluno;
+    private $documentosaluno;
 
     public function __construct(){
         $this->view = new \stdClass;
@@ -55,84 +55,92 @@ class Aluno{
         $this->codigo = $codigo;
     }
 
-    public function getNomeAluno(){
-        return $this->nomeAluno;
+    public function getMatriculaAluno(){
+        return $this->matriculaaluno;
     }
 
-    public function setNomeAluno($nomeAluno){
-        $this->nomeAluno = $nomeAluno;
+    public function setMatriculaAluno($matriculaaluno){
+        $this->matriculaaluno = $matriculaaluno;
+    }
+
+    public function getNomeAluno(){
+        return $this->nomealuno;
+    }
+
+    public function setNomeAluno($nomealuno){
+        $this->nomealuno = $nomealuno;
     }
 
     public function getDataNascAluno(){
-        return $this->dataNascAluno;
+        return $this->datanascaluno;
     }
 
-    public function setDataNascAluno($dataNascAluno){
-        $this->dataNascAluno = $dataNascAluno;
+    public function setDataNascAluno($datanascaluno){
+        $this->datanascaluno = $datanascaluno;
     }
 
     public function getCidadeNascAluno(){
-        return $this->cidadeNascAluno;
+        return $this->cidadenascaluno;
     }
 
-    public function setCidadeNascAluno($cidadeNascAluno){
-        $this->cidadeNascAluno = $cidadeNascAluno;
+    public function setCidadeNascAluno($cidadenascaluno){
+        $this->cidadenascaluno = $cidadenascaluno;
     }
 
     public function getEstadoNascAluno(){
-        return $this->estadoNascAluno;
+        return $this->estadonascaluno;
     }
 
-    public function setEstadoNascAluno($estadoNascAluno){
-        $this->estadoNascAluno = $estadoNascAluno;
+    public function setEstadoNascAluno($estadonascaluno){
+        $this->estadonascaluno = $estadonascaluno;
     }
 
     public function getCorAluno(){
-        return $this->corAluno;
+        return $this->coraluno;
     }
 
-    public function setCorAluno($corAluno){
-        $this->corAluno = $corAluno;
+    public function setCorAluno($coraluno){
+        $this->coraluno = $coraluno;
     }
 
     public function getSexoAluno(){
-        return $this->sexoAluno;
+        return $this->sexoaluno;
     }
 
-    public function setSexoAluno($sexoAluno){
-        $this->sexoAluno = $sexoAluno;
+    public function setSexoAluno($sexoaluno){
+        $this->sexoaluno = $sexoaluno;
     }
 
     public function getPcdAluno(){
-        return $this->pcdAluno;
+        return $this->pcdaluno;
     }
 
-    public function setPcdAluno($pcdAluno){
-        $this->pcdAluno = $pcdAluno;
+    public function setPcdAluno($pcdaluno){
+        $this->pcdaluno = $pcdaluno;
     }
 
-    public function getStatusAluno(){
-        return $this->statusAluno;
+    public function getAtivo(){
+        return $this->ativo;
     }
 
-    public function setStatusAluno($statusAluno){
-        $this->statusAluno = $statusAluno;
+    public function setAtivo($ativo){
+        $this->ativo = $ativo;
     }
 
     public function getFiliacao(){
-        return $this->filiacaoAluno;
+        return $this->filiacaoaluno;
     }
 
-    public function setFiliacao(FiliacaoAluno $filiacaoAluno){
-        $this->filiacaoAluno = $filiacaoAluno;
+    public function setFiliacao(FiliacaoAluno $filiacaoaluno){
+        $this->filiacaoaluno = $filiacaoaluno;
     }
 
     public function getDocumentosAluno(){
-        return $this->documentosAluno;
+        return $this->documentosaluno;
     }
 
-    public function setDocumentosAluno(DocumentosAluno $documentosAluno){
-        $this->documentosAluno = $documentosAluno;
+    public function setDocumentosAluno(DocumentosAluno $documentosaluno){
+        $this->documentosaluno = $documentosaluno;
     }
 }
 ?>

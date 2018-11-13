@@ -7,16 +7,16 @@ use app\classes\Rg;
 class FiliacaoAluno{
 
     private $codigo;
-    private $nomePaiAluno;
-    private $profissaoPai;
-    private $rgPaiAluno;
-    private $nomeMaeAluno;
-    private $profissaoMae;
-    private $rgMaeAluno;
+    private $nomepaialuno;
+    private $profissaopai;
+    private $rgpaialuno;
+    private $nomemaealuno;
+    private $profissaomae;
+    private $rgmaealuno;
 
     public function __construct(){
-        $this->rgPaiAluno = new Rg();
-        $this->rgMaeAluno = new Rg();
+        $this->rgpaialuno = new Rg();
+        $this->rgmaealuno = new Rg();
     }
 
     public function __get($atrib)
@@ -40,51 +40,51 @@ class FiliacaoAluno{
     }
 
     public function getNomePaiAluno(){
-        return $this->nomePaiAluno;
+        return $this->nomepaialuno;
     }
 
-    public function setNomePaiAluno($nomePaiAluno){
-        $this->nomePaiAluno = $nomePaiAluno;
+    public function setNomePaiAluno($nomepaialuno){
+        $this->nomepaialuno = $nomepaialuno;
     }
 
     public function getProfissaoPaiAluno(){
-        return $this->profissaoPai;
+        return $this->profissaopai;
     }
 
-    public function setProfissaoPaiAluno($profissaoPai){
-        $this->profissaoPai = $profissaoPai;
+    public function setProfissaoPaiAluno($profissaopai){
+        $this->profissaopai = $profissaopai;
     }
 
     public function getRgPaiAluno(){
-        return $this->rgPaiAluno;
+        return $this->rgpaialuno;
     }
 
-    public function setRgPaiAluno(Rg $rgPaiAluno){
-        $this->rgPaiAluno = $rgPaiAluno;
+    public function setRgPaiAluno(Rg $rgpaialuno){
+        $this->rgpaialuno = $rgpaialuno;
     }
 
     public function getNomeMaeAluno(){
-        return $this->nomeMaeAluno;
+        return $this->nomemaealuno;
     }
 
-    public function setNomeMaeAluno($nomeMaeAluno){
-        $this->nomeMaeAluno = $nomeMaeAluno;
+    public function setNomeMaeAluno($nomemaealuno){
+        $this->nomemaealuno = $nomemaealuno;
     }
 
     public function getProfissaoMaeAluno(){
-        return $this->profissaoMae;
+        return $this->profissaomae;
     }
 
-    public function setProfissaoMaeAluno($profissaoMae){
-        $this->profissaoMae = $profissaoMae;
+    public function setProfissaoMaeAluno($profissaomae){
+        $this->profissaomae = $profissaomae;
     }
 
     public function getRgMaeAluno(){
-        return $this->rgMaeAluno;
+        return $this->rgmaealuno;
     }
 
-    public function setRgMaeAluno(Rg $rgMaeAluno){
-        $this->rgMaeAluno = $rgMaeAluno;
+    public function setRgMaeAluno(Rg $rgmaealuno){
+        $this->rgmaealuno = $rgmaealuno;
     }
 }
 

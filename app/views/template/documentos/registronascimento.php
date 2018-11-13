@@ -7,7 +7,7 @@
             <label class="col-sm-2 form-control-label"></label>
             <div class = "col-sm-8">
                 <input type="text" placeholder="Nome do Cartório" id="nomeCartorio" name="nomeCartorio"
-                        value="<?php isset($d) ? print($d->registroNascimento->cartorio) : '' ?>"
+                        value="<?php isset($d) ? print($d->registronascimento->cartorio) : '' ?>"
                         required oninvalid="this.setCustomValidity('Preencha o campo nome do Cartorio.')"
                         oninput="this.setCustomValidity('')" class="form-control"/>
             </div>
@@ -18,7 +18,7 @@
                 <input type="text" onkeypress="return isNumberKey(event);"
                     data-toggle="tooltip" data-placement="bottom" title="Digite apenas números"                                       
                     placeholder="Número do Registro" id="numeroReg" name="numeroReg" class="form-control"
-                    value="<?php isset($d) ? print($d->registroNascimento->numeroRegistro) : "" ?>"
+                    value="<?php isset($d) ? print($d->registronascimento->numeroregistro) : "" ?>"
                     required oninvalid="this.setCustomValidity('Insira o número do Registro de Nascimento.')"
                     oninput="setCustomValidity('')"/>                              
             </div>
@@ -26,7 +26,7 @@
             <input type="text" onkeypress="return isNumberKey(event);"
                     data-toggle="tooltip" data-placement="bottom" title="Digite apenas números"
                     placeholder="Livro" id="livroReg" name="livroReg" class="form-control"
-                    value="<?php isset($d) ? print($d->registroNascimento->livro) : "" ?>"
+                    value="<?php isset($d) ? print($d->registronascimento->livro) : "" ?>"
                     required oninvalid="this.setCustomValidity('Insira o número do Livro do Registro')"
                     oninput="setCustomValidity('')"/>
             </div>
@@ -34,7 +34,7 @@
             <input type="text" onkeypress="return isNumberKey(event);"
                     data-toggle="tooltip" data-placement="bottom" title="Digite apenas números"
                     placeholder="Folha" id="folhaReg" name="folhaReg" class="form-control"
-                    value="<?php isset($d) ? print($d->registroNascimento->folha) : "" ?>"
+                    value="<?php isset($d) ? print($d->registronascimento->folha) : "" ?>"
                     required oninvalid="this.setCustomValidity('Insira o número da Folha do Registro')"
                     oninput="setCustomValidity('')"/>
             </div>
@@ -43,7 +43,7 @@
             <label class="col-sm-2 form-control-label"></label>
             <div class = "col-sm-3">
                 <input type="text" placeholder="Cidade do Cartorio" id="cidadeReg" name="cidadeReg"
-                    value="<?php isset($d) ? print($d->registroNascimento->cidade) : '' ?>"
+                    value="<?php isset($d) ? print($d->registronascimento->cidade) : '' ?>"
                     required oninvalid="this.setCustomValidity('Preencha o campo cidade do Cartorio.')"
                     oninput="this.setCustomValidity('')" class="form-control"/>
             </div>
@@ -52,7 +52,7 @@
                 required oninvalid="this.setCustomValidity('Selecione o estado do Cartorio.')"
                 oninput="setCustomValidity('')">
                 <?php if(isset($d)){
-                    echo "<option selected='selected' value='{$d->registroNascimento->uf}'>{$d->registroNascimento->uf}</option>";
+                    echo "<option selected='selected' value='{$d->registronascimento->uf}'>{$d->registronascimento->uf}</option>";
                 } else{   echo "<option value=''  disabled selected hidden>Estado</option>";}?>
                 <option value="AC">AC</option>
                 <option value="AL">AL</option>
@@ -87,7 +87,7 @@
                 <div class="input-group">
                     <input type="text" class="form-control" id="data1"
                     placeholder="Data do Registro"
-                    value="<?php isset($d) ? print($d->registroNascimento->data) : "" ?>"
+                    value="<?php isset($d) ? print($d->registronascimento->data) : "" ?>"
                     name="dataReg" required oninvalid="this.setCustomValidity('Insira a data do registro.')"
                     oninput="setCustomValidity('')"/>
                     <div class="input-group-append">

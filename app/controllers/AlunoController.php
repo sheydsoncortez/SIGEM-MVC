@@ -148,18 +148,18 @@ class AlunoController extends Controller{
     public function setDadosAluno(){
         $aluno = new Aluno();
 
-        $aluno->nomeAluno = $_POST['nomeAluno'];
-        $aluno->matriculaAluno = mt_rand(10000000, 99999999);
-        $aluno->dataNascAluno = $_POST['dataNascAluno'];
-        $aluno->cidadeNascAluno = $_POST['cidadeNascAluno'];
-        $aluno->estadoNascAluno = $_POST['estadoNasc'];
-        $aluno->corAluno = $_POST['corAluno'];
-        $aluno->sexoAluno = $_POST['sexoAluno'];
+        $aluno->nomealuno = $_POST['nomeAluno'];
+        $aluno->matriculaaluno = mt_rand(10000000, 99999999);
+        $aluno->datanascaluno = $_POST['dataNascAluno'];
+        $aluno->cidadenascaluno = $_POST['cidadeNascAluno'];
+        $aluno->estadonascaluno = $_POST['estadoNasc'];
+        $aluno->coraluno = $_POST['corAluno'];
+        $aluno->sexoaluno = $_POST['sexoAluno'];
         
         if($_POST['pcdAluno'] == "Sim"){
-            $aluno->pcdAluno = $_POST['pcdAlunoInput'];
+            $aluno->pcdaluno = $_POST['pcdAlunoInput'];
         }else{
-            $aluno->pcdAluno = $_POST['pcdAluno'];
+            $aluno->pcdaluno = $_POST['pcdAluno'];
         }
 
         $_SESSION['aluno'] = $aluno;
@@ -168,20 +168,20 @@ class AlunoController extends Controller{
     public function setFiliacao(){
         $filiacao = new FiliacaoAluno();
 
-        $filiacao->nomePaiAluno = $_POST['nomePaiAluno'];
-        $filiacao->profissaoPai = $_POST['profissaoPai'];
-        $filiacao->rgPaiAluno->numero = $_POST['numeroRg'];
-        $filiacao->rgPaiAluno->orgaoexp = $_POST['orgaoExpRg'];
-        $filiacao->rgPaiAluno->dataexp = $_POST['dataExpRg'];
-        $filiacao->rgPaiAluno->ufexp = $_POST['ufExpRg'];
-        $filiacao->nomePaiAluno = $_POST['nomePaiAluno'];
-        $filiacao->nomePaiAluno = $_POST['nomePaiAluno'];
-        $filiacao->rgMaeAluno->numero = $_POST['numeroRg'];
-        $filiacao->rgMaeAluno->orgaoexp = $_POST['orgaoExpRg'];
-        $filiacao->rgMaeAluno->dataexp = $_POST['dataExpRg'];
-        $filiacao->rgMaeAluno->ufexp = $_POST['ufExpRg'];
+        $filiacao->nomepaialuno = $_POST['nomePaiAluno'];
+        $filiacao->profissaopai = $_POST['profissaoPai'];
+        $filiacao->rgpaialuno->numero = $_POST['numeroRgPai'];
+        $filiacao->rgpaialuno->orgaoexp = $_POST['orgaoExpRgPai'];
+        $filiacao->rgpaialuno->dataexp = $_POST['dataExpRgPai'];
+        $filiacao->rgpaialuno->ufexp = $_POST['ufExpRgPai'];
+        $filiacao->nomemaealuno = $_POST['nomeMaeAluno'];
+        $filiacao->profissaomae = $_POST['profissaoMae'];
+        $filiacao->rgmaealuno->numero = $_POST['numeroRg'];
+        $filiacao->rgmaealuno->orgaoexp = $_POST['orgaoExpRg'];
+        $filiacao->rgmaealuno->dataexp = $_POST['dataExpRgMae'];
+        $filiacao->rgmaealuno->ufexp = $_POST['ufExpRg'];
 
-        $_SESSION['aluno']->filiacaoAluno = $filiacao;
+        $_SESSION['aluno']->filiacaoaluno = $filiacao;
     }
 
     public function setDocumentosAluno(){
@@ -191,24 +191,24 @@ class AlunoController extends Controller{
         $documentosa->rg->orgaoexp = $_POST['orgaoExpRg'];
         $documentosa->rg->dataexp = $_POST['dataExpRg'];
         $documentosa->rg->ufexp = $_POST['ufExpRg'];
-        $documentosa->tituloEleitoral->numero = $_POST['numeroTit'];
-        $documentosa->tituloEleitoral->secao = $_POST['secaoTit'];
-        $documentosa->tituloEleitoral->zona = $_POST['zonaTit'];
-        $documentosa->registroNascimento->cartorio = $_POST['nomeCartorio'];
-        $documentosa->registroNascimento->numeroRegistro = $_POST['numeroReg'];
-        $documentosa->registroNascimento->livro = $_POST['livroReg'];
-        $documentosa->registroNascimento->folha = $_POST['folhaReg'];
-        $documentosa->registroNascimento->cidade = $_POST['cidadeReg'];
-        $documentosa->registroNascimento->uf = $_POST['ufReg'];
-        $documentosa->registroNascimento->data = $_POST['dataReg'];
+        $documentosa->tituloeleitor->numero = $_POST['numeroTit'];
+        $documentosa->tituloeleitor->secao = $_POST['secaoTit'];
+        $documentosa->tituloeleitor->zona = $_POST['zonaTit'];
+        $documentosa->registronascimento->cartorio = $_POST['nomeCartorio'];
+        $documentosa->registronascimento->numeroregistro = $_POST['numeroReg'];
+        $documentosa->registronascimento->livro = $_POST['livroReg'];
+        $documentosa->registronascimento->folha = $_POST['folhaReg'];
+        $documentosa->registronascimento->cidade = $_POST['cidadeReg'];
+        $documentosa->registronascimento->uf = $_POST['ufReg'];
+        $documentosa->registronascimento->data = $_POST['dataReg'];
 
-        if($_SESSION['aluno']->sexoAluno == 'M'){
+        if($_SESSION['aluno']->sexoaluno == 'M'){
 
             $documentosa->reservista->numero = $_POST['numeroRes'];
             $documentosa->reservista->categoria = $_POST['categoriaRes'];
             $documentosa->reservista->serie = $_POST['serieRes'];
 
-        }else if($_SESSION['aluno']->sexoAluno == 'F'){
+        }else if($_SESSION['aluno']->sexoaluno == 'F'){
             isset($_POST['numeroRes']) ? $documentosa->reservista->numero = $_POST['numeroRes'] : 
                                          $documentosa->reservista->numero ="";
 
@@ -219,6 +219,6 @@ class AlunoController extends Controller{
                                         $documentosa->reservista->serie = "";
         }
 
-        $_SESSION['aluno']->documentosAluno = $documentosa;
+        $_SESSION['aluno']->documentosaluno = $documentosa;
    }
 }

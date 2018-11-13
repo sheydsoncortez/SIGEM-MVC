@@ -10,7 +10,7 @@
     <label class="col-sm-2 form-control-label"></label>
     <div class = 'col-sm-8'>
         <input type="text" placeholder="Nome do Aluno" id="nomeAluno" name="nomeAluno"
-                value="<?php isset($a) ? print($a->nomeAluno) : '' ?>"
+                value="<?php isset($a) ? print($a->nomealuno) : '' ?>"
                 required oninvalid="this.setCustomValidity('Preencha o campo nome')"
                 oninput="this.setCustomValidity('')" class="form-control"/>
     </div>
@@ -20,8 +20,8 @@
     <div class = 'col-sm-3'>
         <div class="input-group">
             <input type="text" class="form-control" id="data"
-                    value="<?php echo($a->dataNascAluno != null) ? $a->dataNascAluno : "" ?>"
-                    placeholder="Data de Nascimeto"
+                    value="<?php echo($a->datanascaluno != null) ? $a->datanascaluno : "" ?>"
+                    placeholder="Data de Nascimento"
                     name="dataNascAluno"
                     oninvalid="this.setCustomValidity('Preencha o campo data de nascimento')"
                     oninput="setCustomValidity('')"/>
@@ -32,16 +32,16 @@
     </div>
     <div class="col-sm-3">
         <input type="text" placeholder="Cidade onde nasceu..." id="cidadeNascAluno" name="cidadeNascAluno"
-            value="<?php isset($a) ? print($a->cidadeNascAluno) : '' ?>"
+            value="<?php isset($a) ? print($a->cidadenascaluno) : '' ?>"
             required oninvalid="this.setCustomValidity('Preencha o campo da cidade de nascimento.')"
             oninput="this.setCustomValidity('')" class="form-control"/>                              
     </div>
     <div class="col-sm-2">
         <select id="estadoNasc" name="estadoNasc" class="form-control select_selecionado"
-        required oninvalid="this.setCustomValidity('Selecione o estado do Cartorio.')"
+        required oninvalid="this.setCustomValidity('Selecione o estado do de nascimento.')"
         oninput="setCustomValidity('')">
         <?php if(isset($a)){
-            echo "<option selected='selected' value='{$a->estadoNascAluno}'>{$a->estadoNascAluno}</option>";
+            echo "<option selected='selected' value='{$a->estadonascaluno}'>{$a->estadonascaluno}</option>";
         } else{   echo "<option value=''  disabled selected hidden>Estado</option>";}?>
         <option value="AC">AC</option>
         <option value="AL">AL</option>
@@ -81,7 +81,7 @@
         required oninvalid="this.setCustomValidity('Selecione o estado do Cartorio.')"
         oninput="setCustomValidity('')">
         <?php if(isset($a)){
-            echo "<option selected='selected' value='{$a->corAluno}'>{$a->corAluno}</option>";
+            echo "<option selected='selected' value='{$a->coraluno}'>{$a->coraluno}</option>";
         } else{   echo "<option value=''  disabled selected hidden>Cor/Raça do Aluno</option>";}?>
         <option value="Indigena">Indigena</option>
         <option value="Branca">Branca</option>
@@ -95,7 +95,7 @@
         required oninvalid="this.setCustomValidity('Selecione o sexo do aluno.')"
         oninput="setCustomValidity('')">
         <?php if(isset($a)){
-                if(strcasecmp('M', str_replace(" ", "",$a->sexoAluno)) == 0){
+                if(strcasecmp('M', str_replace(" ", "",$a->sexoaluno)) == 0){
                     echo "<option selected='selected' value='M'>Masculino</option>";
                 }else{
                     echo "<option selected='selected' value='F'>Feminino</option>";
@@ -114,14 +114,14 @@
             <div class="form-check-inline">
             <label class="form-check-inline">
                 <input type="radio" value="Sim"  id="pcdAlunoSim" name="pcdAluno"
-                        <?php if(strcmp($a->pcdAluno,"Sim") == 2) echo 'checked'; ?>
+                        <?php if(strcmp($a->pcdaluno,"Sim") == 2) echo 'checked'; ?>
                         required oninvalid="this.setCustomValidity('Selecione uma das opções')"
                         oninput="setCustomValidity('')"/>&nbspSim
             </label>
             </div> 
             <div class="form-check-inline">
             <label class="form-check-inline">
-                <input type="radio" value="Não" <?php if(strcmp($a->pcdAluno,"Nao") == 2) echo 'checked'; ?> name="pcdAluno"/>
+                <input type="radio" value="Não" <?php if(strcmp($a->pcdaluno,"Nao") == 2) echo 'checked'; ?> name="pcdAluno"/>
                 &nbspNão
             </label>
             </div>                            

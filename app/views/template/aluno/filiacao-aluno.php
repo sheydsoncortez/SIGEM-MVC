@@ -1,6 +1,6 @@
 <?php if (isset($_SESSION['aluno'])){
     $a = $_SESSION['aluno'];
-    $f = $_SESSION['aluno']->filiacaoAluno;
+    $f = $_SESSION['aluno']->filiacaoaluno;
 
     //$date = new DateTime($f->datanasc); $nd = $date->format('d/m/Y');
     //echo(strcmp($f->sexo,"F"));
@@ -11,13 +11,13 @@
     <label class="col-sm-2 form-control-label"></label>
     <div class = col-sm-5>
         <input type="text" placeholder="Nome do Pai do aluno" id="nomePaiAluno" name="nomePaiAluno"
-            value="<?php isset($a) ? print($a->filiacaoAluno->nomePaiAluno) : '' ?>"
+            value="<?php isset($a) ? print($a->filiacaoaluno->nomepaialuno) : '' ?>"
             required oninvalid="this.setCustomValidity('Preencha o campo nome')"
             oninput="this.setCustomValidity('')" class="form-control"/>
     </div>
     <div class = col-sm-3>
         <input type="text" placeholder="Profissão do Pai do aluno" id="profissaoPai" name="profissaoPai"
-            value="<?php isset($a) ? print($a->filiacaoAluno->profissaoPai) : '' ?>"
+            value="<?php isset($a) ? print($a->filiacaoaluno->profissaopai) : '' ?>"
             required oninvalid="this.setCustomValidity('Preencha o campo nome')"
             oninput="this.setCustomValidity('')" class="form-control"/>
     </div>
@@ -27,18 +27,18 @@
     <div class="col-sm-3">
         <input type="text" onkeypress="return isNumberKey(event);"
                 data-toggle="tooltip" data-placement="bottom" title="Digite apenas números"                                       
-                placeholder="Número RG" id="numeroRg" name="numeroRg" class="form-control"
-                value="<?php isset($f) ? print($f->rgPaiAluno->numero) : "" ?>"
+                placeholder="Número RG" id="numeroRg" name="numeroRgPai" class="form-control"
+                value="<?php isset($f) ? print($f->rgpaialuno->numero) : "" ?>"
                 required oninvalid="this.setCustomValidity('Insira o número do RG')"
                 oninput="setCustomValidity('')"/>                              
     </div>
     <div class="col-sm-5">
-        <select id="orgaoExpRg" name="orgaoExpRg" class="form-control select_selecionado"
+        <select id="orgaoExpRg" name="orgaoExpRgPai" class="form-control select_selecionado"
             data-toggle="tooltip" data-placement="bottom" title="SSP, ITEP"
             required oninvalid="this.setCustomValidity('Selecione o orgão de expedição')"
             oninput="setCustomValidity('')">
             <?php if(isset($f)){
-                echo "<option selected='selected' value='{$f->rgPaiAluno->orgaoexp}'>{$f->rgPaiAluno->orgaoexp}</option>";
+                echo "<option selected='selected' value='{$f->rgpaialuno->orgaoexp}'>{$f->rgpaialuno->orgaoexp}</option>";
             } else{   echo "<option value=''  disabled selected hidden>Orgão Expedidor</option>";}?>
             <option value="SSP">SSP - Secretaria de Segurança Pública</option>
             <option value="ITEP">ITEP - Instituto Técnico-Científico de Perícia</option>
@@ -113,8 +113,8 @@
         <div class="input-group">
             <input type="text" class="form-control" id="data"
             placeholder="Data de Expedição"
-            value="<?php isset($f) ? print($f->rgPaiAluno->dataexp) : "" ?>"
-            name="dataExpRg" required oninvalid="this.setCustomValidity('Insira a data de expedição')"
+            value="<?php isset($f) ? print($f->rgpaialuno->dataexp) : "" ?>"
+            name="dataExpRgPai" required oninvalid="this.setCustomValidity('Insira a data de expedição')"
             oninput="setCustomValidity('')"/>
             <div class="input-group-append">
                 <div class="input-group-text"><i class="fa fa-calendar-alt"></i></div>
@@ -122,11 +122,11 @@
         </div>
     </div>
     <div class="col-sm-5">
-        <select id="ufExpRg" name="ufExpRg" class="form-control select_selecionado"
-        required oninvalid="this.setCustomValidity('Selecione o extado expedidor')"
+        <select id="ufExpRg" name="ufExpRgPai" class="form-control select_selecionado"
+        required oninvalid="this.setCustomValidity('Selecione o estado expedidor')"
         oninput="setCustomValidity('')">
         <?php if(isset($f)){
-            echo "<option selected='selected' value='{$f->rgPaiAluno->ufexp}'>{$f->rgPaiAluno->ufexp}</option>";
+            echo "<option selected='selected' value='{$f->rgpaialuno->ufexp}'>{$f->rgpaialuno->ufexp}</option>";
         } else{   echo "<option value=''  disabled selected hidden>Estado</option>";}?>
         <option value="AC">Acre</option>
         <option value="AL">Alagoas</option>
@@ -165,13 +165,13 @@
     <label class="col-sm-2 form-control-label"></label>
     <div class = col-sm-5>
         <input type="text" placeholder="Nome do Mãe do aluno" id="nomeMaeAluno" name="nomeMaeAluno"
-            value="<?php isset($a) ? print($a->filiacaoAluno->nomeMaeAluno) : '' ?>"
+            value="<?php isset($a) ? print($a->filiacaoaluno->nomemaealuno) : '' ?>"
             required oninvalid="this.setCustomValidity('Preencha o campo nome')"
             oninput="this.setCustomValidity('')" class="form-control"/>
     </div>
     <div class = col-sm-3>
         <input type="text" placeholder="Profissão do Mãe do aluno" id="profissaoMae" name="profissaoMae"
-            value="<?php isset($a) ? print($a->filiacaoAluno->profissaoMae) : '' ?>"
+            value="<?php isset($a) ? print($a->filiacaoaluno->profissaomae) : '' ?>"
             required oninvalid="this.setCustomValidity('Preencha o campo nome')"
             oninput="this.setCustomValidity('')" class="form-control"/>
     </div>
@@ -182,7 +182,7 @@
         <input type="text" onkeypress="return isNumberKey(event);"
                 data-toggle="tooltip" data-placement="bottom" title="Digite apenas números"                                       
                 placeholder="Número RG" id="numeroRg" name="numeroRg" class="form-control"
-                value="<?php isset($f) ? print($f->rgMaeAluno->numero) : "" ?>"
+                value="<?php isset($f) ? print($f->rgmaealuno->numero) : "" ?>"
                 required oninvalid="this.setCustomValidity('Insira o número do RG')"
                 oninput="setCustomValidity('')"/>                              
     </div>
@@ -192,7 +192,7 @@
             required oninvalid="this.setCustomValidity('Selecione o orgão de expedição')"
             oninput="setCustomValidity('')">
             <?php if(isset($f)){
-                echo "<option selected='selected' value='{$f->rgMaeAluno->orgaoexp}'>{$f->rgMaeAluno->orgaoexp}</option>";
+                echo "<option selected='selected' value='{$f->rgmaealuno->orgaoexp}'>{$f->rgmaealuno->orgaoexp}</option>";
             } else{   echo "<option value=''  disabled selected hidden>Orgão Expedidor</option>";}?>
             <option value="SSP">SSP - Secretaria de Segurança Pública</option>
             <option value="ITEP">ITEP - Instituto Técnico-Científico de Perícia</option>
@@ -267,8 +267,8 @@
         <div class="input-group">
             <input type="text" class="form-control" id="data1"
             placeholder="Data de Expedição"
-            value="<?php isset($f) ? print($f->rgMaeAluno->dataexp) : "" ?>"
-            name="dataExpRg" required oninvalid="this.setCustomValidity('Insira a data de expedição')"
+            value="<?php isset($f) ? print($f->rgmaealuno->dataexp) : "" ?>"
+            name="dataExpRgMae" required oninvalid="this.setCustomValidity('Insira a data de expedição')"
             oninput="setCustomValidity('')"/>
             <div class="input-group-append">
                 <div class="input-group-text"><i class="fa fa-calendar-alt"></i></div>
@@ -280,7 +280,7 @@
         required oninvalid="this.setCustomValidity('Selecione o extado expedidor')"
         oninput="setCustomValidity('')">
         <?php if(isset($f)){
-            echo "<option selected='selected' value='{$f->rgMaeAluno->ufexp}'>{$f->rgMaeAluno->ufexp}</option>";
+            echo "<option selected='selected' value='{$f->rgmaealuno->ufexp}'>{$f->rgmaealuno->ufexp}</option>";
         } else{   echo "<option value=''  disabled selected hidden>Estado</option>";}?>
         <option value="AC">Acre</option>
         <option value="AL">Alagoas</option>

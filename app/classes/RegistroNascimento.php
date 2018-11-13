@@ -5,7 +5,7 @@ namespace app\classes;
 class RegistroNascimento{
 
     private $codigo;
-    private $numeroRegistro;
+    private $numeroregistro;
     private $livro;
     private $folha;
     private $data;
@@ -38,11 +38,11 @@ class RegistroNascimento{
     }
 
     public function getNumeroRegistro(){
-        return $this->$numeroRegistro;
+        return $this->$numeroregistro;
     }
 
-    public function setNumeroRegistro($numeroRegistro){
-        $this->numeroRegistro = $numeroRegistro;
+    public function setNumeroRegistro($numeroregistro){
+        $this->numeroregistro = $numeroregistro;
     }
 
     public function getLivro(){

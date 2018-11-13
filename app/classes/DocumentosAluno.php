@@ -10,14 +10,14 @@ use app\classes\Reservista;
 class DocumentosAluno{
 
     private $rg;
-    private $tituloEleitoral;
+    private $tituloeleitor;
     private $reservista;
-    private $registroNascimento;
+    private $registronascimento;
 
     public function __construct(){
-        $this->registroNascimento = new RegistroNascimento();
+        $this->registronascimento = new RegistroNascimento();
         $this->rg = new Rg();
-        $this->tituloEleitoral = new TituloEleitor();
+        $this->tituloeleitor = new TituloEleitor();
         $this->reservista = new Reservista();
     }
 
@@ -34,11 +34,11 @@ class DocumentosAluno{
     }
 
     public function getRegistroNasc(){
-        return $this->registroNascimento;
+        return $this->registronascimento;
     }
 
-    public function setRegistroNasc(RegistroNascimento $registroNascimento){
-        $this->registroNascimento = $registroNascimento;
+    public function setRegistroNasc(RegistroNascimento $registronascimento){
+        $this->registronascimento = $registronascimento;
     }
 
     public function getRg(){
@@ -50,11 +50,11 @@ class DocumentosAluno{
     }
 
     public function getTituloEleitoral(){
-        return $this->tituloEleitoral;
+        return $this->tituloeleitor;
     }
 
-    public function setTituloEleitoral(TituloEleitoral $tituloEleitoral){
-        $this->tituloEleitoral = $tituloEleitoral;
+    public function setTituloEleitoral(TituloEleitoral $tituloeleitor){
+        $this->tituloeleitor = $tituloeleitor;
     }
 
     public function getReservista(){
@@ -63,11 +63,6 @@ class DocumentosAluno{
 
     public function setReservista(Reservista $reservista){
         $this->reservista = $reservista;
-    }
-
-    public function __toString(){
-        return  "========== DOCUMENTOS ==========\n".
-                "CPF: ".$this->cpf."\n";
     }
 }
 
