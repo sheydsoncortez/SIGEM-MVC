@@ -1,7 +1,8 @@
 <?php
+
 /**
  * Created by PhpStorm.
- * User: mikmimichel
+ * User: Michael Angelo
  * Date: 29/10/2018
  * Time: 21:17
  */
@@ -133,26 +134,66 @@ class EscolaController extends Controller
 
         $dados["titulo"] = "DADOS ESCOLA";
         $dados["view"] = "template/escola/revisar-escola";
-       // $dados["modal"] = "template/funcionario/atualiza-funcionario-modal.php";
+        $dados["modal"] = "template/escola/atualiza-escola-modal.php";
         $dados["page"] = "";
-        $dados['link'] = "escola/editar/".$codigo;
+        $dados['link'] = "escola/editar/";
         $dados['breadcrumbl1'] = "escola";
         $dados['breadcrumbl2'] = "editar";
 
         $escola = new EscolaModel();
 
-       /* if(!$escola->getEscola(base64_decode($codigo))){
+        if(isset($_SESSION['escola'])){
+
+            $this->load("admin", $dados);
+            echo "1";
+
+        }else
+            if(empty($_SESSION['escola'])){
+                $_SESSION["escola"] = $escola->getAluno();
+                $this->load("admin", $dados);
+                echo "2";
+                //if($escola->getEscola()) {
+                //}
+            }else{
+
+                $this->load("admin", $dados);
+                echo "3";
+            }
+        //echo "<pre>";
+        //print_r($_SESSION['funcionario']);
+
+
+
+       /** if((!$escola->getEscola(base64_decode($codigo)))|| base64_decode($codigo) == '0000'){
             if($_SESSION["Escola"]){
                 $this->load("admin", $dados);
             }
         }else{
             $_SESSION["escola"] = $escola->getEscola(base64_decode($codigo));
             $this->load("admin", $dados);
-        }*/
-
-        $this->load("admin", $dados);
+        } **/
     }
 
+
+    public function listarEscola(){
+        $escola = new EscolaModel();
+        $dados['link'] = "escola/listar";
+        $dados['breadcrumbl1'] = "escola";
+        $dados['breadcrumbl2'] = "listar";
+        $dados["view"] = "template/escola/listar-escola";
+        $dados["modal"] = "template/escola/atualiza-escola-modal.php";
+        $dados["escolas"] = $escola->listarTodos();
+        $this->load("admin", $dados);
+
+        //echo "<pre>";
+        //print_r($dados["disciplina"]);
+    }
+
+    public function corrigir(){
+        $dados["msn"] = "Teste";
+        $dados["view"] = "template/inicio";
+        $this->load("admin", $dados);
+    }
 
 
 
