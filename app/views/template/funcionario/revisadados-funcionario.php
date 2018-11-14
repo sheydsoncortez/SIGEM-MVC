@@ -240,7 +240,7 @@
                                 <a href="<?php echo URL_BASE . "funcionario/listar/1"; ?>">
                                     <button type="button" class="btn btn-secondary" >Cancelar</button>
                                 </a>
-                                <a href="<?php echo URL_BASE . "funcionario/corrigir" ;?>">
+                                <a href="<?php echo URL_BASE . "funcionario/salvar/5" ;?>">
                                     <button type="button" class="btn btn-primary" >Salvar</button>
                                 </a>
 
