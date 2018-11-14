@@ -196,6 +196,15 @@ $(document).ready(function(){
     $('#updateFuncionario').on('hidden.bs.modal', function(){
         $('#updateFuncionario').html(back);
     });
+    $("#corrigirDadosEscola").click(function(){
+        $('#pills-dadosdaescola').addClass('active');
+        $('#pills-dadosdaescola').addClass('show active');
+        $('#pills-documentos-tab').hide();
+        $('#pills-dadosfuncionais-tab').hide();
+        $('#pills-dadosfuncionais').hide();
+        $(".modal").modal();
+    });
+
 });
 
 /*$(document).ready(function () {
