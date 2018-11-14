@@ -37,7 +37,7 @@ CREATE TABLE "public".escola (
 	telefone             varchar(16)  NOT NULL ,
 	email                varchar(150)  NOT NULL ,
 	endereco             varchar(16)   ,
-	ativo                bool   ,
+	ativo                bool DEFAULT true  ,
 	CONSTRAINT pk_escola_codigo PRIMARY KEY ( codigo )
  );
 
