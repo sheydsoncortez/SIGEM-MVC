@@ -107,6 +107,8 @@ class TurmaController extends Controller
 
         $turma->nome = $_POST["serie"];
         $turma->classe = $_POST["classe"];
+        $turma->ano = $_POST["ano"];
+
 
         $_SESSION["turma"] = $turma;
         //echo "<pre>";

@@ -36,6 +36,13 @@
         <option value="'E'">''E''</option>
         </select>
     </div>
+    
+    <div class="col-sm-3">
+                <input type="text" placeholder="Ano da Turma" id="anoTurma" name="ano"
+                       value="<?php isset($f) ? print($f->anp) : '' ?>"
+                       required oninvalid="this.setCustomValidity('Preencha o campo Ano da Turma')"
+                oninput="setCustomValidity('')" class="form-control"/>
+    </div>
 </div>
 
 

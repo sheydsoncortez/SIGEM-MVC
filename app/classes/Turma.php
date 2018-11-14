@@ -7,6 +7,7 @@ class Turma{
 
     private $serie;
     private $classe;
+    private $ano;
     private $disciplina;
     private $aluno;
 
@@ -58,6 +59,22 @@ class Turma{
     public function setClasse($classe)
     {
         $this->classe = $classe;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAno()
+    {
+        return $this->ano;
+    }
+
+    /**
+     * @param mixed $ano
+     */
+    public function seAno($ano)
+    {
+        $this->ano = $ano;
     }
 
     /**
