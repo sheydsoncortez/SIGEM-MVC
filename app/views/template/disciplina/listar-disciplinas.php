@@ -40,13 +40,13 @@
                                         <td><?php echo $disciplina->professor ?></td>
                                         <td><?php echo $disciplina->turma ?></td>
                                         <td><?php echo $disciplina->serie ?></td>
-                                        <td><a href="<?php echo "editar/". base64_encode($disciplina->codigo) ;?>">
+                                        <td><a href="<?php echo URL_BASE . "disciplina/editar/". base64_encode($disciplina->codigo) ;?>">
                                                 <button id="editarDisciplina" type="button" class="btn btn-secondary" >
                                                     <i class="fa fa-pencil-alt"></i>
                                                 </button>
                                             </a>
                                         </td>
-                                        <td><a href="<?php echo "remover/". base64_encode($disciplina->codigo) ;?>">
+                                        <td><a href="<?php echo URL_BASE . "disciplina/remover/". base64_encode($disciplina->codigo) ;?>">
                                                 <button id="removerDisciplina" type="button" class="btn btn-danger" >
                                                     <i class="fa fa-trash-alt"></i>
                                                 </button>

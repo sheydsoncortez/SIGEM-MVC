@@ -143,7 +143,8 @@ class DisciplinaController extends Controller
         $dados = $remover->remover(base64_decode($codigo));
 
         if($dados['status']){
-            $this->listar();
+            //$this->listar();
+            header("Location:".URL_BASE . "disciplina/listar");
         }else{
             $dados["view"] = "template/inicio";
             $this->load("admin", $dados);

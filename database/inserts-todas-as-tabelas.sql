@@ -5,6 +5,9 @@ INSERT INTO "public".ctps( numero, serie ) VALUES ( '34535151', '4553' );
 
 INSERT INTO "public".disciplina( codigo, nome, professor, turma, serie, ativo ) VALUES ( 3, 'Gestão de Projetos', 2147483647, 144, '22', '1' );
 INSERT INTO "public".disciplina( codigo, nome, professor, turma, serie, ativo ) VALUES ( 4, 'PV', 0, 2345678, '123', '1' );
+INSERT INTO "public".disciplina(nome, professor, turma, serie, ativo) VALUES ('Teste 1',11111, 11, 'ts1', true);
+INSERT INTO "public".disciplina(nome, professor, turma, serie, ativo) VALUES ('Teste 2',22222, 22, 'ts2', true);
+INSERT INTO "public".disciplina(nome, professor, turma, serie, ativo)	VALUES ('Teste 5',33333, 33, 'ts3', true);
 
 INSERT INTO "public".endereco( codigo, cep, cidade, logradouro, numero, bairro, estado ) VALUES ( '000.000.000-00', '59300-000', 'Caicó', 'Av. Coronel Martiniano', 'S/N', 'Centro', 'RN' );
 INSERT INTO "public".endereco( codigo, cep, cidade, logradouro, numero, bairro, estado ) VALUES ( '026.898.294-52', '59300-000', 'Caicó', 'Rua Esperidião Elói de Medeiros', '131', 'João XXIII', 'RN' );
