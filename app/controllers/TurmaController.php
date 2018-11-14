@@ -131,6 +131,47 @@ class TurmaController extends Controller
         //print_r($_SESSION["turma"]);
     }
 
+    public function editar(){
+
+        $dados["titulo"] = "DADOS TURMA";
+        $dados["view"] = "template/aluno/revisar-turma";
+        $dados["modal"] = "template/turma/atualiza-turma-modal.php";
+        $dados["page"] = "";
+        $dados['link'] = "turma/editar/";
+        $dados['breadcrumbl1'] = "turma";
+        $dados['breadcrumbl2'] = "editar";
+
+        $turma = new TurmaModel();
+
+        if(isset($_SESSION['turma'])){
+            $this->load("admin", $dados);
+        }else
+            if(empty($_SESSION['turma'])){
+                $_SESSION["turma"] = $turma->getAluno();
+                $this->load("admin", $dados);
+        }else{
+            $this->load("admin", $dados);
+        }
+        //echo "<pre>";
+        //print_r($_SESSION['funcionario']);
+
+
+   }
+    public function listarTurma(){
+        $turma = new TurmaModel();
+        $dados['link'] = "turma/listar";
+        $dados['breadcrumbl1'] = "turma";
+        $dados['breadcrumbl2'] = "listar";
+        $dados["view"] = "template/turma/listar-turma";
+        $dados["modal"] = "template/turma/atualiza-turma-modal.php";
+        $dados["turma"] = $turma->listarTodos();
+        $this->load("admin", $dados);
+
+        //echo "<pre>";
+        //print_r($dados["disciplina"]);
+    }
+
+
 
 
 }
