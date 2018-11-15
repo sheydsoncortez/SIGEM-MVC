@@ -87,7 +87,7 @@
                     class="form-control" name="funcaoFun"/>                              
             </div>
         </div>                                               
-    </div>           
+    </div>
 </div>
 
 <?php unset($df) ?>

@@ -31,6 +31,7 @@ class FuncionarioModel extends Model{
         $estadoCivil = $_SESSION['funcionario']->estadocivil;
         $telefone = $_SESSION['funcionario']->telefone;
         $email = $_SESSION['funcionario']->email;
+        $foto = $_SESSION['funcionario']->foto;
 
         $enderecoCod = $cpf;
         $enderecoCep = $_SESSION['funcionario']->endereco->cep;
@@ -104,13 +105,13 @@ class FuncionarioModel extends Model{
                                 cpf, nome, datanasc, cidadenasc, estadonasc, nomepai, nomemae, 
                                 sexo, estadocivil, telefone, email, pispasep, matricula, dataadmissao, 
                                 escolaridade, formacaoacademica, anoconclusao, cargo, funcao, endereco, 
-                                ctps, rg, tituloeleitor, reservista, senha, escola, ativo)
+                                ctps, rg, tituloeleitor, reservista, senha, escola, ativo, foto)
                                VALUES 
                                 ('{$cpf}', '{$nome}', '{$dataNasc}', '{$cidadeNasc}', '{$ufNasc}', '{$nomePai}', 
                                 '{$nomeMae}', '{$sexo}', '{$estadoCivil}', '{$telefone}', '{$email}', '{$pispasep}', 
                                 '{$matricula}', '$dataAdmis', '{$escolaridade}', '{$formAcad}', '{$anoConclusao}', 
                                 '{$cargo}', '{$funcao}', '{$enderecoCod}', '{$ctpsNum}', '{$rgNum}', '{$titNum}', 
-                                '{$resNum}', md5('{$cpf}'), '{$escola}', '{$ativo}');";
+                                '{$resNum}', md5('{$cpf}'), '{$escola}', '{$ativo}', '{$foto}');";
 
         try {
             // set the PDO error mode to exception
@@ -130,6 +131,7 @@ class FuncionarioModel extends Model{
 
             $query = $this->db->prepare($insert_funcionario);
             $query->execute();
+            $query->errorInfo();
 
 
             $status["status"] = true;
@@ -137,7 +139,7 @@ class FuncionarioModel extends Model{
             $status["msn"] = "Funcionário inserido com Sucesso.";
             $status["cpf"] = $cpf;
 
-            unset($_SESSION['funcionario']);
+            //unset($_SESSION['funcionario']);
 
             return $status ;
 
@@ -216,7 +218,7 @@ class FuncionarioModel extends Model{
             $query->execute();
             $query->errorInfo();
 
-            $upfu_sql = 'UPDATE public.funcionario SET cpf=:cpf, nome=:nome, datanasc=:datanasc, cidadenasc=:cidadenasc, estadonasc=:estadonasc, nomepai=:nomepai, nomemae=:nomemae, sexo=:sexo, estadocivil=:estadocivil, telefone=:telefone, email=:email, pispasep=:pispasep, matricula=:matricula, dataadmissao=:dataadmissao, escolaridade=:escolaridade, formacaoacademica=:formacaoacademica, anoconclusao=:anoconclusao, cargo=:cargo, funcao=:funcao WHERE cpf=:funcionario_id';
+            $upfu_sql = 'UPDATE public.funcionario SET cpf=:cpf, nome=:nome, datanasc=:datanasc, cidadenasc=:cidadenasc, estadonasc=:estadonasc, nomepai=:nomepai, nomemae=:nomemae, sexo=:sexo, estadocivil=:estadocivil, telefone=:telefone, email=:email, pispasep=:pispasep, matricula=:matricula, dataadmissao=:dataadmissao, escolaridade=:escolaridade, formacaoacademica=:formacaoacademica, anoconclusao=:anoconclusao, cargo=:cargo, funcao=:funcao, foto=:foto WHERE cpf=:funcionario_id';
 
             $query = $this->db->prepare($upfu_sql);
             $query->bindValue(':cpf', $f->documentos->cpf);
@@ -238,6 +240,7 @@ class FuncionarioModel extends Model{
             $query->bindValue(':anoconclusao', $f->dadosfuncionais->anoconclusao);
             $query->bindValue(':cargo', $f->dadosfuncionais->cargo);
             $query->bindValue(':funcao', $f->dadosfuncionais->funcao);
+            $query->bindValue(':foto', $f->foto);
             $query->bindValue(':funcionario_id', $a['funcionario_id']);
             $query->execute();
             $query->errorInfo();
@@ -289,7 +292,7 @@ class FuncionarioModel extends Model{
     public function getFuncionario($cpf)
     {
 
-        $sql_funcionario = "SELECT  cpf, nome, to_char(\"datanasc\", 'DD/MM/YYYY') as datanasc, cidadenasc, estadonasc, nomepai, nomemae, sexo, estadocivil, telefone, email, pispasep, endereco, ctps, rg, tituloeleitor, reservista, senha, escola, ativo FROM public.funcionario WHERE cpf='{$cpf}' AND ativo=true";
+        $sql_funcionario = "SELECT  cpf, nome, to_char(\"datanasc\", 'DD/MM/YYYY') as datanasc, cidadenasc, estadonasc, nomepai, nomemae, sexo, estadocivil, telefone, email, pispasep, endereco, ctps, rg, tituloeleitor, reservista, senha, escola, ativo, foto FROM public.funcionario WHERE cpf='{$cpf}' AND ativo=true";
 
         $query = $this->db->query($sql_funcionario);
 

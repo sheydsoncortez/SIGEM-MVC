@@ -19,6 +19,8 @@ class Funcionario{
     private $endereco;
     private $documentos;
     private $dadosfuncionais;
+    private $foto;
+
 
     public function __construct(){
         $this->view = new \stdClass;
@@ -140,10 +142,20 @@ class Funcionario{
     public function setDadosfuncionais(DadosFuncionais $dadosfuncionais){
         $this->dadosfuncionais = $dadosfuncionais;
     }
-    
-    
+
+    public function getFoto()
+    {
+        return $this->foto;
+    }
+
+    public function setFoto($foto)
+    {
+        $this->foto = $foto;
+    }
+
     public function __toString(){
         return  "======== DADOS PESSOAIS ========\n".
+                "Foto: ".$this->foto."\n".
                 "Nome: ".$this->nome."\n".
                 "Data de Nascimento: ".$this->datanasc."\n".
                 "Cidade de Nascimento: ".$this->cidadenasc."\n".

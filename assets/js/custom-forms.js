@@ -164,7 +164,19 @@ $(document).ready(function(){
         $('#pills-documentos-tab').hide();
         $('#pills-dadosfuncionais-tab').hide();
         $(".modal").modal();
+        $('#fotoFun1').html('');
 
+    });
+
+    $("#alterarFotoFun").click(function(){
+        $('#pills-fotofuncionario-tab').addClass('active');
+        $('#pills-fotofuncionario').addClass('show active');
+        $('#pills-endereco-tab').hide();
+        $('#pills-documentos-tab').hide();
+        $('#pills-dadosfuncionais-tab').hide();
+        $('#pills-dadospessoais-tab').hide();        
+        $(".modal").modal();
+        $('p#cabecalho_blocos_foto').html(' ');
     });
 
     $("#corrigirEndereco").click(function(){
@@ -390,4 +402,67 @@ $(document).ready(function(){
     
         $('#pcdAluno').css('font-weight', 'bold');
       });
+});
+
+$(document).on('click', '#close-preview', function(){
+    $('.image-preview').popover('hide');
+    // Hover befor close the preview
+    $('.image-preview').hover(
+        function () {
+            $('.image-preview').popover('show');
+        },
+        function () {
+            $('.image-preview').popover('hide');
+        }
+    );
+});
+
+$(function() {
+    /*/ Create the close button
+    var closebtn = $('<button/>', {
+        type:"button",
+        text: 'x',
+        id: 'close-preview',
+        style: 'font-size: initial;',
+    });
+    closebtn.attr("class","close pull-right");
+    // Set the popover default content
+    $('.image-preview').popover({
+        trigger:'manual',
+        html:true,
+        title: "<strong>Pré Visualização</strong>"+$(closebtn)[0].outerHTML,
+        content: "There's no image",
+        placement:'bottom'
+    });*/
+    // Clear event
+    $('.image-preview-clear').click(function(){
+        //$('.image-preview').attr("data-content","").popover('hide');
+        $('.image-preview-filename').val("");
+        $('.image-preview-clear').hide();
+        $('.image-preview-input input:file').val("");
+        $(".image-preview-input-title").text("Procurar...");
+        $("img#imagem-hex-img").attr('src','');
+    });
+    // Create the preview image
+    $(".image-preview-input input:file").change(function (){
+        var img = $('<img/>', {
+            id: 'dynamic',
+            width:200,
+            height:200
+        });
+        var file = this.files[0];
+        var reader = new FileReader();
+        // Set preview image into the popover data-content
+        reader.onload = function (e) {
+            $(".image-preview-input-title").text("Alterar...");
+            $(".image-preview-clear").show();
+            $(".image-preview-filename").val(file.name);
+            img.attr('src', e.target.result);
+
+            //$(".image-preview").attr("data-content",$(img)[0].outerHTML).popover("show");
+            $("#imagem-hex").val(this.result);
+            $("img#imagem-hex-img").attr('src',this.result);
+        }
+        reader.readAsDataURL(file);
+    });
 });

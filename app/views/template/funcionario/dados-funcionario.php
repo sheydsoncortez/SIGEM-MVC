@@ -156,6 +156,9 @@
       </div> 
     </div>
   </div>
+  <div id="fotoFun1"class="col-sm-12">
+    <?php include("foto-funcionario.php")?>
+  </div>
 </div>
 
 

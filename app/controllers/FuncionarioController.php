@@ -35,8 +35,8 @@ class FuncionarioController extends Controller{
             case '1';
                 $dados["titulo"] = "DADOS PESSOAIS";
                 $dados["paginator"] = "funcionario/dados-funcionario.php";               
-                $dados["active"] = array("active", "", "", "", "");
-                $dados["disabled"] = array("disabled","", "disabled", "disabled", "disabled", "");
+                $dados["active"] = array("active", "", "", "");
+                $dados["disabled"] = array("disabled","", "disabled", "disabled","");
                 $dados["voltar"] = "1";               
                 $dados["proximo"] = "2";
                 $dados["page"] = $page;
@@ -44,7 +44,7 @@ class FuncionarioController extends Controller{
             case '2';
                 $dados["titulo"] = "ENDEREÇO";
                 $dados["paginator"] = "endereco/dados-endereco.php";
-                $dados["active"] = array("", "active", "", "", "");
+                $dados["active"] = array("", "active", "", "", "", "");
                 $dados["disabled"] = array("","", "", "disabled", "disabled", "");
                 $dados["voltar"] = "1";
                 $dados["proximo"] = "3";
@@ -100,7 +100,8 @@ class FuncionarioController extends Controller{
             break;
             case 4:
 
-                $this->setDadosFuncionais();                
+                $this->setDadosFuncionais();
+                //var_dump($_SESSION["funcionario"]->documentos->cpf);
                 header('location:' . URL_BASE . 'funcionario/editar/'.base64_encode($_SESSION["funcionario"]->documentos->cpf));
 
             break;
@@ -117,10 +118,12 @@ class FuncionarioController extends Controller{
                     $this->load("admin", $dados);
 
                 }else{
-
+                    $dados["view"] = "template/inicio";
                     $this->load("admin", $dados);
                 }
+
             break;
+            
             case 6:
 
                 $f = new FuncionarioModel();
@@ -146,18 +149,18 @@ class FuncionarioController extends Controller{
         if(isset($_SESSION['funcionario'])){
 
             $this->load("admin", $dados);
-            echo "1";
+            //echo "1";
 
         }else if(empty($_SESSION['funcionario'])){
                 if($funcionario->getFuncionario(base64_decode($cpf))) {
                     $_SESSION["funcionario"] = $funcionario->getFuncionario(base64_decode($cpf));
                     $this->load("admin", $dados);
-                    echo "2";
+                    //echo "2";
                 }
         }else{
 
             $this->load("admin", $dados);
-            echo "3";
+            //echo "3";
         }
         //echo "<pre>";
         //print_r($_SESSION['funcionario']);
@@ -188,6 +191,7 @@ class FuncionarioController extends Controller{
         $this->setEndereco();
         $this->setDocumentosFuncionario();
         $this->setDadosFuncionais();
+        $this->setFotoFuncionario();
 
        $array_ids = array(
            "ctps_id" => $f->documentos->ctps->numero,
@@ -234,6 +238,8 @@ class FuncionarioController extends Controller{
 
         $funcionario = new Funcionario();
 
+        $this->setFoto($_POST['fotoFun']);
+
         $funcionario->nome = $_POST['nomeFun'];
         $funcionario->datanasc = $_POST['dataNasc'];
         $funcionario->cidadenasc = $_POST['cidadeNasc'];
@@ -243,13 +249,17 @@ class FuncionarioController extends Controller{
         $funcionario->sexo = $_POST['sexo'];
         $funcionario->estadocivil = $_POST['estadoCivil'];
         $funcionario->telefone = $_POST['telefone'];
-        $funcionario->email = $_POST['email'];
+        $funcionario->email = $_POST['email'];      
 
         $_SESSION['funcionario'] = $funcionario;
 
     }
 
-   /**
+    public function setFoto($foto){
+        $funcionario->foto = $foto;
+    }
+    
+    /**
     * Adiciona um Objeto endereço a SESSION Funcionário
     *
     * @method mixed setEndereco()
@@ -341,4 +351,5 @@ class FuncionarioController extends Controller{
 
         $_SESSION['funcionario']->dadosfuncionais = $dadosFuncionaisF;
    }
+
 }

@@ -3124,6 +3124,13 @@ a > code {
 #cabecalho_blocos_form{
   color: #605f5f;
   font-weight: bold;
+  margin-left: 0px;
+}
+
+#cabecalho_blocos_foto{
+    color: #605f5f;
+    font-weight: bold;
+    margin-left: 35px;
 }
 
 strong.col-sm-3.form-control-label{  
@@ -3159,4 +3166,46 @@ button.btn-primary{
 
 #statusfuncionario{
   font-weight: bold;
+}
+
+.container{
+  margin-top:20px;
+}
+.image-preview-input {
+  position: relative;
+  overflow: hidden;
+  margin: 0px;
+  color: #383d41;
+  background-color: #fff;
+  border-color: #ccc;
+  height: 40px;
+}
+.image-preview-input input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+.image-preview-input-title {
+  margin-left:2px;
+  height: 40px;
+  color: #343434;
+}
+
+.image-preview-clear {
+  height: 40px;
+  background-color: rgba(255,15,68,0.55);
+}
+
+.image-preview-filename{
+  height: 40px;
+}
+
+#preview-img-fun{
+  margin-top: 10px;
 }

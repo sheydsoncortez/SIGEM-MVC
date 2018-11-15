@@ -20,6 +20,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" id="pills-dadosfuncionais-tab" data-toggle="pill" href="#pills-dadosfuncionais" role="tab" aria-controls="pills-dadosfuncionais" aria-selected="false">Dados Funcionais</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="pills-fotofuncionario-tab" data-toggle="pill" href="#pills-fotofuncionario" role="tab" aria-controls="pills-fotofuncionario" aria-selected="false">Atualizar foto</a>
+                            </li>
                         </ul>
                             <div class="tab-content" id="pills-tabContent">
                                 <div class="tab-pane fade" id="pills-dadospessoais" role="tabpanel" aria-labelledby="pills-dadospessoais-tab">
@@ -33,6 +36,9 @@
                                 </div>
                                 <div class="tab-pane fade" id="pills-dadosfuncionais" role="tabpanel" aria-labelledby="pills-dadosfuncionais-tab">
                                     <?php include('app/views/template/funcionario/dados-funcionais.php'); ?>
+                                </div>
+                                <div class="tab-pane fade" id="pills-fotofuncionario" role="tabpanel" aria-labelledby="pills-fotofuncionario-tab">
+                                    <?php include('foto-funcionario.php'); ?>
                                 </div>
                             </div>
                         </form>

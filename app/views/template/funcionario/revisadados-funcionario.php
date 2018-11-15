@@ -1,13 +1,12 @@
-<?php if (isset($_SESSION['funcionario'])) {
-    $f = $_SESSION['funcionario'];
-    $img = str_replace(" ","",$f->nome);
-    $filename = "assets/img/entidades/{$img}.png";
-
-    if (!file_exists($filename)) {
-        $img = "users";
-    }
-
-} 
+<?php   if (isset($_SESSION['funcionario'])) {
+            $f = $_SESSION['funcionario'];
+            if($f->foto != null){
+                $imgfunc = $f->foto;
+            }else{
+                $imgfunc = URL_BASE . "assets/img/entidades/users.png";
+            }
+            //var_dump($f->foto); 
+        } 
 ?>
 
 <section class="forms offset-sm-1" xmlns="http://www.w3.org/1999/html">
@@ -29,8 +28,9 @@
 
                        <br/>
                         <span class="topright" >
-                                    <img src="<?php echo URL_BASE . "assets/img/entidades/{$img}.png"; ?>"
+                                    <img src="<?php echo $imgfunc ?>"
                                          alt="person" class="img-fluid rounded-bottom rounded-top" height="140" width="120" >
+                                         <a href="#" id="alterarFotoFun">Alterar foto</a>                                    
                         </span>
                        <p style="padding-top: 50px" id="cabecalho_blocos_form">DADOS DO FUNCIONÁRIO</p>
 
@@ -237,7 +237,7 @@
                         <div class="line"></div>
                         <div class="form-group row">
                             <div class="col-sm-5 offset-sm-1">
-                                <a href="<?php echo URL_BASE . "funcionario/listar/1"; ?>">
+                                <a href="<?php echo URL_BASE . "funcionario/listar/ativos"; ?>">
                                     <button type="button" class="btn btn-secondary" >Cancelar</button>
                                 </a>
                                 <a href="<?php echo URL_BASE . "funcionario/salvar/5" ;?>">
