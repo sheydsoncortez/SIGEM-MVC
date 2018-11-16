@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: mikmichel
- * Date: 30/10/2018
- * Time: 11:06
- */
 
  if (isset($_SESSION['escola'])){
     $e = $_SESSION['escola'];
