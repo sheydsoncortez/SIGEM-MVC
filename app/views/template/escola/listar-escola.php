@@ -1,13 +1,3 @@
-
-/**
- * Created by PhpStorm.
- * User: Michael Angelo
- * Date: 12/11/2018
- * Time: 19:10
- */
-
-
-
 <form action="" method="post">
     <section>
         <div class="container-fluid">
@@ -42,21 +32,21 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <?php foreach($escolas as $index=>$escolas) { ?>
+                                <?php foreach($escolas as $index=>$escola) { ?>
                                     <tr>
                                         <th scope="row"><?php echo ($index + 1); ?></th>
-                                        <td><?php echo $escolas->codigo ?></td>
-                                        <td><?php echo $escolas->nome ?></td>
-                                        <td><?php echo $escolas->telefone ?></td>
-                                        <td><?php echo $escolas->email ?></td>
+                                        <td><?php echo $escola->codigo ?></td>
+                                        <td><?php echo $escola->nome ?></td>
+                                        <td><?php echo $escola->telefone ?></td>
+                                        <td><?php echo $escola->email ?></td>
 
-                                        <td><a href="<?php echo "editar/". base64_encode($escolas->codigo) ;?>">
+                                        <td><a href="<?php echo "escola/editar/". base64_encode($escola->codigo) ;?>">
                                                 <button id="editarEscola" type="button" class="btn btn-secondary" >
                                                     <i class="fa fa-pencil-alt"></i>
                                                 </button>
                                             </a>
                                         </td>
-                                        <td><a href="<?php echo "remover/". base64_encode($escolas->codigo) ;?>">
+                                        <td><a href="<?php echo "remover/". base64_encode($escola->codigo) ;?>">
                                                 <button id="removerEscola" type="button" class="btn btn-danger" >
                                                     <i class="fa fa-trash-alt"></i>
                                                 </button>
