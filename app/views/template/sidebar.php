@@ -42,7 +42,7 @@
             <li><a href="#escolas" aria-expanded="false" data-toggle="collapse"> <i class="fas fa-school"></i>Escolas</a>
               <ul id="escolas" class="collapse list-unstyled ">
                   <li><a href="<?php echo URL_BASE . "escola/cadastrar/1";?>">Cadastro</a></li>
-                  <li><a href="<?php echo URL_BASE . "escola/listar";?>">Consulta</a></li>
+                  <li><a href="<?php echo URL_BASE . "escola/listar/ativos";?>">Consulta</a></li>
                 <li><a href="#">Documetos</a></li>
               </ul>
             </li>
