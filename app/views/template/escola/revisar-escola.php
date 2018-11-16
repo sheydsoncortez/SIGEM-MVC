@@ -17,7 +17,7 @@
 
                     <!-- INÍCIO DO FORM -->
 
-                    <form class='form-horizontal' id='formfuncionario' method='POST'
+                    <form class='form-horizontal' id='formescola' method='POST'
                           action="<?php echo URL_BASE . "escola/salvar/".$page;?>" >
 
                         <br/>
@@ -42,6 +42,13 @@
                                 <div class="row">
                                     <strong class="col-sm-3 form-control-label">Email:</strong>
                                     <?php echo "<label class='form-control-label lista-dados'>{$e->email}</label>";?>
+                                </div>
+
+                                <div class="line"></div>
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <button id="corrigirDadosEscola" type='button' class='btn btn-warning corrigir'><strong>Corrigir</strong></button>
+                                    </div>
                                 </div>
 
 
