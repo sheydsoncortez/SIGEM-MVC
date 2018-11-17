@@ -1,11 +1,5 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: Michael Angelo
- * Date: 29/10/2018
- * Time: 21:17
- */
 
 namespace app\controllers;
 
@@ -86,11 +80,11 @@ class EscolaController extends Controller
                 header('location:' . URL_BASE . 'escola/editar/'.base64_encode($_SESSION['escola']->codigo));
 
                 break;
-
             case 3:{
+
                 $dados = array();
-                $f = new EscolaModel();
-                $dados = $f->inserir();
+                $e = new EscolaModel();
+                $dados = $e->inserir();
                 if($dados["status"]) {
                     $dados["view"] = "template/inicio";
                     $this->load("admin", $dados);
@@ -113,8 +107,10 @@ class EscolaController extends Controller
 
         $_SESSION['escola'] = $escola;
 
-    }
+        //echo "<pre>";
+        //print_r($_SESSION["escola"]);
 
+    }
 
     private function setEndereco(){
         $enderecoe = new Endereco();
@@ -142,14 +138,14 @@ class EscolaController extends Controller
 
         $escola = new EscolaModel();
 
-        if(isset($_SESSION['escola'])){
+   /**     if(isset($_SESSION['escola'])){
 
             $this->load("admin", $dados);
             echo "1";
 
         }else
             if(empty($_SESSION['escola'])){
-                $_SESSION["escola"] = $escola->getAluno();
+                $_SESSION["escola"] = $escola->getEscola($codigo);
                 $this->load("admin", $dados);
                 echo "2";
                 //if($escola->getEscola()) {
@@ -161,6 +157,18 @@ class EscolaController extends Controller
             }
         //echo "<pre>";
         //print_r($_SESSION['funcionario']);
+**/
+
+        if(!$escola -> getEscola(base64_encode($codigo)) || base64_decode($codigo) == '0000'){
+            if($_SESSION["escola"]){
+                $this->load("admin", $dados);
+            }
+        }else{
+            $_SESSION["escola"] = $escola->getEscola(base64_decode($codigo));
+            $this->load("admin", $dados);
+        }
+
+
 
 
 
@@ -175,7 +183,7 @@ class EscolaController extends Controller
     }
 
 
-    public function listarEscola(){
+    public function listar(){
         $escola = new EscolaModel();
         $dados['link'] = "escola/listar";
         $dados['breadcrumbl1'] = "escola";
@@ -193,6 +201,20 @@ class EscolaController extends Controller
         $dados["msn"] = "Teste";
         $dados["view"] = "template/inicio";
         $this->load("admin", $dados);
+    }
+
+    public function remover($codigo){
+
+        $remover = new EscolaModel();
+        $dados = $remover->remover(base64_decode($codigo));
+
+        if($dados['status']){
+            //$this->listar();
+            header("Location:".URL_BASE . "escola/listar");
+        }else{
+            $dados["view"] = "template/inicio";
+            $this->load("admin", $dados);
+        }
     }
 
 
