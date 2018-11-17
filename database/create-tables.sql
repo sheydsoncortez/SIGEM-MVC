@@ -1,8 +1,8 @@
-CREATE SCHEMA "public";
-
 CREATE SEQUENCE "public".disciplina_codigo_seq START WITH 1;
 
 CREATE SEQUENCE "public".disciplina_codigo_seq1 START WITH 1;
+
+CREATE SEQUENCE "public".disciplina_codigo_seq2 START WITH 1;
 
 CREATE TABLE "public".ctps (
 	numero               varchar(20)  NOT NULL ,
@@ -42,6 +42,58 @@ CREATE TABLE "public".escola (
  );
 
 CREATE INDEX idx_escola_endereco ON "public".escola ( endereco );
+
+CREATE TABLE "public".funcionario (
+	cpf                  varchar(16)  NOT NULL ,
+	nome                 varchar(150)  NOT NULL ,
+	datanasc             date  NOT NULL ,
+	cidadenasc           varchar(100)  NOT NULL ,
+	estadonasc           varchar(40)  NOT NULL ,
+	nomepai              varchar(150)  NOT NULL ,
+	nomemae              varchar(150)  NOT NULL ,
+	sexo                 char(3)  NOT NULL ,
+	estadocivil          varchar(20)  NOT NULL ,
+	telefone             varchar(16)  NOT NULL ,
+	email                varchar(100)  NOT NULL ,
+	pispasep             varchar(20)  NOT NULL ,
+	matricula            varchar(20)  NOT NULL ,
+	dataadmissao         date  NOT NULL ,
+	escolaridade         varchar(35)  NOT NULL ,
+	formacaoacademica    varchar(100)  NOT NULL ,
+	anoconclusao         integer  NOT NULL ,
+	cargo                varchar(50)  NOT NULL ,
+	funcao               varchar(100)  NOT NULL ,
+	endereco             varchar(16)   ,
+	ctps                 varchar(20)  NOT NULL ,
+	rg                   varchar(16)   ,
+	tituloeleitor        varchar(20)  NOT NULL ,
+	reservista           varchar(15)   ,
+	senha                varchar(200)  NOT NULL ,
+	escola               varchar(20)   ,
+	ativo                bool   ,
+	foto                 text   ,
+	CONSTRAINT pk_funcionario_cpf_fun PRIMARY KEY ( cpf )
+ );
+
+CREATE INDEX idx_funcionario_carteiraprof_fun ON "public".funcionario ( ctps );
+
+CREATE INDEX idx_funcionario_endereco_fun ON "public".funcionario ( endereco );
+
+CREATE INDEX idx_funcionario_reservista_fun ON "public".funcionario ( reservista );
+
+CREATE INDEX idx_funcionario_rg_fun ON "public".funcionario ( rg );
+
+CREATE INDEX idx_funcionario_tituloeleitor_fun ON "public".funcionario ( tituloeleitor );
+
+COMMENT ON COLUMN "public".funcionario.endereco IS 'Código do endereço (CPF funcionario) - Chave estrangeira para entidade Endereco';
+
+COMMENT ON COLUMN "public".funcionario.ctps IS 'Número da carteira profissional - Chave estrangeira para entidade Carteira Profissional';
+
+COMMENT ON COLUMN "public".funcionario.rg IS 'Número do RG - Chave estrangeira para entidade RG';
+
+COMMENT ON COLUMN "public".funcionario.tituloeleitor IS 'Número do título eleitoral - Chave estrangeira para entidade Título Eleitoral';
+
+COMMENT ON COLUMN "public".funcionario.reservista IS 'Número da reservista - Chave estrangeira para entidade Reservista';
 
 CREATE TABLE "public".registronascimento (
 	codigo               integer  NOT NULL ,
@@ -91,57 +143,6 @@ CREATE TABLE "public".filiacao (
 CREATE INDEX idx_filiacao_rgmaealuno ON "public".filiacao ( rgmaealuno );
 
 CREATE INDEX idx_filiacao_rgpaialuno ON "public".filiacao ( rgpaialuno );
-
-CREATE TABLE "public".funcionario (
-	cpf                  varchar(16)  NOT NULL ,
-	nome                 varchar(150)  NOT NULL ,
-	datanasc             date  NOT NULL ,
-	cidadenasc           varchar(100)  NOT NULL ,
-	estadonasc           varchar(40)  NOT NULL ,
-	nomepai              varchar(150)  NOT NULL ,
-	nomemae              varchar(150)  NOT NULL ,
-	sexo                 char(3)  NOT NULL ,
-	estadocivil          varchar(20)  NOT NULL ,
-	telefone             varchar(16)  NOT NULL ,
-	email                varchar(100)  NOT NULL ,
-	pispasep             varchar(20)  NOT NULL ,
-	matricula            varchar(20)  NOT NULL ,
-	dataadmissao         date  NOT NULL ,
-	escolaridade         varchar(35)  NOT NULL ,
-	formacaoacademica    varchar(100)  NOT NULL ,
-	anoconclusao         integer  NOT NULL ,
-	cargo                varchar(50)  NOT NULL ,
-	funcao               varchar(100)  NOT NULL ,
-	endereco             varchar(16)   ,
-	ctps                 varchar(20)  NOT NULL ,
-	rg                   varchar(16)   ,
-	tituloeleitor        varchar(20)  NOT NULL ,
-	reservista           varchar(15)   ,
-	senha                varchar(200)  NOT NULL ,
-	escola               varchar(20)   ,
-	ativo                bool   ,
-	CONSTRAINT pk_funcionario_cpf_fun PRIMARY KEY ( cpf )
- );
-
-CREATE INDEX idx_funcionario_carteiraprof_fun ON "public".funcionario ( ctps );
-
-CREATE INDEX idx_funcionario_endereco_fun ON "public".funcionario ( endereco );
-
-CREATE INDEX idx_funcionario_reservista_fun ON "public".funcionario ( reservista );
-
-CREATE INDEX idx_funcionario_rg_fun ON "public".funcionario ( rg );
-
-CREATE INDEX idx_funcionario_tituloeleitor_fun ON "public".funcionario ( tituloeleitor );
-
-COMMENT ON COLUMN "public".funcionario.endereco IS 'Código do endereço (CPF funcionario) - Chave estrangeira para entidade Endereco';
-
-COMMENT ON COLUMN "public".funcionario.ctps IS 'Número da carteira profissional - Chave estrangeira para entidade Carteira Profissional';
-
-COMMENT ON COLUMN "public".funcionario.rg IS 'Número do RG - Chave estrangeira para entidade RG';
-
-COMMENT ON COLUMN "public".funcionario.tituloeleitor IS 'Número do título eleitoral - Chave estrangeira para entidade Título Eleitoral';
-
-COMMENT ON COLUMN "public".funcionario.reservista IS 'Número da reservista - Chave estrangeira para entidade Reservista';
 
 CREATE TABLE "public".aluno (
 	codigo               integer  NOT NULL ,
@@ -196,7 +197,6 @@ ALTER TABLE "public".filiacao ADD CONSTRAINT fk_filiacao_rgpai FOREIGN KEY ( rgp
 ALTER TABLE "public".funcionario ADD CONSTRAINT fk_funcionario_carteiraprof FOREIGN KEY ( ctps ) REFERENCES "public".ctps( numero ) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE "public".funcionario ADD CONSTRAINT fk_funcionario_endereco FOREIGN KEY ( endereco ) REFERENCES "public".endereco( codigo ) ON DELETE CASCADE ON UPDATE CASCADE;
-
 ALTER TABLE "public".funcionario ADD CONSTRAINT fk_funcionario_reservista FOREIGN KEY ( reservista ) REFERENCES "public".reservista( numero ) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE "public".funcionario ADD CONSTRAINT fk_funcionario_rg FOREIGN KEY ( rg ) REFERENCES "public".rg( numero ) ON DELETE CASCADE ON UPDATE CASCADE;
