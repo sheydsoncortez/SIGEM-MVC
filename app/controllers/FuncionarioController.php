@@ -130,6 +130,8 @@ class FuncionarioController extends Controller{
 
                 $dados = $f->update($_SESSION['funcionario']);
 
+                header('Location:'.URL_BASE.'funcionario/editar/'.base64_encode($f->cpf));
+
             break;
         } 
     }
@@ -191,7 +193,6 @@ class FuncionarioController extends Controller{
         $this->setEndereco();
         $this->setDocumentosFuncionario();
         $this->setDadosFuncionais();
-        $this->setFotoFuncionario();
 
        $array_ids = array(
            "ctps_id" => $f->documentos->ctps->numero,
@@ -204,7 +205,7 @@ class FuncionarioController extends Controller{
 
        $update = new FuncionarioModel();
 
-       $f = $update->update($array_ids);
+       //$f = $update->update($array_ids);
 
        header('Location:'.URL_BASE.'funcionario/editar/'.base64_encode($f->cpf));
 
@@ -238,7 +239,7 @@ class FuncionarioController extends Controller{
 
         $funcionario = new Funcionario();
 
-        $this->setFoto($_POST['fotoFun']);
+        $funcionario->foto = $_POST['fotoFun'];
 
         $funcionario->nome = $_POST['nomeFun'];
         $funcionario->datanasc = $_POST['dataNasc'];
@@ -253,10 +254,6 @@ class FuncionarioController extends Controller{
 
         $_SESSION['funcionario'] = $funcionario;
 
-    }
-
-    public function setFoto($foto){
-        $funcionario->foto = $foto;
     }
     
     /**
