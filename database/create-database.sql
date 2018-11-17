@@ -1,7 +1,3 @@
--- Database: sigem
-
--- DROP DATABASE sigem;
-
 CREATE DATABASE sigem
     WITH 
     OWNER = postgres
