@@ -155,10 +155,11 @@ class FuncionarioModel extends Model{
         }
     }
 
-    public function update($a = array()){
+    public function update(){
         //echo "<pre>";
 
         $f = $_SESSION['funcionario'];
+        $f_id = $_SESSION['f_id'];
 
         try {
             // set the PDO error mode to exception
@@ -169,7 +170,7 @@ class FuncionarioModel extends Model{
             $query = $this->db->prepare($upct_sql);
             $query->bindValue(':numero', $f->documentos->ctps->numero);
             $query->bindValue(':serie', $f->documentos->ctps->serie);
-            $query->bindValue(':ctps_id', $a['ctps_id']);
+            $query->bindValue(':ctps_id', $f_id->ctps);
             $query->execute();
             $query->errorInfo();
 
@@ -183,7 +184,7 @@ class FuncionarioModel extends Model{
             $query->bindValue(':numero', $f->endereco->numero);
             $query->bindValue(':bairro', $f->endereco->bairro);
             $query->bindValue(':estado', $f->endereco->estado);
-            $query->bindValue('endereco_id', $a['endereco_id']);
+            $query->bindValue('endereco_id', $f_id->endereco);
             $query->execute();
             $query->errorInfo();
 
@@ -193,7 +194,7 @@ class FuncionarioModel extends Model{
             $query->bindValue(':numero', $f->documentos->reservista->numero);
             $query->bindValue(':categoria', $f->documentos->reservista->categoria);
             $query->bindValue(':serie', $f->documentos->reservista->serie);
-            $query->bindValue(':reservista_id', $a['reservista_id']);
+            $query->bindValue(':reservista_id', $f_id->reservista);
             $query->execute();
             $query->errorInfo();
 
@@ -204,7 +205,7 @@ class FuncionarioModel extends Model{
             $query->bindValue(':orgaoexp', $f->documentos->rg->orgaoexp);
             $query->bindValue(':dataexp', $f->documentos->rg->dataexp);
             $query->bindValue(':ufexp', $f->documentos->rg->ufexp);
-            $query->bindValue(':rg_id', $a['rg_id']);
+            $query->bindValue(':rg_id', $f_id->rg);
             $query->execute();
             $query->errorInfo();
 
@@ -214,7 +215,7 @@ class FuncionarioModel extends Model{
             $query->bindValue(':numero', $f->documentos->tituloeleitor->numero);
             $query->bindValue(':zona', $f->documentos->tituloeleitor->zona);
             $query->bindValue(':secao', $f->documentos->tituloeleitor->secao);
-            $query->bindValue(':titulo_id', $a['titulo_id']);
+            $query->bindValue(':titulo_id', $f_id->tituloeleitor);
             $query->execute();
             $query->errorInfo();
 
@@ -241,13 +242,20 @@ class FuncionarioModel extends Model{
             $query->bindValue(':cargo', $f->dadosfuncionais->cargo);
             $query->bindValue(':funcao', $f->dadosfuncionais->funcao);
             $query->bindValue(':foto', $f->foto);
-            $query->bindValue(':funcionario_id', $a['funcionario_id']);
+            $query->bindValue(':funcionario_id', $f_id->cpf);
             $query->execute();
             $query->errorInfo();
 
-            unset($_SESSION['funcionario']);
+            $status["status"] = true;
+            $status["msn"] = "  <h4 style='color: #4e555b'>Os dados do Funcionário(a)</h4> 
+                                <b>Nome: </b>" .$f->nome. "</br> 
+                                <b>Cpf: </b>". $f->documentos->cpf. "</br>                               
+                                <h4  style='color: #1c7430'>foram atualizados com sucesso! </h4>";
 
-            return $this->getFuncionario($f->documentos->cpf);
+            unset($_SESSION['funcionario']);
+            unset($_SESSION['f_id']);
+
+            return $status;
 
         }catch (\PDOException $e){
 

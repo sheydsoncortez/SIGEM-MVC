@@ -27,7 +27,7 @@
                     <img    id="imagem-hex-img" src="" class="img-fluid rounded-bottom rounded-top" 
                             height="200" width="200" >
                 </div>
-                <input type="text" id="imagem-hex" name="fotoFun" hidden/> <!-- rename it -->
+                <input type="text" id="imagem-hex" name="fotoFun" hidden value="<?php isset($f) ? print($f->foto) : '' ?>"/> <!-- rename it -->
             </div>
         </div>
     </div>

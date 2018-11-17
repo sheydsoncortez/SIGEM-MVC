@@ -1,4 +1,19 @@
 var URL_BASE_JQ = "http://localhost/SIGEM-MVC/";
+// ================= Mensagem de status inicio ===============
+$(document).ready(function () {
+
+    $('.alert').fadeIn();
+
+    setTimeout(function(){
+
+        $('.alert').fadeOut(function () {
+          window.location = URL_BASE_JQ;
+        })
+
+    }, 5000);
+
+});
+
 // ================= Placeholder campos DATA.=================
 $(document).ready(function () {
     jQuery.datetimepicker.setLocale('pt-BR');
@@ -163,8 +178,9 @@ $(document).ready(function(){
         $('#pills-endereco-tab').hide();
         $('#pills-documentos-tab').hide();
         $('#pills-dadosfuncionais-tab').hide();
+        $('#pills-fotofuncionario-tab').hide();
         $(".modal").modal();
-        $('#fotoFun1').html('');
+        $('#fotoFun1').attr('hidden', 'true');
 
     });
 
@@ -174,7 +190,7 @@ $(document).ready(function(){
         $('#pills-endereco-tab').hide();
         $('#pills-documentos-tab').hide();
         $('#pills-dadosfuncionais-tab').hide();
-        $('#pills-dadospessoais-tab').hide();        
+        $('#pills-dadospessoais-tab').hide();;
         $(".modal").modal();
         $('p#cabecalho_blocos_foto').html(' ');
     });
@@ -185,6 +201,7 @@ $(document).ready(function(){
         $('#pills-endereco').addClass('show active');
         $('#pills-documentos-tab').hide();
         $('#pills-dadosfuncionais-tab').hide();
+        $('#pills-fotofuncionario-tab').hide();
         $(".modal").modal();
 
     }); 
@@ -194,12 +211,14 @@ $(document).ready(function(){
         $('#pills-documentos-tab').addClass('active');
         $('#pills-documentos').addClass('show active');
         $('#pills-dadosfuncionais-tab').hide();
+        $('#pills-fotofuncionario-tab').hide();
         $(".modal").modal();
     });
     $("#corrigirDadosFuncionais").click(function(){
         $('#pills-dadospessoais-tab').hide();
         $('#pills-endereco-tab').hide();
         $('#pills-documentos-tab').hide();
+        $('#pills-fotofuncionario-tab').hide();
         $('#pills-dadosfuncionais-tab').addClass('active');
         $('#pills-dadosfuncionais').addClass('show active');
         $(".modal").modal();
@@ -469,7 +488,7 @@ $(function() {
             img.attr('src', e.target.result);
 
             //$(".image-preview").attr("data-content",$(img)[0].outerHTML).popover("show");
-            $("#imagem-hex").val(this.result);
+            $("input#imagem-hex").val(this.result);
             $("img#imagem-hex-img").attr('src',this.result);
         }
         reader.readAsDataURL(file);

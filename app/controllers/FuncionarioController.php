@@ -128,9 +128,10 @@ class FuncionarioController extends Controller{
 
                 $f = new FuncionarioModel();
 
-                $dados = $f->update($_SESSION['funcionario']);
+                $dados = $f->update();
 
-                header('Location:'.URL_BASE.'funcionario/editar/'.base64_encode($f->cpf));
+                $dados["view"] = "template/inicio";
+                $this->load("admin", $dados);
 
             break;
         } 
@@ -156,6 +157,12 @@ class FuncionarioController extends Controller{
         }else if(empty($_SESSION['funcionario'])){
                 if($funcionario->getFuncionario(base64_decode($cpf))) {
                     $_SESSION["funcionario"] = $funcionario->getFuncionario(base64_decode($cpf));
+                    $_SESSION["f_id"]->cpf = $_SESSION["funcionario"]->cpf;
+                    $_SESSION["f_id"]->ctps = $_SESSION["funcionario"]->documentos->ctps->numero;
+                    $_SESSION["f_id"]->rg = $_SESSION["funcionario"]->documentos->rg->numero;
+                    $_SESSION["f_id"]->tituloeleitor = $_SESSION["funcionario"]->documentos->tituloeleitor->numero;
+                    $_SESSION["f_id"]->reservista = $_SESSION["funcionario"]->documentos->reservista->numero;
+                    $_SESSION["f_id"]->endereco = $_SESSION["funcionario"]->endereco->codigo;
                     $this->load("admin", $dados);
                     //echo "2";
                 }
@@ -187,27 +194,14 @@ class FuncionarioController extends Controller{
 
    public function corrigir(){
 
-        $f = $_SESSION['funcionario'];
-
         $this->setDadosFuncionario();
         $this->setEndereco();
         $this->setDocumentosFuncionario();
         $this->setDadosFuncionais();
 
-       $array_ids = array(
-           "ctps_id" => $f->documentos->ctps->numero,
-           "endereco_id" => $f->documentos->cpf,
-           "reservista_id" => $f->documentos->reservista->numero,
-           "rg_id" => $f->documentos->rg->numero,
-           "titulo_id" => $f->documentos->tituloeleitor->numero,
-           "funcionario_id" =>$f->documentos->cpf
-       );
+       $f = $_SESSION['funcionario'];
 
-       $update = new FuncionarioModel();
-
-       //$f = $update->update($array_ids);
-
-       header('Location:'.URL_BASE.'funcionario/editar/'.base64_encode($f->cpf));
+        header('Location:'.URL_BASE.'funcionario/editar/'.base64_encode($f->documentos->cpf));
 
    }
 

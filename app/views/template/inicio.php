@@ -8,8 +8,10 @@
 
         </header>
 
+
         <div class="col-lg-12" >
             <div class="card ">
+
                 <div class="col-sm-12">
                     <div class="card-header d-flex align-items-center">
 
@@ -23,7 +25,36 @@
                     </div>
                 </div>
                 <div class="card-body">
+                    <?php
+                    if(isset($status) && ($status == true)){
+                        if (isset($msn)){
 
+                            $alerta = "<div class='pull-alert'>
+                                                <div class='alert alert-success pull-right' >
+                                                    <button type='button' class='btn btn-default btn-circle btn-xl-alert btn-lateral btn-float-alert'><i class='fa fa-check-circle'></i></button>
+                                                    <hr class='hr-alert'>
+                                                    <strong>{$msn}</strong>
+                                                </div>
+                                              </div>";
+
+                            echo $alerta;
+                            unset($msn);
+                            unset($status);
+                        }
+                    }else if(isset($status) && ($status == false)){
+                        $alerta = "<div class='pull-alert'>
+                                                <div class='alert alert-error pull-right' >
+                                                    <button type='button' class='btn btn-default btn-circle btn-xl-alert btn-lateral btn-float-alert'><i class='fa fa-times-circle'></i></button>
+                                                    <hr class='hr-alert'>
+                                                    <strong>{$msn}</strong>
+                                                </div>
+                                              </div>";
+
+                        echo $alerta;
+                        unset($msn);
+                        unset($status);
+                    }
+                    ;?>
             <!-- INÍCIO DO FORM -->
 
                     <form class='form-horizontal' id='formfuncionario' method='POST'
@@ -32,7 +63,7 @@
                         <br/><p id="cabecalho_blocos_form"></p>
                         <div class="form-group row">
                             <div class="col-sm-12">
-                                <?php isset($msn) ? print("<p>" . $msn . "</p>") : "";?>
+
                             </div>
                         </div>
 
@@ -43,3 +74,4 @@
         </div>
     </div>
 </section>
+

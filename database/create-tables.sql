@@ -197,8 +197,3 @@ ALTER TABLE "public".filiacao ADD CONSTRAINT fk_filiacao_rgpai FOREIGN KEY ( rgp
 ALTER TABLE "public".funcionario ADD CONSTRAINT fk_funcionario_carteiraprof FOREIGN KEY ( ctps ) REFERENCES "public".ctps( numero ) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE "public".funcionario ADD CONSTRAINT fk_funcionario_endereco FOREIGN KEY ( endereco ) REFERENCES "public".endereco( codigo ) ON DELETE CASCADE ON UPDATE CASCADE;
-ALTER TABLE "public".funcionario ADD CONSTRAINT fk_funcionario_reservista FOREIGN KEY ( reservista ) REFERENCES "public".reservista( numero ) ON DELETE CASCADE ON UPDATE CASCADE;
-
-ALTER TABLE "public".funcionario ADD CONSTRAINT fk_funcionario_rg FOREIGN KEY ( rg ) REFERENCES "public".rg( numero ) ON DELETE CASCADE ON UPDATE CASCADE;
-
-ALTER TABLE "public".funcionario ADD CONSTRAINT fk_funcionario_tituloeleitoral FOREIGN KEY ( tituloeleitor ) REFERENCES "public".tituloeleitor( numero ) ON DELETE CASCADE ON UPDATE CASCADE;

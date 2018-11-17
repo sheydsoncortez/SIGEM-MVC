@@ -144,13 +144,13 @@
       <div class="col-sm-3">
           <input type="text" placeholder="Telefone: (00)00000-0000" 
                   class="form-control" id="telefone" name="telefone" required
-                  value="<?php isset($f) ? print($f->telefone) : ""?>"
+                  value="<?php isset($f) ? print($f->telefone) : ''?>"
                   oninvalid="this.setCustomValidity('Informe um número para contato')"
                   oninput="setCustomValidity('')"/>
       </div>
       <div class="col-sm-4">
           <input type="email" placeholder="Email: login@provedor.com" class="form-control"
-                  value="<?php isset($f) ? print($f->email) : ""?>"
+                  value="<?php isset($f) ? print($f->email) : ''?>"
                   required oninvalid="this.setCustomValidity('Insira um email válido')" 
                   oninput="setCustomValidity('')" name="email"/>
       </div> 

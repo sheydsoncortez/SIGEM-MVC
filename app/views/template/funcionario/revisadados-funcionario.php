@@ -18,21 +18,30 @@
 
         <div class="col-lg-12" >
             <div class="card ">
+                <span id="close_card" class="pull-left clickable close-icon" data-effect="fadeOut">
+                    <div>
 
+                    </div>
+                </span>
                 <div class="card-body" id="verDadosFuncionario">
 
                     <!-- INÍCIO DO FORM -->
 
                    <form class='form-horizontal' id='formfuncionario' method='POST' name="formfuncionario"
-                          action="<?php echo URL_BASE . "funcionario/salvar/".$page;?>" >
+                          action="<?php echo URL_BASE . "funcionario/salvar/6";?>" >
 
                        <br/>
+
+                        <a class="close_card topright" id="close_card"> Fechar
+                            <i class="fa fa-times-circle" style="font-size: x-large; margin-right: 0px"></i>
+                        </a>
+
                         <span class="topright" >
                                     <img src="<?php echo $imgfunc ?>"
-                                         alt="person" class="img-fluid rounded-bottom rounded-top" height="140" width="120" >
-                                         <a href="#" id="alterarFotoFun">Alterar foto</a>                                    
+                                         alt="person" class="img-fluid rounded-bottom rounded-top" height="120" width="100"  >
+                                         <a href="javascript:void(0);" id="alterarFotoFun">Alterar foto</a>
                         </span>
-                       <p style="padding-top: 50px" id="cabecalho_blocos_form">DADOS DO FUNCIONÁRIO</p>
+                       <p style="padding-top: 50px; margin-top: 10px" id="cabecalho_blocos_form">DADOS DO FUNCIONÁRIO</p>
 
                         <div class="line"></div>
                         <div class="form-group row">
@@ -240,7 +249,7 @@
                                 <a href="<?php echo URL_BASE . "funcionario/listar/ativos"; ?>">
                                     <button type="button" class="btn btn-secondary" >Cancelar</button>
                                 </a>
-                                <a href="<?php echo URL_BASE . "funcionario/salvar/5" ;?>">
+                                <a href="<?php echo URL_BASE . "funcionario/salvar/6" ;?>">
                                     <button type="button" class="btn btn-primary" >Salvar</button>
                                 </a>
 
@@ -254,5 +263,11 @@
     </div>
 
 </section>
+
+<script type="text/javascript">
+    $("a#close_card").click(function () {
+        window.location = URL_BASE_JQ + "funcionario/listar"
+    })
+</script>
 
 
