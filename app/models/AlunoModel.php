@@ -18,8 +18,8 @@ class AlunoModel extends Model{
     public function inserir(){
         $status = array();
 
-        $aluno = new Aluno();
-        $aluno = $_SESSION['aluno'];
+        //$aluno = new Aluno();
+        //$aluno = $_SESSION['aluno'];
         
         //Dados do aluno
         $matriculaAluno = $_SESSION['aluno']->matriculaaluno;
@@ -148,13 +148,13 @@ class AlunoModel extends Model{
 
             $query = $this->db->prepare($insert_aluno);
             $query->execute();
+            $query->errorInfo();
 
             $status["status"] = true;
 
             $status["msn"] = "Aluno inserido com Sucesso.";
-            $status["cpf"] = $cpf;
 
-            unset($_SESSION['aluno']);
+            //unset($_SESSION['aluno']);
 
             return $status ;
 
@@ -169,10 +169,175 @@ class AlunoModel extends Model{
         return $status;
     }
 
-    public function listarTodos(){
-        $sql_aluno = "SELECT * FROM public.aluno WHERE ativo=true";
-        $query = $this->db->query($sql_aluno);
+    public function update(){
+        $a = $_SESSION['aluno'];
+        $a_id = $_SESSION['a_id'];
+
+        try {
+            // set the PDO error mode to exception
+            $this->db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+            $uprgaluno_sql = "UPDATE public.rg SET numero=:numero, orgaoexp=:orgaoexp, dataexp=:dataexp, ufexp=:ufexp WHERE numero=:rg_id";
+
+            $query = $this->db->prepare($uprgaluno_sql);
+            $query->bindValue(':numero', $a->documentosaluno->rg->numero);
+            $query->bindValue(':orgaoexp', $a->documentosaluno->rg->orgaoexp);
+            $query->bindValue(':dataexp', $a->documentosaluno->rg->dataexp);
+            $query->bindValue(':ufexp', $a->documentosaluno->rg->ufexp);
+            $query->bindValue(':rg_id', $a_id->rg);
+            $query->execute();
+            $query->errorInfo();
+
+            $upreservistaaluno_sql = 'UPDATE public.reservista SET numero=:numero, categoria=:categoria, serie=:serie WHERE numero=:reservista_id';
+
+            $query = $this->db->prepare($upreservistaaluno_sql);
+            $query->bindValue(':numero', $a->documentosaluno->reservista->numero);
+            $query->bindValue(':categoria', $a->documentosaluno->reservista->categoria);
+            $query->bindValue(':serie', $a->documentosaluno->reservista->serie);
+            $query->bindValue(':reservista_id', $a_id->reservista);
+            $query->execute();
+            $query->errorInfo();
+
+            $upregaluno_sql = "UPDATE public.registronascimento SET numeroregistro=:numeroregistro, livro=:livro, folha=:folha, dataregistro=:dataregistro, cartorio=:cartorio, cidade=:cidade, uf=:uf WHERE codigo=:registronasc";
+            
+            $query = $this->db->prepare($upregaluno_sql);
+            $query->bindValue(':numeroregistro', $a->documentosaluno->registronascimento->numeroregistro);
+            $query->bindValue(':livro', $a->documentosaluno->registronascimento->livro);
+            $query->bindValue(':folha', $a->documentosaluno->registronascimento->folha);
+            $query->bindValue(':dataregistro', $a->documentosaluno->registronascimento->dataregistro);
+            $query->bindValue(':cartorio', $a->documentosaluno->registronascimento->cartorio);
+            $query->bindValue(':cidade', $a->documentosaluno->registronascimento->cidade);
+            $query->bindValue(':uf', $a->documentosaluno->registronascimento->uf);
+            $query->bindValue(':registronasc', $a_id->registronascimento);
+            $query->execute();
+            $query->errorInfo();
+
+            $upti_sql = 'UPDATE public.tituloeleitor SET numero=:numero, zona=:zona, secao=:secao WHERE numero=:titulo_id';
+
+            $query = $this->db->prepare($upti_sql);
+            $query->bindValue(':numero', $a->documentosaluno->tituloeleitor->numero);
+            $query->bindValue(':zona', $a->documentosaluno->tituloeleitor->zona);
+            $query->bindValue(':secao', $a->documentosaluno->tituloeleitor->secao);
+            $query->bindValue(':titulo_id', $a_id->tituloeleitor);
+            $query->execute();
+            $query->errorInfo();
+
+            $uprgpai_sql = "UPDATE public.rg SET numero=:numero, orgaoexp=:orgaoexp, dataexp=:dataexp, ufexp=:ufexp WHERE numero=:rg_id";
+
+            $query = $this->db->prepare($uprgpai_sql);
+            $query->bindValue(':numero', $a->filiacaoaluno->rgpaialuno->numero);
+            $query->bindValue(':orgaoexp', $a->filiacaoaluno->rgpaialuno->orgaoexp);
+            $query->bindValue(':dataexp', $a->filiacaoaluno->rgpaialuno->dataexp);
+            $query->bindValue(':ufexp', $a->filiacaoaluno->rgpaialuno->ufexp);
+            $query->bindValue(':rg_id', $a_id->rgpaialuno);
+            $query->execute();
+            $query->errorInfo();
+
+            $uprgmae_sql = "UPDATE public.rg SET numero=:numero, orgaoexp=:orgaoexp, dataexp=:dataexp, ufexp=:ufexp WHERE numero=:rg_id";
+
+            $query = $this->db->prepare($uprgmae_sql);
+            $query->bindValue(':numero', $a->filiacaoaluno->rgmaealuno->numero);
+            $query->bindValue(':orgaoexp', $a->filiacaoaluno->rgmaealuno->orgaoexp);
+            $query->bindValue(':dataexp', $a->filiacaoaluno->rgmaealuno->dataexp);
+            $query->bindValue(':ufexp', $a->filiacaoaluno->rgmaealuno->ufexp);
+            $query->bindValue(':rg_id', $a_id->rgmaealuno);
+            $query->execute();
+            $query->errorInfo();
+
+            $upfiliacao_sql = "UPDATE public.filiacao SET nomepaialuno=:nomepaialuno, nomemaoaluno=:nomemaealuno, profissaopai=:profissaopai, profissaomae=:profissaomae, rgpaialuno=:rgpailauno, rgmaealuno=:rgmaealuno WHERE codigo=:filiacaoaluno";
+            $query->bindValue(':nomepaialuno', $a->filiacaoaluno->nomepaialuno);
+            $query->bindValue(':profissaopai', $a->filiacaoaluno->profissaopai);
+            $query->bindValue(':nomemaealuno', $a->filiacaoaluno->nomemaealuno);
+            $query->bindValue(':profissaomae', $a->filiacaoaluno->profissaomae);
+            $query->bindValue(':rgpaialuno', $a->filiacaoaluno->rgpaialuno->numero);
+            $query->bindValue(':rgmaealuno', $a->filiacaoaluno->rgmaealuno->numero);
+            $query->bindValue(':filiacao_id', $a_id->filiacaoaluno);
+            $query->execute();
+            $query->errorInfo();
+
+            $upaluno_sql = "UPDATE public.aluno SET matriculaaluno=:matriculaaluno, nomealuno=:nomealuno, datanascaluno=:datanascaluno, cidadenascaluno=:cidadenascaluno, estadonascaluno=:estadonascaluno, coraluno=:coraluno, sexoaluno=:sexoaluno, pcdaluno=:pcdaluno WHERE codigo=:aluno_id";
+
+            $query->bindValue(':matriculaaluno', $a->matriculaaluno);
+            $query->bindValue(':nomealuno', $a->nomealuno);
+            $query->bindValue(':datanascaluno', $a->datanascaluno);
+            $query->bindValue(':cidadenascaluno', $a->cidadenascaluno);
+            $query->bindValue(':estadonascaluno', $a->estadonascaluno);
+            $query->bindValue(':coraluno', $a->coraluno);
+            $query->bindValue(':sexoaluno', $a->sexoaluno);
+            $query->bindValue(':pcdaluno', $a->pcdaluno);
+            $query->bindValue(':aluno_id', $a_id->codigo);
+            $query->execute();
+            $query->errorInfo();
+
+            $status["status"] = true;
+            $status["msn"] = "  <h4 style='color: #4e555b'>Os dados do Aluno(a)</h4> 
+                                <b>Nome: </b>" .$a->nome. "</br> 
+                                <b>RG: </b>". $a->documentosaluno->rg->numero. "</br>                               
+                                <h4  style='color: #1c7430'>foram atualizados com sucesso! </h4>";
+
+            unset($_SESSION['aluno']);
+            unset($_SESSION['a_id']);
+
+            return $status;
+        }catch (\PDOException $e){
+
+            $status["status"] = false;
+            $status["msn"] = "Erro ao inserir aluno" . $e->getMessage();
+
+            return $status;
+        }
+    }
+
+    public function remover($codigo){
+
+        $status = array();
+
+        try{
+            $this->db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+
+            $upaluno_sql = 'UPDATE public.aluno SET ativo=false WHERE codgio=:codigo';
+
+            $query = $this->db->prepare($upaluno_sql);
+            $query->bindValue(':codigo', $codigo);
+            $query->execute();
+            $query->errorInfo();
+
+            $status["status"] = true;
+            $status["msn"] = "Aluno removido";
+
+            return $status;
+
+        }catch (\PDOException $e){
+
+            $status["status"] = false;
+            $status["msn"] = "Erro ao remover Aluno" . $e->getMessage();
+
+            return $status;
+
+        }
+
+    }
+
+    public function listarTodos($ativo){
+
+        $sql_aluno = "SELECT * FROM public.aluno WHERE ativo=:ativo";
+
+        switch ($ativo){
+            case 'ativos':
+                $status = '1';
+                break;
+            case 'inativos':
+                $status = '0';
+                break;
+            case 'todos':
+                $sql_aluno = "SELECT * FROM public.aluno WHERE ativo IS NOT NULL";
+                $status = 'IS NOT NULL';
+                break;
+        }
+
+        $query = $this->db->prepare($sql_aluno);
+        $query->bindValue(':ativo', $ativo);
+        $query->execute();
         
-        return  $query->fetchAll(\PDO::FETCH_OBJ);   
+        return  $query->fetchAll(\PDO::FETCH_OBJ);        
     }
 }
