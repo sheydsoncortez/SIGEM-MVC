@@ -94,15 +94,18 @@ class AlunoController extends Controller{
                     $this->load("admin", $dados);
 
                 }else{
-
+                    $dados["view"] = "template/inicio";
                     $this->load("admin", $dados);
                 }
             break;
             case 6:
             
-                $f = new AlunoModel();
+                $a = new AlunoModel();
             
-                $dados = $f->update($_SESSION['aluno']);
+                $dados = $a->update();
+
+                $dados["view"] = "template/inicio";
+                $this->load("admin", $dados);
             
             break;
         } 
