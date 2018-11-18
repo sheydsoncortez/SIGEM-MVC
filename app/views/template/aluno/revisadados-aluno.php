@@ -213,10 +213,10 @@
                         <div class="line"></div>
                         <div class="form-group row">
                             <div class="col-sm-5 offset-sm-1">
-                                <a href="<?php echo URL_BASE . "funcionario/listar"; ?>">
+                                <a href="<?php echo URL_BASE . "aluno/listar"; ?>">
                                     <button type="button" class="btn btn-secondary" >Cancelar</button>
                                 </a>
-                                <a href="<?php echo URL_BASE . "funcionario/corrigir" ;?>">
+                                <a href="<?php echo URL_BASE . "aluno/corrigir" ;?>">
                                     <button type="button" class="btn btn-primary" >Salvar</button>
                                 </a>
 
