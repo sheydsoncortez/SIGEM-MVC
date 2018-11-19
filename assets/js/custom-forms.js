@@ -494,3 +494,10 @@ $(function() {
         reader.readAsDataURL(file);
     });
 });
+
+//===================== Botão fechar card ======================
+$(document).ready(function () {
+    $("p#close_card").click(function () {
+        window.location = URL_BASE_JQ + "funcionario/listar/ativos"
+    });
+});

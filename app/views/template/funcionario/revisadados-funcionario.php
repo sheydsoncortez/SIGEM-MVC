@@ -28,23 +28,33 @@
                     <!-- INÍCIO DO FORM -->
 
                    <form class='form-horizontal' id='formfuncionario' method='POST' name="formfuncionario"
-                          action="<?php echo URL_BASE . "funcionario/salvar/6";?>" >
+                          action="<?php echo URL_BASE . "funcionario/salvar/5";?>" >
 
-                       <br/>
-
-                        <a class="close_card topright" id="close_card"> Fechar
+                        <p class="topright" id="close_card" style="font-size: 18px"> Fechar
                             <i class="fa fa-times-circle" style="font-size: x-large; margin-right: 0px"></i>
-                        </a>
+                        </p>
 
-                        <span class="topright" >
-                                    <img src="<?php echo $imgfunc ?>"
-                                         alt="person" class="img-fluid rounded-bottom rounded-top" height="120" width="100"  >
-                                         <a href="javascript:void(0);" id="alterarFotoFun">Alterar foto</a>
-                        </span>
-                       <p style="padding-top: 50px; margin-top: 10px" id="cabecalho_blocos_form">DADOS DO FUNCIONÁRIO</p>
+                       <div class="col-sm-12" >
+                           <div class="row">
+                                    <span class="topright col-sm-3 offset-1" >
+                                        <div class="row">
+                                        <img src="<?php echo $imgfunc ?>"
+                                             alt="person" class="img-fluid rounded-bottom rounded-top" height="130" width="110"  >
+                                        </div>
+
+                                        <div class="row">
+                                            <a class="offset-sm-1" href="javascript:void(0);" id="alterarFotoFun"
+                                               style="font-size: 14px">Alterar foto</a>
+                                        </div>
+                                    </span>
+
+                           </div>
+                       </div><br/>
+                       <br/><br/><p style="padding-top: 50px; margin-top: 10px" id="cabecalho_blocos_form">DADOS DO FUNCIONÁRIO</p>
 
                         <div class="line"></div>
                         <div class="form-group row">
+
                             <div class="col-sm-12" >
                                 <div class="row list-background">
                                     <strong class="col-sm-3 form-control-label">Nome:</strong>
@@ -249,7 +259,7 @@
                                 <a href="<?php echo URL_BASE . "funcionario/listar/ativos"; ?>">
                                     <button type="button" class="btn btn-secondary" >Cancelar</button>
                                 </a>
-                                <a href="<?php echo URL_BASE . "funcionario/salvar/6" ;?>">
+                                <a href="<?php echo URL_BASE . "funcionario/salvar/5" ;?>">
                                     <button type="button" class="btn btn-primary" >Salvar</button>
                                 </a>
 
@@ -263,11 +273,5 @@
     </div>
 
 </section>
-
-<script type="text/javascript">
-    $("a#close_card").click(function () {
-        window.location = URL_BASE_JQ + "funcionario/listar"
-    })
-</script>
 
 

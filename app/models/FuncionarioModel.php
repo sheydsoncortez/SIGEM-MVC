@@ -136,7 +136,11 @@ class FuncionarioModel extends Model{
 
             $status["status"] = true;
 
-            $status["msn"] = "Funcionário inserido com Sucesso.";
+            $status["msn"] = "  <h4 style='color: #4e555b'>Os dados do Funcionário(a)</h4> 
+                                <b>Nome: </b>" .$nome. "</br> 
+                                <b>Cpf: </b>". $cpf. "</br>                               
+                                <h4  style='color: #1c7430'>foram inseridos com sucesso! </h4>";
+
             $status["cpf"] = $cpf;
 
             //unset($_SESSION['funcionario']);

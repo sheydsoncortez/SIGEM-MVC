@@ -107,33 +107,34 @@ class FuncionarioController extends Controller{
             break;
             case 5:
 
-                $dados = array(); 
+                $dados = array();
 
                 $f = new FuncionarioModel();
 
-                $dados = $f->inserir();
-                
-                if($dados["status"]) {
-                    $dados["view"] = "template/inicio";
-                    $this->load("admin", $dados);
+                if(!isset($_SESSION["f_id"]->cpf)){
 
-                }else{
+                    $dados = $f->inserir();
+
+                    if($dados["status"]) {
+                        $dados["view"] = "template/inicio";
+                        $this->load("admin", $dados);
+
+                    }else{
+                        $dados["view"] = "template/inicio";
+                        $this->load("admin", $dados);
+                    }
+
+                }else if(isset($_SESSION["f_id"]->cpf)){
+                    $f = new FuncionarioModel();
+
+                    $dados = $f->update();
+
                     $dados["view"] = "template/inicio";
                     $this->load("admin", $dados);
                 }
 
             break;
-            
-            case 6:
 
-                $f = new FuncionarioModel();
-
-                $dados = $f->update();
-
-                $dados["view"] = "template/inicio";
-                $this->load("admin", $dados);
-
-            break;
         } 
     }
     
