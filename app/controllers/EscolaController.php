@@ -53,6 +53,7 @@ class EscolaController extends Controller
                 $dados["voltar"] = "1";
                 $dados["proximo"] = "3";
                 $dados["page"] = $page;
+                $dados["entidade"] = "escola";
                 break;
 
         }
@@ -135,6 +136,7 @@ class EscolaController extends Controller
         $dados['link'] = "escola/editar/";
         $dados['breadcrumbl1'] = "escola";
         $dados['breadcrumbl2'] = "editar";
+        $dados['entidade'] = "escola";
 
         $escola = new EscolaModel();
 
