@@ -138,7 +138,7 @@ class EscolaController extends Controller
 
         $escola = new EscolaModel();
 
-   /**     if(isset($_SESSION['escola'])){
+        if(isset($_SESSION['escola'])){
 
             $this->load("admin", $dados);
             echo "1";
@@ -157,29 +157,7 @@ class EscolaController extends Controller
             }
         //echo "<pre>";
         //print_r($_SESSION['funcionario']);
-**/
 
-        if(!$escola -> getEscola(base64_encode($codigo)) || base64_decode($codigo) == '0000'){
-            if($_SESSION["escola"]){
-                $this->load("admin", $dados);
-            }
-        }else{
-            $_SESSION["escola"] = $escola->getEscola(base64_decode($codigo));
-            $this->load("admin", $dados);
-        }
-
-
-
-
-
-       /** if((!$escola->getEscola(base64_decode($codigo)))|| base64_decode($codigo) == '0000'){
-            if($_SESSION["Escola"]){
-                $this->load("admin", $dados);
-            }
-        }else{
-            $_SESSION["escola"] = $escola->getEscola(base64_decode($codigo));
-            $this->load("admin", $dados);
-        } **/
     }
 
 
