@@ -51,7 +51,6 @@
                                     </div>
                                 </div>
 
-
                         <br/><p id="cabecalho_blocos_form">ENDEREÇO</p>
                         <div class="line"></div>
                         <div class="form-group row">
@@ -89,10 +88,6 @@
                                 </div>
                             </div>
                         </div>
-
-
-
-
                         <div class="line"></div>
                         <div class="form-group row">
                             <div class="col-sm-5 offset-sm-1">
