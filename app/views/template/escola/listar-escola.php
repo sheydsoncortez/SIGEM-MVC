@@ -46,7 +46,7 @@
                                                 </button>
                                             </a>
                                         </td>
-                                        <td><a href="<?php echo "remover/". base64_encode($escola->codigo) ;?>">
+                                        <td><a href="<?php echo "escola/remover/". base64_encode($escola->codigo) ;?>">
                                                 <button id="removerEscola" type="button" class="btn btn-danger" >
                                                     <i class="fa fa-trash-alt"></i>
                                                 </button>
