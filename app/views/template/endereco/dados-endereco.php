@@ -51,7 +51,7 @@
                         required oninvalid="this.setCustomValidity('Selecione o estado')" 
                         onkeyup="setCustomValidity('')" class="form-control select_selecionado">
                     <?php if(isset($f)){
-                        echo "<option selected='selected' value='{$e->estado}'>{$f->estado}</option>";
+                        echo "<option selected='selected' value='{$e->estado}'>{$e->estado}</option>";
                     } else{   echo "<option value=''  disabled selected hidden>Estado</option>";}?>
                     <option value="AC">Acre</option>
                     <option value="AL">Alagoas</option>
