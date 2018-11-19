@@ -1,5 +1,5 @@
-<?php if (isset($_SESSION['funcionario'])){
-    $e = $_SESSION['funcionario']->endereco;
+<?php if (isset($_SESSION[$entidade])){
+    $e = $_SESSION[$entidade]->endereco;
 }?>
 <!-- CAMPOS DO ENDEREÇO -->
 
