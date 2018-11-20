@@ -85,7 +85,7 @@ class EscolaController extends Controller
                 $dados = array();
 
                 $e = new EscolaModel();
-                
+
                 if(!isset($_SESSION["es_id"]->codigo)){
 
                     $dados = $e->inserir();
@@ -97,8 +97,8 @@ class EscolaController extends Controller
                         $dados["view"] = "template/inicio";
                         $this->load("admin", $dados);
                     }
-                    echo "<pre>";
-                    print_r($dados);
+                    //echo "<pre>";
+                    //print_r($dados);
 
                 } else if(isset($_SESSION["es_id"]->codigo)){
 
