@@ -149,7 +149,7 @@ class TurmaController extends Controller
             $this->load("admin", $dados);
         }else
         if(empty($_SESSION['turma'])){
-            if($escola->getTurma(base64_decode($serie))){
+            if($turma->getTurma(base64_decode($serie))){
                 $_SESSION["turma"] = $turma->getTurma(base64_decode($serie));
                 $_SESSION["turma_id"]->serie = $_SESSION["turma"] -> serie;
 
@@ -179,6 +179,15 @@ class TurmaController extends Controller
 
         //echo "<pre>";
         //print_r($dados["disciplina"]);
+    }
+
+    public function corrigir(){
+
+        $this->setDadosTurma();
+
+        $t=$_SESSION['turma'];
+        header("Location:".URL_BASE . "turma/editar/".base64_encode($t->serie));
+
     }
 
     
