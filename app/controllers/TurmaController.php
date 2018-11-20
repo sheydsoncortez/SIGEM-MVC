@@ -148,14 +148,22 @@ class TurmaController extends Controller
         if(isset($_SESSION['turma'])){
             $this->load("admin", $dados);
         }else
-            if(empty($_SESSION['turma'])){
-                $_SESSION["turma"] = $turma->getAluno();
+        if(empty($_SESSION['turma'])){
+            if($escola->getTurma(base64_decode($serie))){
+                $_SESSION["turma"] = $turma->getTurma(base64_decode($serie));
+                $_SESSION["turma_id"]->serie = $_SESSION["turma"] -> serie;
+
                 $this->load("admin", $dados);
+            }
+
+
         }else{
+
             $this->load("admin", $dados);
+
         }
         //echo "<pre>";
-        //print_r($_SESSION['funcionario']);
+        //print_r($_SESSION['turma']);
 
 
    }
