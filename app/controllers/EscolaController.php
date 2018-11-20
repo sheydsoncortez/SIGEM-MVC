@@ -81,13 +81,11 @@ class EscolaController extends Controller
 
                 break;
             case 3:{
-                
-                $dados = array();
 
+                $dados = array();
                 $e = new EscolaModel();
 
                 if(!isset($_SESSION["es_id"]->codigo)){
-
                     $dados = $e->inserir();
 
                     if($dados["status"]) {
@@ -97,11 +95,11 @@ class EscolaController extends Controller
                         $dados["view"] = "template/inicio";
                         $this->load("admin", $dados);
                     }
+                    echo "<pre>";
+                    print_r($dados);
                     //echo "<pre>";
                     //print_r($dados);
-
                 } else if(isset($_SESSION["es_id"]->codigo)){
-
                     $dados = $e->update();
 
                     $dados["view"] = "template/inicio";
@@ -110,7 +108,7 @@ class EscolaController extends Controller
 
                 }
             }
-            break;
+                break;
         }
     }
 
@@ -160,7 +158,7 @@ class EscolaController extends Controller
 
             $this->load("admin", $dados);
 
-           // echo "1";
+            // echo "1";
 
         }else
             if(empty($_SESSION['escola'])){
@@ -179,8 +177,8 @@ class EscolaController extends Controller
 
                 //echo "3";
             }
-       // echo "<pre>";
-       // print_r($_SESSION['escola']);
+        // echo "<pre>";
+        // print_r($_SESSION['escola']);
 
     }
 
@@ -215,10 +213,15 @@ class EscolaController extends Controller
         $dados = $remover->remover(base64_decode($codigo));
 
         if($dados['status']){
+
             //$this->listar();
-            header("Location:".URL_BASE . "escola/listar");
+
+            header("Location:".URL_BASE . "escola/listar/ativos");
+
         }else{
+
             $dados["view"] = "template/inicio";
+
             $this->load("admin", $dados);
         }
     }
