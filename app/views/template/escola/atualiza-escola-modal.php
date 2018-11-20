@@ -6,7 +6,8 @@
                 <button id="resetmodal" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal" role="form" action="<?php echo URL_BASE . 'escola/corrigir' ?>" method="post" id="modalform-up">
+
+                <form class="form-horizontal" role="form" action="<?php echo URL_BASE . 'escola/corrigir' ?>" method="post" id="modalform-up-e">
                     <ul class="nav nav-pills mb-3" id="updateEscola" role="tablist">
 
                         <li class="nav-item">
@@ -30,69 +31,22 @@
             </div>
 
             <div class="modal-footer">
-                <button id="resetmodal" type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">Cancelar</button>
-                <button id="atualizadados" type="submit" class="btn btn-success" >Atualizar</button>
+                <button id="resetmodal_e" type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">Cancelar</button>
+                <button id="atualizadados_e" type="submit" class="btn btn-success" >Atualizar</button>
             </div>
         </div>
     </div>
 </div>
 
 <script type="text/javascript">
-    /*function form_submit(e) {
-        document.getElementById("modalform-up").submit();
-        e.preventDefault();
-    }*/
 
-    $("button#resetmodal").on('click', function () {
+    $("button#resetmodal_e").on('click', function () {
         location.reload();
     });
-    $("button#atualizadados").on('click', function () {
 
-        //var dados = $("form#modalform-up").serializeArray();
-
-        /*$.ajax({
-           type: "POST",
-           url: $("form#modalform-up").attr('action'),
-           data:  dados,
-
-           success: function(){
-               console.clear();
-               $.each(dados, function(i, field){
-                   console.log(field.name+": "+field.value);
-               });
-
-           }
-        });*/
-        $("form#modalform-up").submit();
-        //location.reload();
+    $("button#atualizadados_e").on('click', function () {
+       // alert($("form#modalform-up-e").attr('action'));
+        $("form#modalform-up-e").submit();
     });
 
-
-
-
-
-
-    /**
-    $(document).ready(function() {
-        $('#atualizadados').click(function(){
-            var dados = $('.modal form').serializeArray();
-            var div = $('#verDadosEscola).html();
-            /*console.clear();
-            $.each(dados, function(i, field){
-                console.log(field.name+": "+field.value);
-            });*/
-
-    /**
-
-            $.ajax({
-                type: "POST",
-                url: URL_BASE_JQ + $('.modal form').attr('action'),
-                data: dados, // serializes the form's elements.
-                success: function(data)
-                {
-                    //$('body').load(location.href);
-                }
-            });
-        });
-    });**/
 </script>
