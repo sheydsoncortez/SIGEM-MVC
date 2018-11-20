@@ -49,6 +49,7 @@ class FuncionarioController extends Controller{
                 $dados["voltar"] = "1";
                 $dados["proximo"] = "3";
                 $dados["page"] = $page;
+                $dados["entidade"] = "funcionario";
             break;
             case '3';
                 $dados["titulo"] = "DOCUMENTOS";
@@ -125,7 +126,6 @@ class FuncionarioController extends Controller{
                     }
 
                 }else if(isset($_SESSION["f_id"]->cpf)){
-                    $f = new FuncionarioModel();
 
                     $dados = $f->update();
 
@@ -147,6 +147,7 @@ class FuncionarioController extends Controller{
         $dados['link'] = "funcionario/editar/".$cpf;
         $dados['breadcrumbl1'] = "funcionário";
         $dados['breadcrumbl2'] = "editar";
+        $dados["entidade"] = "funcionario";
 
         $funcionario = new FuncionarioModel();
 
@@ -213,7 +214,8 @@ class FuncionarioController extends Controller{
 
         if($dados['status']){
 
-            $this->listar('ativos');
+            //$this->listar('ativos');
+            header("Location:".URL_BASE."funcionario/listar/ativos");
 
         }else{
             $dados["view"] = "template/inicio";

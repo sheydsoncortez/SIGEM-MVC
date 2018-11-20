@@ -30,8 +30,8 @@
                    <form class='form-horizontal' id='formfuncionario' method='POST' name="formfuncionario"
                           action="<?php echo URL_BASE . "funcionario/salvar/5";?>" >
 
-                        <p class="topright" id="close_card" style="font-size: 18px"> Fechar
-                            <i class="fa fa-times-circle" style="font-size: x-large; margin-right: 0px"></i>
+                        <p class="topright" id="close_card" style="font-size: 18px">
+                            <i class="fa fa-times" style="font-size: x-large; margin-right: 0px"></i>
                         </p>
 
                        <div class="col-sm-12" >

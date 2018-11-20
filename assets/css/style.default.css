@@ -3307,7 +3307,7 @@ button.btn-primary{
 /* Botão fechar card */
 
 #close_card {
-  color: #b21f2d;
+  color: #1b1e21;
   transition: color 0.5s linear; /* vendorless fallback */
   -o-transition: color 0.5s linear; /* opera */
   -ms-transition: color 0.5s linear; /* IE 10 */
@@ -3316,6 +3316,6 @@ button.btn-primary{
 }
 
 #close_card:hover {
-  color:black;
+  color: #ff0c0c;
   cursor: pointer;
 }
