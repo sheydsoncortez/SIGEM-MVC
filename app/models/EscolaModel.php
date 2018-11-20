@@ -63,11 +63,9 @@
                     $query = $this->db->prepare($insert_escola);
                     $query->execute();
 
-
                     $status["status"] = true;
-
                     $status["msn"] = "Escola inserida com Sucesso.";
-                    $status["codigo"] = $codigoEscola;
+
 
                     unset($_SESSION['escola']);
 
@@ -114,8 +112,9 @@
                     $query->execute();
                     $query->errorInfo();
 
-                    $status["status"]=true;
-                    $status["msm"]="Os dados da escola foram atualizados com sucesso!";
+                    $status["status"]=true;        
+                    $status["msn"]="Os dados da escola foram atualizados com sucesso!";
+
                     unset($_SESSION['escola']);
                     unset($_SESSION['es_id']);
 

@@ -111,4 +111,4 @@
         </div>
 
 </section>
-<?php //echo "<pre>"; print_r($_SESSION['escola']); ?>
+<?php //echo "<pre>"; print_r($_SESSION["es_id"]); ?>

@@ -81,11 +81,15 @@ class EscolaController extends Controller
 
                 break;
             case 3:{
-
+                
                 $dados = array();
+
                 $e = new EscolaModel();
-                if(!isset($_SESSION["es_is"] -> codigo)){
+                
+                if(!isset($_SESSION["es_id"]->codigo)){
+
                     $dados = $e->inserir();
+
                     if($dados["status"]) {
                         $dados["view"] = "template/inicio";
                         $this->load("admin", $dados);
@@ -93,18 +97,20 @@ class EscolaController extends Controller
                         $dados["view"] = "template/inicio";
                         $this->load("admin", $dados);
                     }
-                    // echo "<pre>";
-                    // print_r($dados);
+                    echo "<pre>";
+                    print_r($dados);
 
-                } else if(isset($_SESSION["es_id"] -> codigo)){
-                    $dados = $e -> update();
+                } else if(isset($_SESSION["es_id"]->codigo)){
+
+                    $dados = $e->update();
+
                     $dados["view"] = "template/inicio";
+
                     $this->load("admin", $dados);
 
                 }
-
-
             }
+            break;
         }
     }
 
@@ -158,10 +164,9 @@ class EscolaController extends Controller
 
         }else
             if(empty($_SESSION['escola'])){
-                if($escola -> getEscola(base64_decode($codigo))){
+                if($escola->getEscola(base64_decode($codigo))){
                     $_SESSION["escola"] = $escola->getEscola(base64_decode($codigo));
-                    $_SESSION["es_id"] -> codigo = $_SESSION["escola"] -> codigo;
-                    $_SESSION["es_id"] -> endereco = $_SESSION["escola"] -> endereco;
+                    $_SESSION["es_id"]->codigo = $_SESSION["escola"] -> codigo;
 
                     $this->load("admin", $dados);
                     //echo "2";
