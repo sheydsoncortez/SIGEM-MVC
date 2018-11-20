@@ -41,7 +41,7 @@
                     <!-- INÍCIO DO FORM -->
 
                     <form class='form-horizontal' name='formescola' id='formescola' method='POST'
-                          action="<?php echo URL_BASE . "escola/salvar/".$page;?>" >
+                          action="<?php echo URL_BASE . "escola/salvar/3".$page;?>" >
 
 
                         <?php include($paginator); //echo URL_BASE . $paginator;?>
