@@ -40,14 +40,16 @@
                                         <td><?php echo $escola->telefone ?></td>
                                         <td><?php echo $escola->email ?></td>
 
-                                        <td><a href="<?php echo "escola/editar/". base64_encode($escola->codigo) ;?>">
+                                        <td><a href="<?php echo URL_BASE . "escola/editar/". base64_encode($escola->codigo) ;?>">
+
                                                 <button id="editarEscola" type="button" class="btn btn-secondary" >
                                                     <i class="fa fa-pencil-alt"></i>
                                                 </button>
                                             </a>
                                         </td>
-                                        <td><a href="<?php echo "escola/remover/". base64_encode($escola->codigo) ;?>">
-                                                <button id="removerEscola" type="button" class="btn btn-danger" >
+                                        <td><a href="<?php echo URL_BASE . "escola/remover/". base64_encode($escola->codigo) ;?>">
+
+                                            <button id="removerEscola" type="button" class="btn btn-danger" >
                                                     <i class="fa fa-trash-alt"></i>
                                                 </button>
                                             </a>
