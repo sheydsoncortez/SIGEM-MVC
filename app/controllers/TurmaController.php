@@ -181,6 +181,26 @@ class TurmaController extends Controller
         //print_r($dados["disciplina"]);
     }
 
+    
+    public function remover($serie){
+
+        $remover = new TurmaModel();
+        $dados = $remover->remover(base64_decode($serie));
+
+        if($dados['status']){
+
+            //$this->listar();
+
+            header("Location:".URL_BASE . "turma/listar/ativos");
+
+        }else{
+
+            $dados["view"] = "template/inicio";
+
+            $this->load("admin", $dados);
+        }
+    }
+
 
 
 
