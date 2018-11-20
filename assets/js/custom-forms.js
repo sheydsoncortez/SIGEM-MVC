@@ -202,6 +202,7 @@ $(document).ready(function(){
         $('#pills-documentos-tab').hide();
         $('#pills-dadosfuncionais-tab').hide();
         $('#pills-fotofuncionario-tab').hide();
+        $('#pills-dadodaescola-tab').hide();
         $(".modal").modal();
 
     }); 
@@ -227,12 +228,11 @@ $(document).ready(function(){
     $('#updateFuncionario').on('hidden.bs.modal', function(){
         $('#updateFuncionario').html(back);
     });
+
     $("#corrigirDadosEscola").click(function(){
-        $('#pills-dadosdaescola').addClass('active');
+        $('#pills-dadodaescola-tab').addClass('active');
         $('#pills-dadosdaescola').addClass('show active');
-        $('#pills-documentos-tab').hide();
-        $('#pills-dadosfuncionais-tab').hide();
-        $('#pills-dadosfuncionais').hide();
+        $('#pills-endereco-tab').hide();;
         $(".modal").modal();
     });
 
