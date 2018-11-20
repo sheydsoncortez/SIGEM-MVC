@@ -131,7 +131,8 @@
 
             }
 
-            public function revover($codigoEscola){
+            public function remover($codigoEscola){
+
                 $status = array();
 
                 try{
@@ -198,13 +199,14 @@
                 /** Medoto para listar as escolas**/
             public function listarTodos(){
 
-              /**  $sql_escola = "SELECT * FROM public.escola WHERE ativo=:ativo";
+
+                $sql_escola = "SELECT * FROM public.escola WHERE ativo=TRUE";
 
                 switch ($ativo){
                     case 'ativos':
                         $status = '1';
                         break;
-                    case 'inativos':
+                    case 'inativo':
                         $status = '0';
                         break;
                     case 'todos':
@@ -213,13 +215,10 @@
                         break;
                 }
 
-                $query = $this->db->prepare($sql_escola);
-                $query->bindValue(':ativo', $status);
-                $query->execute(); **/
 
-
-                $sql_escola = "SELECT * FROM public.escola WHERE ativo=TRUE";
                 $query = $this->db->query($sql_escola);
+                $query->bindValue(':ativo', $status);
+                $query->execute();
 
                 return  $query->fetchAll(\PDO::FETCH_OBJ);
             }
