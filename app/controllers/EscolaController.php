@@ -1,6 +1,5 @@
 <?php
 
-
 namespace app\controllers;
 
 use app\classes\Escola;
@@ -85,15 +84,26 @@ class EscolaController extends Controller
 
                 $dados = array();
                 $e = new EscolaModel();
-                $dados = $e->inserir();
-                if($dados["status"]) {
+                if(!isset($_SESSION["es_is"] -> codigo)){
+                    $dados = $e->inserir();
+                    if($dados["status"]) {
+                        $dados["view"] = "template/inicio";
+                        $this->load("admin", $dados);
+                    }else{
+                        $dados["view"] = "template/inicio";
+                        $this->load("admin", $dados);
+                    }
+                    // echo "<pre>";
+                    // print_r($dados);
+
+                } else if(isset($_SESSION["es_id"] -> codigo)){
+                    $dados = $e -> update();
                     $dados["view"] = "template/inicio";
                     $this->load("admin", $dados);
-                }else{
-                    $this->load("admin", $dados);
+
                 }
-             // echo "<pre>";
-             // print_r($dados);
+
+
             }
         }
     }
@@ -143,22 +153,29 @@ class EscolaController extends Controller
         if(isset($_SESSION['escola'])){
 
             $this->load("admin", $dados);
-            echo "1";
+
+           // echo "1";
 
         }else
             if(empty($_SESSION['escola'])){
-                $_SESSION["escola"] = $escola->getEscola($codigo);
-                $this->load("admin", $dados);
-                echo "2";
-                //if($escola->getEscola()) {
-                //}
+                if($escola -> getEscola(base64_decode($codigo))){
+                    $_SESSION["escola"] = $escola->getEscola(base64_decode($codigo));
+                    $_SESSION["es_id"] -> codigo = $_SESSION["escola"] -> codigo;
+                    $_SESSION["es_id"] -> endereco = $_SESSION["escola"] -> endereco;
+
+                    $this->load("admin", $dados);
+                    //echo "2";
+                }
+
+
             }else{
 
                 $this->load("admin", $dados);
-                echo "3";
+
+                //echo "3";
             }
-        //echo "<pre>";
-        //print_r($_SESSION['funcionario']);
+       // echo "<pre>";
+       // print_r($_SESSION['escola']);
 
     }
 
@@ -178,9 +195,13 @@ class EscolaController extends Controller
     }
 
     public function corrigir(){
-        $dados["msn"] = "Teste";
-        $dados["view"] = "template/inicio";
-        $this->load("admin", $dados);
+
+        $this->setDadosEscola();
+        $this->setEndereco();
+
+        $e=$_SESSION['escola'];
+        header("Location:".URL_BASE . "escola/editar/".base64_encode($e->codigo));
+
     }
 
     public function remover($codigo){
