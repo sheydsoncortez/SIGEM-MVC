@@ -1,5 +1,5 @@
-<?php if (isset($_SESSION['escola'])) {
-    $e = $_SESSION['escola'];
+<?php if (isset($_SESSION[$entidade])) {
+    $e = $_SESSION[$entidade];
 }
 ?>
 
@@ -50,6 +50,8 @@
                                         <button id="corrigirDadosEscola" type='button' class='btn btn-warning corrigir'><strong>Corrigir</strong></button>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
 
                         <br/><p id="cabecalho_blocos_form">ENDEREÇO</p>
                         <div class="line"></div>
@@ -100,8 +102,13 @@
 
                             </div>
                         </div>
+
+                    </form>
                 </div>
 
+
             </div>
+        </div>
 
 </section>
+<?php //echo "<pre>"; print_r($_SESSION['escola']); ?>
