@@ -80,6 +80,56 @@
 
                     return $status;
                 }
+
+
+            }
+
+            public function update(){
+                $e = $_SESSION["escola"];
+                $es_id = $_SESSION["es_id"];
+
+                try{
+                    $this->db->setAttribute(\PDO::ATTR_ERRMODE);
+
+                    $upen_sql = 'UPDATE public.endereco SET cep=:cep, cidade=:cidade, logradouro=:logradouro, numero=:numero, bairro=:bairro, estado=:estado WHERE codigo=:endereco_id';
+
+                    $query = $this->db->prepare($upen_sql);
+                    $query->bindValue(':cep', $e->endereco->cep);
+                    $query->bindValue(':cidade', $e->endereco->cidade);
+                    $query->bindValue('logradouro', $e->endereco->logradouro);
+                    $query->bindValue(':numero', $e->endereco->numero);
+                    $query->bindValue(':bairro', $e->endereco->bairro);
+                    $query->bindValue(':estado', $e->endereco->estado);
+                    $query->bindValue('endereco_id', $es_id->endereco);
+                    $query->execute();
+                    $query->errorInfo();
+
+                    $sql_up_esc = "UPDATE public.escola SET codigo=:codigo, nome=:nome, telefone=:telefone, email=:email WHERE codigo=:escola_id";
+                    $query = $this->db->prepare($sql_up_esc);
+                    $query->bindValue(':codigo', $e->codigo);
+                    $query->bindValue(':nome', $e->nome);
+                    $query->bindValue(':telefone', $e->telefone);
+                    $query->bindValue(':email', $e->email);
+                    $query->bindValue(':escola_id', $es_id->codigo);
+                    $query->execute();
+                    $query->errorInfo();
+
+                    $status["status"]=true;
+                    $status["msm"]="Os dados da escola foram atualizados com sucesso!";
+                    unset($_SESSION['escola']);
+                    unset($_SESSION['es_id']);
+
+                    return $status;
+
+                }catch (\PDOException $m){
+
+                    $status["status"]=false;
+                    $status["msm"]="Erro ao atualizados os dados da escola!".$m->getMessage();
+
+                    return $status;
+
+                }
+
             }
 
             public function revover($codigoEscola){
@@ -123,7 +173,7 @@
 
                 if ($query->rowCount() == 1) {
 
-                    unset($_SESSION['escola']);
+
 
                     $d = $query->fetch(\PDO::FETCH_OBJ);
 
@@ -131,6 +181,7 @@
                     $query = $this->db->query($sql_end);
                     $d -> endereco = $query->fetch(\PDO::FETCH_OBJ);
 
+                    unset($_SESSION['escola']);
 
 
                 }else{
