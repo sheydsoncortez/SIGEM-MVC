@@ -216,7 +216,7 @@
                                 <a href="<?php echo URL_BASE . "aluno/listar"; ?>">
                                     <button type="button" class="btn btn-secondary" >Cancelar</button>
                                 </a>
-                                <a href="<?php echo URL_BASE . "aluno/corrigir" ;?>">
+                                <a href="<?php echo URL_BASE . "aluno/salvar/4" ;?>">
                                     <button type="button" class="btn btn-primary" >Salvar</button>
                                 </a>
 

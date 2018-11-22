@@ -154,7 +154,7 @@ CREATE TABLE "public".aluno (
 	coraluno             varchar(15)   ,
 	sexoaluno            char(1)   ,
 	pcdaluno             varchar(100)   ,
-	statusaluno          integer   ,
+	ativo          		 bool   ,
 	filiacaoaluno        integer   ,
 	codigoescola         integer   ,
 	rg                   varchar(16)   ,

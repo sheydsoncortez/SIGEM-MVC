@@ -3,9 +3,6 @@
 namespace app\models;
 
 use app\core\Model;
-use app\classes\Aluno;
-use app\classes\FiliacaoAluno;
-use app\classes\DocumentosAluno;
 
 error_reporting(E_ERROR);
 
@@ -16,6 +13,7 @@ class AlunoModel extends Model{
     }
 
     public function inserir(){
+
         $status = array();
 
         //$aluno = new Aluno();
@@ -36,19 +34,19 @@ class AlunoModel extends Model{
         $codigoEscola = $_SESSION['aluno']->codigoescola;
 
         //Filiação
-        $codigoFiliacao = $_SESSION['aluno']->filiacaoaluno->codigo;
+        //$codigoFiliacao = $_SESSION['aluno']->filiacaoaluno->codigo;
         $nomePaiAluno = $_SESSION['aluno']->filiacaoaluno->nomepaialuno;
         $profissaoPaiAluno = $_SESSION['aluno']->filiacaoaluno->profissaopai;
-        $rgNumPaiAluno = $_SESSION['aluno']->filiacaoaluno->rgpaialuno->rg->numero;
-        $rgOrgaoPaiAluno = $_SESSION['aluno']->filiacaoaluno->rgpaialuno->rg->orgaoexp;
-        $rgDataPaiAluno = $_SESSION['aluno']->filiacaoaluno->rgpaialuno->rg->dataexp;
-        $rgUfPaiAluno = $_SESSION['aluno']->filiacaoaluno->rgpaialuno->rg->estadoexp;
+        $rgNumPaiAluno = $_SESSION['aluno']->filiacaoaluno->rgpaialuno->numero;
+        $rgOrgaoPaiAluno = $_SESSION['aluno']->filiacaoaluno->rgpaialuno->orgaoexp;
+        $rgDataPaiAluno = $_SESSION['aluno']->filiacaoaluno->rgpaialuno->dataexp;
+        $rgUfPaiAluno = $_SESSION['aluno']->filiacaoaluno->rgpaialuno->estadoexp;
         $nomeMaeAluno = $_SESSION['aluno']->filiacaoaluno->nomemaealuno;
         $profissaoMaeAluno = $_SESSION['aluno']->filiacaoaluno->profissaomae;
-        $rgNumMaeAluno = $_SESSION['aluno']->filiacaoaluno->rgmaealuno->rg->numero;
-        $rgOrgaoMaeAluno = $_SESSION['aluno']->filiacaoaluno->rgpaialuno->rg->orgaoexp;
-        $rgDataMaeAluno = $_SESSION['aluno']->filiacaoaluno->rgpaialuno->rg->dataexp;
-        $rgUfMaeAluno = $_SESSION['aluno']->filiacaoaluno->rgpaialuno->rg->estadoexp;
+        $rgNumMaeAluno = $_SESSION['aluno']->filiacaoaluno->rgmaealuno->numero;
+        $rgOrgaoMaeAluno = $_SESSION['aluno']->filiacaoaluno->rgpaialuno->orgaoexp;
+        $rgDataMaeAluno = $_SESSION['aluno']->filiacaoaluno->rgpaialuno->dataexp;
+        $rgUfMaeAluno = $_SESSION['aluno']->filiacaoaluno->rgpaialuno->estadoexp;
 
         //Documentos Aluno
         $rgNumAluno = $_SESSION['aluno']->documentosaluno->rg->numero;
@@ -58,7 +56,7 @@ class AlunoModel extends Model{
         $titNumAluno = $_SESSION['aluno']->documentosaluno->tituloeleitor->numero;
         $titSecaoAluno = $_SESSION['aluno']->documentosaluno->tituloeleitor->secao;
         $titZonaAluno = $_SESSION['aluno']->documentosaluno->tituloeleitor->zona;
-        $codigoReg = $_SESSION['aluno']->documentosaluno->registronascimento->codigo;
+        //$codigoReg = $_SESSION['aluno']->documentosaluno->registronascimento->codigo;
         $regNumAluno = $_SESSION['aluno']->documentosaluno->registronascimento->numeroregistro;
         $regLivroAluno = $_SESSION['aluno']->documentosaluno->registronascimento->livro;
         $regFolhaAluno = $_SESSION['aluno']->documentosaluno->registronascimento->folha;
@@ -68,7 +66,7 @@ class AlunoModel extends Model{
         $regUfAluno = $_SESSION['aluno']->documentosaluno->registronascimento->uf;
 
         //Teste de sexo para reservista
-        if($sexoaluno == 'M'){
+        if($sexoAluno == 'M'){
             
             $resNumAluno = $_SESSION['aluno']->documentosaluno->reservista->numero;
             $resCatAluno = $_SESSION['aluno']->documentosaluno->reservista->categoria;
@@ -87,7 +85,7 @@ class AlunoModel extends Model{
             }
         }else{
 
-            $resNum = "000000000";
+            $resNumAluno = "000000000";
 
         }
 
@@ -95,30 +93,53 @@ class AlunoModel extends Model{
         $ativo = true;
 
         //Variaveis para insert no banco
-        $insert_rgAluno = "INSERT INTO  public.rg(numero, orgaoexp, dataexp, ufexp)
-                            VALUES ('{$rgNumAluno}', '{$rgOrgaoAluno}', '$rgDataAluno', '{$rgUfAluno}');";
-        
-        $insert_rgPaiAluno = "INSERT INTO  public.rg(numero, orgaoexp, dataexp, ufexp)
-                            VALUES ('{$rgNumPaiAluno}', '{$rgOrgaoPaiAluno}', '$rgDataPaiAluno', '{$rgUfPaiAluno}');";
+        $insert_filAluno = "INSERT INTO public.filiacao(nomepaialuno, nomemaealuno, profissaopai, profissaomae, 
+                            rgpaialuno, rgmaealuno)
+                             VALUES ('{$nomePaiAluno}', '{$nomeMaeAluno}', '{$profissaoPaiAluno}',
+                            '{$profissaoMaeAluno}', '{$rgNumPaiAluno}', '{$rgNumMaeAluno}');";
 
-        $insert_rgMaeAluno = "INSERT INTO  public.rg(numero, orgaoexp, dataexp, ufexp)
-                            VALUES ('{$rgNumMaeAluno}', '{$rgOrgaoMaeAluno}', '{$rgDataMaeAluno}', '{$rgUfMaeAluno}');"; 
-
-        $insert_regAluno = "INSERT INTO public.registroNasc(numeroRegistro, livro, folha, dataReg,
+        $insert_regAluno = "INSERT INTO public.registronascimento(numeroregistro, livro, folha, dataregistro,
                             cartorio, cidade, uf)
                             VALUES ('{$regNumAluno}', '{$regLivroAluno}', '{$regFolhaAluno}', '{$regDataAluno}',
                             '{$regCartorioAluno}', '{$regCidadeAluno}', '{$regUfAluno}');";
         
+        $insert_rgPaiAluno = "INSERT INTO  public.rg(numero, orgaoexp, dataexp, ufexp)
+                            VALUES ('{$rgNumPaiAluno}', '{$rgOrgaoPaiAluno}', '{$rgDataPaiAluno}', '{$rgUfPaiAluno}');";
+
+        $insert_rgMaeAluno = "INSERT INTO  public.rg(numero, orgaoexp, dataexp, ufexp)
+                            VALUES ('{$rgNumMaeAluno}', '{$rgOrgaoMaeAluno}', '{$rgDataMaeAluno}', '{$rgUfMaeAluno}');";
+
+        try{
+            $query = $this->db->prepare($insert_rgPaiAluno);
+            $query->execute();
+
+            $query = $this->db->prepare($insert_rgMaeAluno);
+            $query->execute();
+
+            $query = $this->db->prepare($insert_regAluno);
+            $query->execute();
+            $codigoReg = $this->db->lastInsertId();
+            //echo($codigoReg);
+            
+            $query = $this->db->prepare($insert_filAluno);
+            $query->execute();
+            $codigoFiliacao = $this->db->lastInsertId();
+            //echo($codigoFiliacao);
+
+        }catch(\PDOException $e){
+            $status["status"] = false;
+            $status["msn"] = "Erro ao inserir aluno." . $e->getMessage();
+            //echo($status["msn"]);
+        }
+
+        $insert_rgAluno = "INSERT INTO  public.rg(numero, orgaoexp, dataexp, ufexp)
+                            VALUES ('{$rgNumAluno}', '{$rgOrgaoAluno}', '{$rgDataAluno}', '{$rgUfAluno}');"; 
+        
         $insert_titAluno = "INSERT INTO public.tituloeleitor(numero, zona, secao)
                             VALUES ('{$titNumAluno}', '{$titZonaAluno}', '{$titSecaoAluno}');";
         
-        $insert_filAluno = "INSERT INTO public.filiacao(nomepaialuno, nomemaealuno, profissaopai,
-                            profissaomae, rgpaialuno, rgmaealuno)
-                            VALUES ('{$nomePaiAluno}', '{$nomeMaeAluno}', '{$profissaoPaiAluno}',
-                            '{$profissaoMaeAluno}', '{$rgNumPaiAluno}', '{$rgNumMaeAluno}');";
-        
         $insert_aluno = "INSERT INTO public.aluno(matriculaaluno, nomealuno, datanascaluno, cidadenascaluno,
-                        estadonascaluno, coraluno, sexoaluno, pcdaluno, ativo, rg, registronascimento,
+                        estadonascaluno, coraluno, sexoaluno, pcdaluno, ativo, rg, registronasc,
                         tituloeleitor, reservista, filiacaoaluno)
                         VALUES ('{$matriculaAluno}', '{$nomeAluno}', '{$dataNascAluno}', '{$cidadeNascAluno}',
                         '{$estadoNascAluno}', '{$corAluno}', '{$sexoAluno}', '{$pcdAluno}', '{$ativo}',
@@ -130,20 +151,8 @@ class AlunoModel extends Model{
 
             $query = $this->db->prepare($insert_rgAluno);
             $query->execute();
-            
-            $query = $this->db->prepare($insert_rgPaiAluno);
-            $query->execute();
-
-            $query = $this->db->prepare($insert_rgMaeAluno);
-            $query->execute();
-
-            $query = $this->db->prepare($insert_regAluno);
-            $query->execute();
 
             $query = $this->db->prepare($insert_titAluno);
-            $query->execute();
-            
-            $query = $this->db->prepare($insert_filAluno);
             $query->execute();
 
             $query = $this->db->prepare($insert_aluno);
@@ -153,9 +162,9 @@ class AlunoModel extends Model{
             $status["status"] = true;
 
             $status["msn"] = "Aluno inserido com Sucesso.";
+            echo($status["msn"]);
 
             //unset($_SESSION['aluno']);
-
             return $status ;
 
         }
@@ -163,6 +172,7 @@ class AlunoModel extends Model{
 
             $status["status"] = false;
             $status["msn"] = "Erro ao inserir aluno." . $e->getMessage();
+            //echo($status["msn"]);
 
             return $status;
         }
@@ -315,6 +325,64 @@ class AlunoModel extends Model{
 
         }
 
+    }
+
+    public function getAluno($codigo)
+    {
+
+        $sql_aluno = "SELECT  matriculaaluno, nomealuno, to_char(\"datanascaluno\", 'DD/MM/YYYY') as datanascaluno, cidadenascaluno, estadonascaluno, coraluno, sexoaluno, pcdaluno, telefone, rg, tituloeleitor, reservista, registronasc, filiacaoaluno, ativo, FROM public.aluno WHERE cpf='{$codigo}' AND ativo=true";
+
+        $query = $this->db->query($sql_aluno);
+
+        if ($query->rowCount() == 1) {
+
+            $f = $query->fetch(\PDO::FETCH_OBJ);
+
+            $sql_end = "SELECT cep, cidade, logradouro, numero, bairro, estado FROM public.endereco WHERE codigo='{$f->endereco}'";
+
+            $query = $this->db->query($sql_end);
+            $f->endereco = $query->fetch(\PDO::FETCH_OBJ);
+
+            $f->documentos->cpf = $f->cpf;
+            $f->documentos->pispasep = $f->pispasep;
+
+            $sql_ctps = "SELECT * FROM public.ctps WHERE numero='{$f->ctps}'";
+
+            $query = $this->db->query($sql_ctps);
+            $f->documentos->ctps = $query->fetch(\PDO::FETCH_OBJ);
+
+            $sql_res = "SELECT * FROM public.reservista WHERE numero='{$f->reservista}'";
+
+            $query = $this->db->query($sql_res);
+            $f->documentos->reservista = $query->fetch(\PDO::FETCH_OBJ);
+
+            $sql_rg = "SELECT numero, orgaoexp, to_char(\"dataexp\", 'DD/MM/YYYY') as dataexp, ufexp FROM public.rg WHERE numero='{$f->rg}'";
+
+            $query = $this->db->query($sql_rg);
+            $f->documentos->rg = $query->fetch(\PDO::FETCH_OBJ);
+
+            $sql_tit = "SELECT * FROM public.tituloeleitor WHERE numero='{$f->tituloeleitor}'";
+
+            $query = $this->db->query($sql_tit);
+            $f->documentos->tituloeleitor = $query->fetch(\PDO::FETCH_OBJ);
+
+            $sql_dadosfuncionais = "SELECT matricula, to_char(\"dataadmissao\", 'DD/MM/YYYY') as dataadmissao, escolaridade, formacaoacademica, anoconclusao, cargo, funcao FROM funcionario WHERE cpf='{$cpf}' AND ativo=true";
+
+            $query = $this->db->query($sql_dadosfuncionais);
+            $f->dadosfuncionais = $query->fetch(\PDO::FETCH_OBJ);
+
+            unset($_SESSION['funcionario']);
+
+        }else{
+
+            $f = false;
+
+        }
+
+        //echo"<pre>";
+        //print_r($f);
+
+        return $f;
     }
 
     public function listarTodos($ativo){
