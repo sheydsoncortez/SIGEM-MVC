@@ -123,7 +123,7 @@
                 }catch (\PDOException $m){
 
                     $status["status"]=false;
-                    $status["msm"]="Erro ao atualizados os dados da escola!".$m->getMessage();
+                    $status["msn"]="Erro ao atualizados os dados da escola!".$m->getMessage();
 
                     return $status;
 
@@ -197,16 +197,18 @@
             }
 
                 /** Medoto para listar as escolas**/
-            public function listarTodos(){
+            public function listarTodos($ativo){
 
 
-                $sql_escola = "SELECT * FROM public.escola WHERE ativo=TRUE";
+
 
                 switch ($ativo){
                     case 'ativos':
+                        $sql_escola = "SELECT * FROM public.escola WHERE ativo=TRUE";
                         $status = '1';
                         break;
-                    case 'inativo':
+                    case 'inativos':
+                        $sql_escola = "SELECT * FROM public.escola WHERE ativo=FALSE ";
                         $status = '0';
                         break;
                     case 'todos':
