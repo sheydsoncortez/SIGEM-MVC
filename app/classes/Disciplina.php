@@ -14,8 +14,7 @@ class Disciplina{
     private $codigo;
     private $nome;
     private $professor;
-    private $turma;
-    private $serie;
+
 
 
     public function __construct(){
@@ -82,38 +81,4 @@ class Disciplina{
     {
         $this->professor = $professor;
     }
-
-    /**
-     * @return mixed
-     */
-    public function getTurma()
-    {
-        return $this->turma;
-    }
-
-    /**
-     * @param mixed $turma
-     */
-    public function setTurma($turma)
-    {
-        $this->turma = $turma;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getSerie()
-    {
-        return $this->serie;
-    }
-
-    /**
-     * @param mixed $serie
-     */
-    public function setSerie($serie)
-    {
-        $this->serie = $serie;
-    }
-
-
-   }
+}

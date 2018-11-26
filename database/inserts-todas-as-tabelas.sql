@@ -3,11 +3,11 @@ INSERT INTO "public".ctps( numero, serie ) VALUES ( '34535151', '4553' );
 INSERT INTO "public".ctps( numero, serie ) VALUES ( '54333434334', '00015' );
 INSERT INTO "public".ctps( numero, serie ) VALUES ( '987654321', '00012' );
 
-INSERT INTO "public".disciplina( codigo, nome, professor, turma, serie, ativo ) VALUES ( 1, 'Gestão de Projetos', 2147483647, 144, '22', true );
-INSERT INTO "public".disciplina( codigo, nome, professor, turma, serie, ativo ) VALUES ( 2, 'PV', 0, 2345678, '123', true );
-INSERT INTO "public".disciplina( codigo, nome, professor, turma, serie, ativo ) VALUES ( 3, 'Teste 1', 11111, 11, 'ts1', true );
-INSERT INTO "public".disciplina( codigo, nome, professor, turma, serie, ativo ) VALUES ( 4, 'Teste 2', 22222, 22, 'ts2', true );
-INSERT INTO "public".disciplina( codigo, nome, professor, turma, serie, ativo ) VALUES ( 5, 'Teste 5', 33333, 33, 'ts3', true );
+INSERT INTO "public".disciplina( codigo, nome, professor, ativo ) VALUES ( 1, 'Gestão de Projetos', 2147483647, true );
+INSERT INTO "public".disciplina( codigo, nome, professor, ativo ) VALUES ( 2, 'PV', 0,  true );
+INSERT INTO "public".disciplina( codigo, nome, professor, ativo ) VALUES ( 3, 'Teste 1', 11111, true );
+INSERT INTO "public".disciplina( codigo, nome, professor, ativo ) VALUES ( 4, 'Teste 2', 22222, true );
+INSERT INTO "public".disciplina( codigo, nome, professor, ativo ) VALUES ( 5, 'Teste 5', 33333, true );
 
 INSERT INTO "public".endereco( codigo, cep, cidade, logradouro, numero, bairro, estado ) VALUES ( '000.000.000-00', '59300-000', 'Caicó', 'Av. Coronel Martiniano', 'S/N', 'Centro', 'RN' );
 INSERT INTO "public".endereco( codigo, cep, cidade, logradouro, numero, bairro, estado ) VALUES ( '026.898.294-52', '59300-000', 'Caicó', 'Rua Esperidião Elói de Medeiros', '131', 'João XXIII', 'RN' );

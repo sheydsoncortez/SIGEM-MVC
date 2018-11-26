@@ -41,16 +41,6 @@
                                     <strong class="col-sm-3 form-control-label">Código do Professor</strong>
                                     <?php echo "<label class='form-control-label lista-dados'>{$d->professor}</label>";?>
                                 </div>
-                                <div class="row">
-                                    <strong class="col-sm-3 form-control-label">Código da Turma</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$d->turma}</label>";?>
-                                </div>
-                                <div class="row list-background">
-                                    <strong class="col-sm-3 form-control-label">Código da Série</strong>
-                                    <?php echo "<label class='form-control-label lista-dados'>{$d->serie}</label>";?>
-                                </div>
-
-
                                 <!-- BOTÃO CORRIGIR DADOS-->
                                 <div class="line"></div>
                                 <div class="row">

@@ -25,8 +25,6 @@
                                     <th>Código</th>
                                     <th>Nome</th>
                                     <th>Professor</th>
-                                    <th>Turma</th>
-                                    <th>Série</th>
                                     <th id="editard">Visualizar</th>
                                     <th id="removerd">Remover</th>
                                 </tr>
@@ -38,8 +36,6 @@
                                         <td><?php echo $disciplina->codigo ?></td>
                                         <td><?php echo $disciplina->nome ?></td>
                                         <td><?php echo $disciplina->professor ?></td>
-                                        <td><?php echo $disciplina->turma ?></td>
-                                        <td><?php echo $disciplina->serie ?></td>
                                         <td><a href="<?php echo URL_BASE . "disciplina/editar/". base64_encode($disciplina->codigo) ;?>">
                                                 <button id="editarDisciplina" type="button" class="btn btn-secondary" >
                                                     <i class="fa fa-pencil-alt"></i>
