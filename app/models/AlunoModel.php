@@ -330,7 +330,7 @@ class AlunoModel extends Model{
     public function getAluno($codigo)
     {
 
-        $sql_aluno = "SELECT  matriculaaluno, nomealuno, to_char(\"datanascaluno\", 'DD/MM/YYYY') as datanascaluno, cidadenascaluno, estadonascaluno, coraluno, sexoaluno, pcdaluno, telefone, rg, tituloeleitor, reservista, registronasc, filiacaoaluno, ativo, FROM public.aluno WHERE cpf='{$codigo}' AND ativo=true";
+        $sql_aluno = "SELECT  matriculaaluno, nomealuno, to_char(\"datanascaluno\", 'DD/MM/YYYY') as datanascaluno, cidadenascaluno, estadonascaluno, coraluno, sexoaluno, pcdaluno, telefone, rg, tituloeleitor, reservista, registronasc, filiacaoaluno, ativo, FROM public.aluno WHERE codigo='{$codigo}' AND ativo=true";
 
         $query = $this->db->query($sql_aluno);
 

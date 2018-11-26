@@ -63,7 +63,7 @@
                                 <div class="line"></div>
                                 <div class="row">
                                     <div class="col-sm-2">
-                                        <button id="corrigirDadosPessoais" type='button' class='btn btn-warning corrigir'><strong>Corrigir</strong></button>
+                                        <button id="corrigirDadosAluno" type='button' class='btn btn-warning corrigir'><strong>Corrigir</strong></button>
                                     </div>
                                 </div>
                             </div>
@@ -124,7 +124,7 @@
                                 <div class="line"></div>
                                 <div class="row">
                                     <div class="col-sm-2">
-                                        <button id="corrigirEndereco" type='button' class='btn btn-warning corrigir'><strong>Corrigir</strong></button>
+                                        <button id="corrigirFiliacao" type='button' class='btn btn-warning corrigir'><strong>Corrigir</strong></button>
                                     </div>
                                 </div>
                             </div>
@@ -204,7 +204,7 @@
                                 <div class="line"></div>
                                 <div class="row">
                                     <div class="col-sm-2">
-                                        <button id="corrigirDocumentos" type='button' class='btn btn-warning corrigir'><strong>Corrigir</strong></button>
+                                        <button id="corrigirDocumentosAluno" type='button' class='btn btn-warning corrigir'><strong>Corrigir</strong></button>
                                     </div>
                                 </div>
                             </div>

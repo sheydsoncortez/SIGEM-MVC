@@ -238,6 +238,44 @@ $(document).ready(function(){
 
 });
 
+//ABRE O MODAL DO UPDATE ALUNO
+/* $(document).ready(function(){
+    var back = $('#updateAluno').html();
+
+    $("#corrigirDadosAluno").click(function(){
+        $('#pills-dadospessoais-tab').addClass('active');
+        $('#pills-dadospessoais').addClass('show active');
+        $('#pills-filiacao-tab').hide();
+        $('#pills-documentos-tab').hide();
+        $('#pills-endereco-tab').hide();
+        $('#pills-dadosfuncionais-tab').hide();
+        $('#pills-fotofuncionario-tab').hide();
+        $(".modal").modal();
+        $('p#cabecalho_blocos_foto').html(' ');
+    });
+
+    $("#corrigirFiliacao").click(function(){
+        $('#pills-dadospessoais-tab').hide();
+        $('#pills-filiacao-tab').addClass('active');
+        $('#pills-filiacao').addClass('show active');
+        $('#pills-documentos-tab').hide();
+        $(".modal").modal();
+
+    });
+
+    $("#corrigirDocumentosAluno").click(function(){
+        $('#pills-dadospessoais-tab').hide();
+        $('#pills-filiacao-tab').hide();
+        $('#pills-documentos-tab').addClass('active');
+        $('#pills-documentos').addClass('show active');
+        $(".modal").modal();
+    });
+
+    $('#updateAluno').on('hidden.bs.modal', function(){
+        $('#updateAluno').html(back);
+    });
+}); */
+
 /*$(document).ready(function () {
     var disc = $('#updateDisciplina').html();
     

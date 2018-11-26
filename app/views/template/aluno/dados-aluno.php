@@ -1,7 +1,5 @@
 <?php if (isset($_SESSION['aluno'])){
     $a = $_SESSION['aluno'];
-    //$date = new DateTime($f->datanasc); $nd = $date->format('d/m/Y');
-    //echo(strcmp($f->sexo,"F"));
     }
 ?>
 
