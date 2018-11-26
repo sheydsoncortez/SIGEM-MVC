@@ -164,7 +164,7 @@ class AlunoModel extends Model{
             $status["msn"] = "Aluno inserido com Sucesso.";
             echo($status["msn"]);
 
-            //unset($_SESSION['aluno']);
+            unset($_SESSION['aluno']);
             return $status ;
 
         }
