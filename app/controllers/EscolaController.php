@@ -183,18 +183,23 @@ class EscolaController extends Controller
     }
 
 
-    public function listar(){
+    public function listar($status){
+
+        //unset($_SESSION['escola']);
+
         $escola = new EscolaModel();
+
         $dados['link'] = "escola/listar";
         $dados['breadcrumbl1'] = "escola";
         $dados['breadcrumbl2'] = "listar";
         $dados["view"] = "template/escola/listar-escola";
         $dados["modal"] = "template/escola/atualiza-escola-modal.php";
-        $dados["escolas"] = $escola->listarTodos();
+        $dados["ativos"] = $status;
+        $dados["escolas"] = $escola->listarTodos($status);
+
         $this->load("admin", $dados);
 
-        //echo "<pre>";
-        //print_r($dados["disciplina"]);
+
     }
 
     public function corrigir(){
@@ -203,6 +208,7 @@ class EscolaController extends Controller
         $this->setEndereco();
 
         $e=$_SESSION['escola'];
+
         header("Location:".URL_BASE . "escola/editar/".base64_encode($e->codigo));
 
     }
@@ -221,7 +227,6 @@ class EscolaController extends Controller
         }else{
 
             $dados["view"] = "template/inicio";
-
             $this->load("admin", $dados);
         }
     }
