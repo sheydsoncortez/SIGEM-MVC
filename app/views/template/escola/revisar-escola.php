@@ -93,7 +93,7 @@
                         <div class="line"></div>
                         <div class="form-group row">
                             <div class="col-sm-5 offset-sm-1">
-                                <a href="<?php echo URL_BASE . "escola/listar"; ?>">
+                                <a href="<?php echo URL_BASE . "escola/listar/ativos"; ?>">
                                     <button type="button" class="btn btn-secondary" >Cancelar</button>
                                 </a>
                                 <a href="<?php echo URL_BASE . "escola/salvar/3" ;?>">
