@@ -30,6 +30,7 @@
                 </form>
             </div>
 
+
             <div class="modal-footer">
                 <button id="resetmodal_e" type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">Cancelar</button>
                 <button id="atualizadados_e" type="submit" class="btn btn-success" >Atualizar</button>
