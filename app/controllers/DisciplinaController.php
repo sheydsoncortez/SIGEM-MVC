@@ -88,8 +88,6 @@ class DisciplinaController extends Controller
         $disciplina->nome = $_POST["nome"];
         $disciplina->codigo = $_POST["codigo"];
         $disciplina->professor = $_POST["professor"];
-        $disciplina->turma = $_POST["turma"];
-        $disciplina->serie = $_POST["serie"];
 
         $_SESSION["disciplina"] = $disciplina;
         //echo "<pre>";
