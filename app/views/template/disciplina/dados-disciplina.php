@@ -12,6 +12,7 @@
     <div class="col-sm-12">
         <div class="row">
 
+            <!-- Tudo OK -->
             <label class="col-sm-2 form-control-label"></label>
             <div class="col-sm-8">
                 <input type="text" placeholder="Nome da Disciplina" id="nomeDisciplina" name="nome"
@@ -35,6 +36,7 @@
             </div>
         </div>
     </div>
+    ok
 </div>
 
 
