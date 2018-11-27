@@ -1,6 +1,7 @@
 <?php if (isset($_SESSION['disciplina'])){
     $f = $_SESSION['disciplina'];
-    $date = new DateTime($f->datanasc); $nd = $date->format('d/m/Y');
+    //$date = new DateTime($f->datanasc); $nd = $date->format('d/m/Y');
+    //Não Preciso dessa linha por enquanto
 }?>
 
 <!-- CÓDIGO DA DISCIPLINA -->

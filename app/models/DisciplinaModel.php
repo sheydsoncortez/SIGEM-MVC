@@ -28,7 +28,7 @@ class DisciplinaModel extends Model
 
         $discplinaSQL = "INSERT INTO public.disciplina(
                             nome, professor)
-	                      VALUES (?, ?, ?);";
+	                      VALUES (?, ?);";
 
         try {
             // set the PDO error mode to exception
