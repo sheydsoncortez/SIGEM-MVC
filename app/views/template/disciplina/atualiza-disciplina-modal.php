@@ -58,6 +58,15 @@
         $this->professor = $professor;
     }
 
+    /**
+     * @param mixed $professor
+     */
+    public function setProfessor($professor)
+    {
+        $this->professor = $professor;
+    }
+
+
 
     });
 </script>
